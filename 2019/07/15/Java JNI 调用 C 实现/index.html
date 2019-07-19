@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2">
+
+
+
+
+
+
+<meta name="description" content="Java JNI 调用 C 实现 创建目录hook  创建Test.java文件 12345678910111213141516171819   package hook; 2 public class Test&amp;#123; 3     static&amp;#123; 4         System.loadLibrary(&quot;test&quot;); 5     &amp;#125; 6 7     public na">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java JNI 调用 C 实现">
+<meta property="og:url" content="http://yoursite.com/2019/07/15/Java JNI 调用 C 实现/index.html">
+<meta property="og:site_name" content="note">
+<meta property="og:description" content="Java JNI 调用 C 实现 创建目录hook  创建Test.java文件 12345678910111213141516171819   package hook; 2 public class Test&amp;#123; 3     static&amp;#123; 4         System.loadLibrary(&quot;test&quot;); 5     &amp;#125; 6 7     public na">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-07-19T06:03:39.232Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java JNI 调用 C 实现">
+<meta name="twitter:description" content="Java JNI 调用 C 实现 创建目录hook  创建Test.java文件 12345678910111213141516171819   package hook; 2 public class Test&amp;#123; 3     static&amp;#123; 4         System.loadLibrary(&quot;test&quot;); 5     &amp;#125; 6 7     public na">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/07/15/Java JNI 调用 C 实现/">
+
+
+
+
+
+  <title>Java JNI 调用 C 实现 | note</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">note</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/15/Java JNI 调用 C 实现/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lpl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="note">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java JNI 调用 C 实现</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-15T14:28:42+08:00">
+                2019-07-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h5 id="Java-JNI-调用-C-实现"><a href="#Java-JNI-调用-C-实现" class="headerlink" title="Java JNI 调用 C 实现"></a>Java JNI 调用 C 实现</h5><ul>
+<li><p>创建目录hook</p>
+</li>
+<li><p>创建Test.java文件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">   <span class="keyword">package</span> hook;</span><br><span class="line"> <span class="number">2</span> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line"> <span class="number">3</span>     <span class="keyword">static</span>&#123;</span><br><span class="line"> <span class="number">4</span>         System.loadLibrary(<span class="string">"test"</span>);</span><br><span class="line"> <span class="number">5</span>     &#125;</span><br><span class="line"> <span class="number">6</span></span><br><span class="line"> <span class="number">7</span>     <span class="function"><span class="keyword">public</span> <span class="keyword">native</span> <span class="keyword">int</span> <span class="title">nativeAdd</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>;</span><br><span class="line"> <span class="number">8</span></span><br><span class="line"> <span class="number">9</span>     <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line"><span class="number">10</span>         <span class="keyword">return</span> x + y;</span><br><span class="line"><span class="number">11</span>     &#125;</span><br><span class="line"><span class="number">12</span></span><br><span class="line"><span class="number">13</span>     <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line"><span class="number">14</span>         Test test       = <span class="keyword">new</span> Test();</span><br><span class="line"><span class="number">15</span>         System.out.println(System.getProperty(<span class="string">"java.library.path"</span>));</span><br><span class="line"><span class="number">16</span>         System.out.println(test.add(<span class="number">3</span>, <span class="number">5</span>));</span><br><span class="line"><span class="number">17</span>         System.out.println(test.nativeAdd(<span class="number">3</span>, <span class="number">5</span>));</span><br><span class="line"><span class="number">18</span>     &#125;</span><br><span class="line"><span class="number">19</span> &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<ul>
+<li><p>编译java文件.</p>
+</li>
+<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javac hook/Test.java</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建 jni 头文件</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">javah -jni hook.Test</span><br><span class="line"></span><br><span class="line">  <span class="number">1</span> <span class="comment">/* DO NOT EDIT THIS FILE - it is machine generated */</span></span><br><span class="line">  <span class="number">2</span> <span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;jni.h&gt;</span></span></span><br><span class="line">  <span class="number">3</span> <span class="comment">/* Header for class hook_Test */</span></span><br><span class="line">  <span class="number">4</span></span><br><span class="line">  <span class="number">5</span> <span class="meta">#<span class="meta-keyword">ifndef</span> _Included_hook_Test</span></span><br><span class="line">  <span class="number">6</span> <span class="meta">#<span class="meta-keyword">define</span> _Included_hook_Test</span></span><br><span class="line">  <span class="number">7</span> <span class="meta">#<span class="meta-keyword">ifdef</span> __cplusplus</span></span><br><span class="line">  <span class="number">8</span> <span class="keyword">extern</span> <span class="string">"C"</span> &#123;</span><br><span class="line">  <span class="number">9</span> <span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"> <span class="number">10</span> <span class="comment">/*</span></span><br><span class="line"><span class="comment"> 11  * Class:     hook_Test</span></span><br><span class="line"><span class="comment"> 12  * Method:    nativeAdd</span></span><br><span class="line"><span class="comment"> 13  * Signature: (II)I</span></span><br><span class="line"><span class="comment"> 14  */</span></span><br><span class="line"> <span class="number">15</span> JNIEXPORT jint JNICALL Java_hook_Test_nativeAdd</span><br><span class="line"> <span class="number">16</span>   (JNIEnv *, jobject, jint, jint);</span><br><span class="line"> <span class="number">17</span></span><br><span class="line"> <span class="number">18</span> <span class="meta">#<span class="meta-keyword">ifdef</span> __cplusplus</span></span><br><span class="line"> <span class="number">19</span> &#125;</span><br><span class="line"> <span class="number">20</span> <span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"> <span class="number">21</span> <span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编写Test.c 文件，和hook 同一级目录。</p>
+</li>
+<li><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> <span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"hook_Test.h"</span></span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span> JNIEXPORT jint JNICALL Java_hook_Test_nativeAdd</span><br><span class="line"><span class="number">4</span>   (JNIEnv * env, jobject obj, jint x, jint y)&#123;</span><br><span class="line"><span class="number">5</span>       <span class="keyword">return</span> x + y ;</span><br><span class="line"><span class="number">6</span>       &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>生成动态链接库，命令如下</p>
+</li>
+<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -dynamiclib -o libtest.jnilib Test.c -framework JavaVM -I $JAVA_HOME/include -I $JAVA_HOME/include/darwin</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>说明：</p>
+<p> -o：指定动态链接库编译后生成的路径及文件名</p>
+<p>   -dynamiclib：表示编译成动态链接库</p>
+<p>   -framework JavaVM -I：编译JNI需要用到JVM的头文件(jni.h)，第一个目录是平台无关的，第二个目录是与操作系统平台相关的头文件</p>
+<p>mac 上和linux上命令有少许差异，linux 上是生成so文件，mac上是生成jnilib文件</p>
+<p><a href="https://blog.csdn.net/hackooo/article/details/48395765" target="_blank" rel="noopener">参考文件linux</a>,[参考文件多平台]([<a href="http://blog.0613.me/2017/05/14/20170514%20-%20Java-%E9%80%9A%E8%BF%87-JNI-%E8%B0%83%E7%94%A8-so-jnilib-%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93/]" target="_blank" rel="noopener">http://blog.0613.me/2017/05/14/20170514%20-%20Java-%E9%80%9A%E8%BF%87-JNI-%E8%B0%83%E7%94%A8-so-jnilib-%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93/]</a>(<a href="http://blog.0613.me/2017/05/14/20170514" target="_blank" rel="noopener">http://blog.0613.me/2017/05/14/20170514</a> - Java-通过-JNI-调用-so-jnilib-动态链接库/)) </p>
+</blockquote>
+</li>
+<li><p>执行验证结果</p>
+</li>
+<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -Djava.library.path=. hook.Test</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>需要加上 -Djava.library.path=. 指明从当前目录加载动态链接库文件，否则会出现找不到库文件的异常。</p>
+</blockquote>
+</li>
+<li><p>查看class 文件命令</p>
+</li>
+<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br></pre></td><td class="code"><pre><span class="line">javap -verbose hook.Test</span><br><span class="line"></span><br><span class="line">Classfile /Users/lipeilong/note/java/vm/hook/Test.class</span><br><span class="line">  Last modified 2019-7-15; size 747 bytes</span><br><span class="line">  MD5 checksum 223fad605354553a14ee9dd1adaae086</span><br><span class="line">  Compiled from "Test.java"</span><br><span class="line">public class hook.Test</span><br><span class="line">  minor version: 0</span><br><span class="line">  major version: 52</span><br><span class="line">  flags: ACC_PUBLIC, ACC_SUPER</span><br><span class="line">Constant pool:</span><br><span class="line"><span class="meta">   #</span><span class="bash">1 = Methodref          <span class="comment">#13.#26        // java/lang/Object."&lt;init&gt;":()V</span></span></span><br><span class="line"><span class="meta">   #</span><span class="bash">2 = Class              <span class="comment">#27            // hook/Test</span></span></span><br><span class="line"><span class="meta">   #</span><span class="bash">3 = Methodref          <span class="comment">#2.#26         // hook/Test."&lt;init&gt;":()V</span></span></span><br><span class="line"><span class="meta">   #</span><span class="bash">4 = Fieldref           <span class="comment">#28.#29        // java/lang/System.out:Ljava/io/PrintStream;</span></span></span><br><span class="line"><span class="meta">   #</span><span class="bash">5 = String             <span class="comment">#30            // java.library.path</span></span></span><br><span class="line"><span class="meta">   #</span><span class="bash">6 = Methodref          <span class="comment">#28.#31        // java/lang/System.getProperty:(Ljava/lang/String;)Ljava/lang/String;</span></span></span><br><span class="line"><span class="meta">   #</span><span class="bash">7 = Methodref          <span class="comment">#32.#33        // java/io/PrintStream.println:(Ljava/lang/String;)V</span></span></span><br><span class="line"><span class="meta">   #</span><span class="bash">8 = Methodref          <span class="comment">#2.#34         // hook/Test.add:(II)I</span></span></span><br><span class="line"><span class="meta">   #</span><span class="bash">9 = Methodref          <span class="comment">#32.#35        // java/io/PrintStream.println:(I)V</span></span></span><br><span class="line"><span class="meta">  #</span><span class="bash">10 = Methodref          <span class="comment">#2.#36         // hook/Test.nativeAdd:(II)I</span></span></span><br><span class="line"><span class="meta">  #</span><span class="bash">11 = String             <span class="comment">#37            // test</span></span></span><br><span class="line"><span class="meta">  #</span><span class="bash">12 = Methodref          <span class="comment">#28.#38        // java/lang/System.loadLibrary:(Ljava/lang/String;)V</span></span></span><br><span class="line"><span class="meta">  #</span><span class="bash">13 = Class              <span class="comment">#39            // java/lang/Object</span></span></span><br><span class="line"><span class="meta">  #</span><span class="bash">14 = Utf8               &lt;init&gt;</span></span><br><span class="line"><span class="meta">  #</span><span class="bash">15 = Utf8               ()V</span></span><br><span class="line"><span class="meta">  #</span><span class="bash">16 = Utf8               Code</span></span><br><span class="line"><span class="meta">  #</span><span class="bash">17 = Utf8               LineNumberTable</span></span><br><span class="line"><span class="meta">  #</span><span class="bash">18 = Utf8               nativeAdd</span></span><br><span class="line"><span class="meta">  #</span><span class="bash">19 = Utf8               (II)I</span></span><br><span class="line"><span class="meta">  #</span><span class="bash">20 = Utf8               add</span></span><br><span class="line"><span class="meta">  #</span><span class="bash">21 = Utf8               main</span></span><br><span class="line"><span class="meta">  #</span><span class="bash">22 = Utf8               ([Ljava/lang/String;)V</span></span><br><span class="line"><span class="meta">  #</span><span class="bash">23 = Utf8               &lt;clinit&gt;</span></span><br><span class="line"><span class="meta">  #</span><span class="bash">24 = Utf8               SourceFile</span></span><br><span class="line"><span class="meta">  #</span><span class="bash">25 = Utf8               Test.java</span></span><br><span class="line"><span class="meta">  #</span><span class="bash">26 = NameAndType        <span class="comment">#14:#15        // "&lt;init&gt;":()V</span></span></span><br><span class="line"><span class="meta">  #</span><span class="bash">27 = Utf8               hook/Test</span></span><br><span class="line"><span class="meta">  #</span><span class="bash">28 = Class              <span class="comment">#40            // java/lang/System</span></span></span><br><span class="line"><span class="meta">  #</span><span class="bash">29 = NameAndType        <span class="comment">#41:#42        // out:Ljava/io/PrintStream;</span></span></span><br><span class="line"><span class="meta">  #</span><span class="bash">30 = Utf8               java.library.path</span></span><br><span class="line"><span class="meta">  #</span><span class="bash">31 = NameAndType        <span class="comment">#43:#44        // getProperty:(Ljava/lang/String;)Ljava/lang/String;</span></span></span><br><span class="line"><span class="meta">  #</span><span class="bash">32 = Class              <span class="comment">#45            // java/io/PrintStream</span></span></span><br><span class="line"><span class="meta">  #</span><span class="bash">33 = NameAndType        <span class="comment">#46:#47        // println:(Ljava/lang/String;)V</span></span></span><br><span class="line"><span class="meta">  #</span><span class="bash">34 = NameAndType        <span class="comment">#20:#19        // add:(II)I</span></span></span><br><span class="line"><span class="meta">  #</span><span class="bash">35 = NameAndType        <span class="comment">#46:#48        // println:(I)V</span></span></span><br><span class="line"><span class="meta">  #</span><span class="bash">36 = NameAndType        <span class="comment">#18:#19        // nativeAdd:(II)I</span></span></span><br><span class="line"><span class="meta">  #</span><span class="bash">37 = Utf8               <span class="built_in">test</span></span></span><br><span class="line"><span class="meta">  #</span><span class="bash">38 = NameAndType        <span class="comment">#49:#47        // loadLibrary:(Ljava/lang/String;)V</span></span></span><br><span class="line"><span class="meta">  #</span><span class="bash">39 = Utf8               java/lang/Object</span></span><br><span class="line"><span class="meta">  #</span><span class="bash">40 = Utf8               java/lang/System</span></span><br><span class="line"><span class="meta">  #</span><span class="bash">41 = Utf8               out</span></span><br><span class="line"><span class="meta">  #</span><span class="bash">42 = Utf8               Ljava/io/PrintStream;</span></span><br><span class="line"><span class="meta">  #</span><span class="bash">43 = Utf8               getProperty</span></span><br><span class="line"><span class="meta">  #</span><span class="bash">44 = Utf8               (Ljava/lang/String;)Ljava/lang/String;</span></span><br><span class="line"><span class="meta">  #</span><span class="bash">45 = Utf8               java/io/PrintStream</span></span><br><span class="line"><span class="meta">  #</span><span class="bash">46 = Utf8               println</span></span><br><span class="line"><span class="meta">  #</span><span class="bash">47 = Utf8               (Ljava/lang/String;)V</span></span><br><span class="line"><span class="meta">  #</span><span class="bash">48 = Utf8               (I)V</span></span><br><span class="line"><span class="meta">  #</span><span class="bash">49 = Utf8               loadLibrary</span></span><br><span class="line">&#123;</span><br><span class="line">  public hook.Test();</span><br><span class="line">    descriptor: ()V</span><br><span class="line">    flags: ACC_PUBLIC</span><br><span class="line">    Code:</span><br><span class="line">      stack=1, locals=1, args_size=1</span><br><span class="line">         0: aload_0</span><br><span class="line">         1: invokespecial #1                  // Method java/lang/Object."&lt;init&gt;":()V</span><br><span class="line">         4: return</span><br><span class="line">      LineNumberTable:</span><br><span class="line">        line 2: 0</span><br><span class="line"></span><br><span class="line">  public native int nativeAdd(int, int);</span><br><span class="line">    descriptor: (II)I</span><br><span class="line">    flags: ACC_PUBLIC, ACC_NATIVE</span><br><span class="line"></span><br><span class="line">  public int add(int, int);</span><br><span class="line">    descriptor: (II)I</span><br><span class="line">    flags: ACC_PUBLIC</span><br><span class="line">    Code:</span><br><span class="line">      stack=2, locals=3, args_size=3</span><br><span class="line">         0: iload_1</span><br><span class="line">         1: iload_2</span><br><span class="line">         2: iadd</span><br><span class="line">         3: ireturn</span><br><span class="line">      LineNumberTable:</span><br><span class="line">        line 10: 0</span><br><span class="line"></span><br><span class="line">  public static void main(java.lang.String[]);</span><br><span class="line">    descriptor: ([Ljava/lang/String;)V</span><br><span class="line">    flags: ACC_PUBLIC, ACC_STATIC</span><br><span class="line">    Code:</span><br><span class="line">      stack=4, locals=2, args_size=1</span><br><span class="line">         0: new           #2                  // class hook/Test</span><br><span class="line">         3: dup</span><br><span class="line">         4: invokespecial #3                  // Method "&lt;init&gt;":()V</span><br><span class="line">         7: astore_1</span><br><span class="line">         8: getstatic     #4                  // Field java/lang/System.out:Ljava/io/PrintStream;</span><br><span class="line">        11: ldc           #5                  // String java.library.path</span><br><span class="line">        13: invokestatic  #6                  // Method java/lang/System.getProperty:(Ljava/lang/String;)Ljava/lang/String;</span><br><span class="line">        16: invokevirtual #7                  // Method java/io/PrintStream.println:(Ljava/lang/String;)V</span><br><span class="line">        19: getstatic     #4                  // Field java/lang/System.out:Ljava/io/PrintStream;</span><br><span class="line">        22: aload_1</span><br><span class="line">        23: iconst_3</span><br><span class="line">        24: iconst_5</span><br><span class="line">        25: invokevirtual #8                  // Method add:(II)I</span><br><span class="line">        28: invokevirtual #9                  // Method java/io/PrintStream.println:(I)V</span><br><span class="line">        31: getstatic     #4                  // Field java/lang/System.out:Ljava/io/PrintStream;</span><br><span class="line">        34: aload_1</span><br><span class="line">        35: iconst_3</span><br><span class="line">        36: iconst_5</span><br><span class="line">        37: invokevirtual #10                 // Method nativeAdd:(II)I</span><br><span class="line">        40: invokevirtual #9                  // Method java/io/PrintStream.println:(I)V</span><br><span class="line">        43: return</span><br><span class="line">      LineNumberTable:</span><br><span class="line">        line 14: 0</span><br><span class="line">        line 15: 8</span><br><span class="line">        line 16: 19</span><br><span class="line">        line 17: 31</span><br><span class="line">        line 18: 43</span><br><span class="line"></span><br><span class="line">  static &#123;&#125;;</span><br><span class="line">    descriptor: ()V</span><br><span class="line">    flags: ACC_STATIC</span><br><span class="line">    Code:</span><br><span class="line">      stack=1, locals=0, args_size=0</span><br><span class="line">         0: ldc           #11                 // String test</span><br><span class="line">         2: invokestatic  #12                 // Method java/lang/System.loadLibrary:(Ljava/lang/String;)V</span><br><span class="line">         5: return</span><br><span class="line">      LineNumberTable:</span><br><span class="line">        line 4: 0</span><br><span class="line">        line 5: 5</span><br><span class="line">&#125;</span><br><span class="line">SourceFile: "Test.java"</span><br></pre></td></tr></table></figure>
+</li>
+<li></li>
+<li></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/28/android设备特性/" rel="next" title="获取设备名称">
+                <i class="fa fa-chevron-left"></i> 获取设备名称
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/15/Java 虚拟机阅读/" rel="prev" title="Java虚拟机阅读">
+                Java虚拟机阅读 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="lpl">
+          <p class="site-author-name" itemprop="name">lpl</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#Java-JNI-调用-C-实现"><span class="nav-number">1.</span> <span class="nav-text">Java JNI 调用 C 实现</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lpl</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

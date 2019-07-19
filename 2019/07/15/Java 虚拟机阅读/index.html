@@ -94,17 +94,17 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="description" content="Java 虚拟机阅读 KVM (Kilobyte VM)  KVM 中的 K 是“Kilobyte”的意思，它强调简单，轻量，高度可移植，但是运行速度比较慢。在 Androd、iOS 等智能手机操作系统出现前曾经在手机平台上得到非常广泛应用。 优点：包含JVM最核心的组件；实现方式与JVM规范描述的抽象的JVM相近 缺点：是Java ME CLDC VM，而不是Java SE VM；未实现反射、浮">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2019/07/19/hello-world/index.html">
+<meta property="og:title" content="Java虚拟机阅读">
+<meta property="og:url" content="http://yoursite.com/2019/07/15/Java 虚拟机阅读/index.html">
 <meta property="og:site_name" content="note">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="Java 虚拟机阅读 KVM (Kilobyte VM)  KVM 中的 K 是“Kilobyte”的意思，它强调简单，轻量，高度可移植，但是运行速度比较慢。在 Androd、iOS 等智能手机操作系统出现前曾经在手机平台上得到非常广泛应用。 优点：包含JVM最核心的组件；实现方式与JVM规范描述的抽象的JVM相近 缺点：是Java ME CLDC VM，而不是Java SE VM；未实现反射、浮">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-19T02:47:24.093Z">
+<meta property="og:updated_time" content="2019-07-19T06:03:11.323Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="Java虚拟机阅读">
+<meta name="twitter:description" content="Java 虚拟机阅读 KVM (Kilobyte VM)  KVM 中的 K 是“Kilobyte”的意思，它强调简单，轻量，高度可移植，但是运行速度比较慢。在 Androd、iOS 等智能手机操作系统出现前曾经在手机平台上得到非常广泛应用。 优点：包含JVM最核心的组件；实现方式与JVM规范描述的抽象的JVM相近 缺点：是Java ME CLDC VM，而不是Java SE VM；未实现反射、浮">
 
 
 
@@ -133,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/07/19/hello-world/">
+  <link rel="canonical" href="http://yoursite.com/2019/07/15/Java 虚拟机阅读/">
 
 
 
 
 
-  <title>Hello World | note</title>
+  <title>Java虚拟机阅读 | note</title>
   
 
 
@@ -262,7 +262,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/19/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/15/Java 虚拟机阅读/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lpl">
@@ -279,7 +279,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World</h1>
+          <h1 class="post-title" itemprop="name headline">Java虚拟机阅读</h1>
         
 
         <div class="post-meta">
@@ -291,8 +291,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-19T10:47:24+08:00">
-                2019-07-19
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-15T16:50:35+08:00">
+                2019-07-15
               </time>
             
 
@@ -329,19 +329,54 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <h5 id="Java-虚拟机阅读"><a href="#Java-虚拟机阅读" class="headerlink" title="Java 虚拟机阅读"></a>Java 虚拟机阅读</h5><ul>
+<li><p>KVM (Kilobyte VM)</p>
+<blockquote>
+<p>KVM 中的 K 是“Kilobyte”的意思，它强调简单，轻量，高度可移植，但是运行速度比较慢。在 Androd、iOS 等智能手机操作系统出现前曾经在手机平台上得到非常广泛应用。</p>
+<p>优点：包含JVM最核心的组件；实现方式与JVM规范描述的抽象的JVM相近</p>
+<p>缺点：是Java ME CLDC VM，而不是Java SE VM；未实现反射、浮点计算等功能。</p>
+<p>注意：KVM(kernel-base VM) 是一款基于linux内核的虚拟机 <a href="[https://www.evernote.com/shard/s325/client/snv?noteGuid=bebe0aaa-9d30-4624-9772-a0af9dfffead&noteKey=a08905a6b6733c5cd945bba560d4d927&sn=https%3A%2F%2Fwww.evernote.com%2Fshard%2Fs325%2Fsh%2Fbebe0aaa-9d30-4624-9772-a0af9dfffead%2Fa08905a6b6733c5cd945bba560d4d927&title=QEMU%252BKVM%25E5%25AD%25A6%25E4%25B9%25A0%25E7%25AC%2594%25E8%25AE%25B0](https://www.evernote.com/shard/s325/client/snv?noteGuid=bebe0aaa-9d30-4624-9772-a0af9dfffead&noteKey=a08905a6b6733c5cd945bba560d4d927&sn=https%3A%2F%2Fwww.evernote.com%2Fshard%2Fs325%2Fsh%2Fbebe0aaa-9d30-4624-9772-a0af9dfffead%2Fa08905a6b6733c5cd945bba560d4d927&title=QEMU%2BKVM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0)">QEMU+KVM</a> <a href="https://www.hongweipeng.com/index.php/archives/1179/" target="_blank" rel="noopener">KVM 介绍</a>  <a href="https://blog.csdn.net/21cnbao/article/details/56654334" target="_blank" rel="noopener">宋宝华KVM介绍</a> </p>
+<p><a href="https://www.infoq.cn/article/jvm-family" target="_blank" rel="noopener">Java 虚拟机家族考</a> </p>
+</blockquote>
+</li>
+<li><p>Squawk VM</p>
+<blockquote>
+<ul>
+<li>Squawk VM 是由 Sun 开发，运行于 Sun SPOT（Sun Small Programmable Object Technology，一种手持的 Wifi 设备），也曾经运用于 Java Card。这是一个 Java 代码比重很高的嵌入式虚拟机实现，其中诸如类加载器、字节码验证器、垃圾收集器、解释器、编译器和线程调度都是 Java 语言本身所完成的，仅仅靠 C 语言来编写设备 I/O 和必要的本地代码。</li>
+</ul>
+</blockquote>
+</li>
+<li><p>JavaInJava</p>
+<blockquote>
+<p>JavaInJava 是 Sun 公司 1997 年～1998 年间所研发的一个实验室性质的虚拟机，从名字就可以看出，它试图以 Java 语言来实现 Java 语言本身的运行环境，既所谓的“元循环”（Meta-Circular，是指使用语言自身来实现其运行环境）。它必须运行在另外一个宿主虚拟机之上，内部没有 JIT 编译器，代码只能以解释模式执行。在上世纪末主流 Java 虚拟机都未能很好解决性能问题的时代，开发这种项目，其执行速度大家可想而知。</p>
+</blockquote>
+</li>
+<li><p>Maxine VM</p>
+<blockquote>
+<p>Maxine VM 和上面的 JavaInJava 非常相似，它也是一个几乎全部以 Java 代码实现（只有用于启动 JVM 的加载器使用 C 语言编写）的元循环 Java 虚拟机。这个项目于 2005 年开始，到现在仍然在发展之中，比起 JavaInJava，Maxine VM 就显得“靠谱”很多，它有先进的 JIT 编译器和垃圾收集器（但没有解释器），可在宿主模式或独立模式下执行，其执行效率已经接近了 HotSpot Client VM 的水平</p>
+</blockquote>
+</li>
+<li><p>JRockit VM</p>
+<blockquote>
+<p>曾经号称“世界上速度最快的 Java 虚拟机”（广告词，貌似 J9 VM 也这样说过），它是 BEA 公司在 2002 年从 Appeal Virtual Machines 公司收购获得的虚拟机。BEA 将其发展为一款专门为服务器硬件和服务端应用场景高度优化的虚拟机，由于专注于服务端应用，它可以不太关注于程序启动速度，因此 JRockit 内部不包含解析器实现，全部代码都靠即时编译器编译后执行。除此之外，JRockit 的垃圾收集器和 MissionControl 服务套件等部分的实现，在众多 Java 虚拟机中也一直处于领先水平。</p>
+</blockquote>
+</li>
+<li><p>IBM J9 VM</p>
+<blockquote>
+<p>并不是 IBM 公司唯一的 Java 虚拟机，不过是目前 IBM 主力发展的 Java 虚拟机，J9 原本是内部开发代号，正式名称是“IBM Technology for Java Virtual Machine”，简称 IT4J，只是这个名字太拗口了一点，普及程度不如 J9。J9 VM 最初是由 IBM Ottawa 实验室一个 SmallTalk 的虚拟机扩展而来的，当时这个虚拟机有一个 bug 是因为 8k 值定义错误引起，工程师们花了很长时间终于发现并解决了这个错误，此后这个版本的虚拟机就被称为 K8 了，后来扩展出支持 Java 的虚拟机就被称为 J9 了。与 BEA JRockit 专注于服务端应用不同，IBM J9 的市场定位与 Sun HotSpot 比较接近，它是一款设计上从服务端到桌面应用再到嵌入式都全面考虑的多用途虚拟机，J9 的开发目的是作为 IBM 公司各种 Java 产品的执行平台，它的主要市场在和 IBM 产品（如 IBM WebSphere 等）搭配以及在 IBM AIX 和 z/OS 这些平台上部署 Java 应用。</p>
+</blockquote>
+</li>
+<li><p>Apache Harmony</p>
+<blockquote>
+<p>是一个 Apache 软件基金会旗下以 Apache License 协议开源的实际兼容于 JDK 1.5 和 JDK 1.6 的 Java 程序运行平台，这个介绍相当拗口。它包含自己的虚拟机和 Java 库，用户可以在上面运行 Eclipse、Tomcat、Maven 等常见的 Java 程序，但是……它没有通过 TCK 认证，所以我们不得不用那么一长串拗口的语言来介绍它，而不能用一句“Apache 的 JDK”来说明。如果一个公司要宣布自己的运行平台“兼容于 Java 语言”，那就必须要通过 TCK（Technology Compatibility Kit）的兼容性测试，Apache 基金会曾要求 Sun 公司提供 TCK 的使用授权，但是一直遭到拒绝，直到 Oracle 收购了 Sun 公司之后，双方关系越闹越僵，最终导致 Apache 愤然退出 JCP（Java Community Process）组织，这是近代 Java 社区最严重的一次分裂。</p>
+</blockquote>
+</li>
+<li><p>Dalvik VM</p>
+<blockquote>
+<p>是 Android 平台的核心组成部分之一，它名字来源于冰岛一个名为 Dalvik 的小渔村。Dalvik VM 并不是一个 Java 虚拟机，它没有遵循 Java 虚拟机规范，不能直接执行 Java 的 class 文件，使用寄存器架构而不是 JVM 中常见的栈架构。但是它与 Java 却又有着千丝万缕的联系，它执行 dex（Dalvik Executable）文件可以通过 class 文件转化而来，使用 Java 语法编写应用程序，可以直接使用大部分的 Java API 等等。目前 Dalvik VM 随着 Android 一起处于迅猛发展阶段，在 Android 2.2 中已提供即时编译器实现，执行性能有了很大的提高。</p>
+</blockquote>
+</li>
+</ul>
 
       
     </div>
@@ -366,8 +401,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/15/Java 虚拟机阅读/" rel="next" title="Java虚拟机阅读">
-                <i class="fa fa-chevron-left"></i> Java虚拟机阅读
+              <a href="/2019/07/15/Java JNI 调用 C 实现/" rel="next" title="Java JNI 调用 C 实现">
+                <i class="fa fa-chevron-left"></i> Java JNI 调用 C 实现
               </a>
             
           </div>
@@ -376,8 +411,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/07/19/AOSP文档/" rel="prev" title="AOSP 编译文档">
-                AOSP 编译文档 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/07/19/hello-world/" rel="prev" title="Hello World">
+                Hello World <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -492,7 +527,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#Java-虚拟机阅读"><span class="nav-number">1.</span> <span class="nav-text">Java 虚拟机阅读</span></a></li></ol></div>
             
 
           </div>
