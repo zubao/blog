@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>闲敲棋子落灯花</title>
+  
+  
+  <link href="/blog/atom.xml" rel="self"/>
+  
+  <link href="https://zubao.github.io/blog/"/>
+  <updated>2019-07-22T03:08:13.857Z</updated>
+  <id>https://zubao.github.io/blog/</id>
+  
+  <author>
+    <name>lpl</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hexo + github 搭建静态博客</title>
+    <link href="https://zubao.github.io/blog/2019/07/19/Hexo%20+%20github%20%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/"/>
+    <id>https://zubao.github.io/blog/2019/07/19/Hexo + github 搭建静态博客/</id>
+    <published>2019-07-19T07:41:59.786Z</published>
+    <updated>2019-07-22T03:08:13.857Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h5 id=&quot;Hexo-github-搭建静态博客&quot;&gt;&lt;a href=&quot;#Hexo-github-搭建静态博客&quot; class=&quot;headerlink&quot; title=&quot;Hexo + github 搭建静态博客&quot;&gt;&lt;/a&gt;Hexo + github 搭建静态博客&lt;/h5&gt;&lt;ul&gt;
+
+      
+    
+    </summary>
+    
+      <category term="hexo" scheme="https://zubao.github.io/blog/categories/hexo/"/>
+    
+    
+      <category term="hexo" scheme="https://zubao.github.io/blog/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>AOSP 编译文档</title>
+    <link href="https://zubao.github.io/blog/2019/07/19/AOSP%E6%96%87%E6%A1%A3/"/>
+    <id>https://zubao.github.io/blog/2019/07/19/AOSP文档/</id>
+    <published>2019-07-19T03:32:45.852Z</published>
+    <updated>2019-07-22T03:05:28.903Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h5 id=&quot;准备工作：&quot;&gt;&lt;a href=&quot;#准备工作：&quot; class=&quot;headerlink&quot; title=&quot;准备工作：&quot;&gt;&lt;/a&gt;准备工作：&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Mac Pro 10.14版本，16G内存，256G SSD；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;
+      
+    
+    </summary>
+    
+      <category term="android" scheme="https://zubao.github.io/blog/categories/android/"/>
+    
+    
+      <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
+    
+      <category term="AOSP" scheme="https://zubao.github.io/blog/tags/AOSP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java虚拟机阅读</title>
+    <link href="https://zubao.github.io/blog/2019/07/15/Java%20%E8%99%9A%E6%8B%9F%E6%9C%BA%E9%98%85%E8%AF%BB/"/>
+    <id>https://zubao.github.io/blog/2019/07/15/Java 虚拟机阅读/</id>
+    <published>2019-07-15T08:50:35.838Z</published>
+    <updated>2019-07-22T03:08:22.777Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h5 id=&quot;Java-虚拟机阅读&quot;&gt;&lt;a href=&quot;#Java-虚拟机阅读&quot; class=&quot;headerlink&quot; title=&quot;Java 虚拟机阅读&quot;&gt;&lt;/a&gt;Java 虚拟机阅读&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;KVM (Kilobyte VM)&lt;/p&gt;
+&lt;blockq
+      
+    
+    </summary>
+    
+      <category term="jvm" scheme="https://zubao.github.io/blog/categories/jvm/"/>
+    
+    
+      <category term="java" scheme="https://zubao.github.io/blog/tags/java/"/>
+    
+      <category term="jvm" scheme="https://zubao.github.io/blog/tags/jvm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java JNI 调用 C 实现</title>
+    <link href="https://zubao.github.io/blog/2019/07/15/Java%20JNI%20%E8%B0%83%E7%94%A8%20C%20%E5%AE%9E%E7%8E%B0/"/>
+    <id>https://zubao.github.io/blog/2019/07/15/Java JNI 调用 C 实现/</id>
+    <published>2019-07-15T06:28:42.126Z</published>
+    <updated>2019-07-22T03:08:30.249Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h5 id=&quot;Java-JNI-调用-C-实现&quot;&gt;&lt;a href=&quot;#Java-JNI-调用-C-实现&quot; class=&quot;headerlink&quot; title=&quot;Java JNI 调用 C 实现&quot;&gt;&lt;/a&gt;Java JNI 调用 C 实现&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;创建目录h
+      
+    
+    </summary>
+    
+      <category term="java" scheme="https://zubao.github.io/blog/categories/java/"/>
+    
+    
+      <category term="java" scheme="https://zubao.github.io/blog/tags/java/"/>
+    
+      <category term="jni" scheme="https://zubao.github.io/blog/tags/jni/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>获取设备名称</title>
+    <link href="https://zubao.github.io/blog/2019/06/28/android%E8%AE%BE%E5%A4%87%E7%89%B9%E6%80%A7/"/>
+    <id>https://zubao.github.io/blog/2019/06/28/android设备特性/</id>
+    <published>2019-06-28T07:16:27.923Z</published>
+    <updated>2019-07-22T03:05:00.103Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li&gt;&lt;p&gt;获取设备名称&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span cla
+      
+    
+    </summary>
+    
+      <category term="android" scheme="https://zubao.github.io/blog/categories/android/"/>
+    
+    
+      <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
+    
+  </entry>
+  
+</feed>
