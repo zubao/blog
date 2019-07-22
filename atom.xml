@@ -6,7 +6,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://zubao.github.io/blog/"/>
-  <updated>2019-07-22T03:08:13.857Z</updated>
+  <updated>2019-07-22T05:43:27.847Z</updated>
   <id>https://zubao.github.io/blog/</id>
   
   <author>
@@ -15,6 +15,48 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="https://zubao.github.io/blog/2019/07/22/Untitled%201/"/>
+    <id>https://zubao.github.io/blog/2019/07/22/Untitled 1/</id>
+    <published>2019-07-22T05:43:27.847Z</published>
+    <updated>2019-07-22T05:43:27.847Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Java 注解</title>
+    <link href="https://zubao.github.io/blog/2019/07/22/Java%20%E6%B3%A8%E8%A7%A3/"/>
+    <id>https://zubao.github.io/blog/2019/07/22/Java 注解/</id>
+    <published>2019-07-22T05:43:25.244Z</published>
+    <updated>2019-07-22T08:26:24.583Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h5 id=&quot;Java-注解&quot;&gt;&lt;a href=&quot;#Java-注解&quot; class=&quot;headerlink&quot; title=&quot;Java 注解&quot;&gt;&lt;/a&gt;Java 注解&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Java 注解定义：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Java 注解又称标
+      
+    
+    </summary>
+    
+      <category term="java" scheme="https://zubao.github.io/blog/categories/java/"/>
+    
+    
+      <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
+    
+      <category term="java" scheme="https://zubao.github.io/blog/tags/java/"/>
+    
+  </entry>
   
   <entry>
     <title>Hexo + github 搭建静态博客</title>

@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title></title>
+    <url>%2Fblog%2F2019%2F07%2F22%2FUntitled%201%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[Java 注解]]></title>
+    <url>%2Fblog%2F2019%2F07%2F22%2FJava%20%E6%B3%A8%E8%A7%A3%2F</url>
+    <content type="text"><![CDATA[Java 注解 Java 注解定义： Java 注解又称标注，Java 5.0 开始支持，是一种特殊的语法元数据。 Java 语言中的包、类、方法、参数、变量都可以被标注。和Javadoc不同，标注可以通过反射或者标注内容。在编译器生成类文件时，标注可以被嵌入到字节码中。Java虚拟机可以保留标注内容，在运行时可以获取到标注内容。当然也支持自定义的标注。 Annotation Processing tool 即 apt tool，提供了一个补充性的编译时注解操作接口。 Java 内置的注解有： 作用在代码的注解： @override - 检查该方法是否是重载方法。如果发现其父类或者是引用的接口中并没有改方法时，会报编译错误。 @Deprecated - 标记过时方法。如果使用该方法，会报编译警告。 @SuppressWarnings - 指示编译器去忽略注解中声明的警告。 作用于其他注解的注解（或者说元注解）： @Retention - 标识这个注解怎么保存，是只在代码中，还是编入class文件中，或者是在运行时可以通过反射访问。 @Ducumented - 标记这个注解是否包含在用户文档中。 @Target - 标记这个注解应该是那种Java成员。 @Inherited - 标记这个注解是继承于哪个注解类(默认 注解并没有继承于任何子类) 从Java 7 额外添加了3个注解： @SafeVarargs - Java 7 支持，忽略任何使用参数为泛型变量的方法或构造函数的调用产生的警告。 @FunctionalInterface - Java 8 开始支持，标识一个匿名函数或者函数式接口。 @Repeatable - Java 8 开始支持， 标识某注解可以在同一个声明是使用多次。 android 内置注解 @Nullable - 指示变量、参数、返回值可以为null。 @NonNull - 指示变量、参数、返回值不可以为null。 资源注解： @StringRes - 字符串标注，参数只接受R.string.tips， R.color.tips报错。虽然都是整形。 @DrawableRes - 以下都同上。 @DimenRes - @ColorRes - @InterpolatorRes - @LayoutRes - 线程注解：用于检测某个方法是否从指定类型的线程中调用。 @MainThread - @UIThread - @WorkerThread - @BinderThread - @AnyThread - 值约束注解： @IntRange - 验证传递参数的值的取值范围 @FloatRange - 同上 @Size - 验证传递参数的值（例如：数组等）的长度。 权限注解： @RequiresPermission - 验证方法调用方的权限。 返回值注解： @CheckResult - 验证调用方是否有对方法的返回值进行处理。 超类注解： @CallSuper - 验证子类重新父类的方法，是否有调用父类的实现，没有则报警告。 枚举注解： @Typedef - 可以确保特定的参数、返回值、字段引用特定的常量集。 代码可访问性注解： @Keep - 标注的类或者方法在混淆的时候不被混淆。 其他常见注解： @TargetApi - 用于屏蔽IDE对API版本的限制。即相当于告诉编译器标记的代码在指定的api上面运行。 @SuppressLint - 类似@TargetApi，屏蔽IDE对API版本的一切限制。 @Widget - 标记该类是自定义的Widget类。 测试可见注解： @VisibleForTesting - 标注是否对测试可见。 android 注解的特性： 1、依赖注入； 2、简化线程操作； 3、事件绑定； 4、No Magic，只是在编译的时候生成了子类，可以检查代码看是如何运行的。 5、体积小，无反射，没有运行时影响。不会影响性能。]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>android</tag>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Hexo + github 搭建静态博客]]></title>
     <url>%2Fblog%2F2019%2F07%2F19%2FHexo%20%2B%20github%20%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%2F</url>
     <content type="text"><![CDATA[Hexo + github 搭建静态博客 注册github，创建项目; 参考文章 安装git、curl、brew、node.js等 安装hexo 相关; 参考文章 12$ npm install -g hexo-cli$ npm install hexo-deployer-git --save 初始化hexo项目 1hexo init 进入hexo 项目的根目录，获取next 主题 1$ git clone https://github.com/iissnan/hexo-theme-next themes/next 修改hexo 项目更目录下面的_config.yml文件 123456789101112title: noteauthor: lpllanguage: zh-Hansurl: https://zubao.github.io/blogroot: /blog/deploy: type: git repo: git@github.com:zubao/blog.git branch: master message: message hexo 命令介绍; hexo 文档 hexo g 生成静态文件 hexo d 发布到github hexo s 启动本地静态服务器 ls -i tcp:4000 查找端口为4000的进程 kill -9 PID 杀掉进程 hexo clean 清除缓存 next 主题文档介绍: 官方文档]]></content>
