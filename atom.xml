@@ -6,7 +6,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://zubao.github.io/blog/"/>
-  <updated>2019-07-22T05:43:27.847Z</updated>
+  <updated>2019-07-24T07:12:01.143Z</updated>
   <id>https://zubao.github.io/blog/</id>
   
   <author>
@@ -15,6 +15,59 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Espresso自动化测试</title>
+    <link href="https://zubao.github.io/blog/2019/07/24/Espresso%20%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/"/>
+    <id>https://zubao.github.io/blog/2019/07/24/Espresso 自动化测试/</id>
+    <published>2019-07-24T07:10:56.750Z</published>
+    <updated>2019-07-24T07:12:01.143Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;#### &lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="android" scheme="https://zubao.github.io/blog/categories/android/"/>
+    
+    
+      <category term="Test" scheme="https://zubao.github.io/blog/tags/Test/"/>
+    
+      <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
+    
+      <category term="Espresso" scheme="https://zubao.github.io/blog/tags/Espresso/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>android自动化测试</title>
+    <link href="https://zubao.github.io/blog/2019/07/24/Android%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/"/>
+    <id>https://zubao.github.io/blog/2019/07/24/Android自动化测试/</id>
+    <published>2019-07-24T06:02:44.342Z</published>
+    <updated>2019-07-24T07:09:53.766Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;android-自动化测试工具介绍：&quot;&gt;&lt;a href=&quot;#android-自动化测试工具介绍：&quot; class=&quot;headerlink&quot; title=&quot;android 自动化测试工具介绍：&quot;&gt;&lt;/a&gt;android 自动化测试工具介绍：&lt;/h4&gt;&lt;h5 id=&quot;M
+      
+    
+    </summary>
+    
+      <category term="android" scheme="https://zubao.github.io/blog/categories/android/"/>
+    
+    
+      <category term="Test" scheme="https://zubao.github.io/blog/tags/Test/"/>
+    
+      <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
+    
+  </entry>
   
   <entry>
     <title></title>
@@ -35,7 +88,7 @@
     <link href="https://zubao.github.io/blog/2019/07/22/Java%20%E6%B3%A8%E8%A7%A3/"/>
     <id>https://zubao.github.io/blog/2019/07/22/Java 注解/</id>
     <published>2019-07-22T05:43:25.244Z</published>
-    <updated>2019-07-24T02:25:29.270Z</updated>
+    <updated>2019-07-24T02:33:36.416Z</updated>
     
     <summary type="html">
     
