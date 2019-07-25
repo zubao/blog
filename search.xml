@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Android Q 线刷]]></title>
+    <url>%2Fblog%2F2019%2F07%2F25%2FAndroid%20Q%20%E7%BA%BF%E5%88%B7%2F</url>
+    <content type="text"><![CDATA[android Q 升级的两种方式：加入android测试版记录 官方网站：https://www.google.com/android/beta 1、优点是炒作简单 2、缺点是需要FQ，SS工具可能无法做到全局代理。如果在境外，或者有可以FQ的路由器应该没问题。 下载zip包，刷入手机 官方网站： https://developers.google.com/android/images 下载对应手机的zip文件，解压到指定目录。 更新 platform-tools到最新版本 手机打开开发者模式，去开发者选项中启动允许OEM解锁。 刷机之前，千万记得退出账号。 adb reboot bootloader 进入到 bootloader模式； fastboot flashing unlock 解锁手机 以pixel 2xl 为例，如果bootloader version 低于 TMZ20a（例如8.0系统），需要执行 fastboot flashing unlock 、fastboot flashing unlock_critical 两条命令解锁。高于TMZ20a的则只需要 fastboot flashing unlock即可。 如果出现 FAILED (remote: ‘Flashing Unlock is not allowed），可以先执行fastboot flashing lock 锁定 OEM，重启手机，然后再次去开发者选项中打开运行OEM解锁，进入 BootLoader模式，然后执行上面两条命令解锁。 执行 flash-all.sh 脚本 刷入ROM 执行 fastboot flashing lock 锁定OEM 我再刷入Android Q之后，在开机连接wifi阶段卡住了，一直通过不了； 尝试过： 1、PC FQ，手机通过wifi代理到PC FQ连接Google服务器，依然无法通过。 2、小米手机4G+FQ，pixel 2xl 通过小米共享的热点FQ，也不行。 3、然后试图刷低版本(8.0)尝试绕过，还是不行。 4、最终通过购买香港一日流量卡解决问题。PS：流量卡需要先激活，我是小米用流量卡，共享热点给Pixel 2XL 连接上的google。流量卡需要用可以正常使用的手机先激活。 5、应该是我的PC、小米 FQ 都没有做到全局代理，导致google的请求没有走代理连接不上服务器。如果有路由器能FQ最好。]]></content>
+      <categories>
+        <category>android</category>
+      </categories>
+      <tags>
+        <tag>android</tag>
+        <tag>ROM</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Espresso自动化测试]]></title>
     <url>%2Fblog%2F2019%2F07%2F24%2FEspresso%20%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%2F</url>
     <content type="text"><![CDATA[####]]></content>
@@ -8,8 +20,8 @@
         <category>android</category>
       </categories>
       <tags>
-        <tag>Test</tag>
         <tag>android</tag>
+        <tag>Test</tag>
         <tag>Espresso</tag>
       </tags>
   </entry>
@@ -21,14 +33,9 @@
         <category>android</category>
       </categories>
       <tags>
-        <tag>Test</tag>
         <tag>android</tag>
+        <tag>Test</tag>
       </tags>
-  </entry>
-  <entry>
-    <title></title>
-    <url>%2Fblog%2F2019%2F07%2F22%2FUntitled%201%2F</url>
-    <content type="text"></content>
   </entry>
   <entry>
     <title><![CDATA[Java 注解]]></title>

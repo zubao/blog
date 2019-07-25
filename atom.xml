@@ -6,7 +6,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://zubao.github.io/blog/"/>
-  <updated>2019-07-24T07:12:01.143Z</updated>
+  <updated>2019-07-25T01:25:50.793Z</updated>
   <id>https://zubao.github.io/blog/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Android Q 线刷</title>
+    <link href="https://zubao.github.io/blog/2019/07/25/Android%20Q%20%E7%BA%BF%E5%88%B7/"/>
+    <id>https://zubao.github.io/blog/2019/07/25/Android Q 线刷/</id>
+    <published>2019-07-25T00:57:55.662Z</published>
+    <updated>2019-07-25T01:25:50.793Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;android-Q-升级的两种方式：&quot;&gt;&lt;a href=&quot;#android-Q-升级的两种方式：&quot; class=&quot;headerlink&quot; title=&quot;android Q 升级的两种方式：&quot;&gt;&lt;/a&gt;android Q 升级的两种方式：&lt;/h4&gt;&lt;h5 id=&quot;加
+      
+    
+    </summary>
+    
+      <category term="android" scheme="https://zubao.github.io/blog/categories/android/"/>
+    
+    
+      <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
+    
+      <category term="ROM" scheme="https://zubao.github.io/blog/tags/ROM/"/>
+    
+  </entry>
   
   <entry>
     <title>Espresso自动化测试</title>
@@ -36,9 +61,9 @@
       <category term="android" scheme="https://zubao.github.io/blog/categories/android/"/>
     
     
-      <category term="Test" scheme="https://zubao.github.io/blog/tags/Test/"/>
-    
       <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
+    
+      <category term="Test" scheme="https://zubao.github.io/blog/tags/Test/"/>
     
       <category term="Espresso" scheme="https://zubao.github.io/blog/tags/Espresso/"/>
     
@@ -63,23 +88,9 @@
       <category term="android" scheme="https://zubao.github.io/blog/categories/android/"/>
     
     
-      <category term="Test" scheme="https://zubao.github.io/blog/tags/Test/"/>
-    
       <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
     
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="https://zubao.github.io/blog/2019/07/22/Untitled%201/"/>
-    <id>https://zubao.github.io/blog/2019/07/22/Untitled 1/</id>
-    <published>2019-07-22T05:43:27.847Z</published>
-    <updated>2019-07-22T05:43:27.847Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
+      <category term="Test" scheme="https://zubao.github.io/blog/tags/Test/"/>
     
   </entry>
   
@@ -223,7 +234,7 @@
     <link href="https://zubao.github.io/blog/2019/06/28/android%E8%AE%BE%E5%A4%87%E7%89%B9%E6%80%A7/"/>
     <id>https://zubao.github.io/blog/2019/06/28/android设备特性/</id>
     <published>2019-06-28T07:16:27.923Z</published>
-    <updated>2019-07-22T03:05:00.103Z</updated>
+    <updated>2019-07-25T00:58:27.856Z</updated>
     
     <summary type="html">
     
