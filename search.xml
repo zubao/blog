@@ -1,6 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Android 源码目录结构]]></title>
+    <url>%2Fblog%2F2019%2F08%2F05%2FAndroid%20%E6%BA%90%E7%A0%81%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%2F</url>
+    <content type="text"><![CDATA[一级目录： art - Android Runtime，一种app运行模式，区别去传统的Dalvik虚拟机，目的是提高android系统的流畅性。 bionic - 集成C库源代码，android改造的c/c++库。 bootable - android程序启动引导，适合各种bootloader的通用代码。包括一个recovery目录。 build - 存放系统编译规则以及generic等基础开发包配置。 compatibility - android 兼容计划。 cts - android兼容性测试标准。 dalvik - android dalvik虚拟机相关内容。 developers - 开发者参考文档。 development - android 应用开发基础设施相关。 device - android 支持的各种设备及相关配置。 external - android 中使用的各种外部开源库。 frameworks - 应用层框架，android系统的核心部分，又java、c++实现。 hardware - 硬件适配接口。 kernel - linux 内核，android 默认不提供，只有一个tests目录，需要另外下载。 libcore - android java 核心类库。 libnativehelper - android 动态库，实现jni的基础。 packages - 应用程序包。 pdk - Plug development kit，本地开发套件。 plaform_testing - android 平台测试程序。 prebuilds - x86 和 arm 架构下预编译的一些资源。 sdk - android java层SDK。 system - android底层文件系统库，应用、组件。 test - android Vendor测试框架。 toolchain - android 工具链文件。 tools - android 工具文件。 Android.bp - android 7.0 开始代替 android.mk 文件， 它告诉ndk将jni编译为动态库的脚本。 Makefile - 全局Makefile文件，用来定义编译规则。 framework 二级目录 ： av - 多媒体框架。 base - android 源码的主要核心目录。 compile - 编译相关。 ex - 文件解析器。 hardware - 硬件适配接口。 layoutlib - 布局相关。 minikin - android 原生字体，连体字效果。 ml - 机器学习。 multidex - 多dex 加载器。 native - native 实现。 opt - 一些软件。 rs - Render Script ，创建3D接口。 support - framework 支持文件。 wilhelm - 基于 Khronos 的OpenGL ES/ OpenGLMax AL audio/multi media实现。 base 三级目录： apct-test - 性能优化测试。 api - android应用框架层声明类、属性、资源。 cmds - android 系统启动时用到的commands。 core - framwork的核心框架组件。 data - android系统下的资源(声音、视屏、字体、软盘等)。 docs - android 项目说明文档。 drm - 实现权限管理，数字内容解密等模块的工作。 graphics - 图像渲染模块。 keystore - 密钥库。 libs - 库信息(界面、存储、USB) location - 位置信息。 media - 手机媒体管理。 native - 本地方法实现（传感器、输入、界面、窗体）。 nfc-extras - 近场通讯。 obex - 蓝牙。 opengl - 2D、3D图形绘制。 pacakges - 框架床的实现(界面、服务、存储)。 proto - 协议框架。 rs - 资源框架。 samples - 例子程序。 sax - xml 解析器。 Services - 各种服务程序。 telecomm - telecomm 通信框架。 telephony - 电话通信框架。 tests - 各种测试。 vr - 虚拟现实相关。 wifi - wifi模块。]]></content>
+      <categories>
+        <category>android</category>
+      </categories>
+      <tags>
+        <tag>android</tag>
+        <tag>aosp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[android 优化构建速度]]></title>
+    <url>%2Fblog%2F2019%2F08%2F01%2Fandroid%20%E4%BC%98%E5%8C%96%E6%9E%84%E5%BB%BA%E9%80%9F%E5%BA%A6%2F</url>
+    <content type="text"><![CDATA[Apply plugin 的几种常见定义： apply plugin: ‘com.android.application’ 实际对应的原型是：com.android.build.gradle.AppExtension，表示此项目模块类型为Android App Module，对应构建生成的文件为.apk类型文件。 apply plugin: ‘com.android.library’ 实际对应的原型是：com.android.build.gradle.LibraryExtension，表示此项目模块类型为Android Library Module，对应构建生成的文件为.arr类型的文件。 apply plugin: ‘com.android.test’ 实际对应的原型是：com.android.build.gradle.TestExtension，表示此项目模块类型为Android test Module，可以在单个模块内通过targetProjectPath指定项目，用于对应项目的单元测试。 apply plugin: ‘com.android.feature’ 实际对应的原型是：com.android.build.gradle.FeatureExtension，表示此项目模块类型为Android feature Module，主要用于单个模块内实现特性，以支持Android Instant Apps。 Gradle 配置 defaultConfig 字段解释优化构建速度，参考 官方文档 1、开启离线模式，避免每次更新第三方库文件 2、用静态的版本依赖，避免更新 3、加大JVM 4、开启热启动；PS：第一次还是很慢，第二次会快很多 5、开启并发构建、启用缓存、开启守护进程 等 android Gradle 构建总结 参考Instant Run 工作原理和方法 参考]]></content>
+      <categories>
+        <category>android</category>
+      </categories>
+      <tags>
+        <tag>android</tag>
+        <tag>gradle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[配置ABI的两种方式]]></title>
+    <url>%2Fblog%2F2019%2F08%2F01%2F%E9%85%8D%E7%BD%AEABI%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%96%B9%E5%BC%8F%2F</url>
+    <content type="text"><![CDATA[通过abiFilter字段配置： 一个是通过设置ndk的abiFilters字段，使apk能够兼容多种abi，但是这样会使得apk体积增大，所以，这种方式只适合配置主流的abi，使apk能在市场上的大部分手机成功安装使用。 123456789101112131415161718android &#123; ... // 其它配置 defaultConfig &#123; ... // 默认配置 ndk &#123; //选择要添加的对应cpu类型的.so库。 abiFilters &apos;armeabi&apos;, &apos;armeabi-v7a&apos; // 还可以添加 // &apos;arm64-v8a&apos;, 64 bit ARM architecture,it can use v7 version // unless you are too much concerned about performance // mips,mips64, There are no devices with MIPS // x86_64, No android devices and anyway it can use X86 version // armeabi, very old architecture. Unsupported after Android 4.4 // &apos;x86&apos;, Intel based devices &#125; &#125; ... // 其它配置&#125; 通过splits字段配置 splits的abi属性下面，定义好支持的abi，然后打包的时候，会根据不同的架构，打不同的包，每个包支持一种架构，这样能让不同架构的设备上安装最合适的apk，但是因为一个apk仅支持一种架构，所以互不兼容。 1234567891011android &#123; ... // 其它配置 splits &#123; abi &#123; reset() enable true // 设为true，才能在打包时根据架构生成不同的apk文件 universalApk false // If true, also generate a universal APK include &quot;armeabi-v7a&quot;, &quot;x86&quot; // 设置所有要支持的abi类型 &#125; &#125;&#125;]]></content>
+      <categories>
+        <category>android</category>
+      </categories>
+      <tags>
+        <tag>android</tag>
+        <tag>gradle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title></title>
+    <url>%2Fblog%2F2019%2F08%2F01%2F%E7%A0%94%E7%A9%B6android%20%E6%89%93%E5%8C%85%E6%B5%81%E7%A8%8B%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>%2Fblog%2F2019%2F07%2F29%2FUntitled%201%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>%2Fblog%2F2019%2F07%2F29%2FAndroid%20Hook%20startActivity%2F</url>
+    <content type="text"><![CDATA[https://www.jianshu.com/p/eb4121b037e2 hook onRequestPermissionsResult]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[Jar加固]]></title>
+    <url>%2Fblog%2F2019%2F07%2F25%2FJar%E5%8A%A0%E5%9B%BA%2F</url>
+    <content type="text"><![CDATA[#####]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>jar</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Android Q 线刷]]></title>
     <url>%2Fblog%2F2019%2F07%2F25%2FAndroid%20Q%20%E7%BA%BF%E5%88%B7%2F</url>
     <content type="text"><![CDATA[android Q 升级的两种方式：加入android测试版记录 官方网站：https://www.google.com/android/beta 1、优点是炒作简单 2、缺点是需要FQ，SS工具可能无法做到全局代理。如果在境外，或者有可以FQ的路由器应该没问题。 下载zip包，刷入手机 官方网站： https://developers.google.com/android/images 下载对应手机的zip文件，解压到指定目录。 更新 platform-tools到最新版本 手机打开开发者模式，去开发者选项中启动允许OEM解锁。 刷机之前，千万记得退出账号。 adb reboot bootloader 进入到 bootloader模式； fastboot flashing unlock 解锁手机 以pixel 2xl 为例，如果bootloader version 低于 TMZ20a（例如8.0系统），需要执行 fastboot flashing unlock 、fastboot flashing unlock_critical 两条命令解锁。高于TMZ20a的则只需要 fastboot flashing unlock即可。 如果出现 FAILED (remote: ‘Flashing Unlock is not allowed），可以先执行fastboot flashing lock 锁定 OEM，重启手机，然后再次去开发者选项中打开运行OEM解锁，进入 BootLoader模式，然后执行上面两条命令解锁。 执行 flash-all.sh 脚本 刷入ROM 执行 fastboot flashing lock 锁定OEM 我再刷入Android Q之后，在开机连接wifi阶段卡住了，一直通过不了； 尝试过： 1、PC FQ，手机通过wifi代理到PC FQ连接Google服务器，依然无法通过。 2、小米手机4G+FQ，pixel 2xl 通过小米共享的热点FQ，也不行。 3、然后试图刷低版本(8.0)尝试绕过，还是不行。 4、最终通过购买香港一日流量卡解决问题。PS：流量卡需要先激活，我是小米用流量卡，共享热点给Pixel 2XL 连接上的google。流量卡需要用可以正常使用的手机先激活。 5、应该是我的PC、小米 FQ 都没有做到全局代理，导致google的请求没有走代理连接不上服务器。如果有路由器能FQ最好。]]></content>
@@ -64,7 +127,7 @@
   <entry>
     <title><![CDATA[AOSP 编译文档]]></title>
     <url>%2Fblog%2F2019%2F07%2F19%2FAOSP%E6%96%87%E6%A1%A3%2F</url>
-    <content type="text"><![CDATA[准备工作： Mac Pro 10.14版本，16G内存，256G SSD； 外接移动硬盘1T，使用自带的磁盘工具分区；A区不分大小写，用于时间机器备份电脑；B区(Mac OS扩展，区分大小写)用于AOSP项目。 参考官网配置环境 去清华镜像下载AOSP初始包；使用curl -C - -O 命令，迅雷需要会员不然下载不了。文件47.8GB，需要使用支持断点续传的工具下载。 官网下载文档 下载md5文件 验证aosp-latest.tar文件的md5值，判断是否下载完整。 1brew install md5sha1sum 验证md5 1md5sum aosp-latest.tar 将初始包下载到移动硬盘分区中，并解压： 1tar xf aosp-latest.tar 运行命令同步项目： 1repo sync 如果命令repo没有，参考清华文档 下载配置。 查看远程分支，切换分支： 查看可切换的分支 ，切换分支，并同步代码： 123456cd .repo/manifests git branch -a 切换到9.0分支repo init -b android-9.0.0_r34同步代码repo sync （可选）切换命令行运行的shell版本 123ps -p $$ // 查看当前运行的shell版本chsh -s /bin/bash // 切换到b shellchsh -s /bin/zsh // 切换到 z shell 初始化环境, 必须在bash环境运行。 12cd aospsource build/envsetup.sh (可选)查看cpu内核数，用于编译时选择线程数。我的是4核 1sysctl -n machdep.cpu.core_count 通过lunch 命令选择要编译的源码架构, 需要输入对应的序号。ps：lunch可能会花几分钟。 编译源码，x=cpu核心数*2+2。如果没有lunch，默认编译第一个。 1make -jx 清理编译产生的文件 1make clobber AOSP目录详解 解释每个目录、子目录的用途，编译宏观上理解android。 刷机文档 错误a 1internal error: could not open symlink hardware/qcom/sdm710/Android.bp 方法1：删除sdm710目录；(采用，验证可以通过这个错误) 方法2：重新解压，重新同步不同的分支。 网上说法是，遗漏了某些文件，或者是上一个分支的问题没有移除；参考 错误b 1internal error: Could not find a supported mac sdk: [&quot;10.10&quot; &quot;10.11&quot; &quot;10.12&quot; &quot;10.13&quot;] 解决方法：参考 123456789vim build/soong/cc/config/x86_darwin_host.godarwinSupportedSdkVersions = []string&#123; &quot;10.10&quot;, &quot;10.11&quot;, &quot;10.12&quot;, &quot;10.13&quot;, &quot;10.14&quot;,&#125;因为我的系统版本，xcode版本是10.14，这里也添加 10.14 添加10.14后，可能报错误 ，解决方法是下载MacOSX10.13.SDK 放到 目录： 1/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs 这里要注意的是10.13SDK网上有些版本是有bug的，部分文件的符号引用在文件夹移动之后失效。上面下载地址中github上修正了这个bug。 编译成功提示 1#### build completed successfully (05:58:17 (hh:mm:ss)) #### 运行emulator 运行模拟器。 1emulator -partition-size 3000 运行模拟器报错 1emulator: command not found 原因是 直接使用make编译的项目。 解决方法： 使用lunch 选择 aosp_x86_64-eng 重新编译，就可以正常启动模拟器。参见]]></content>
+    <content type="text"><![CDATA[准备工作： Mac Pro 10.14版本，16G内存，256G SSD； 外接移动硬盘1T，使用自带的磁盘工具分区；A区不分大小写，用于时间机器备份电脑；B区(Mac OS扩展，区分大小写)用于AOSP项目。 参考官网配置环境 去清华镜像下载AOSP初始包；使用curl -C - -O 命令，迅雷需要会员不然下载不了。文件47.8GB，需要使用支持断点续传的工具下载。 官网下载文档 下载md5文件 验证aosp-latest.tar文件的md5值，判断是否下载完整。 1brew install md5sha1sum 验证md5 1md5sum aosp-latest.tar 将初始包下载到移动硬盘分区中，并解压： 1tar xf aosp-latest.tar 运行命令同步项目： 1repo sync 如果命令repo没有，参考清华文档 下载配置。 查看远程分支，切换分支： 查看可切换的分支 ，切换分支，并同步代码： 123456cd .repo/manifests git branch -a 切换到9.0分支repo init -b android-9.0.0_r34同步代码repo sync （可选）切换命令行运行的shell版本 123ps -p $$ // 查看当前运行的shell版本chsh -s /bin/bash // 切换到b shellchsh -s /bin/zsh // 切换到 z shell 初始化环境, 必须在bash环境运行。 12cd aospsource build/envsetup.sh (可选)查看cpu内核数，用于编译时选择线程数。我的是4核 1sysctl -n machdep.cpu.core_count 通过lunch 命令选择要编译的源码架构, 需要输入对应的序号。ps：lunch可能会花几分钟。 编译源码，x=cpu核心数*2+2。如果没有lunch，默认编译第一个。 1make -jx 清理编译产生的文件 1make clobber AOSP目录详解 解释每个目录、子目录的用途，编译宏观上理解android。 刷机文档 错误a 1internal error: could not open symlink hardware/qcom/sdm710/Android.bp 方法1：删除sdm710目录；(采用，验证可以通过这个错误) 方法2：重新解压，重新同步不同的分支。 网上说法是，遗漏了某些文件，或者是上一个分支的问题没有移除；参考 错误b 1internal error: Could not find a supported mac sdk: [&quot;10.10&quot; &quot;10.11&quot; &quot;10.12&quot; &quot;10.13&quot;] 解决方法：参考 123456789vim build/soong/cc/config/x86_darwin_host.godarwinSupportedSdkVersions = []string&#123; &quot;10.10&quot;, &quot;10.11&quot;, &quot;10.12&quot;, &quot;10.13&quot;, &quot;10.14&quot;,&#125;因为我的系统版本，xcode版本是10.14，这里也添加 10.14 添加10.14后，可能报错误 ，解决方法是下载MacOSX10.13.SDK 放到 目录： 1/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs 这里要注意的是10.13SDK网上有些版本是有bug的，部分文件的符号引用在文件夹移动之后失效。上面下载地址中github上修正了这个bug。 编译成功提示 1#### build completed successfully (05:58:17 (hh:mm:ss)) #### 运行emulator 运行模拟器。 1emulator -partition-size 3000 运行模拟器报错 1emulator: command not found 原因是 直接使用make编译的项目。 解决方法： 使用lunch 选择 aosp_x86_64-eng 重新编译，就可以正常启动模拟器。参见 使用IntelliJ 阅读源码 1、使用命令，生成android.ipr, android.iml文件 12&gt; make idegen &amp;&amp; development/tools/idegen/idegen.sh&gt; 2、修改IntelliJ 配置，扩大虚拟机使用内存，文件大小写敏感。方法：打开IntelliJ包内容，bin目录下找到 idea.vmoptions 和 idea.properties 这两个文件。具体参考：https://www.jianshu.com/p/1d1b8d0de1ed]]></content>
       <categories>
         <category>android</category>
       </categories>

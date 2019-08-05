@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="闲敲棋子落灯花">
 <meta property="og:description" content="准备工作： Mac Pro 10.14版本，16G内存，256G SSD；  外接移动硬盘1T，使用自带的磁盘工具分区；A区不分大小写，用于时间机器备份电脑；B区(Mac OS扩展，区分大小写)用于AOSP项目。  参考官网配置环境  去清华镜像下载AOSP初始包；使用curl -C - -O 命令，迅雷需要会员不然下载不了。文件47.8GB，需要使用支持断点续传的工具下载。  官网下载文档  下">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-22T03:05:28.903Z">
+<meta property="og:updated_time" content="2019-08-05T06:51:41.152Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AOSP 编译文档">
 <meta name="twitter:description" content="准备工作： Mac Pro 10.14版本，16G内存，256G SSD；  外接移动硬盘1T，使用自带的磁盘工具分区；A区不分大小写，用于时间机器备份电脑；B区(Mac OS扩展，区分大小写)用于AOSP项目。  参考官网配置环境  去清华镜像下载AOSP初始包；使用curl -C - -O 命令，迅雷需要会员不然下载不了。文件47.8GB，需要使用支持断点续传的工具下载。  官网下载文档  下">
@@ -489,7 +489,16 @@
 
 <p>原因是 直接使用make编译的项目。</p>
 <p>解决方法：</p>
-<p>使用lunch 选择 aosp_x86_64-eng 重新编译，就可以正常启动模拟器。<a href="https://github.com/TADSG/aosp-study/tree/master/ch3_build" target="_blank" rel="noopener">参见</a></p>
+<p>使用lunch 选择 aosp_x86_64-eng 重新编译，就可以正常启动模拟器。<a href="https://github.com/TADSG/aosp-study/tree/master/ch3_build" target="_blank" rel="noopener">参见</a> </p>
+</li>
+<li><p>使用IntelliJ 阅读源码</p>
+<blockquote>
+<p>1、使用命令，生成android.ipr, android.iml文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; make idegen &amp;&amp; development/tools/idegen/idegen.sh</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>2、修改IntelliJ 配置，扩大虚拟机使用内存，文件大小写敏感。方法：打开IntelliJ包内容，bin目录下找到 <code>idea.vmoptions</code> 和 <code>idea.properties</code> 这两个文件。具体参考：<a href="https://www.jianshu.com/p/1d1b8d0de1ed" target="_blank" rel="noopener">https://www.jianshu.com/p/1d1b8d0de1ed</a></p>
+</blockquote>
 </li>
 </ul>
 
@@ -615,7 +624,7 @@
               
                 <a href="/blog/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -637,7 +646,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/blog/tags/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

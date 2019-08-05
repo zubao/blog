@@ -6,7 +6,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://zubao.github.io/blog/"/>
-  <updated>2019-07-25T01:25:50.793Z</updated>
+  <updated>2019-08-05T07:39:49.253Z</updated>
   <id>https://zubao.github.io/blog/</id>
   
   <author>
@@ -17,11 +17,163 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Android 源码目录结构</title>
+    <link href="https://zubao.github.io/blog/2019/08/05/Android%20%E6%BA%90%E7%A0%81%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/"/>
+    <id>https://zubao.github.io/blog/2019/08/05/Android 源码目录结构/</id>
+    <published>2019-08-05T06:54:09.756Z</published>
+    <updated>2019-08-05T07:39:49.253Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h5 id=&quot;一级目录：&quot;&gt;&lt;a href=&quot;#一级目录：&quot; class=&quot;headerlink&quot; title=&quot;一级目录：&quot;&gt;&lt;/a&gt;一级目录：&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;art - Android Runtime，一种app运行模式，区别去传统的Dalvik虚拟机，目的是提
+      
+    
+    </summary>
+    
+      <category term="android" scheme="https://zubao.github.io/blog/categories/android/"/>
+    
+    
+      <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
+    
+      <category term="aosp" scheme="https://zubao.github.io/blog/tags/aosp/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>android 优化构建速度</title>
+    <link href="https://zubao.github.io/blog/2019/08/01/android%20%E4%BC%98%E5%8C%96%E6%9E%84%E5%BB%BA%E9%80%9F%E5%BA%A6/"/>
+    <id>https://zubao.github.io/blog/2019/08/01/android 优化构建速度/</id>
+    <published>2019-08-01T09:05:15.797Z</published>
+    <updated>2019-08-01T09:37:03.638Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h5 id=&quot;Apply-plugin-的几种常见定义：&quot;&gt;&lt;a href=&quot;#Apply-plugin-的几种常见定义：&quot; class=&quot;headerlink&quot; title=&quot;Apply plugin 的几种常见定义：&quot;&gt;&lt;/a&gt;Apply plugin 的几种常见定义：&lt;/
+      
+    
+    </summary>
+    
+      <category term="android" scheme="https://zubao.github.io/blog/categories/android/"/>
+    
+    
+      <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
+    
+      <category term="gradle" scheme="https://zubao.github.io/blog/tags/gradle/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>配置ABI的两种方式</title>
+    <link href="https://zubao.github.io/blog/2019/08/01/%E9%85%8D%E7%BD%AEABI%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%96%B9%E5%BC%8F/"/>
+    <id>https://zubao.github.io/blog/2019/08/01/配置ABI的两种方式/</id>
+    <published>2019-08-01T06:36:44.688Z</published>
+    <updated>2019-08-01T06:41:06.588Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h5 id=&quot;通过abiFilter字段配置：&quot;&gt;&lt;a href=&quot;#通过abiFilter字段配置：&quot; class=&quot;headerlink&quot; title=&quot;通过abiFilter字段配置：&quot;&gt;&lt;/a&gt;通过abiFilter字段配置：&lt;/h5&gt;&lt;blockquote&gt;
+&lt;p&gt;一
+      
+    
+    </summary>
+    
+      <category term="android" scheme="https://zubao.github.io/blog/categories/android/"/>
+    
+    
+      <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
+    
+      <category term="gradle" scheme="https://zubao.github.io/blog/tags/gradle/"/>
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://zubao.github.io/blog/2019/08/01/%E7%A0%94%E7%A9%B6android%20%E6%89%93%E5%8C%85%E6%B5%81%E7%A8%8B/"/>
+    <id>https://zubao.github.io/blog/2019/08/01/研究android 打包流程/</id>
+    <published>2019-08-01T03:18:00.382Z</published>
+    <updated>2019-08-01T03:18:00.382Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://zubao.github.io/blog/2019/07/29/Untitled%201/"/>
+    <id>https://zubao.github.io/blog/2019/07/29/Untitled 1/</id>
+    <published>2019-07-29T09:11:30.249Z</published>
+    <updated>2019-07-29T09:11:30.249Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://zubao.github.io/blog/2019/07/29/Android%20Hook%20startActivity/"/>
+    <id>https://zubao.github.io/blog/2019/07/29/Android Hook startActivity/</id>
+    <published>2019-07-29T09:11:28.799Z</published>
+    <updated>2019-07-29T09:14:18.043Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;https://www.jianshu.com/p/eb4121b037e2&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://www.jianshu.com/p/eb4121b037e2&lt;/a&gt; &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Jar加固</title>
+    <link href="https://zubao.github.io/blog/2019/07/25/Jar%E5%8A%A0%E5%9B%BA/"/>
+    <id>https://zubao.github.io/blog/2019/07/25/Jar加固/</id>
+    <published>2019-07-25T09:12:41.424Z</published>
+    <updated>2019-07-25T09:13:36.586Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;##### &lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="java" scheme="https://zubao.github.io/blog/categories/java/"/>
+    
+    
+      <category term="java" scheme="https://zubao.github.io/blog/tags/java/"/>
+    
+      <category term="jar" scheme="https://zubao.github.io/blog/tags/jar/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Android Q 线刷</title>
     <link href="https://zubao.github.io/blog/2019/07/25/Android%20Q%20%E7%BA%BF%E5%88%B7/"/>
     <id>https://zubao.github.io/blog/2019/07/25/Android Q 线刷/</id>
     <published>2019-07-25T00:57:55.662Z</published>
-    <updated>2019-07-25T01:25:50.793Z</updated>
+    <updated>2019-08-05T06:54:52.319Z</updated>
     
     <summary type="html">
     
@@ -153,7 +305,7 @@
     <link href="https://zubao.github.io/blog/2019/07/19/AOSP%E6%96%87%E6%A1%A3/"/>
     <id>https://zubao.github.io/blog/2019/07/19/AOSP文档/</id>
     <published>2019-07-19T03:32:45.852Z</published>
-    <updated>2019-07-22T03:05:28.903Z</updated>
+    <updated>2019-08-05T06:51:41.152Z</updated>
     
     <summary type="html">
     
