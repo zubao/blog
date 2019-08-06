@@ -1,6 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title></title>
+    <url>%2Fblog%2F2019%2F08%2F05%2FUntitled%201%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[Java 动态代理]]></title>
+    <url>%2Fblog%2F2019%2F08%2F05%2FJava%20%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%2F</url>
+    <content type="text"><![CDATA[动态代理 代理模式分为动态代理、静态代理（略）。它的定义： 当无法直接访问某个对象或访问某个对象存在困难时可以通过一个代理对象来间接访问，为了保证客户端使用的透明性，所访问的真实对象与代理对象需要实现相同的接口。 代理模式是设计模式中的一种,而且在实际的开发中使用的频率非常高 ,比如spring AOP,mybatis代理都是我们经常使用的. 动态代理的优势： 1、降低各个功能模块之间的耦合度，提高开发的效率和方便程序的维护度。 2、减少代码量。 3、不关注目标的具体实现。 Java实现分为4个步骤，如下：需要代理的接口、类： 首先要创建文件夹 proxy 12mkdir proxymkdir com/sun/proxy // 后续输出 $proxy用 12345package proxy;public interface IAction&#123; void sayHello();&#125; 123456789package proxy;import proxy.IAction;public class Person implements IAction&#123; public void sayHello()&#123; System.out.println("hello world"); &#125;&#125; 实现 InvocationHandler 接口 创建 PIHandler.java 类 12345678910111213141516package proxy;import java.lang.reflect.InvocationHandler;import java.lang.reflect.Method;import proxy.Person;public class PIHandler implements InvocationHandler&#123; private Person person; public PIHandler(Person person)&#123; this.person = person; &#125; public Object invoke(Object obj, Method method, Object[] objs) throws Throwable&#123; return method.invoke(this.person, objs); &#125;&#125; 创建代理Demo 创建Main.java类 123456789101112131415161718package proxy;import java.lang.reflect.InvocationHandler;import java.lang.reflect.*;import proxy.*;public class Main&#123; public static void main(String[] args)throws Throwable&#123; // 从源码中得知，设置这个值，可以把生成的代理类，输出出来。 System.getProperties().put("sun.misc.ProxyGenerator.saveGeneratedFiles", "true"); System.out.println(Proxy.getProxyClass(IAction.class.getClassLoader(), IAction.class)); PIHandler ph = new PIHandler(new Person()); IAction ac = (IAction) Proxy.newProxyInstance(Person.class.getClassLoader(), new Class&lt;?&gt;[] &#123;IAction.class&#125;, ph); ac.sayHello(); &#125;&#125; 会将生成的$Proxy0.class 类输出到和proxy 目录同级的com/sun/proxy目录下面。 $Proxy0.class 查看 编译java文件 1javac proxy/Main.java 执行java文件 1java proxy.Main $proxy0.class 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107package com.sun.proxy;import java.lang.reflect.InvocationHandler;import java.lang.reflect.Method;import java.lang.reflect.Proxy;import java.lang.reflect.UndeclaredThrowableException;import proxy.IAction;public final class $Proxy0 extends Proxy implements IAction&#123; private static Method m1; private static Method m3; private static Method m2; private static Method m0; public $Proxy0(InvocationHandler paramInvocationHandler) &#123; super(paramInvocationHandler); &#125; public final boolean equals(Object paramObject) &#123; try &#123; return ((Boolean)this.h.invoke(this, m1, new Object[] &#123; paramObject &#125;)).booleanValue(); &#125; catch (Error|RuntimeException localError) &#123; throw localError; &#125; catch (Throwable localThrowable) &#123; throw new UndeclaredThrowableException(localThrowable); &#125; &#125; public final void sayHello() &#123; try &#123; this.h.invoke(this, m3, null); return; &#125; catch (Error|RuntimeException localError) &#123; throw localError; &#125; catch (Throwable localThrowable) &#123; throw new UndeclaredThrowableException(localThrowable); &#125; &#125; public final String toString() &#123; try &#123; return (String)this.h.invoke(this, m2, null); &#125; catch (Error|RuntimeException localError) &#123; throw localError; &#125; catch (Throwable localThrowable) &#123; throw new UndeclaredThrowableException(localThrowable); &#125; &#125; public final int hashCode() &#123; try &#123; return ((Integer)this.h.invoke(this, m0, null)).intValue(); &#125; catch (Error|RuntimeException localError) &#123; throw localError; &#125; catch (Throwable localThrowable) &#123; throw new UndeclaredThrowableException(localThrowable); &#125; &#125; static &#123; try &#123; m1 = Class.forName(&quot;java.lang.Object&quot;).getMethod(&quot;equals&quot;, new Class[] &#123; Class.forName(&quot;java.lang.Object&quot;) &#125;); m3 = Class.forName(&quot;proxy.IAction&quot;).getMethod(&quot;sayHello&quot;, new Class[0]); m2 = Class.forName(&quot;java.lang.Object&quot;).getMethod(&quot;toString&quot;, new Class[0]); m0 = Class.forName(&quot;java.lang.Object&quot;).getMethod(&quot;hashCode&quot;, new Class[0]); return; &#125; catch (NoSuchMethodException localNoSuchMethodException) &#123; throw new NoSuchMethodError(localNoSuchMethodException.getMessage()); &#125; catch (ClassNotFoundException localClassNotFoundException) &#123; throw new NoClassDefFoundError(localClassNotFoundException.getMessage()); &#125; &#125;&#125; 参考文章： https://www.cnblogs.com/MOBIN/p/5597215.html https://juejin.im/entry/5a4af4116fb9a045104ad95b https://my.oschina.net/daijunjian/blog/1549753 https://www.jianshu.com/p/d5d9215bf8ad]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[懒加载的单例模式]]></title>
+    <url>%2Fblog%2F2019%2F08%2F05%2F%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%2F</url>
+    <content type="text"><![CDATA[辅助类 Singleton1234567891011121314public abstract class Singleton&lt;T&gt; &#123; private T mInstance; protected abstract T create(); public final T get() &#123; synchronized (this) &#123; if (mInstance == null) &#123; mInstance = create(); &#125; return mInstance; &#125; &#125;&#125; 创建单例：123456789private static final Singleton&lt;IActivityManager&gt; IActivityManagerSingleton = new Singleton&lt;IActivityManager&gt;() &#123; @Override protected IActivityManager create() &#123; final IBinder b = ServiceManager.getService(Context.ACTIVITY_SERVICE); final IActivityManager am = IActivityManager.Stub.asInterface(b); return am; &#125; &#125;; 1、优点是，提高加载速度。类初始化的时候，没有立即初始化开销大的对象A，而是先初始化了一个接口类。等到实际使用的时候再去初始化对象A。]]></content>
+      <categories>
+        <category>设计模式</category>
+      </categories>
+      <tags>
+        <tag>android</tag>
+        <tag>设计模式</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Android 源码目录结构]]></title>
     <url>%2Fblog%2F2019%2F08%2F05%2FAndroid%20%E6%BA%90%E7%A0%81%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%2F</url>
     <content type="text"><![CDATA[一级目录： art - Android Runtime，一种app运行模式，区别去传统的Dalvik虚拟机，目的是提高android系统的流畅性。 bionic - 集成C库源代码，android改造的c/c++库。 bootable - android程序启动引导，适合各种bootloader的通用代码。包括一个recovery目录。 build - 存放系统编译规则以及generic等基础开发包配置。 compatibility - android 兼容计划。 cts - android兼容性测试标准。 dalvik - android dalvik虚拟机相关内容。 developers - 开发者参考文档。 development - android 应用开发基础设施相关。 device - android 支持的各种设备及相关配置。 external - android 中使用的各种外部开源库。 frameworks - 应用层框架，android系统的核心部分，又java、c++实现。 hardware - 硬件适配接口。 kernel - linux 内核，android 默认不提供，只有一个tests目录，需要另外下载。 libcore - android java 核心类库。 libnativehelper - android 动态库，实现jni的基础。 packages - 应用程序包。 pdk - Plug development kit，本地开发套件。 plaform_testing - android 平台测试程序。 prebuilds - x86 和 arm 架构下预编译的一些资源。 sdk - android java层SDK。 system - android底层文件系统库，应用、组件。 test - android Vendor测试框架。 toolchain - android 工具链文件。 tools - android 工具文件。 Android.bp - android 7.0 开始代替 android.mk 文件， 它告诉ndk将jni编译为动态库的脚本。 Makefile - 全局Makefile文件，用来定义编译规则。 framework 二级目录 ： av - 多媒体框架。 base - android 源码的主要核心目录。 compile - 编译相关。 ex - 文件解析器。 hardware - 硬件适配接口。 layoutlib - 布局相关。 minikin - android 原生字体，连体字效果。 ml - 机器学习。 multidex - 多dex 加载器。 native - native 实现。 opt - 一些软件。 rs - Render Script ，创建3D接口。 support - framework 支持文件。 wilhelm - 基于 Khronos 的OpenGL ES/ OpenGLMax AL audio/multi media实现。 base 三级目录： apct-test - 性能优化测试。 api - android应用框架层声明类、属性、资源。 cmds - android 系统启动时用到的commands。 core - framwork的核心框架组件。 data - android系统下的资源(声音、视屏、字体、软盘等)。 docs - android 项目说明文档。 drm - 实现权限管理，数字内容解密等模块的工作。 graphics - 图像渲染模块。 keystore - 密钥库。 libs - 库信息(界面、存储、USB) location - 位置信息。 media - 手机媒体管理。 native - 本地方法实现（传感器、输入、界面、窗体）。 nfc-extras - 近场通讯。 obex - 蓝牙。 opengl - 2D、3D图形绘制。 pacakges - 框架床的实现(界面、服务、存储)。 proto - 协议框架。 rs - 资源框架。 samples - 例子程序。 sax - xml 解析器。 Services - 各种服务程序。 telecomm - telecomm 通信框架。 telephony - 电话通信框架。 tests - 各种测试。 vr - 虚拟现实相关。 wifi - wifi模块。]]></content>
@@ -39,11 +67,6 @@
   <entry>
     <title></title>
     <url>%2Fblog%2F2019%2F08%2F01%2F%E7%A0%94%E7%A9%B6android%20%E6%89%93%E5%8C%85%E6%B5%81%E7%A8%8B%2F</url>
-    <content type="text"></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>%2Fblog%2F2019%2F07%2F29%2FUntitled%201%2F</url>
     <content type="text"></content>
   </entry>
   <entry>

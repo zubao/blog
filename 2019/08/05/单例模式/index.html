@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="android,设计模式,">
 
 
 
@@ -81,13 +81,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="闲敲棋子落灯花">
-<meta property="og:url" content="https://zubao.github.io/blog/tags/hexo/index.html">
+<meta name="description" content="辅助类 Singleton1234567891011121314public abstract class Singleton&amp;lt;T&amp;gt; &amp;#123;    private T mInstance;    protected abstract T create();    public final T get() &amp;#123;        synchronized (this) &amp;#12">
+<meta name="keywords" content="android,设计模式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="懒加载的单例模式">
+<meta property="og:url" content="https://zubao.github.io/blog/2019/08/05/单例模式/index.html">
 <meta property="og:site_name" content="闲敲棋子落灯花">
+<meta property="og:description" content="辅助类 Singleton1234567891011121314public abstract class Singleton&amp;lt;T&amp;gt; &amp;#123;    private T mInstance;    protected abstract T create();    public final T get() &amp;#123;        synchronized (this) &amp;#12">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-08-05T08:49:24.624Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="闲敲棋子落灯花">
+<meta name="twitter:title" content="懒加载的单例模式">
+<meta name="twitter:description" content="辅助类 Singleton1234567891011121314public abstract class Singleton&amp;lt;T&amp;gt; &amp;#123;    private T mInstance;    protected abstract T create();    public final T get() &amp;#123;        synchronized (this) &amp;#12">
 
 
 
@@ -117,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="https://zubao.github.io/blog/tags/hexo/">
+  <link rel="canonical" href="https://zubao.github.io/blog/2019/08/05/单例模式/">
 
 
 
 
 
-  <title>标签: hexo | 闲敲棋子落灯花</title>
+  <title>懒加载的单例模式 | 闲敲棋子落灯花</title>
   
 
 
@@ -142,7 +147,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -278,52 +283,181 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>hexo<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/08/05/单例模式/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lpl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/blog/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="闲敲棋子落灯花">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/blog/2019/07/19/Hexo + github 搭建静态博客/" itemprop="url">
-              
-                <span itemprop="name">Hexo + github 搭建静态博客</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">懒加载的单例模式</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-07-19T15:41:59+08:00" content="2019-07-19">
-          07-19
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-05T16:42:27+08:00">
+                2019-08-05
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h5 id="辅助类-Singleton"><a href="#辅助类-Singleton" class="headerlink" title="辅助类 Singleton"></a>辅助类 Singleton</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> T mInstance;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">abstract</span> T <span class="title">create</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> T <span class="title">get</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">synchronized</span> (<span class="keyword">this</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (mInstance == <span class="keyword">null</span>) &#123;</span><br><span class="line">                mInstance = create();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> mInstance;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="创建单例："><a href="#创建单例：" class="headerlink" title="创建单例："></a>创建单例：</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton&lt;IActivityManager&gt; IActivityManagerSingleton =</span><br><span class="line">            <span class="keyword">new</span> Singleton&lt;IActivityManager&gt;() &#123;</span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">protected</span> IActivityManager <span class="title">create</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                    <span class="keyword">final</span> IBinder b = ServiceManager.getService(Context.ACTIVITY_SERVICE);</span><br><span class="line">                    <span class="keyword">final</span> IActivityManager am = IActivityManager.Stub.asInterface(b);</span><br><span class="line">                    <span class="keyword">return</span> am;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>1、优点是，提高加载速度。类初始化的时候，没有立即初始化开销大的对象A，而是先初始化了一个接口类。等到实际使用的时候再去初始化对象A。</p>
+</blockquote>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/android/" rel="tag"># android</a>
+          
+            <a href="/blog/tags/设计模式/" rel="tag"># 设计模式</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2019/08/05/Android 源码目录结构/" rel="next" title="Android 源码目录结构">
+                <i class="fa fa-chevron-left"></i> Android 源码目录结构
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2019/08/05/Java 动态代理/" rel="prev" title="Java 动态代理">
+                Java 动态代理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -331,6 +465,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -351,8 +489,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -437,6 +584,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#辅助类-Singleton"><span class="nav-number">1.</span> <span class="nav-text">辅助类 Singleton</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#创建单例："><span class="nav-number">2.</span> <span class="nav-text">创建单例：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -577,6 +740,10 @@
 
 
   
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
