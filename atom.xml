@@ -6,7 +6,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://zubao.github.io/blog/"/>
-  <updated>2019-08-06T09:48:58.274Z</updated>
+  <updated>2019-08-06T10:03:05.440Z</updated>
   <id>https://zubao.github.io/blog/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Android Q 非SDK检查</title>
+    <link href="https://zubao.github.io/blog/2019/08/06/Android%20Q%20%E9%9D%9ESDK%20%E6%A3%80%E6%9F%A5/"/>
+    <id>https://zubao.github.io/blog/2019/08/06/Android Q 非SDK 检查/</id>
+    <published>2019-08-06T09:56:30.470Z</published>
+    <updated>2019-08-06T10:03:05.440Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h5 id=&quot;SDK-限制等级&quot;&gt;&lt;a href=&quot;#SDK-限制等级&quot; class=&quot;headerlink&quot; title=&quot;SDK 限制等级&quot;&gt;&lt;/a&gt;SDK 限制等级&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;greylist              本系统标记为不支持调用。但是无限制，
+      
+    
+    </summary>
+    
+      <category term="android" scheme="https://zubao.github.io/blog/categories/android/"/>
+    
+    
+      <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
+    
+  </entry>
   
   <entry>
     <title>Android hook</title>

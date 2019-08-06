@@ -293,6 +293,188 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/07/25/Android Q 线刷/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lpl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/blog/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="闲敲棋子落灯花">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2019/07/25/Android Q 线刷/" itemprop="url">Android Q 线刷</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-25T08:57:55+08:00">
+                2019-07-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="android-Q-升级的两种方式："><a href="#android-Q-升级的两种方式：" class="headerlink" title="android Q 升级的两种方式："></a>android Q 升级的两种方式：</h4><h5 id="加入android测试版记录"><a href="#加入android测试版记录" class="headerlink" title="加入android测试版记录"></a>加入android测试版记录</h5><ul>
+<li><p>官方网站：<a href="https://www.google.com/android/beta" target="_blank" rel="noopener">https://www.google.com/android/beta</a></p>
+</li>
+<li><p>1、优点是炒作简单</p>
+</li>
+<li><p>2、缺点是需要FQ，SS工具可能无法做到全局代理。如果在境外，或者有可以FQ的路由器应该没问题。</p>
+</li>
+</ul>
+<h5 id="下载zip包，刷入手机"><a href="#下载zip包，刷入手机" class="headerlink" title="下载zip包，刷入手机"></a>下载zip包，刷入手机</h5><ul>
+<li><p>官方网站： <a href="https://developers.google.com/android/images" target="_blank" rel="noopener">https://developers.google.com/android/images</a></p>
+</li>
+<li><p>下载对应手机的zip文件，解压到指定目录。</p>
+</li>
+<li><p>更新 platform-tools到最新版本</p>
+</li>
+<li><p>手机打开开发者模式，去开发者选项中启动允许OEM解锁。</p>
+</li>
+<li><p>刷机之前，千万记得退出账号。</p>
+</li>
+<li><p>adb reboot bootloader 进入到 bootloader模式；</p>
+</li>
+<li><p>fastboot flashing unlock 解锁手机</p>
+<blockquote>
+<p>以pixel 2xl 为例，如果bootloader version 低于 TMZ20a（例如8.0系统），需要执行 fastboot flashing unlock 、fastboot flashing unlock_critical 两条命令解锁。高于TMZ20a的则只需要 fastboot flashing unlock即可。</p>
+<p>如果出现  FAILED (remote: ‘Flashing Unlock is not allowed），可以先执行fastboot flashing lock 锁定 OEM，重启手机，然后再次去开发者选项中打开运行OEM解锁，进入 BootLoader模式，然后执行上面两条命令解锁。</p>
+</blockquote>
+</li>
+<li><p>执行 flash-all.sh 脚本 刷入ROM</p>
+</li>
+<li><p>执行 fastboot flashing lock 锁定OEM</p>
+<blockquote>
+<p>我再刷入Android Q之后，在开机连接wifi阶段卡住了，一直通过不了；</p>
+<p>尝试过：</p>
+<p>1、PC FQ，手机通过wifi代理到PC FQ连接Google服务器，依然无法通过。</p>
+<p>2、小米手机4G+FQ，pixel 2xl 通过小米共享的热点FQ，也不行。</p>
+<p>3、然后试图刷低版本(8.0)尝试绕过，还是不行。</p>
+<p>4、最终通过购买香港一日流量卡解决问题。PS：流量卡需要先激活，我是小米用流量卡，共享热点给Pixel 2XL 连接上的google。流量卡需要用可以正常使用的手机先激活。</p>
+<p>5、应该是我的PC、小米 FQ 都没有做到全局代理，导致google的请求没有走代理连接不上服务器。如果有路由器能FQ最好。</p>
+</blockquote>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/07/24/Espresso 自动化测试/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2062,7 +2244,7 @@
               
                 <a href="/blog/archives/">
               
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
