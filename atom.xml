@@ -6,7 +6,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://zubao.github.io/blog/"/>
-  <updated>2019-08-05T09:22:12.513Z</updated>
+  <updated>2019-08-06T09:48:58.274Z</updated>
   <id>https://zubao.github.io/blog/</id>
   
   <author>
@@ -17,16 +17,27 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
-    <link href="https://zubao.github.io/blog/2019/08/05/Untitled%201/"/>
-    <id>https://zubao.github.io/blog/2019/08/05/Untitled 1/</id>
-    <published>2019-08-05T09:22:12.513Z</published>
-    <updated>2019-08-05T09:22:12.513Z</updated>
+    <title>Android hook</title>
+    <link href="https://zubao.github.io/blog/2019/08/06/Android%20Hook/"/>
+    <id>https://zubao.github.io/blog/2019/08/06/Android Hook/</id>
+    <published>2019-08-06T09:38:33.144Z</published>
+    <updated>2019-08-06T09:48:58.274Z</updated>
     
     <summary type="html">
     
+      
+      
+        &lt;h5 id=&quot;通过hook方式拦截startActivity&quot;&gt;&lt;a href=&quot;#通过hook方式拦截startActivity&quot; class=&quot;headerlink&quot; title=&quot;通过hook方式拦截startActivity&quot;&gt;&lt;/a&gt;通过hook方式拦截startAc
+      
+    
     </summary>
     
+      <category term="android" scheme="https://zubao.github.io/blog/categories/android/"/>
+    
+    
+      <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
+    
+      <category term="hook" scheme="https://zubao.github.io/blog/tags/hook/"/>
     
   </entry>
   
