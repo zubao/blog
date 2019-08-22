@@ -6,7 +6,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://zubao.github.io/blog/"/>
-  <updated>2019-08-22T07:18:17.250Z</updated>
+  <updated>2019-08-22T09:20:14.893Z</updated>
   <id>https://zubao.github.io/blog/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Mac 自带PHP 启动</title>
+    <link href="https://zubao.github.io/blog/2019/08/22/Mac%20PHP%20%E5%90%AF%E5%8A%A8/"/>
+    <id>https://zubao.github.io/blog/2019/08/22/Mac PHP 启动/</id>
+    <published>2019-08-22T09:05:07.555Z</published>
+    <updated>2019-08-22T09:20:14.893Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Mac 自带 php-fpm，在终端执行 php-fpm，会报如下错误：&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span clas
+      
+    
+    </summary>
+    
+      <category term="PHP" scheme="https://zubao.github.io/blog/categories/PHP/"/>
+    
+    
+      <category term="PHP" scheme="https://zubao.github.io/blog/tags/PHP/"/>
+    
+  </entry>
   
   <entry>
     <title>Hive 简介</title>
@@ -69,7 +95,7 @@
     <link href="https://zubao.github.io/blog/2019/08/21/PG%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%80%E4%BB%8B/"/>
     <id>https://zubao.github.io/blog/2019/08/21/PG数据库简介/</id>
     <published>2019-08-21T07:30:00.692Z</published>
-    <updated>2019-08-21T10:23:33.317Z</updated>
+    <updated>2019-08-22T09:05:59.433Z</updated>
     
     <summary type="html">
     
@@ -489,30 +515,6 @@
       <category term="java" scheme="https://zubao.github.io/blog/tags/java/"/>
     
       <category term="annotation" scheme="https://zubao.github.io/blog/tags/annotation/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo + github 搭建静态博客</title>
-    <link href="https://zubao.github.io/blog/2019/07/19/Hexo%20+%20github%20%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/"/>
-    <id>https://zubao.github.io/blog/2019/07/19/Hexo + github 搭建静态博客/</id>
-    <published>2019-07-19T07:41:59.786Z</published>
-    <updated>2019-07-22T03:08:13.857Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h5 id=&quot;Hexo-github-搭建静态博客&quot;&gt;&lt;a href=&quot;#Hexo-github-搭建静态博客&quot; class=&quot;headerlink&quot; title=&quot;Hexo + github 搭建静态博客&quot;&gt;&lt;/a&gt;Hexo + github 搭建静态博客&lt;/h5&gt;&lt;ul&gt;
-
-      
-    
-    </summary>
-    
-      <category term="hexo" scheme="https://zubao.github.io/blog/categories/hexo/"/>
-    
-    
-      <category term="hexo" scheme="https://zubao.github.io/blog/tags/hexo/"/>
     
   </entry>
   
