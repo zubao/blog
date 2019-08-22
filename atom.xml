@@ -6,7 +6,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://zubao.github.io/blog/"/>
-  <updated>2019-08-06T10:03:05.440Z</updated>
+  <updated>2019-08-22T07:18:17.250Z</updated>
   <id>https://zubao.github.io/blog/</id>
   
   <author>
@@ -15,6 +15,161 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hive 简介</title>
+    <link href="https://zubao.github.io/blog/2019/08/22/Hive%20%E7%AE%80%E4%BB%8B/"/>
+    <id>https://zubao.github.io/blog/2019/08/22/Hive 简介/</id>
+    <published>2019-08-22T06:42:03.498Z</published>
+    <updated>2019-08-22T07:18:17.250Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h5 id=&quot;Hive简介&quot;&gt;&lt;a href=&quot;#Hive简介&quot; class=&quot;headerlink&quot; title=&quot;Hive简介&quot;&gt;&lt;/a&gt;Hive简介&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;Apache Hive起初由&lt;a href=&quot;https://zh.wikipedia.org/
+      
+    
+    </summary>
+    
+      <category term="hive" scheme="https://zubao.github.io/blog/categories/hive/"/>
+    
+    
+      <category term="hive" scheme="https://zubao.github.io/blog/tags/hive/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CI架构</title>
+    <link href="https://zubao.github.io/blog/2019/08/22/CI%E6%9E%B6%E6%9E%84/"/>
+    <id>https://zubao.github.io/blog/2019/08/22/CI架构/</id>
+    <published>2019-08-22T01:15:47.364Z</published>
+    <updated>2019-08-22T03:30:14.010Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h5 id=&quot;CI架构简介&quot;&gt;&lt;a href=&quot;#CI架构简介&quot; class=&quot;headerlink&quot; title=&quot;CI架构简介&quot;&gt;&lt;/a&gt;CI架构简介&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;CI架构全拼Codeigniter，相比之下另外一个更加活跃的PHP架构是Laravel。
+      
+    
+    </summary>
+    
+      <category term="php" scheme="https://zubao.github.io/blog/categories/php/"/>
+    
+    
+      <category term="ci" scheme="https://zubao.github.io/blog/tags/ci/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PG数据库 简介</title>
+    <link href="https://zubao.github.io/blog/2019/08/21/PG%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%80%E4%BB%8B/"/>
+    <id>https://zubao.github.io/blog/2019/08/21/PG数据库简介/</id>
+    <published>2019-08-21T07:30:00.692Z</published>
+    <updated>2019-08-21T10:23:33.317Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h5 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;PG 数据库全称 PostgreSQL&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://zh.wikipedia.org/w
+      
+    
+    </summary>
+    
+      <category term="数据库" scheme="https://zubao.github.io/blog/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+      <category term="PG" scheme="https://zubao.github.io/blog/tags/PG/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Redis 简介</title>
+    <link href="https://zubao.github.io/blog/2019/08/21/Redis%20%E7%AE%80%E4%BB%8B/"/>
+    <id>https://zubao.github.io/blog/2019/08/21/Redis 简介/</id>
+    <published>2019-08-21T01:38:55.814Z</published>
+    <updated>2019-08-21T10:26:01.872Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h5 id=&quot;Redis-简介&quot;&gt;&lt;a href=&quot;#Redis-简介&quot; class=&quot;headerlink&quot; title=&quot;Redis 简介&quot;&gt;&lt;/a&gt;Redis 简介&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Remote DIctionary Server(Redis) 是一个由S
+      
+    
+    </summary>
+    
+      <category term="数据库" scheme="https://zubao.github.io/blog/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+      <category term="redis" scheme="https://zubao.github.io/blog/tags/redis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>android 获取 WIDEVINE_UUID</title>
+    <link href="https://zubao.github.io/blog/2019/08/20/WIDEVINE_UUID%20%E8%8E%B7%E5%8F%96/"/>
+    <id>https://zubao.github.io/blog/2019/08/20/WIDEVINE_UUID 获取/</id>
+    <published>2019-08-20T02:07:20.319Z</published>
+    <updated>2019-08-20T02:10:41.013Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li&gt;&lt;p&gt;anroid 通过 MediaDrm 获取uuid&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;1、App 内唯一&lt;/p&gt;
+&lt;p&gt;2、App 之间不唯一&lt;/p&gt;
+&lt;p&gt;3、App卸载重装唯一&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;fig
+      
+    
+    </summary>
+    
+      <category term="android" scheme="https://zubao.github.io/blog/categories/android/"/>
+    
+    
+      <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>IPv6详解</title>
+    <link href="https://zubao.github.io/blog/2019/08/13/IPv6%E8%AF%A6%E8%A7%A3/"/>
+    <id>https://zubao.github.io/blog/2019/08/13/IPv6详解/</id>
+    <published>2019-08-13T01:15:14.326Z</published>
+    <updated>2019-08-13T01:16:26.878Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;##### &lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="android" scheme="https://zubao.github.io/blog/categories/android/"/>
+    
+    
+      <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
+    
+      <category term="IPv6" scheme="https://zubao.github.io/blog/tags/IPv6/"/>
+    
+  </entry>
   
   <entry>
     <title>Android Q 非SDK检查</title>
@@ -206,27 +361,6 @@
   </entry>
   
   <entry>
-    <title></title>
-    <link href="https://zubao.github.io/blog/2019/07/29/Android%20Hook%20startActivity/"/>
-    <id>https://zubao.github.io/blog/2019/07/29/Android Hook startActivity/</id>
-    <published>2019-07-29T09:11:28.799Z</published>
-    <updated>2019-07-29T09:14:18.043Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;https://www.jianshu.com/p/eb4121b037e2&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://www.jianshu.com/p/eb4121b037e2&lt;/a&gt; &lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>Jar加固</title>
     <link href="https://zubao.github.io/blog/2019/07/25/Jar%E5%8A%A0%E5%9B%BA/"/>
     <id>https://zubao.github.io/blog/2019/07/25/Jar加固/</id>
@@ -278,18 +412,18 @@
   </entry>
   
   <entry>
-    <title>Espresso自动化测试</title>
-    <link href="https://zubao.github.io/blog/2019/07/24/Espresso%20%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/"/>
-    <id>https://zubao.github.io/blog/2019/07/24/Espresso 自动化测试/</id>
+    <title>Android SDK 自动化测试</title>
+    <link href="https://zubao.github.io/blog/2019/07/24/Android%20SDK%20%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/"/>
+    <id>https://zubao.github.io/blog/2019/07/24/Android SDK 自动化测试/</id>
     <published>2019-07-24T07:10:56.750Z</published>
-    <updated>2019-07-24T07:12:01.143Z</updated>
+    <updated>2019-08-09T01:45:03.658Z</updated>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;#### &lt;/p&gt;
-
+        &lt;h5 id=&quot;名词解释&quot;&gt;&lt;a href=&quot;#名词解释&quot; class=&quot;headerlink&quot; title=&quot;名词解释&quot;&gt;&lt;/a&gt;名词解释&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;JUnit - JUnit 是一个 Java 编程语言的单元测试框架。&lt;a href=&quot;https://w
       
     
     </summary>
@@ -300,8 +434,6 @@
       <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
     
       <category term="Test" scheme="https://zubao.github.io/blog/tags/Test/"/>
-    
-      <category term="Espresso" scheme="https://zubao.github.io/blog/tags/Espresso/"/>
     
   </entry>
   
@@ -381,113 +513,6 @@
     
     
       <category term="hexo" scheme="https://zubao.github.io/blog/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>AOSP 编译文档</title>
-    <link href="https://zubao.github.io/blog/2019/07/19/AOSP%E6%96%87%E6%A1%A3/"/>
-    <id>https://zubao.github.io/blog/2019/07/19/AOSP文档/</id>
-    <published>2019-07-19T03:32:45.852Z</published>
-    <updated>2019-08-05T06:51:41.152Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h5 id=&quot;准备工作：&quot;&gt;&lt;a href=&quot;#准备工作：&quot; class=&quot;headerlink&quot; title=&quot;准备工作：&quot;&gt;&lt;/a&gt;准备工作：&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Mac Pro 10.14版本，16G内存，256G SSD；&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;
-      
-    
-    </summary>
-    
-      <category term="android" scheme="https://zubao.github.io/blog/categories/android/"/>
-    
-    
-      <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
-    
-      <category term="AOSP" scheme="https://zubao.github.io/blog/tags/AOSP/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java虚拟机阅读</title>
-    <link href="https://zubao.github.io/blog/2019/07/15/Java%20%E8%99%9A%E6%8B%9F%E6%9C%BA%E9%98%85%E8%AF%BB/"/>
-    <id>https://zubao.github.io/blog/2019/07/15/Java 虚拟机阅读/</id>
-    <published>2019-07-15T08:50:35.838Z</published>
-    <updated>2019-07-22T03:08:22.777Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h5 id=&quot;Java-虚拟机阅读&quot;&gt;&lt;a href=&quot;#Java-虚拟机阅读&quot; class=&quot;headerlink&quot; title=&quot;Java 虚拟机阅读&quot;&gt;&lt;/a&gt;Java 虚拟机阅读&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;KVM (Kilobyte VM)&lt;/p&gt;
-&lt;blockq
-      
-    
-    </summary>
-    
-      <category term="jvm" scheme="https://zubao.github.io/blog/categories/jvm/"/>
-    
-    
-      <category term="java" scheme="https://zubao.github.io/blog/tags/java/"/>
-    
-      <category term="jvm" scheme="https://zubao.github.io/blog/tags/jvm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java JNI 调用 C 实现</title>
-    <link href="https://zubao.github.io/blog/2019/07/15/Java%20JNI%20%E8%B0%83%E7%94%A8%20C%20%E5%AE%9E%E7%8E%B0/"/>
-    <id>https://zubao.github.io/blog/2019/07/15/Java JNI 调用 C 实现/</id>
-    <published>2019-07-15T06:28:42.126Z</published>
-    <updated>2019-07-22T03:08:30.249Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h5 id=&quot;Java-JNI-调用-C-实现&quot;&gt;&lt;a href=&quot;#Java-JNI-调用-C-实现&quot; class=&quot;headerlink&quot; title=&quot;Java JNI 调用 C 实现&quot;&gt;&lt;/a&gt;Java JNI 调用 C 实现&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;创建目录h
-      
-    
-    </summary>
-    
-      <category term="java" scheme="https://zubao.github.io/blog/categories/java/"/>
-    
-    
-      <category term="java" scheme="https://zubao.github.io/blog/tags/java/"/>
-    
-      <category term="jni" scheme="https://zubao.github.io/blog/tags/jni/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>获取设备名称</title>
-    <link href="https://zubao.github.io/blog/2019/06/28/android%E8%AE%BE%E5%A4%87%E7%89%B9%E6%80%A7/"/>
-    <id>https://zubao.github.io/blog/2019/06/28/android设备特性/</id>
-    <published>2019-06-28T07:16:27.923Z</published>
-    <updated>2019-07-25T00:58:27.856Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;获取设备名称&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span cla
-      
-    
-    </summary>
-    
-      <category term="android" scheme="https://zubao.github.io/blog/categories/android/"/>
-    
-    
-      <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
     
   </entry>
   

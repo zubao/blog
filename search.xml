@@ -1,6 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Hive 简介]]></title>
+    <url>%2Fblog%2F2019%2F08%2F22%2FHive%20%E7%AE%80%E4%BB%8B%2F</url>
+    <content type="text"><![CDATA[Hive简介 Apache Hive起初由Facebook开发 Apache Hive是一个建立在Hadoop架构之上的数据仓库。 可以将结构化的数据文件映射为一张数据库表 Hive 定义了简单的类 SQL 查询语言，称为 HQL，它允许熟悉 SQL 的用户查询数据。 底层数据是存储在 HDFS (Hadoop Distributed File System)上 Hive的本质是将 SQL 语句转换为 MapReduce 任务运行 使不熟悉 MapReduce 的用户很方便地利用 HQL 处理和计算 HDFS 上的结构化的数据。 Hive优缺点： 直接使用 MapReduce 所面临的问题： 1、人员学习成本太高 2、项目周期要求太短 3、MapReduce实现复杂查询逻辑开发难度太大 为什么要使用 Hive： 1、更友好的接口：操作接口采用类 SQL 的语法，提供快速开发的能力 2、更低的学习成本：避免了写 MapReduce，减少开发人员的学习成本 3、更好的扩展性：可自由扩展集群规模而无需重启服务，还支持用户自定义函数 Hive的特点 优点： 1、可扩展性,横向扩展，Hive 可以自由的扩展集群的规模，一般情况下不需要重启服务 横向扩展：通过分担压力的方式扩展集群的规模 纵向扩展：一台服务器cpu i7-6700k 4核心8线程，8核心16线程，内存64G =&gt; 128G 2、延展性，Hive 支持自定义函数，用户可以根据自己的需求来实现自己的函数 3、良好的容错性，可以保障即使有节点出现问题，SQL 语句仍可完成执行 缺点： 1、Hive 不支持记录级别的增删改操作，但是用户可以通过查询生成新表或者将查询结 果导入到文件中（当前选择的 hive-2.3.2 的版本支持记录级别的插入操作） 2、Hive 的查询延时很严重，因为 MapReduce Job 的启动过程消耗很长时间，所以不能 用在交互查询系统中。 3、Hive 不支持事务（因为不没有增删改，所以主要用来做 OLAP（联机分析处理），而 不是 OLTP（联机事务处理），这就是数据处理的两大级别）。 Hive的用户接口 CLI，Shell 终端命令行（Command Line Interface），采用交互形式使用 Hive 命令行与 Hive 进行交互，最常用（学习，调试，生产） JDBC/ODBC，是 Hive 的基于 JDBC 操作提供的客户端，用户（开发员，运维人员）通过 这连接至 Hive server 服务 Web UI，通过浏览器访问 Hive Hive的跨语言服务 Thrift 是 Facebook 开发的一个软件框架，可以用来进行可扩展且跨语言的服务的开发， Hive 集成了该服务，能让不同的编程语言调用 Hive 的接口 底层驱动 Driver 组件完成 HQL 查询语句从词法分析，语法分析，编译，优化，以及生成逻辑执行 计划的生成。生成的逻辑执行计划存储在 HDFS 中，并随后由 MapReduce 调用执行 Hive 的核心是驱动引擎， 驱动引擎由四部分组成： (1) 解释器：解释器的作用是将 HiveSQL 语句转换为抽象语法树（AST） (2) 编译器：编译器是将语法树编译为逻辑执行计划 (3) 优化器：优化器是对逻辑执行计划进行优化 (4) 执行器：执行器是调用底层的运行框架执行逻辑执行计划 数据库存储系统 元数据，通俗的讲，就是存储在 Hive 中的数据的描述信息。 Hive 中的元数据通常包括：表的名字，表的列和分区及其属性，表的属性（内部表和 外部表），表的数据所在目录 Metastore 默认存在自带的 Derby 数据库中。缺点就是不适合多用户操作，并且数据存 储目录不固定。数据库跟着 Hive 走，极度不方便管理 解决方案：通常存我们自己创建的 MySQL 库（本地 或 远程） Hive 和 MySQL 之间通过 MetaStore 服务交互 执行流程 HiveQL 通过命令行或者客户端提交，经过 Compiler 编译器，运用 MetaStore 中的元数 据进行类型检测和语法分析，生成一个逻辑方案(Logical Plan)，然后通过的优化处理，产生 一个 MapReduce 任务。 参考文章 https://www.cnblogs.com/qingyunzong/p/8707885.html https://www.cnblogs.com/qingyunzong/category/1191578.html]]></content>
+      <categories>
+        <category>hive</category>
+      </categories>
+      <tags>
+        <tag>hive</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[CI架构]]></title>
+    <url>%2Fblog%2F2019%2F08%2F22%2FCI%E6%9E%B6%E6%9E%84%2F</url>
+    <content type="text"><![CDATA[CI架构简介 CI架构全拼Codeigniter，相比之下另外一个更加活跃的PHP架构是Laravel。 CodeIgniter 是一套给 PHP 网站开发者使用的应用程序开发框架和工具包。它的特点包括且不局限于： 小巧但性能出色 广泛兼容各种 PHP 版本 几乎零配置且不需使用命令行 CI下载 https://www.codeigniter.com/ index.php 是所有 CI 程序的入口 设置.htaccess 文件 打开.htaccess 文件并添加以下四行代码，保存并退出 12&gt; `RewriteEngine on``RewriteCond %&#123;REQUEST_FILENAME&#125; !-f``RewriteCond %&#123;REQUEST_FILENAME&#125; !-d``RewriteRule ^(.*)$ /index.php/$1 [L]`&gt; 让我们看一下上面每行代码的作用： RewriteEngine on 用于打开 Apache 的 URL 重写 RewriteCond %{REQUEST_FILENAME} !-f 代表如果请求的文件存在，则直接访问该文件；如果文件不存在，则进行至下一步 RewriteCond %{REQUEST_FILENAME} !-d 代表如果目录存在则直接访问目录；如果目录不存在，则进行至下一步 RewriteRule ^(.*)$ /index.php/$1 [L] 如果所请求的路径不是存在的文件也不是存在的目录，则在路径前追加/index.php/ 这样，我们在访问任何 CI 的 URL 时，就不需要指定任何 php 路径了。因为 index.php 是所有 CI 程序的入口。 定义路由 对于URL Home - http://abc.om/en 当 CI 接收到一个用户请求的 URL 时，首先去路由表中查询该 URL 对应的控制器。我们首先为 Home 定义一个路由。路由文件的位置是 config/routes.php。打开路由定义，添加如下代码： $route[‘en’] = ‘en/home’; 控制器与视图入门 控制器 12345678910111213141516171819202122232425清单 1.controllelrs/en/home.php&lt;?php class Home extends CI_Controller &#123; //Home 控制器的构造函数 public function __construct() &#123; parent::__construct(); &#125; //Home 控制器的默认入口 index()方法 public function index() &#123; //加载 views 目录下的/en/header.php 视图 $this-&gt;load-&gt;view('/en/header'); //加载 views 目录下的/en/home.php 视图 $this-&gt;load-&gt;view('/en/home'); //加载 views 目录下的/en/footer.php 视图 $this-&gt;load-&gt;view('/en/footer'); &#125; &#125; 在 controllers 目录下，创建目录 en，在 en 目录下创建 home.php，这将是我们的第一个控制器。在 home.php 中添加如下代码： 视图 12345678清单 2.views/en/header.php&lt;H1&gt;ABC.com - Header&lt;/H1&gt;清单 3.views/en/home.php&lt;H2&gt;Welcome to ABC.com! - Body&lt;/H2&gt;清单 4.views/en/footer.php&lt;H3&gt;Copyright - Footer&lt;/H3&gt; 控制器如视图进阶 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051清单 5.controllers/en/home.php&lt;?php class Home extends CI_Controller &#123; //定义 Header 数据数组$headerdataprotected $headerdata = array( //定义页面标题数据 'title' =&gt; 'ABC - Home', //定义页面导航栏数据 'nav' =&gt; array( 'Home' =&gt; array( 'url' =&gt; '/en', 'active' =&gt; TRUE ), 'Solutions' =&gt; array( 'url' =&gt; '/en/solutions', 'active' =&gt; FALSE ), 'Services' =&gt; array( 'url' =&gt; '/en/services', 'active' =&gt; FALSE ), 'Products' =&gt; array( 'url' =&gt; '/en/products', 'active' =&gt; FALSE ), 'Support' =&gt; array( 'url' =&gt; '/en/support', 'active' =&gt; FALSE ) ),);//Home 控制器的构造函数public function __construct() &#123;parent::__construct();&#125;//Home 控制器的默认入口 index()方法public function index() &#123; //加载 views 目录下的/en/header.php 视图并将$headerdata 中的导航栏数据传递给 header 视图$this-&gt;load-&gt;view('/en/header', $this-&gt;headerdata); //加载 views 目录下的/en/home.php 视图$this-&gt;load-&gt;view('/en/home');//加载 views 目录下的/en/footer.php 视图$this-&gt;load-&gt;view('/en/footer');&#125;&#125; 这段代码介绍了如何将数据从控制器传入视图。 视图 12345678910111213141516171819202122232425清单 6.views/en/header.php&lt;html&gt; &lt;head&gt; &lt;title&gt;&lt;?php echo $title ?&gt;&lt;/title&gt; &lt;/head&gt;&lt;body&gt;&lt;?php //遍历$nav 数组 foreach ($nav as $name =&gt; $value) &#123; //如果当前元素为’active’状态，则显示(Active) if ($value['active']) &#123; echo "$name(Active)"; &#125; else &#123; //如果当前元素为非’active’状态，则显示该页面名称，并附有该页面的链接 echo '&lt;a href="' . $value['url'] . '"&gt;'; echo $name; echo '&lt;/a&gt;'; &#125; echo ' | '; &#125;?&gt;&lt;/body&gt; 我们在 home 控制器中将$headerdata 传递给 header 视图，header 视图就可以直接访问$headerdata 的内部数据，无需指定数组名称。我们可以在 header.php 中，直接使用$title 来访问 home.php 中的$headerdata[‘title’]；同样我们可以在 header.php 中，直接使用$nav 来访问 home.php 中的$headerdata[‘nav’]。 URI 传参及模型-控制器-视图 - 完整流程 URI 解析 根据CI 的 URI 路由特性，我们采用下面的 URL 来显示 products 的 issue001 页面 http://abc.com/en/support/products/issue001 此 URL 的定义如下 第一段 abc.com 代表域名 第二段 en 代表控制器的目录 第三段 support 代表控制器的名称 第四段 products 代表控制器的函数名 第五段 issue001 代表传递给控制器的参数 控制器 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172清单 7.controllers/en/support.php&lt;?phpclass Support extends CI_Controller &#123; //为 Support 控制器定义 Header 数据protected $headerdata = array( //定义 Support 页面标题 'title' =&gt; 'ABC - Support', //定义 Support 页面导航栏 'nav' =&gt; array( 'Home' =&gt; array( 'url' =&gt; '/en', 'active' =&gt; FALSE ), 'Solutions' =&gt; array( 'url' =&gt; '/en/solutions', 'active' =&gt; FALSE ), 'Services' =&gt; array( 'url' =&gt; '/en/services', 'active' =&gt; FALSE ), 'Products' =&gt; array( 'url' =&gt; '/en/products', 'active' =&gt; FALSE ), 'Support' =&gt; array( 'url' =&gt; '/en/support', 'active' =&gt; TRUE ) ),);//定义 Support 页面的数据元素protected $supportdata = array( 'type' =&gt; '', 'issue' =&gt; '', 'info' =&gt; '');//Home 控制器的构造函数public function __construct() &#123; //构造函数 parent::__construct(); //加载 Support 的数据模型 $this-&gt;load-&gt;model("support_model");&#125; //Support 控制器的默认入口public function index() &#123; //加载 header 视图并将 header 数据传递给视图 $this-&gt;load-&gt;view('/en/header', $this-&gt;headerdata); //加载 footer 视图 $this-&gt;load-&gt;view('/en/footer');&#125; //Support 控制器的 products 入口public function products($issue) &#123; //定义 support 的数据为 Products 类型，存入$supportdata $this-&gt;supportdata['type'] = 'Products'; //将 URL 传过来的$issue 参数存入$supportdata $this-&gt;supportdata['issue'] = $issue; //从 Support 模型中取出$issue 数据并存入$supportdata $this-&gt;supportdata['info'] = $this-&gt;support_model-&gt;get_product($issue); //加载 header 视图并将 header 数据传递给视图 $this-&gt;load-&gt;view('/en/header', $this-&gt;headerdata); //加载 support 视图并将 supportdata 数据传递给视图 $this-&gt;load-&gt;view('/en/support', $this-&gt;supportdata); //加载 footer 视图 $this-&gt;load-&gt;view('/en/footer');&#125;&#125; 模型 123456789101112131415清单 8.models/support_model.php&lt;?phpclass Support_model extends CI_Model &#123; //Support 模型的构造函数 public function __construct() &#123; parent::__construct(); &#125; //Support 模型的 get_product 方法，用于返回$issue 所代表的数据 public function get_product($issue) &#123; //返回$issue 的 support 信息 return "This is the support information for $issue"; &#125;&#125; 视图 1234567清单 9.views/en/support.php&lt;H2&gt;Support - Body&lt;/H2&gt;&lt;?phpecho "Type: $type&lt;br&gt;";echo "Issue: $issue&lt;br&gt;";echo "Information: $info&lt;br&gt;"; 参考文档 https://www.ibm.com/developerworks/cn/web/1508_lizhi_phpci/index.html]]></content>
+      <categories>
+        <category>php</category>
+      </categories>
+      <tags>
+        <tag>ci</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[PG数据库 简介]]></title>
+    <url>%2Fblog%2F2019%2F08%2F21%2FPG%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%80%E4%BB%8B%2F</url>
+    <content type="text"><![CDATA[简介 PG 数据库全称 PostgreSQL 自由的对象-关系型数据库服务器（数据库管理系统），在BSD许可证下发行。 历史 该项目最初开始于在加利福尼亚大学伯克利分校的Ingres计划。 1982年这个计划的领导者迈克尔·斯通布雷克离开加利福尼亚大学伯克利分校去推进Ingres的商业化，但最后还是返回了学术界。 1985年返回伯克利之后，斯通布雷克开始了post-Ingres计划，致力于解决在1980年代早期所出现一些数据库系统存在的问题。Postgres和Ingres的代码库开始（并保持）完全分离。 从1986年开始，该项目组发表了一些描述这一系统基本原理的论文 1988年实现并运行了一个Demo版本。 1989年六月向少数用户发行了版本1.0 1990年6月发行了带有全新规则系统的版本2.0 1991年的版本3.0再次重写了规则系统，并增加了对多个存储管理器的支持与改进的查询引擎。 1993年开始拥有大量用户，这些用户提供了大量的功能与优化建议。但是在发行了作为细节修正的版本4.0之后，Postgres计划就终止了。 1994年，两个加利福尼亚大学伯克利分校的研究生 Andrew Yu和Jolly Chen 增加了一个SQL语言解释器来替代早先的基于Ingres的QUEL系统，创建了Postgres95。 1996年被重命名为PostgreSQL以便突出该数据库全新的SQL查询语言。 2005年1月19日，PostgreSQL发行了版本8.0。 目前最新的版本已经到了11.5。 安装 PostgreSQL 客户端安装 12&gt; brew install postgresql&gt; 初始化数据库 12&gt; initdb /usr/local/var/postgres&gt; 启动服务 12&gt; pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start&gt; 参考文档 http://www.ruanyifeng.com/blog/2013/12/getting_started_with_postgresql.html https://www.jianshu.com/p/10ced5145d39 创建 创建数据库，进入控制台 12345&gt; createdb&gt; # 进入PostgreSQL 控制台&gt; psql&gt; # \l 查看数据库；\q离开控制台&gt; 创建用户 jack 12# 创建角色Jack ，密码123456CREATE USER jack WITH PASSWORD '123456'; 创建属于jack的数据库nosql 1CREATE DATABASE nosql OWNER jack; 将nosql数据库所有权限赋予jack用户 1GRANT ALL PRIVILEGES ON DATABASE nosql to jack; 给jack用户添加创建数据库的属性 1ALTER ROLE jack CREATEDB; 进入nosql 数据库 1psql -U jack -d nosql -h [host] -p [port]； 使用sql 语句创建表 12345678# 创建新表 CREATE TABLE user_tbl(name VARCHAR(20), signup_date DATE);# 插入数据 INSERT INTO user_tbl(name, signup_date) VALUES('张三', '2013-12-22');# 选择记录 SELECT * FROM user_tbl; 控制台常用命令 123456789101112\password：设置当前登录用户的密码\h：查看SQL命令的解释，比如\h select。\?：查看psql命令列表。\l：列出所有数据库。\c [database_name]：连接其他数据库。\d：列出当前数据库的所有表格。\d [table_name]：列出某一张表格的结构。\du：列出所有用户。\e：打开文本编辑器。\conninfo：列出当前数据库和连接的信息。\password [user]: 修改用户密码\q：退出]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>PG</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Redis 简介]]></title>
+    <url>%2Fblog%2F2019%2F08%2F21%2FRedis%20%E7%AE%80%E4%BB%8B%2F</url>
+    <content type="text"><![CDATA[Redis 简介 Remote DIctionary Server(Redis) 是一个由Salvatore Sanfilippo写的key-value存储系统。 Redis是一个开源的使用ANSI C语言编写、遵守BSD协议、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。 从2015年6月开始，Redis的开发由Redis Labs赞助，而2013年5月至2015年6月期间，其开发由Pivotal赞助。[3]在2013年5月之前，其开发由VMware赞助。[4][5]根据月度排行网站DB-Engines.com的数据，Redis是最流行的键值对存储数据库。 数据模型 Redis的外围由一个键、值映射的字典构成。与其他非关系型数据库主要不同在于：Redis中值的类型不仅限于字符串，还支持如下抽象数据类型： 字符串列表 无序不重复的字符串集合 有序不重复的字符串集合 键、值都为字符串的哈希表 值的类型决定了值本身支持的操作。Redis支持不同无序、有序的列表，无序、有序的集合间的交集、并集等高级服务器端原子操作。 持久化 Redis通常将全部的数据存储在内存中。2.4版本后可配置为使用虚拟内存，[9]一部分数据集存储在硬盘上，但这个特性废弃了。 当前通过两种方式实现持久化： 使用快照，一种半持久耐用模式。不时的将数据集以异步方式从内存以RDB格式写入硬盘。 RDB文件是Redis持久化的一种方式，Redis通过制定好的策略，按期将内存中的数据以镜像的形式转存到RDB文件中。 https://ningyu1.github.io/site/post/34-redis-rdb/ https://redisbook.readthedocs.io/en/latest/internal/rdb.html 1.1版本开始使用更安全的AOF格式替代，一种只能追加的日志类型。将数据集修改操作记录起来。Redis能够在后台对只可追加的记录作修改来避免无限增长的日志。 AOF 则以协议文本的方式，将所有对数据库进行过写入的命令（及其参数）记录到 AOF 文件，以此达到记录数据库状态的目的。 https://redisbook.readthedocs.io/en/latest/internal/aof.html 同步 Redis支持主从同步。数据可以从主服务器向任意数量的从服务器上同步，从服务器可以是关联其他从服务器的主服务器。这使得Redis可执行单层树复制。从盘可以有意无意的对数据进行写操作。由于完全实现了发布/订阅机制，使得从数据库在任何地方同步树时，可订阅一个频道并接收主服务器完整的消息发布记录。同步对读取操作的可扩展性和数据冗余很有帮助。 性能 当数据依赖不再需要，Redis这种基于内存的性质，与在执行一个事务时将每个变化都写入硬盘的数据库系统相比就显得执行效率非常高。[11]写与读操作速度没有明显差别。 接口介绍 http://www.runoob.com/redis/redis-data-types.html 安装 Mac 上安装redis 命令 brew install redis 验证是否安装成功 brew services start redis 启动客户端 cd /usr/local/bin/ redis-cli]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>redis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[android 获取 WIDEVINE_UUID]]></title>
+    <url>%2Fblog%2F2019%2F08%2F20%2FWIDEVINE_UUID%20%E8%8E%B7%E5%8F%96%2F</url>
+    <content type="text"><![CDATA[anroid 通过 MediaDrm 获取uuid 1、App 内唯一 2、App 之间不唯一 3、App卸载重装唯一 12345678910111213UUID WIDEVINE_UUID = new UUID(-0x121074568629b532L, -0x5c37d8232ae2de13L);MediaDrm wvDrm = null; try &#123; wvDrm = new MediaDrm(WIDEVINE_UUID); &#125; catch (UnsupportedSchemeException e) &#123; e.printStackTrace(); &#125; byte[] data = wvDrm.getPropertyByteArray(MediaDrm.PROPERTY_DEVICE_UNIQUE_ID); String ID = Base64.getEncoder().encodeToString(data).trim(); Log.i("MAIN", "UUID: "+ ID);wvDrm.close();]]></content>
+      <categories>
+        <category>android</category>
+      </categories>
+      <tags>
+        <tag>android</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[IPv6详解]]></title>
+    <url>%2Fblog%2F2019%2F08%2F13%2FIPv6%E8%AF%A6%E8%A7%A3%2F</url>
+    <content type="text"><![CDATA[#####]]></content>
+      <categories>
+        <category>android</category>
+      </categories>
+      <tags>
+        <tag>android</tag>
+        <tag>IPv6</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Android Q 非SDK检查]]></title>
     <url>%2Fblog%2F2019%2F08%2F06%2FAndroid%20Q%20%E9%9D%9ESDK%20%E6%A3%80%E6%9F%A5%2F</url>
     <content type="text"><![CDATA[SDK 限制等级 greylist 本系统标记为不支持调用。但是无限制，可以正常使用 Blacklist 无论targetVersion如何，使用这些api，系统将会抛出错误 greylist-max-o 受限制的灰名单。targetVersion &lt;= 27 可以正常访问 greylist-max-p 受限制的灰名单。targetVersion &lt;= 28 可以正常访问 检查工具 工具地址 下载下来，将veridex-mac.zip解压出来进行下面操作进行check检查。 Mac 平台 运行如下命令： 1./appcompat.sh --dex-file=test.apk]]></content>
@@ -88,11 +155,6 @@
     <content type="text"></content>
   </entry>
   <entry>
-    <title></title>
-    <url>%2Fblog%2F2019%2F07%2F29%2FAndroid%20Hook%20startActivity%2F</url>
-    <content type="text"><![CDATA[https://www.jianshu.com/p/eb4121b037e2 hook onRequestPermissionsResult]]></content>
-  </entry>
-  <entry>
     <title><![CDATA[Jar加固]]></title>
     <url>%2Fblog%2F2019%2F07%2F25%2FJar%E5%8A%A0%E5%9B%BA%2F</url>
     <content type="text"><![CDATA[#####]]></content>
@@ -117,16 +179,15 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Espresso自动化测试]]></title>
-    <url>%2Fblog%2F2019%2F07%2F24%2FEspresso%20%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%2F</url>
-    <content type="text"><![CDATA[####]]></content>
+    <title><![CDATA[Android SDK 自动化测试]]></title>
+    <url>%2Fblog%2F2019%2F07%2F24%2FAndroid%20SDK%20%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%2F</url>
+    <content type="text"><![CDATA[名词解释 JUnit - JUnit 是一个 Java 编程语言的单元测试框架。文档 JUnit 3 - JUnit 3 是JUnit的3.x版本 在JUnit3中，如果某个类是测试类，必须将其继承类TestCase；如果某个方法是测试方法，必须让这个方法以testXX开头；如果希望指定某个测试方法运行之前运行某个初始化方法，这个方法的名称必须是setUp；如果希望在某个测试方法运行之后运行某个释放资源的方法，这个方法的名称必须是tearDown JUnit 4 - 是JUnit的 4.x版本 JUnit 4是与JUnit3完全不同的API，它基于Java 5.0中的注解、静态导入等构建而成。JUnit 4更简单、更丰富、更易于使用，并引入了更为灵活的初始化和清理工作，还有限时的和参数化测试用例。 在junit4中，一个POJO类就是一个测试类； 1、测试方法通过@Test来标识； 2、初始化方法通过@Before来标识； 3、释放资源的方法通过@After来标识； 4、为了让junit4的测试类在junit3中也可以使用，习惯于把初始化方法命名为setUp，释放资源的方法命名为tearDown。 5、Test中的测试方法一般以Test来开始。其中标识为Before注解的方法，每次运行测试类，都会执行标识为@After与@Before的方法。 Instrumentation - Instrumentation是Android Java API层的一个类. 通过阅读源码可以发现，平时我们在用Application、Activity的时候，实际上Application的创建、Activity的实例化、生命周期里onCreate等方法的调用，都是通过Instrumentation实现的。不仅如此，通过Instrumentation还可以向APP发送用户点击、按钮事件等。获取到了权限足够的Instrumentation，几乎就可以完全控制APP甚至手机了。 AndroidJUnit4 - 继承于Runner抽象类，不负责具体实现。采用了委托模式，由继承于Runner的另一内部对象 AndroidJUnit4ClassRunner 负责具体实现。采用了JUnit4实现。 12345678@RunWith(AndroidJUnit4.class)public class ExampleInstrumentedTest &#123; // @Rule // public ActivityTestRule activityTestRule = new ActivityTestRule(MainActivity.class); @Test public void useAppContext() &#123; &#125;&#125; AndroidJUnitRunner - 用于build.gradle配置文件 123456android &#123; defaultConfig &#123; // ... testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner" &#125;&#125; Instrumentation Test Runner - 可以支持 JUnit Test测试和Instrmentation Unit Tests测试。均只支持JUnit3 Android JUnit Test Runner - 支持JUnit4，对Instumentation Test Runner 的替代。 Local Unit Tests - 基于JVM的，只支持JUnit测试，其测试代码直接在电脑上的JVM中运行。测试类应该放在src/test/java目录下。只能测试纯java代码。 Robolectric 使用教程 ：https://blog.csdn.net/shensky711/article/details/53561172 Robolectric 给 Unit Tests 提供 android框架支持。 Mock 模仿android 依赖, https://www.jianshu.com/p/00ab03f3d394 Instrmentation Unit Tests - 测试类放在src/androidTest/java目录。可以在模拟器、真机上测试，支持和android 框架相关的代码部分测试。 参考文章： http://www.paincker.com/android-test-1 https://developer.android.com/training/testing/?hl=zh-cn 测试Demo Android JUnit Demo 创建。 优点是：直接在JVM上运行，速度快。 1234567891011// 创建Java 类，不涉及android框架相关。public class Cal &#123; public int add(int a, int b) &#123; return a + b; &#125; public int multiply(int a, int b) &#123; return a * b; &#125;&#125;// 自动创建测试样例：在这个类中，右键-&gt; Go to -&gt; Test -&gt; Create New Test -&gt; 选择 src/test/java 目录保存 // 手动创建测试样例：http://www.paincker.com/android-test-2 12345678910111213141516171819202122232425// 右键运行 Run CalTestpublic class CalTest &#123; private Cal mCal; @Before public void setUp() throws Exception &#123; mCal = new Cal(); &#125; @After public void tearDown() throws Exception &#123; mCal = null; &#125; @Test public void add() &#123; assertEquals(mCal.add(2, 3), 5); &#125; @Test public void multiply() &#123; assertEquals(mCal.multiply(2, 3), 6); &#125;&#125; Android Instrumented Tests Demo 创建 优点是：运行在模拟器或者真机上，贴合场景。 对于同一个Java类，可以生成两个测试用例一个Android JUnit， 一个Android Instrumented； 生成方式类似，用例保存地址不同。]]></content>
       <categories>
         <category>android</category>
       </categories>
       <tags>
         <tag>android</tag>
         <tag>Test</tag>
-        <tag>Espresso</tag>
       </tags>
   </entry>
   <entry>
