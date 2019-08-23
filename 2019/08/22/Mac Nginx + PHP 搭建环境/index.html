@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="android,AOSP,">
+  <meta name="keywords" content="php,nginx,">
 
 
 
@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="准备工作： Mac Pro 10.14版本，16G内存，256G SSD；  外接移动硬盘1T，使用自带的磁盘工具分区；A区不分大小写，用于时间机器备份电脑；B区(Mac OS扩展，区分大小写)用于AOSP项目。  参考官网配置环境  去清华镜像下载AOSP初始包；使用curl -C - -O 命令，迅雷需要会员不然下载不了。文件47.8GB，需要使用支持断点续传的工具下载。  官网下载文档  下">
-<meta name="keywords" content="android,AOSP">
+<meta name="description" content="安装Nginx  1brew install nginx  12345678910#测试nginx配置是否有语法错误nginx -t#打开 nginxsudo nginx#重新加载配置|重启|停止|退出 nginxnginx -s reload|reopen|stop|quit#也可以使用Mac的launchctl来启动|停止 nginxlaunchctl unload ~/Library/La">
+<meta name="keywords" content="php,nginx">
 <meta property="og:type" content="article">
-<meta property="og:title" content="AOSP 编译文档">
-<meta property="og:url" content="https://zubao.github.io/blog/2019/07/19/AOSP文档/index.html">
+<meta property="og:title" content="Mac Nginx + PHP 环境搭建">
+<meta property="og:url" content="https://zubao.github.io/blog/2019/08/22/Mac Nginx + PHP 搭建环境/index.html">
 <meta property="og:site_name" content="闲敲棋子落灯花">
-<meta property="og:description" content="准备工作： Mac Pro 10.14版本，16G内存，256G SSD；  外接移动硬盘1T，使用自带的磁盘工具分区；A区不分大小写，用于时间机器备份电脑；B区(Mac OS扩展，区分大小写)用于AOSP项目。  参考官网配置环境  去清华镜像下载AOSP初始包；使用curl -C - -O 命令，迅雷需要会员不然下载不了。文件47.8GB，需要使用支持断点续传的工具下载。  官网下载文档  下">
+<meta property="og:description" content="安装Nginx  1brew install nginx  12345678910#测试nginx配置是否有语法错误nginx -t#打开 nginxsudo nginx#重新加载配置|重启|停止|退出 nginxnginx -s reload|reopen|stop|quit#也可以使用Mac的launchctl来启动|停止 nginxlaunchctl unload ~/Library/La">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-05T06:51:41.152Z">
+<meta property="og:updated_time" content="2019-08-23T03:23:24.501Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="AOSP 编译文档">
-<meta name="twitter:description" content="准备工作： Mac Pro 10.14版本，16G内存，256G SSD；  外接移动硬盘1T，使用自带的磁盘工具分区；A区不分大小写，用于时间机器备份电脑；B区(Mac OS扩展，区分大小写)用于AOSP项目。  参考官网配置环境  去清华镜像下载AOSP初始包；使用curl -C - -O 命令，迅雷需要会员不然下载不了。文件47.8GB，需要使用支持断点续传的工具下载。  官网下载文档  下">
+<meta name="twitter:title" content="Mac Nginx + PHP 环境搭建">
+<meta name="twitter:description" content="安装Nginx  1brew install nginx  12345678910#测试nginx配置是否有语法错误nginx -t#打开 nginxsudo nginx#重新加载配置|重启|停止|退出 nginxnginx -s reload|reopen|stop|quit#也可以使用Mac的launchctl来启动|停止 nginxlaunchctl unload ~/Library/La">
 
 
 
@@ -122,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="https://zubao.github.io/blog/2019/07/19/AOSP文档/">
+  <link rel="canonical" href="https://zubao.github.io/blog/2019/08/22/Mac Nginx + PHP 搭建环境/">
 
 
 
 
 
-  <title>AOSP 编译文档 | 闲敲棋子落灯花</title>
+  <title>Mac Nginx + PHP 环境搭建 | 闲敲棋子落灯花</title>
   
 
 
@@ -297,7 +297,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/07/19/AOSP文档/">
+    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/08/22/Mac Nginx + PHP 搭建环境/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lpl">
@@ -314,7 +314,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">AOSP 编译文档</h1>
+          <h1 class="post-title" itemprop="name headline">Mac Nginx + PHP 环境搭建</h1>
         
 
         <div class="post-meta">
@@ -326,8 +326,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-19T11:32:45+08:00">
-                2019-07-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-22T17:52:53+08:00">
+                2019-08-22
               </time>
             
 
@@ -349,8 +349,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
+                  <a href="/blog/categories/php/" itemprop="url" rel="index">
+                    <span itemprop="name">php</span>
                   </a>
                 </span>
 
@@ -386,119 +386,43 @@
       
 
       
-        <h5 id="准备工作："><a href="#准备工作：" class="headerlink" title="准备工作："></a>准备工作：</h5><ul>
-<li><p>Mac Pro 10.14版本，16G内存，256G SSD；</p>
+        <ul>
+<li><p>安装Nginx</p>
 </li>
-<li><p>外接移动硬盘1T，使用自带的磁盘工具分区；A区不分大小写，用于时间机器备份电脑；B区(Mac OS扩展，区分大小写)用于AOSP项目。</p>
+<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install nginx</span><br></pre></td></tr></table></figure>
 </li>
-<li><p><a href="https://source.android.com/setup/build/initializing" target="_blank" rel="noopener">参考官网配置环境</a></p>
+<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>测试nginx配置是否有语法错误</span><br><span class="line">nginx -t</span><br><span class="line"><span class="meta">#</span>打开 nginx</span><br><span class="line">sudo nginx</span><br><span class="line"><span class="meta">#</span>重新加载配置|重启|停止|退出 nginx</span><br><span class="line">nginx -s reload|reopen|stop|quit</span><br><span class="line"><span class="meta">#</span>也可以使用Mac的launchctl来启动|停止 nginx</span><br><span class="line">launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.nginx.plist</span><br><span class="line">launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.nginx.plist</span><br><span class="line"><span class="meta">#</span> 浏览器打开 http://127.0.0.1:8080/ 验证ng是否正常启动</span><br></pre></td></tr></table></figure>
 </li>
-<li><p><a href="https://mirror.tuna.tsinghua.edu.cn/help/AOSP/" target="_blank" rel="noopener">去清华镜像下载AOSP初始包</a>；使用curl -C - -O 命令，迅雷需要会员不然下载不了。文件47.8GB，需要使用支持断点续传的工具下载。</p>
+<li><p>配置NG</p>
+<blockquote>
+<h5 id="配置nginx-让它监听php-fpm的进程，这样当用户打开浏览器访问的时候，身为反向代理的nignx就能把东西让php去执行了。"><a href="#配置nginx-让它监听php-fpm的进程，这样当用户打开浏览器访问的时候，身为反向代理的nignx就能把东西让php去执行了。" class="headerlink" title="配置nginx,让它监听php-fpm的进程，这样当用户打开浏览器访问的时候，身为反向代理的nignx就能把东西让php去执行了。"></a>配置nginx,让它监听php-fpm的进程，这样当用户打开浏览器访问的时候，身为反向代理的nignx就能把东西让php去执行了。</h5><p>我们要配置nginx.conf文件，创建一个php-fpm文件（监听php-fpm）, 还要约定下将nginx.pid文件，log日志，以及以后我们要配置的站点.conf的路径，我们的路径约定还是按照brew默认的目录来设置,如下：</p>
+</blockquote>
 </li>
-<li><p><a href="https://source.android.com/setup/build/downloading" target="_blank" rel="noopener">官网下载文档</a></p>
-</li>
-<li><p><a href="[https://mirrors.tuna.tsinghua.edu.cn/aosp-monthly](https://link.jianshu.com/?t=https://mirrors.tuna.tsinghua.edu.cn/aosp-monthly)">下载md5文件</a></p>
-</li>
-<li><p>验证aosp-latest.tar文件的md5值，判断是否下载完整。</p>
-</li>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install md5sha1sum</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>验证md5</p>
-</li>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">md5sum aosp-latest.tar</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>将初始包下载到移动硬盘分区中，并解压：</p>
-</li>
-<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar xf aosp-latest.tar</span><br></pre></td></tr></table></figure>
-
-<p>运行命令同步项目：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">repo sync</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>如果命令repo没有，参考<a href="https://mirror.tuna.tsinghua.edu.cn/help/AOSP/" target="_blank" rel="noopener">清华文档</a> 下载配置。</p>
-</li>
-<li><p>查看远程分支，切换分支：</p>
-</li>
-<li><p>查看可切换的分支 ，切换分支，并同步代码：</p>
-</li>
-<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cd .repo/manifests </span><br><span class="line">git branch -a </span><br><span class="line">切换到9.0分支</span><br><span class="line">repo init -b  android-9.0.0_r34</span><br><span class="line">同步代码</span><br><span class="line">repo sync</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ul>
-<ul>
-<li><p>（可选）切换命令行运行的shell版本</p>
-</li>
-<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ps -p $$ // 查看当前运行的shell版本</span><br><span class="line">chsh -s /bin/bash // 切换到b shell</span><br><span class="line">chsh -s /bin/zsh // 切换到 z shell</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>初始化环境, 必须在bash环境运行。</p>
-</li>
-<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd aosp</span><br><span class="line">source build/envsetup.sh</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>(可选)查看cpu内核数，用于编译时选择线程数。我的是4核</p>
-</li>
-<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysctl -n machdep.cpu.core_count</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>通过lunch 命令选择要编译的源码架构, 需要输入对应的序号。ps：lunch可能会花几分钟。</p>
-</li>
-<li><p>编译源码，x=cpu核心数*2+2。如果没有lunch，默认编译第一个。</p>
-</li>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make -jx</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>清理编译产生的文件</p>
-</li>
-<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make clobber</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><a href="https://blog.csdn.net/nwpushuai/article/details/79255993" target="_blank" rel="noopener">AOSP目录详解</a> 解释每个目录、子目录的用途，编译宏观上理解android。</p>
-</li>
-<li><p><a href="https://source.android.com/setup/build/running#selecting-device-build" target="_blank" rel="noopener">刷机文档</a></p>
-</li>
-<li><p>错误a</p>
-</li>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">internal error: could not open symlink hardware/qcom/sdm710/Android.bp</span><br></pre></td></tr></table></figure>
-
-<p>方法1：删除sdm710目录；(采用，验证可以通过这个错误)</p>
-<p>方法2：重新解压，重新同步不同的分支。</p>
-<p>网上说法是，遗漏了某些文件，或者是上一个分支的问题没有移除；<a href="https://groups.google.com/forum/?nomobile=true#!topic/android-building/k5RKBPNGMrg" target="_blank" rel="noopener">参考</a></p>
-</li>
-<li><p>错误b</p>
-</li>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">internal error: Could not find a supported mac sdk: [&quot;10.10&quot; &quot;10.11&quot; &quot;10.12&quot; &quot;10.13&quot;]</span><br></pre></td></tr></table></figure>
-
-<p>解决方法：<a href="https://www.cnblogs.com/larack/p/9646860.html" target="_blank" rel="noopener">参考</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">vim build/soong/cc/config/x86_darwin_host.go</span><br><span class="line">darwinSupportedSdkVersions = []string&#123;</span><br><span class="line">      &quot;10.10&quot;,</span><br><span class="line">      &quot;10.11&quot;,</span><br><span class="line">      &quot;10.12&quot;,</span><br><span class="line">      &quot;10.13&quot;,</span><br><span class="line">      &quot;10.14&quot;,</span><br><span class="line">&#125;</span><br><span class="line">因为我的系统版本，xcode版本是10.14，这里也添加 10.14</span><br></pre></td></tr></table></figure>
-
-<p>添加10.14后，可能报<a href="https://groups.google.com/forum/#!topic/android-building/f4_tNSapWsA" target="_blank" rel="noopener">错误</a> ，解决方法是<a href="https://github.com/phracker/MacOSX-SDKs" target="_blank" rel="noopener">下载MacOSX10.13.SDK</a> 放到 目录：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs</span><br></pre></td></tr></table></figure>
-
-<p>这里要注意的是10.13SDK网上有些版本是有bug的，部分文件的符号引用在文件夹移动之后失效。上面下载地址中github上修正了这个bug。</p>
-</li>
-<li><p>编译成功提示</p>
-</li>
-<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>### build completed successfully (05:58:17 (hh:mm:ss)) ####</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>运行emulator 运行模拟器。</p>
-</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">emulator -partition-size 3000</span><br></pre></td></tr></table></figure>
+<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> nginx.conf,已经被创建好了，我们一会要更改下</span><br><span class="line">/usr/local/etc/nginx/nginx.conf</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> php-fpm,这个我们就放在和nginx.conf一样的路径下吧，这个要我们自己创建</span><br><span class="line">/usr/local/etc/nginx/php-fpm</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 日志文件放在/usr/local/var/log/nginx中，默认已经有了access.log和error.log文件了</span><br><span class="line">/usr/local/var/log/nginx/</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> nginx.pid文件,放在/usr/local/var/run/下面，和php-fpm.pid放一堆</span><br><span class="line">/usr/local/var/run/</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 以后要配置的站点.conf, 我们就放在/usr/local/etc/nginx/servers/下面，这个servers文件夹本身就存在的</span><br><span class="line">/usr/local/etc/nginx/servers/</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 站点的根目录,也就用brew给我们设置的吧</span><br><span class="line">/usr/local/var/www/</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li><p>运行模拟器报错</p>
+<li><p>配置 vim /usr/local/etc/nginx/nginx.conf </p>
 </li>
-<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">emulator: command not found</span><br></pre></td></tr></table></figure>
-
-<p>原因是 直接使用make编译的项目。</p>
-<p>解决方法：</p>
-<p>使用lunch 选择 aosp_x86_64-eng 重新编译，就可以正常启动模拟器。<a href="https://github.com/TADSG/aosp-study/tree/master/ch3_build" target="_blank" rel="noopener">参见</a> </p>
+<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">worker_processes  1;</span><br><span class="line"></span><br><span class="line">error_log   /usr/local/var/log/nginx/error.log debug;</span><br><span class="line"><span class="meta">#</span> 指定pid</span><br><span class="line">pid        /usr/local/var/run/nginx.pid;</span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    worker_connections  256;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    include       mime.types;</span><br><span class="line">    default_type  application/octet-stream;</span><br><span class="line"><span class="meta">		#</span> 这个必须在前面</span><br><span class="line">    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '</span><br><span class="line">                      '$status $body_bytes_sent "$http_referer" '</span><br><span class="line">                      '"$http_user_agent" "$http_x_forwarded_for"';</span><br><span class="line"><span class="meta">		#</span> main 指的是上面的 main</span><br><span class="line">    access_log  /usr/local/var/log/nginx/access.log  main;</span><br><span class="line"></span><br><span class="line">    sendfile        on;</span><br><span class="line">    keepalive_timeout  65;</span><br><span class="line">    port_in_redirect off;</span><br><span class="line"></span><br><span class="line">    include /usr/local/etc/nginx/servers/*;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>使用IntelliJ 阅读源码</p>
+<li><p>配置php-fpm 需要自己创建 vim /usr/local/etc/nginx/php-fpm</p>
+</li>
+<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">location ~ \.php$ &#123;</span><br><span class="line">       try_files                   $uri = 404;</span><br><span class="line">       # 端口号默认是9000，如果被占用可以修改</span><br><span class="line">       fastcgi_pass                127.0.0.1:9000;</span><br><span class="line">       fastcgi_index               index.php;</span><br><span class="line">       fastcgi_intercept_errors    on;</span><br><span class="line">       include /usr/local/etc/nginx/fastcgi.conf;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新建配置php站点服务自己的配置文件 vim /usr/local/etc/nginx/services/php-demo.conf</p>
+</li>
+<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    server_name  www.xxx.com;</span><br><span class="line">    # 指定php工程地址</span><br><span class="line">    root         /usr/local/var/www/demo;</span><br><span class="line">    access_log  /usr/local/var/log/nginx/default.access.log  main;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        try_files $uri $uri/ /index.php?$query_string;</span><br><span class="line">        index  index.html index.htm index.php;</span><br><span class="line">        autoindex   on;</span><br><span class="line">        include     /usr/local/etc/nginx/php-fpm;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="meta"> #</span> pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000</span><br><span class="line">        location ~ \.php$ &#123;</span><br><span class="line">            try_files $uri = 404;</span><br><span class="line">						# 端口号，被占用可以修改</span><br><span class="line">						fastcgi_pass   127.0.0.1:9000;</span><br><span class="line">            fastcgi_index  index.php;</span><br><span class="line">            fastcgi_param  SCRIPT_FILENAME $document_root$fastcgi_script_name;</span><br><span class="line">            include        fastcgi_params;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    error_page  404     /404.html;</span><br><span class="line">    error_page  403     /403.html;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重启nginx</p>
+</li>
+<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx -s reload</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>参考文章</p>
 <blockquote>
-<p>1、使用命令，生成android.ipr, android.iml文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; make idegen &amp;&amp; development/tools/idegen/idegen.sh</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+<p><a href="https://cloud.tencent.com/developer/article/1335520" target="_blank" rel="noopener">https://cloud.tencent.com/developer/article/1335520</a></p>
 </blockquote>
-<blockquote>
-<p>2、修改IntelliJ 配置，扩大虚拟机使用内存，文件大小写敏感。方法：打开IntelliJ包内容，bin目录下找到 <code>idea.vmoptions</code> 和 <code>idea.properties</code> 这两个文件。具体参考：<a href="https://www.jianshu.com/p/1d1b8d0de1ed" target="_blank" rel="noopener">https://www.jianshu.com/p/1d1b8d0de1ed</a></p>
-</blockquote>
+</li>
+</ul>
 </li>
 </ul>
 
@@ -518,9 +442,9 @@
       
         <div class="post-tags">
           
-            <a href="/blog/tags/android/" rel="tag"># android</a>
+            <a href="/blog/tags/php/" rel="tag"># php</a>
           
-            <a href="/blog/tags/AOSP/" rel="tag"># AOSP</a>
+            <a href="/blog/tags/nginx/" rel="tag"># nginx</a>
           
         </div>
       
@@ -533,8 +457,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/blog/2019/07/15/Java 虚拟机阅读/" rel="next" title="Java虚拟机阅读">
-                <i class="fa fa-chevron-left"></i> Java虚拟机阅读
+              <a href="/blog/2019/08/22/Mac PHP 启动/" rel="next" title="Mac 自带PHP 启动">
+                <i class="fa fa-chevron-left"></i> Mac 自带PHP 启动
               </a>
             
           </div>
@@ -543,8 +467,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/blog/2019/07/19/Hexo + github 搭建静态博客/" rel="prev" title="Hexo + github 搭建静态博客">
-                Hexo + github 搭建静态博客 <i class="fa fa-chevron-right"></i>
+              <a href="/blog/2019/08/23/国内手机大厂官方文档地址/" rel="prev" title="手机大厂官方文档地址">
+                手机大厂官方文档地址 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -702,7 +626,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#准备工作："><span class="nav-number">1.</span> <span class="nav-text">准备工作：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#配置nginx-让它监听php-fpm的进程，这样当用户打开浏览器访问的时候，身为反向代理的nignx就能把东西让php去执行了。"><span class="nav-number">1.</span> <span class="nav-text">配置nginx,让它监听php-fpm的进程，这样当用户打开浏览器访问的时候，身为反向代理的nignx就能把东西让php去执行了。</span></a></li></ol></div>
             
 
           </div>

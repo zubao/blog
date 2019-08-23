@@ -6,7 +6,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://zubao.github.io/blog/"/>
-  <updated>2019-08-22T09:20:14.893Z</updated>
+  <updated>2019-08-23T07:59:05.771Z</updated>
   <id>https://zubao.github.io/blog/</id>
   
   <author>
@@ -17,11 +17,65 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>手机大厂官方文档地址</title>
+    <link href="https://zubao.github.io/blog/2019/08/23/%E5%9B%BD%E5%86%85%E6%89%8B%E6%9C%BA%E5%A4%A7%E5%8E%82%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3%E5%9C%B0%E5%9D%80/"/>
+    <id>https://zubao.github.io/blog/2019/08/23/国内手机大厂官方文档地址/</id>
+    <published>2019-08-23T07:56:27.427Z</published>
+    <updated>2019-08-23T07:59:05.771Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li&gt;&lt;p&gt;华为&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://developer.huawei.com/consumer/cn/devservice/doc/50127&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;ht
+      
+    
+    </summary>
+    
+      <category term="android" scheme="https://zubao.github.io/blog/categories/android/"/>
+    
+    
+      <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mac Nginx + PHP 环境搭建</title>
+    <link href="https://zubao.github.io/blog/2019/08/22/Mac%20Nginx%20+%20PHP%20%E6%90%AD%E5%BB%BA%E7%8E%AF%E5%A2%83/"/>
+    <id>https://zubao.github.io/blog/2019/08/22/Mac Nginx + PHP 搭建环境/</id>
+    <published>2019-08-22T09:52:53.796Z</published>
+    <updated>2019-08-23T03:23:24.501Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li&gt;&lt;p&gt;安装Nginx&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/
+      
+    
+    </summary>
+    
+      <category term="php" scheme="https://zubao.github.io/blog/categories/php/"/>
+    
+    
+      <category term="php" scheme="https://zubao.github.io/blog/tags/php/"/>
+    
+      <category term="nginx" scheme="https://zubao.github.io/blog/tags/nginx/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Mac 自带PHP 启动</title>
     <link href="https://zubao.github.io/blog/2019/08/22/Mac%20PHP%20%E5%90%AF%E5%8A%A8/"/>
     <id>https://zubao.github.io/blog/2019/08/22/Mac PHP 启动/</id>
     <published>2019-08-22T09:05:07.555Z</published>
-    <updated>2019-08-22T09:20:14.893Z</updated>
+    <updated>2019-08-23T02:59:31.527Z</updated>
     
     <summary type="html">
     
@@ -71,7 +125,7 @@
     <link href="https://zubao.github.io/blog/2019/08/22/CI%E6%9E%B6%E6%9E%84/"/>
     <id>https://zubao.github.io/blog/2019/08/22/CI架构/</id>
     <published>2019-08-22T01:15:47.364Z</published>
-    <updated>2019-08-22T03:30:14.010Z</updated>
+    <updated>2019-08-22T09:32:22.424Z</updated>
     
     <summary type="html">
     
@@ -460,61 +514,6 @@
       <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
     
       <category term="Test" scheme="https://zubao.github.io/blog/tags/Test/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>android自动化测试</title>
-    <link href="https://zubao.github.io/blog/2019/07/24/Android%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/"/>
-    <id>https://zubao.github.io/blog/2019/07/24/Android自动化测试/</id>
-    <published>2019-07-24T06:02:44.342Z</published>
-    <updated>2019-07-24T07:09:53.766Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h4 id=&quot;android-自动化测试工具介绍：&quot;&gt;&lt;a href=&quot;#android-自动化测试工具介绍：&quot; class=&quot;headerlink&quot; title=&quot;android 自动化测试工具介绍：&quot;&gt;&lt;/a&gt;android 自动化测试工具介绍：&lt;/h4&gt;&lt;h5 id=&quot;M
-      
-    
-    </summary>
-    
-      <category term="android" scheme="https://zubao.github.io/blog/categories/android/"/>
-    
-    
-      <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
-    
-      <category term="Test" scheme="https://zubao.github.io/blog/tags/Test/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java 注解</title>
-    <link href="https://zubao.github.io/blog/2019/07/22/Java%20%E6%B3%A8%E8%A7%A3/"/>
-    <id>https://zubao.github.io/blog/2019/07/22/Java 注解/</id>
-    <published>2019-07-22T05:43:25.244Z</published>
-    <updated>2019-07-24T02:33:36.416Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h5 id=&quot;Java-注解&quot;&gt;&lt;a href=&quot;#Java-注解&quot; class=&quot;headerlink&quot; title=&quot;Java 注解&quot;&gt;&lt;/a&gt;Java 注解&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Java 注解定义：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Java 注解又称标
-      
-    
-    </summary>
-    
-      <category term="java" scheme="https://zubao.github.io/blog/categories/java/"/>
-    
-    
-      <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
-    
-      <category term="java" scheme="https://zubao.github.io/blog/tags/java/"/>
-    
-      <category term="annotation" scheme="https://zubao.github.io/blog/tags/annotation/"/>
     
   </entry>
   
