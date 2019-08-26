@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="闲敲棋子落灯花">
 <meta property="og:description" content="Mac 自带 php-fpm，在终端执行 php-fpm，会报如下错误：  123ERROR: failed to open configuration file &apos;/private/etc/php-fpm.conf&apos;: No such file or directory (2)ERROR: failed to load configuration file &apos;/private/etc/php-">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-23T02:59:31.527Z">
+<meta property="og:updated_time" content="2019-08-26T02:31:39.624Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mac 自带PHP 启动">
 <meta name="twitter:description" content="Mac 自带 php-fpm，在终端执行 php-fpm，会报如下错误：  123ERROR: failed to open configuration file &apos;/private/etc/php-fpm.conf&apos;: No such file or directory (2)ERROR: failed to load configuration file &apos;/private/etc/php-">
@@ -435,7 +435,7 @@
 </li>
 </ul>
 <h5 id="PHP-FPM-重启方法"><a href="#PHP-FPM-重启方法" class="headerlink" title="PHP-FPM 重启方法"></a>PHP-FPM 重启方法</h5><ul>
-<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 启动</span><br><span class="line">sudo php-fpm</span><br><span class="line"><span class="meta">#</span> 终止 php-fpm.pid 需要在 php-fpm.conf中配置</span><br><span class="line">sudo -INT 'cat /usr/local/var/run/php-fpm.pid'</span><br><span class="line"><span class="meta">#</span> 重启</span><br><span class="line">sudo -USR2 'cat /usr/local/var/run/php-fpm.pid'</span><br><span class="line"><span class="meta">#</span> 平滑终止</span><br><span class="line">sudo -QUIT 'cat /usr/local/var/run/php-fpm.pid'</span><br><span class="line"><span class="meta">#</span> 如果没有php-fpm.pid 文件</span><br><span class="line">ps aux | grep php</span><br><span class="line">sudo kill -INT|USR2 pid</span><br></pre></td></tr></table></figure>
+<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 启动</span><br><span class="line">sudo php-fpm</span><br><span class="line"><span class="meta">#</span> 终止 php-fpm.pid 需要在 php-fpm.conf中配置</span><br><span class="line">sudo kill -INT 'cat /usr/local/var/run/php-fpm.pid'</span><br><span class="line"><span class="meta">#</span> 重启</span><br><span class="line">sudo kill -USR2 'cat /usr/local/var/run/php-fpm.pid'</span><br><span class="line"><span class="meta">#</span> 平滑终止</span><br><span class="line">sudo kill -QUIT 'cat /usr/local/var/run/php-fpm.pid'</span><br><span class="line"><span class="meta">#</span> 如果没有php-fpm.pid 文件</span><br><span class="line">ps aux | grep php</span><br><span class="line">sudo kill -INT|USR2 pid</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>参考文章</p>
 <blockquote>
@@ -565,7 +565,7 @@
               
                 <a href="/blog/archives/">
               
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

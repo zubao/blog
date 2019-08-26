@@ -293,6 +293,182 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/08/26/Mac PHP + Redis/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lpl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/blog/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="闲敲棋子落灯花">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2019/08/26/Mac PHP + Redis/" itemprop="url">Mac PHP + Redis</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-26T10:31:05+08:00">
+                2019-08-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/PHP/" itemprop="url" rel="index">
+                    <span itemprop="name">PHP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li><p>首先需要安装Redis、PHP、PHP-FPM、nginx</p>
+</li>
+<li><p>PHP需要安装Redis的扩展</p>
+</li>
+<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> https://github.com/phpredis/phpredis/releases 下载最新的 phpredis</span><br><span class="line"><span class="meta">#</span> 将下载安装包解压到 /usr/local </span><br><span class="line"><span class="meta">#</span> 将目录名称重命名为 phpredis</span><br><span class="line">cd phpredis</span><br><span class="line">sudo phpize              # php安装后的路径</span><br><span class="line">sudo ./configure --with-php-config=/usr/local/php/bin/php-config</span><br><span class="line">sudo make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行 sudo phpsize 的时候会报错</p>
+</li>
+<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">grep: /usr/include/php/main/php.h: No such file or directory</span><br><span class="line">grep: /usr/include/php/Zend/zend_modules.h: No such file or directory</span><br><span class="line">grep: /usr/include/php/Zend/zend_extensions.h: No such file or directory</span><br><span class="line">Configuring for:</span><br><span class="line">PHP Api Version:        </span><br><span class="line">Zend Module Api No:     </span><br><span class="line">Zend Extension Api No:  </span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 解决方法是：</span><br><span class="line">sudo ln -s</span><br><span class="line">/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/usr/include/ /usr/include</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改php.ini文件，启用phpredis扩展</p>
+</li>
+<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 初次安装可能没有php.ini,需要自己copy一份</span><br><span class="line">sudo cp php.ini.default php.ini</span><br><span class="line"><span class="meta">#</span> 打开 php.ini 添加扩展</span><br><span class="line">sudo vim php.ini</span><br><span class="line">extension_dir = "/usr/lib/php/extensions/no-debug-non-zts-20160303"</span><br><span class="line">extension=redis.so</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重启Nginx PHP-FPM</p>
+</li>
+<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx -s reload</span><br><span class="line"><span class="meta">#</span>  /usr/local/var/run/php-fmp.pid 文件中有对应的PID</span><br><span class="line">sudo kill -USR2 php-fpm.pid</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Redis Demo 编写</p>
+</li>
+<li><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$redis 		= <span class="keyword">new</span> Redis();</span><br><span class="line"><span class="comment">// ps aux | grep redis    默认端口是6379 可以退通过命令查询到</span></span><br><span class="line">$redis-&gt;connect(<span class="string">"127.0.0.1"</span>, <span class="string">"6379"</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"&lt;h5&gt;"</span>.($redis-&gt;get(<span class="string">"foo"</span>)).<span class="string">"&lt;/h5&gt;"</span>;</span><br><span class="line"></span><br><span class="line">$redis-&gt;set(<span class="string">"date"</span>, date(<span class="string">'Y-m-d H:i:s'</span>));</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"&lt;h5&gt;"</span>.($redis-&gt;get(<span class="string">"date"</span>)).<span class="string">"&lt;/h5&gt;"</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<ul>
+<li><p>参考文章</p>
+<blockquote>
+<p><a href="http://www.runoob.com/redis/redis-php.html" target="_blank" rel="noopener">http://www.runoob.com/redis/redis-php.html</a></p>
+<p><a href="https://segmentfault.com/q/1010000003882420" target="_blank" rel="noopener">https://segmentfault.com/q/1010000003882420</a></p>
+</blockquote>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/08/23/国内手机大厂官方文档地址/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -580,12 +756,25 @@
 </li>
 <li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx -s reload</span><br></pre></td></tr></table></figure>
 </li>
+<li><p>安装Postgre 数据库</p>
+</li>
+<li><p>下载CI框架</p>
+</li>
+<li><p>第一个nginx + PHP + PostgreSQL demo</p>
+</li>
+<li><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建数据库的部分自己手动在命令行做了</span></span><br><span class="line">$dsn 	= <span class="string">"pgsql:port=5432;host=127.0.0.1;dbname=nosql"</span>;</span><br><span class="line">$username 	= <span class="string">"jack"</span>;</span><br><span class="line">$password	= <span class="string">"123456"</span>;</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  $pdo 	= <span class="keyword">new</span> PDO($dsn, $username, $password);</span><br><span class="line">  <span class="keyword">if</span>(!$pdo)&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"&lt;h5&gt;PG:PDO连接失败&lt;/h5&gt;"</span>;</span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"&lt;h5&gt;PG:PDO连接成功&lt;/h5&gt;"</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;<span class="keyword">catch</span>(<span class="keyword">Exception</span> $e)&#123;</span><br><span class="line">  print_r($e-&gt;getMessage());</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 插入数据库字段需要用单引号</span></span><br><span class="line">$sql 	= <span class="string">"select * from user_tbl;"</span>;</span><br><span class="line">$result = $pdo-&gt;query($sql);</span><br><span class="line"></span><br><span class="line"><span class="keyword">foreach</span>($result <span class="keyword">as</span> $row) &#123;</span><br><span class="line">  print_r($row[<span class="string">'name'</span>]);</span><br><span class="line">  print_r($row[<span class="string">'signup_date'</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+</li>
+</ul>
+<ul>
 <li><p>参考文章</p>
 <blockquote>
 <p><a href="https://cloud.tencent.com/developer/article/1335520" target="_blank" rel="noopener">https://cloud.tencent.com/developer/article/1335520</a></p>
 </blockquote>
-</li>
-</ul>
 </li>
 </ul>
 
@@ -778,7 +967,7 @@
 </li>
 </ul>
 <h5 id="PHP-FPM-重启方法"><a href="#PHP-FPM-重启方法" class="headerlink" title="PHP-FPM 重启方法"></a>PHP-FPM 重启方法</h5><ul>
-<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 启动</span><br><span class="line">sudo php-fpm</span><br><span class="line"><span class="meta">#</span> 终止 php-fpm.pid 需要在 php-fpm.conf中配置</span><br><span class="line">sudo -INT 'cat /usr/local/var/run/php-fpm.pid'</span><br><span class="line"><span class="meta">#</span> 重启</span><br><span class="line">sudo -USR2 'cat /usr/local/var/run/php-fpm.pid'</span><br><span class="line"><span class="meta">#</span> 平滑终止</span><br><span class="line">sudo -QUIT 'cat /usr/local/var/run/php-fpm.pid'</span><br><span class="line"><span class="meta">#</span> 如果没有php-fpm.pid 文件</span><br><span class="line">ps aux | grep php</span><br><span class="line">sudo kill -INT|USR2 pid</span><br></pre></td></tr></table></figure>
+<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 启动</span><br><span class="line">sudo php-fpm</span><br><span class="line"><span class="meta">#</span> 终止 php-fpm.pid 需要在 php-fpm.conf中配置</span><br><span class="line">sudo kill -INT 'cat /usr/local/var/run/php-fpm.pid'</span><br><span class="line"><span class="meta">#</span> 重启</span><br><span class="line">sudo kill -USR2 'cat /usr/local/var/run/php-fpm.pid'</span><br><span class="line"><span class="meta">#</span> 平滑终止</span><br><span class="line">sudo kill -QUIT 'cat /usr/local/var/run/php-fpm.pid'</span><br><span class="line"><span class="meta">#</span> 如果没有php-fpm.pid 文件</span><br><span class="line">ps aux | grep php</span><br><span class="line">sudo kill -INT|USR2 pid</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>参考文章</p>
 <blockquote>
@@ -1409,7 +1598,7 @@
 </li>
 <li><p>启动服务</p>
 <blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start</span><br><span class="line"><span class="meta">&gt;</span> # 开始或者停止pg</span><br><span class="line"><span class="meta">&gt;</span> pg_ctl start|stop</span><br><span class="line"><span class="meta">&gt;</span> # 查询pg监听端口</span><br><span class="line"><span class="meta">&gt;</span> netstat -a | grep PGSQ</span><br><span class="line"><span class="meta">&gt;</span> # 修改端口 postgresql.conf </span><br><span class="line"><span class="meta">&gt;</span></span><br></pre></td></tr></table></figure>
 </blockquote>
 </li>
 <li><p>参考文档</p>
@@ -1990,165 +2179,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/08/06/Android Q 非SDK 检查/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lpl">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/blog/images/head.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="闲敲棋子落灯花">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2019/08/06/Android Q 非SDK 检查/" itemprop="url">Android Q 非SDK检查</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-06T17:56:30+08:00">
-                2019-08-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="SDK-限制等级"><a href="#SDK-限制等级" class="headerlink" title="SDK 限制等级"></a>SDK 限制等级</h5><ul>
-<li>greylist              本系统标记为不支持调用。但是无限制，可以正常使用</li>
-<li>Blacklist             无论targetVersion如何，使用这些api，系统将会抛出错误</li>
-<li>greylist-max-o        受限制的灰名单。targetVersion &lt;= 27 可以正常访问</li>
-<li>greylist-max-p        受限制的灰名单。targetVersion &lt;= 28 可以正常访问</li>
-</ul>
-<h5 id="检查工具"><a href="#检查工具" class="headerlink" title="检查工具"></a>检查工具</h5><ul>
-<li><a href="https://android.googlesource.com/platform/prebuilts/runtime/+/master/appcompat" target="_blank" rel="noopener">工具地址</a> 下载下来，将veridex-mac.zip解压出来进行下面操作进行check检查。</li>
-</ul>
-<h5 id="Mac-平台"><a href="#Mac-平台" class="headerlink" title="Mac 平台"></a>Mac 平台</h5><ul>
-<li><p>运行如下命令：</p>
-</li>
-<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./appcompat.sh --dex-file=test.apk</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2201,7 +2231,7 @@
               
                 <a href="/blog/archives/">
               
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

@@ -6,7 +6,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://zubao.github.io/blog/"/>
-  <updated>2019-08-23T07:59:05.771Z</updated>
+  <updated>2019-08-26T02:51:36.262Z</updated>
   <id>https://zubao.github.io/blog/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Mac PHP + Redis</title>
+    <link href="https://zubao.github.io/blog/2019/08/26/Mac%20PHP%20+%20Redis/"/>
+    <id>https://zubao.github.io/blog/2019/08/26/Mac PHP + Redis/</id>
+    <published>2019-08-26T02:31:05.936Z</published>
+    <updated>2019-08-26T02:51:36.262Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li&gt;&lt;p&gt;首先需要安装Redis、PHP、PHP-FPM、nginx&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;PHP需要安装Redis的扩展&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td clas
+      
+    
+    </summary>
+    
+      <category term="PHP" scheme="https://zubao.github.io/blog/categories/PHP/"/>
+    
+    
+      <category term="PHP" scheme="https://zubao.github.io/blog/tags/PHP/"/>
+    
+      <category term="redis" scheme="https://zubao.github.io/blog/tags/redis/"/>
+    
+  </entry>
   
   <entry>
     <title>手机大厂官方文档地址</title>
@@ -47,7 +77,7 @@
     <link href="https://zubao.github.io/blog/2019/08/22/Mac%20Nginx%20+%20PHP%20%E6%90%AD%E5%BB%BA%E7%8E%AF%E5%A2%83/"/>
     <id>https://zubao.github.io/blog/2019/08/22/Mac Nginx + PHP 搭建环境/</id>
     <published>2019-08-22T09:52:53.796Z</published>
-    <updated>2019-08-23T03:23:24.501Z</updated>
+    <updated>2019-08-23T09:36:03.960Z</updated>
     
     <summary type="html">
     
@@ -75,7 +105,7 @@
     <link href="https://zubao.github.io/blog/2019/08/22/Mac%20PHP%20%E5%90%AF%E5%8A%A8/"/>
     <id>https://zubao.github.io/blog/2019/08/22/Mac PHP 启动/</id>
     <published>2019-08-22T09:05:07.555Z</published>
-    <updated>2019-08-23T02:59:31.527Z</updated>
+    <updated>2019-08-26T02:31:39.624Z</updated>
     
     <summary type="html">
     
@@ -149,7 +179,7 @@
     <link href="https://zubao.github.io/blog/2019/08/21/PG%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%80%E4%BB%8B/"/>
     <id>https://zubao.github.io/blog/2019/08/21/PG数据库简介/</id>
     <published>2019-08-21T07:30:00.692Z</published>
-    <updated>2019-08-22T09:05:59.433Z</updated>
+    <updated>2019-08-23T08:51:02.676Z</updated>
     
     <summary type="html">
     
@@ -488,32 +518,6 @@
       <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
     
       <category term="ROM" scheme="https://zubao.github.io/blog/tags/ROM/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android SDK 自动化测试</title>
-    <link href="https://zubao.github.io/blog/2019/07/24/Android%20SDK%20%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/"/>
-    <id>https://zubao.github.io/blog/2019/07/24/Android SDK 自动化测试/</id>
-    <published>2019-07-24T07:10:56.750Z</published>
-    <updated>2019-08-09T01:45:03.658Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h5 id=&quot;名词解释&quot;&gt;&lt;a href=&quot;#名词解释&quot; class=&quot;headerlink&quot; title=&quot;名词解释&quot;&gt;&lt;/a&gt;名词解释&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;JUnit - JUnit 是一个 Java 编程语言的单元测试框架。&lt;a href=&quot;https://w
-      
-    
-    </summary>
-    
-      <category term="android" scheme="https://zubao.github.io/blog/categories/android/"/>
-    
-    
-      <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
-    
-      <category term="Test" scheme="https://zubao.github.io/blog/tags/Test/"/>
     
   </entry>
   
