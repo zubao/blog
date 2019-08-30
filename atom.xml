@@ -6,7 +6,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://zubao.github.io/blog/"/>
-  <updated>2019-08-26T02:51:36.262Z</updated>
+  <updated>2019-08-30T10:09:20.163Z</updated>
   <id>https://zubao.github.io/blog/</id>
   
   <author>
@@ -15,6 +15,61 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>android 蓝牙通讯</title>
+    <link href="https://zubao.github.io/blog/2019/08/30/android%20%E8%93%9D%E7%89%99%E9%80%9A%E8%AE%AF/"/>
+    <id>https://zubao.github.io/blog/2019/08/30/android 蓝牙通讯/</id>
+    <published>2019-08-30T09:59:29.669Z</published>
+    <updated>2019-08-30T10:09:20.163Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li&gt;&lt;p&gt;配置权限&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;
+      
+    
+    </summary>
+    
+      <category term="android" scheme="https://zubao.github.io/blog/categories/android/"/>
+    
+    
+      <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
+    
+      <category term="bluetooth" scheme="https://zubao.github.io/blog/tags/bluetooth/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android 逆向</title>
+    <link href="https://zubao.github.io/blog/2019/08/29/Android%E9%80%86%E5%90%91/"/>
+    <id>https://zubao.github.io/blog/2019/08/29/Android逆向/</id>
+    <published>2019-08-29T05:59:51.782Z</published>
+    <updated>2019-08-29T08:40:42.059Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li&gt;&lt;p&gt;apktool 用于解密xml文件&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;apktool d test.apk&lt;/p&gt;
+&lt;p&gt;官方网站： &lt;a href=&quot;https://ibotpeaches.github.io/Apktool/&quot; target=&quot;_
+      
+    
+    </summary>
+    
+      <category term="android" scheme="https://zubao.github.io/blog/categories/android/"/>
+    
+    
+      <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
+    
+  </entry>
   
   <entry>
     <title>Mac PHP + Redis</title>
@@ -410,7 +465,7 @@
     <link href="https://zubao.github.io/blog/2019/08/01/android%20%E4%BC%98%E5%8C%96%E6%9E%84%E5%BB%BA%E9%80%9F%E5%BA%A6/"/>
     <id>https://zubao.github.io/blog/2019/08/01/android 优化构建速度/</id>
     <published>2019-08-01T09:05:15.797Z</published>
-    <updated>2019-08-01T09:37:03.638Z</updated>
+    <updated>2019-08-30T10:00:17.967Z</updated>
     
     <summary type="html">
     
@@ -467,57 +522,6 @@
     
     </summary>
     
-    
-  </entry>
-  
-  <entry>
-    <title>Jar加固</title>
-    <link href="https://zubao.github.io/blog/2019/07/25/Jar%E5%8A%A0%E5%9B%BA/"/>
-    <id>https://zubao.github.io/blog/2019/07/25/Jar加固/</id>
-    <published>2019-07-25T09:12:41.424Z</published>
-    <updated>2019-08-05T09:22:38.210Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;##### &lt;/p&gt;
-
-      
-    
-    </summary>
-    
-      <category term="java" scheme="https://zubao.github.io/blog/categories/java/"/>
-    
-    
-      <category term="java" scheme="https://zubao.github.io/blog/tags/java/"/>
-    
-      <category term="jar" scheme="https://zubao.github.io/blog/tags/jar/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android Q 线刷</title>
-    <link href="https://zubao.github.io/blog/2019/07/25/Android%20Q%20%E7%BA%BF%E5%88%B7/"/>
-    <id>https://zubao.github.io/blog/2019/07/25/Android Q 线刷/</id>
-    <published>2019-07-25T00:57:55.662Z</published>
-    <updated>2019-08-05T06:54:52.319Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h4 id=&quot;android-Q-升级的两种方式：&quot;&gt;&lt;a href=&quot;#android-Q-升级的两种方式：&quot; class=&quot;headerlink&quot; title=&quot;android Q 升级的两种方式：&quot;&gt;&lt;/a&gt;android Q 升级的两种方式：&lt;/h4&gt;&lt;h5 id=&quot;加
-      
-    
-    </summary>
-    
-      <category term="android" scheme="https://zubao.github.io/blog/categories/android/"/>
-    
-    
-      <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
-    
-      <category term="ROM" scheme="https://zubao.github.io/blog/tags/ROM/"/>
     
   </entry>
   
