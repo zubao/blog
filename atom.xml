@@ -6,7 +6,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://zubao.github.io/blog/"/>
-  <updated>2019-08-30T10:09:20.163Z</updated>
+  <updated>2019-09-11T09:16:20.219Z</updated>
   <id>https://zubao.github.io/blog/</id>
   
   <author>
@@ -17,11 +17,116 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title></title>
+    <link href="https://zubao.github.io/blog/2019/09/11/Untitled%201/"/>
+    <id>https://zubao.github.io/blog/2019/09/11/Untitled 1/</id>
+    <published>2019-09-11T09:16:20.219Z</published>
+    <updated>2019-09-11T09:16:20.219Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Android Studio 动态调试无源码的APK</title>
+    <link href="https://zubao.github.io/blog/2019/09/11/Android%20Studio%20%E5%8A%A8%E6%80%81%E8%B0%83%E8%AF%95%E6%97%A0%E6%BA%90%E7%A0%81APK/"/>
+    <id>https://zubao.github.io/blog/2019/09/11/Android Studio 动态调试无源码APK/</id>
+    <published>2019-09-11T09:16:19.957Z</published>
+    <updated>2019-09-12T02:55:42.836Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li&gt;&lt;p&gt;安装Android Studio 插件 &lt;a href=&quot;https://bitbucket.org/JesusFreke/smali/downloads/smalidea-0.05.zip&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;
+      
+    
+    </summary>
+    
+      <category term="android" scheme="https://zubao.github.io/blog/categories/android/"/>
+    
+    
+      <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
+    
+      <category term="Android Studio" scheme="https://zubao.github.io/blog/tags/Android-Studio/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mac IDA Android Dex 模拟器、真机 动态调试</title>
+    <link href="https://zubao.github.io/blog/2019/09/11/Android%20Dex%20%E7%9C%9F%E6%9C%BA%E5%8A%A8%E6%80%81%E8%B0%83%E8%AF%95/"/>
+    <id>https://zubao.github.io/blog/2019/09/11/Android Dex 真机动态调试/</id>
+    <published>2019-09-11T02:53:25.152Z</published>
+    <updated>2019-09-11T09:16:03.835Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li&gt;&lt;p&gt;JDWP(Java Debug Wire Protocol)&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;JDWP（Java Debug Wire Protocol）是一个为 Java 调试而设计的一个通讯交互协议，它定义了调试器和被调试程序之间&lt;st
+      
+    
+    </summary>
+    
+      <category term="android" scheme="https://zubao.github.io/blog/categories/android/"/>
+    
+    
+      <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
+    
+      <category term="IDA" scheme="https://zubao.github.io/blog/tags/IDA/"/>
+    
+      <category term="mac" scheme="https://zubao.github.io/blog/tags/mac/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mac IDA Pro逆向 android</title>
+    <link href="https://zubao.github.io/blog/2019/09/09/Mac%20+%20IDA%20Pro%207.0/"/>
+    <id>https://zubao.github.io/blog/2019/09/09/Mac + IDA Pro 7.0/</id>
+    <published>2019-09-09T08:41:24.613Z</published>
+    <updated>2019-09-10T07:37:08.028Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li&gt;&lt;p&gt;硬件设备&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;MAC PRO 10.14&lt;/p&gt;
+&lt;p&gt;nexus 5s, android 6.0 &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Mac 下载IDA Pro 7.0 &lt;/p&gt;
+&lt;bloc
+      
+    
+    </summary>
+    
+      <category term="android" scheme="https://zubao.github.io/blog/categories/android/"/>
+    
+    
+      <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
+    
+      <category term="IDA" scheme="https://zubao.github.io/blog/tags/IDA/"/>
+    
+      <category term="mac" scheme="https://zubao.github.io/blog/tags/mac/"/>
+    
+  </entry>
+  
+  <entry>
     <title>android 蓝牙通讯</title>
     <link href="https://zubao.github.io/blog/2019/08/30/android%20%E8%93%9D%E7%89%99%E9%80%9A%E8%AE%AF/"/>
     <id>https://zubao.github.io/blog/2019/08/30/android 蓝牙通讯/</id>
-    <published>2019-08-30T09:59:29.669Z</published>
-    <updated>2019-08-30T10:09:20.163Z</updated>
+    <published>2019-08-30T09:59:29.000Z</published>
+    <updated>2019-08-31T02:24:58.000Z</updated>
     
     <summary type="html">
     
@@ -48,8 +153,8 @@
     <title>Android 逆向</title>
     <link href="https://zubao.github.io/blog/2019/08/29/Android%E9%80%86%E5%90%91/"/>
     <id>https://zubao.github.io/blog/2019/08/29/Android逆向/</id>
-    <published>2019-08-29T05:59:51.782Z</published>
-    <updated>2019-08-29T08:40:42.059Z</updated>
+    <published>2019-08-29T05:59:51.000Z</published>
+    <updated>2019-09-10T10:05:05.659Z</updated>
     
     <summary type="html">
     
@@ -75,8 +180,8 @@
     <title>Mac PHP + Redis</title>
     <link href="https://zubao.github.io/blog/2019/08/26/Mac%20PHP%20+%20Redis/"/>
     <id>https://zubao.github.io/blog/2019/08/26/Mac PHP + Redis/</id>
-    <published>2019-08-26T02:31:05.936Z</published>
-    <updated>2019-08-26T02:51:36.262Z</updated>
+    <published>2019-08-26T02:31:05.000Z</published>
+    <updated>2019-08-26T02:51:36.000Z</updated>
     
     <summary type="html">
     
@@ -105,8 +210,8 @@
     <title>手机大厂官方文档地址</title>
     <link href="https://zubao.github.io/blog/2019/08/23/%E5%9B%BD%E5%86%85%E6%89%8B%E6%9C%BA%E5%A4%A7%E5%8E%82%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3%E5%9C%B0%E5%9D%80/"/>
     <id>https://zubao.github.io/blog/2019/08/23/国内手机大厂官方文档地址/</id>
-    <published>2019-08-23T07:56:27.427Z</published>
-    <updated>2019-08-23T07:59:05.771Z</updated>
+    <published>2019-08-23T07:56:27.000Z</published>
+    <updated>2019-08-23T07:59:05.000Z</updated>
     
     <summary type="html">
     
@@ -131,8 +236,8 @@
     <title>Mac Nginx + PHP 环境搭建</title>
     <link href="https://zubao.github.io/blog/2019/08/22/Mac%20Nginx%20+%20PHP%20%E6%90%AD%E5%BB%BA%E7%8E%AF%E5%A2%83/"/>
     <id>https://zubao.github.io/blog/2019/08/22/Mac Nginx + PHP 搭建环境/</id>
-    <published>2019-08-22T09:52:53.796Z</published>
-    <updated>2019-08-23T09:36:03.960Z</updated>
+    <published>2019-08-22T09:52:53.000Z</published>
+    <updated>2019-09-09T08:41:55.874Z</updated>
     
     <summary type="html">
     
@@ -159,8 +264,8 @@
     <title>Mac 自带PHP 启动</title>
     <link href="https://zubao.github.io/blog/2019/08/22/Mac%20PHP%20%E5%90%AF%E5%8A%A8/"/>
     <id>https://zubao.github.io/blog/2019/08/22/Mac PHP 启动/</id>
-    <published>2019-08-22T09:05:07.555Z</published>
-    <updated>2019-08-26T02:31:39.624Z</updated>
+    <published>2019-08-22T09:05:07.000Z</published>
+    <updated>2019-08-26T02:31:39.000Z</updated>
     
     <summary type="html">
     
@@ -185,8 +290,8 @@
     <title>Hive 简介</title>
     <link href="https://zubao.github.io/blog/2019/08/22/Hive%20%E7%AE%80%E4%BB%8B/"/>
     <id>https://zubao.github.io/blog/2019/08/22/Hive 简介/</id>
-    <published>2019-08-22T06:42:03.498Z</published>
-    <updated>2019-08-22T07:18:17.250Z</updated>
+    <published>2019-08-22T06:42:03.000Z</published>
+    <updated>2019-08-22T07:18:17.000Z</updated>
     
     <summary type="html">
     
@@ -209,8 +314,8 @@
     <title>CI架构</title>
     <link href="https://zubao.github.io/blog/2019/08/22/CI%E6%9E%B6%E6%9E%84/"/>
     <id>https://zubao.github.io/blog/2019/08/22/CI架构/</id>
-    <published>2019-08-22T01:15:47.364Z</published>
-    <updated>2019-08-22T09:32:22.424Z</updated>
+    <published>2019-08-22T01:15:47.000Z</published>
+    <updated>2019-08-22T09:32:22.000Z</updated>
     
     <summary type="html">
     
@@ -233,8 +338,8 @@
     <title>PG数据库 简介</title>
     <link href="https://zubao.github.io/blog/2019/08/21/PG%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%80%E4%BB%8B/"/>
     <id>https://zubao.github.io/blog/2019/08/21/PG数据库简介/</id>
-    <published>2019-08-21T07:30:00.692Z</published>
-    <updated>2019-08-23T08:51:02.676Z</updated>
+    <published>2019-08-21T07:30:00.000Z</published>
+    <updated>2019-08-23T08:51:02.000Z</updated>
     
     <summary type="html">
     
@@ -258,8 +363,8 @@
     <title>Redis 简介</title>
     <link href="https://zubao.github.io/blog/2019/08/21/Redis%20%E7%AE%80%E4%BB%8B/"/>
     <id>https://zubao.github.io/blog/2019/08/21/Redis 简介/</id>
-    <published>2019-08-21T01:38:55.814Z</published>
-    <updated>2019-08-21T10:26:01.872Z</updated>
+    <published>2019-08-21T01:38:55.000Z</published>
+    <updated>2019-08-21T10:26:01.000Z</updated>
     
     <summary type="html">
     
@@ -282,8 +387,8 @@
     <title>android 获取 WIDEVINE_UUID</title>
     <link href="https://zubao.github.io/blog/2019/08/20/WIDEVINE_UUID%20%E8%8E%B7%E5%8F%96/"/>
     <id>https://zubao.github.io/blog/2019/08/20/WIDEVINE_UUID 获取/</id>
-    <published>2019-08-20T02:07:20.319Z</published>
-    <updated>2019-08-20T02:10:41.013Z</updated>
+    <published>2019-08-20T02:07:20.000Z</published>
+    <updated>2019-08-20T02:10:41.000Z</updated>
     
     <summary type="html">
     
@@ -314,8 +419,8 @@
     <title>IPv6详解</title>
     <link href="https://zubao.github.io/blog/2019/08/13/IPv6%E8%AF%A6%E8%A7%A3/"/>
     <id>https://zubao.github.io/blog/2019/08/13/IPv6详解/</id>
-    <published>2019-08-13T01:15:14.326Z</published>
-    <updated>2019-08-13T01:16:26.878Z</updated>
+    <published>2019-08-13T01:15:14.000Z</published>
+    <updated>2019-08-13T01:16:26.000Z</updated>
     
     <summary type="html">
     
@@ -340,8 +445,8 @@
     <title>Android Q 非SDK检查</title>
     <link href="https://zubao.github.io/blog/2019/08/06/Android%20Q%20%E9%9D%9ESDK%20%E6%A3%80%E6%9F%A5/"/>
     <id>https://zubao.github.io/blog/2019/08/06/Android Q 非SDK 检查/</id>
-    <published>2019-08-06T09:56:30.470Z</published>
-    <updated>2019-08-06T10:03:05.440Z</updated>
+    <published>2019-08-06T09:56:30.000Z</published>
+    <updated>2019-08-06T10:03:05.000Z</updated>
     
     <summary type="html">
     
@@ -364,8 +469,8 @@
     <title>Android hook</title>
     <link href="https://zubao.github.io/blog/2019/08/06/Android%20Hook/"/>
     <id>https://zubao.github.io/blog/2019/08/06/Android Hook/</id>
-    <published>2019-08-06T09:38:33.144Z</published>
-    <updated>2019-08-06T09:48:58.274Z</updated>
+    <published>2019-08-06T09:38:33.000Z</published>
+    <updated>2019-08-06T09:48:58.000Z</updated>
     
     <summary type="html">
     
@@ -389,8 +494,8 @@
     <title>Java 动态代理</title>
     <link href="https://zubao.github.io/blog/2019/08/05/Java%20%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/"/>
     <id>https://zubao.github.io/blog/2019/08/05/Java 动态代理/</id>
-    <published>2019-08-05T09:22:10.270Z</published>
-    <updated>2019-08-06T07:44:25.143Z</updated>
+    <published>2019-08-05T09:22:10.000Z</published>
+    <updated>2019-08-06T07:44:25.000Z</updated>
     
     <summary type="html">
     
@@ -413,8 +518,8 @@
     <title>懒加载的单例模式</title>
     <link href="https://zubao.github.io/blog/2019/08/05/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/"/>
     <id>https://zubao.github.io/blog/2019/08/05/单例模式/</id>
-    <published>2019-08-05T08:42:27.322Z</published>
-    <updated>2019-08-05T08:49:24.624Z</updated>
+    <published>2019-08-05T08:42:27.000Z</published>
+    <updated>2019-08-05T08:49:24.000Z</updated>
     
     <summary type="html">
     
@@ -431,97 +536,6 @@
       <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
     
       <category term="设计模式" scheme="https://zubao.github.io/blog/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android 源码目录结构</title>
-    <link href="https://zubao.github.io/blog/2019/08/05/Android%20%E6%BA%90%E7%A0%81%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/"/>
-    <id>https://zubao.github.io/blog/2019/08/05/Android 源码目录结构/</id>
-    <published>2019-08-05T06:54:09.756Z</published>
-    <updated>2019-08-05T07:39:49.253Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h5 id=&quot;一级目录：&quot;&gt;&lt;a href=&quot;#一级目录：&quot; class=&quot;headerlink&quot; title=&quot;一级目录：&quot;&gt;&lt;/a&gt;一级目录：&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;art - Android Runtime，一种app运行模式，区别去传统的Dalvik虚拟机，目的是提
-      
-    
-    </summary>
-    
-      <category term="android" scheme="https://zubao.github.io/blog/categories/android/"/>
-    
-    
-      <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
-    
-      <category term="aosp" scheme="https://zubao.github.io/blog/tags/aosp/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>android 优化构建速度</title>
-    <link href="https://zubao.github.io/blog/2019/08/01/android%20%E4%BC%98%E5%8C%96%E6%9E%84%E5%BB%BA%E9%80%9F%E5%BA%A6/"/>
-    <id>https://zubao.github.io/blog/2019/08/01/android 优化构建速度/</id>
-    <published>2019-08-01T09:05:15.797Z</published>
-    <updated>2019-08-30T10:00:17.967Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h5 id=&quot;Apply-plugin-的几种常见定义：&quot;&gt;&lt;a href=&quot;#Apply-plugin-的几种常见定义：&quot; class=&quot;headerlink&quot; title=&quot;Apply plugin 的几种常见定义：&quot;&gt;&lt;/a&gt;Apply plugin 的几种常见定义：&lt;/
-      
-    
-    </summary>
-    
-      <category term="android" scheme="https://zubao.github.io/blog/categories/android/"/>
-    
-    
-      <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
-    
-      <category term="gradle" scheme="https://zubao.github.io/blog/tags/gradle/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>配置ABI的两种方式</title>
-    <link href="https://zubao.github.io/blog/2019/08/01/%E9%85%8D%E7%BD%AEABI%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%96%B9%E5%BC%8F/"/>
-    <id>https://zubao.github.io/blog/2019/08/01/配置ABI的两种方式/</id>
-    <published>2019-08-01T06:36:44.688Z</published>
-    <updated>2019-08-05T08:42:58.587Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h5 id=&quot;通过abiFilter字段配置：&quot;&gt;&lt;a href=&quot;#通过abiFilter字段配置：&quot; class=&quot;headerlink&quot; title=&quot;通过abiFilter字段配置：&quot;&gt;&lt;/a&gt;通过abiFilter字段配置：&lt;/h5&gt;&lt;blockquote&gt;
-&lt;p&gt;一
-      
-    
-    </summary>
-    
-      <category term="android" scheme="https://zubao.github.io/blog/categories/android/"/>
-    
-    
-      <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
-    
-      <category term="gradle" scheme="https://zubao.github.io/blog/tags/gradle/"/>
-    
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="https://zubao.github.io/blog/2019/08/01/%E7%A0%94%E7%A9%B6android%20%E6%89%93%E5%8C%85%E6%B5%81%E7%A8%8B/"/>
-    <id>https://zubao.github.io/blog/2019/08/01/研究android 打包流程/</id>
-    <published>2019-08-01T03:18:00.382Z</published>
-    <updated>2019-08-01T03:18:00.382Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
     
   </entry>
   

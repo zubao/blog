@@ -293,6 +293,700 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/09/11/Untitled 1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lpl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/blog/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="闲敲棋子落灯花">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2019/09/11/Untitled 1/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-11T17:16:20+08:00">
+                2019-09-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/09/11/Android Studio 动态调试无源码APK/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lpl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/blog/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="闲敲棋子落灯花">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2019/09/11/Android Studio 动态调试无源码APK/" itemprop="url">Android Studio 动态调试无源码的APK</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-11T17:16:19+08:00">
+                2019-09-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li><p>安装Android Studio 插件 <a href="https://bitbucket.org/JesusFreke/smali/downloads/smalidea-0.05.zip" target="_blank" rel="noopener">smalidea-0.05.zip</a> </p>
+<blockquote>
+<p>插件源码地址 ： <a href="https://github.com/JesusFreke/smali" target="_blank" rel="noopener">https://github.com/JesusFreke/smali</a> </p>
+</blockquote>
+</li>
+<li><p>Android Studio 尽量升级到最新版本</p>
+</li>
+<li><p>确保APK可调试</p>
+<blockquote>
+<p>1、root 手机，然后刷mprop 将手机刷为可以调试。推荐</p>
+<p>2、使用模拟器，模拟器一般都是可以调试的。</p>
+<p>3、apktool 逆向 apk，修改AndroidManifest debuggable属性，然后重新打包安装。</p>
+</blockquote>
+</li>
+<li><p>apktools d test.apk 逆向apk</p>
+<blockquote>
+<p>apktools  <a href="https://ibotpeaches.github.io/Apktool/" target="_blank" rel="noopener">https://ibotpeaches.github.io/Apktool/</a> </p>
+</blockquote>
+</li>
+<li><p>Android Studio 导入 上一步得到的文件夹</p>
+</li>
+<li><p>然后右键工程主目录：Mark Directory As -&gt; Sources Root</p>
+</li>
+<li><p>项目目录–&gt;右键–&gt;Open ModuleSettings：设置sdk，最后和测试手机的系统版本一致</p>
+</li>
+<li><p>接下来配置：<code>Run/Debug Configurations</code>里面的配置文件，打开后我们点击左上角的+，然后选择Remote，添加一个远程调试。端口配置为8700，和DDMS 中进程调试端口号保持一致。PS：默认为5005.</p>
+</li>
+<li><p>手机上启动APP，打开DDMS 即Android/sdk/tools/monitor。选中app对应的进程，后面会显示8700字样。另外如果手机可以调试，最上面设备行末尾会显示debug字样。</p>
+</li>
+<li><p>在Android studio 上面设置断点</p>
+</li>
+<li><p>点击右上角的调试按钮，然后点击手机上的APP内按钮。即可以进入调试状态。  </p>
+</li>
+<li><p>参考文章</p>
+<blockquote>
+<p><a href="https://www.jianshu.com/p/1a28e6439c6a" target="_blank" rel="noopener">https://www.jianshu.com/p/1a28e6439c6a</a></p>
+</blockquote>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/09/11/Android Dex 真机动态调试/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lpl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/blog/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="闲敲棋子落灯花">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2019/09/11/Android Dex 真机动态调试/" itemprop="url">Mac IDA Android Dex 模拟器、真机 动态调试</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-11T10:53:25+08:00">
+                2019-09-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li><p>JDWP(Java Debug Wire Protocol)</p>
+<blockquote>
+<p><em>JDWP（Java Debug Wire Protocol）是一个为 Java 调试而设计的一个通讯交互协议，它定义了调试器和被调试程序之间<strong><em>传递的信息的格式</em></strong>。在 JPDA 体系中，作为前端（front-end）的调试者（debugger）进程和后端（back-end）的被调试程序（debuggee）进程之间的交互数据的格式就是由 JDWP 来描述的，它详细完整地定义了请求命令、回应数据和错误代码，保证了前端和后端的 JVMTI 和 JDI 的通信通畅。比如在 Sun 公司提供的实现中，它提供了一个名为 jdwp.dll（jdwp.so）的动态链接库文件，这个动态库文件实现了一个 Agent，它会负责解析前端发出的请求或者命令，并将其转化为 JVMTI 调用，然后将 JVMTI 函数的返回值封装成 JDWP 数据发还给后端。</em></p>
+<p>参考</p>
+<p> <a href="https://qsli.github.io/2018/08/12/jdwp/" target="_blank" rel="noopener">https://qsli.github.io/2018/08/12/jdwp/</a></p>
+<p><a href="https://www.ibm.com/developerworks/cn/java/j-lo-jpda3/index.html" target="_blank" rel="noopener">https://www.ibm.com/developerworks/cn/java/j-lo-jpda3/index.html</a></p>
+</blockquote>
+</li>
+<li><p>JDB(Java Debugger)</p>
+<blockquote>
+<p>Java™ 调试器 (JDB) 包含在 SDK 中。 该调试器通过 <strong>jdb</strong> 命令启动；它使用 JPDA 连接到 JVM。</p>
+<p><a href="https://www.ibm.com/developerworks/cn/java/joy-jdb/index.html" target="_blank" rel="noopener">https://www.ibm.com/developerworks/cn/java/joy-jdb/index.html</a></p>
+<p><a href="https://www.ibm.com/support/knowledgecenter/zh/SSYKE2_7.0.0/com.ibm.java.win.70.doc/user/jdb.html" target="_blank" rel="noopener">https://www.ibm.com/support/knowledgecenter/zh/SSYKE2_7.0.0/com.ibm.java.win.70.doc/user/jdb.html</a></p>
+</blockquote>
+</li>
+<li><p>动态调试，参考</p>
+<blockquote>
+<p><a href="https://bbs.pediy.com/thread-217612.htm" target="_blank" rel="noopener">https://bbs.pediy.com/thread-217612.htm</a></p>
+<p>端口可以使用23946，使用IDA的时候需要关掉DDMS、AS等。如果出现异常可能是APK做了反逆向。</p>
+<p>如果真机碰到问题，可以先试试用模拟器</p>
+</blockquote>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/09/09/Mac + IDA Pro 7.0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lpl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/blog/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="闲敲棋子落灯花">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2019/09/09/Mac + IDA Pro 7.0/" itemprop="url">Mac IDA Pro逆向 android</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-09T16:41:24+08:00">
+                2019-09-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li><p>硬件设备</p>
+<blockquote>
+<p>MAC PRO 10.14</p>
+<p>nexus 5s, android 6.0 </p>
+</blockquote>
+</li>
+<li><p>Mac 下载IDA Pro 7.0 </p>
+<blockquote>
+<p>IDA 7.0 Mac 下载地址 <a href="https://xclient.info/s/hex-rays-ida-pro.html#versions" target="_blank" rel="noopener">https://xclient.info/s/hex-rays-ida-pro.html#versions</a></p>
+<p>IDA 在Mac 10.14上出现崩溃的解决方案 <a href="https://github.com/fjh658/IDA7.0_SP" target="_blank" rel="noopener">https://github.com/fjh658/IDA7.0_SP</a></p>
+<p>PS: 安装的时候需要输入密码，密码在网站上有</p>
+</blockquote>
+</li>
+<li><p>IDA 调试环境配置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cd /Applications/IDA Pro 7.0/dbgsrv</span><br><span class="line">adb push android_server /data   #将文件拷贝到手机data目录</span><br><span class="line">adb shell</span><br><span class="line">cd /data</span><br><span class="line">chmod 755 android_server    #更改权限，赋予可执行权限</span><br><span class="line">./android_server            #运行</span><br><span class="line">root@Che1:/data # ./android_server</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>出现 bind: Address already in use 错误</p>
+</li>
+<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ps | grep android_server </span><br><span class="line">kill -s 9</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>端口转发</p>
+</li>
+<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb forward tcp:23946 tcp:23946</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>以debug模式启动APP</p>
+</li>
+<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell am start -D -n com.pa.test.devicetest/.MainActivity</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动IDA，Debugger-&gt;attach-&gt;Remote ARMLinux/Android debugger</p>
+<blockquote>
+<p>参考：<a href="https://blog.csdn.net/daide2012/article/details/75675210" target="_blank" rel="noopener">https://blog.csdn.net/daide2012/article/details/75675210</a> </p>
+</blockquote>
+</li>
+<li><p>JDB 连接, 端口号可以通过DDMS 查看当前运行进程和端口号</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jdb -connect com.sun.jdi.SocketAttach:hostname=127.0.0.1,port=8700</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>java.net.ConnectException: Connection refused</p>
+<blockquote>
+<p>出现如上异常的原因是app 不可以debugable，解决方案：</p>
+<p>1、如果是自己的app，可以在AndroidManifest.xml 中 application节点上加上 debugable = true</p>
+<p>2、如果是别人的app，可以解压之后修改AndroidManifest.xml文件，然后重新打包签名</p>
+<p>3、修改系统属性，将defalut.prop中ro.debugable设置为1，然后刷机进去；</p>
+<p>4、通过mprop 工具修改 内存中的ro.debugable值 <a href="https://www.bodkin.ren/index.php/archives/533/" target="_blank" rel="noopener">https://www.bodkin.ren/index.php/archives/533/</a></p>
+<p>5、通过基于Xposed的 BDOpener 工具修改程序的 debugable 值 <a href="https://security.tencent.com/index.php/opensource/detail/17" target="_blank" rel="noopener">https://security.tencent.com/index.php/opensource/detail/17</a></p>
+</blockquote>
+</li>
+<li><p>mprop修改ro.debugable</p>
+</li>
+<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 下载 mprop https://github.com/wpvsyou/mprop</span><br><span class="line">git clone git@github.com:wpvsyou/mprop.git</span><br><span class="line"><span class="meta">#</span> 将mprop 推到手机</span><br><span class="line">adb push mprop /data/local/tmp</span><br><span class="line">adb shell </span><br><span class="line"><span class="meta">#</span> 查看 硬盘中的 属性</span><br><span class="line">cat default.prop | grep debug </span><br><span class="line"><span class="meta">#</span> 查看 内存中的属性</span><br><span class="line">getprop ro.debuggable</span><br><span class="line">su</span><br><span class="line">cd /data/local/tmp</span><br><span class="line"><span class="meta">#</span> 修改内存中属性</span><br><span class="line">./mprop ro.debuggable 1</span><br><span class="line"><span class="meta">#</span> 重启adbd 生效</span><br><span class="line">stop;start</span><br><span class="line"><span class="meta">#</span> 查看 硬盘中的 属性</span><br><span class="line">cat default.prop | grep debug </span><br><span class="line"><span class="meta">#</span> 查看 内存中的属性</span><br><span class="line">getprop ro.debuggable</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<ul>
+<li><p>DDMS 最新版本的AS IDE删掉了DDMS入口，需要去tools里面用shell启动。</p>
+</li>
+<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd ~/Library/Android/sdk/tools/monitor</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动IDA，attach android进程之后，需要去找到需要的so文件，快捷键control+F</p>
+</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Android 4.4版本之前 系统函数在libdvm.so</span><br><span class="line">Android 5.0之后 系统函数在libart.so</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>选中so文件之后，需要查找对应的方法，快捷键control+F。然后右键添加断点。</p>
+</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">libdvm.so 对应的是 dvmDexFileOpenPartial方法</span><br><span class="line">libart.so 对应的是 Openmemory 方法</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>点击左上角的绿色三角形按钮，运行到断点</p>
+</li>
+<li><p>在General Registers 可以看到 dex 在内存中的起始地址和大小。我这边是X0，X1</p>
+</li>
+<li><p>在 Hex View 面板右键选择x0，可以定位到X0寄存器保存地址所在位置，即dex文件所在位置。可以看到dex.035字样</p>
+</li>
+<li><p>File -&gt; Script Command 自定义脚本导出dex文件</p>
+</li>
+<li><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    <span class="keyword">auto</span> fp, begin, end, dexbyte;</span><br><span class="line">    <span class="comment">//打开或创建一个文件</span></span><br><span class="line">    fp = fopen(<span class="string">"/Users/xxx/128dump.dex"</span>, <span class="string">"wb"</span>);</span><br><span class="line">    <span class="comment">//dex基址，即X0的值</span></span><br><span class="line">    begin =  <span class="number">0x7f962c5000</span>;    </span><br><span class="line">		<span class="comment">//dex基址 + dex文件大小 即X1大小</span></span><br><span class="line">    end = begin + <span class="number">0xc204</span>;</span><br><span class="line">    <span class="keyword">for</span> ( dexbyte = begin; dexbyte &lt; end;     dexbyte ++ )&#123;</span><br><span class="line">			<span class="comment">//按字节将其dump到本地文件中</span></span><br><span class="line">				fputc(Byte(dexbyte), fp);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>用jadx 工具反编译dex文件。</p>
+</li>
+<li><p>参考文章</p>
+</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">5.0以上系统 https://bbs.ichunqiu.com/thread-35905-1-1.html</span><br><span class="line">4.x系统 https://blog.csdn.net/daide2012/article/details/75675210</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/08/30/android 蓝牙通讯/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -408,6 +1102,11 @@
 <li><p>github 项目地址</p>
 <blockquote>
 <p><a href="https://github.com/zubao/BluetoothTest" target="_blank" rel="noopener">https://github.com/zubao/BluetoothTest</a></p>
+</blockquote>
+</li>
+<li><p>蓝牙官方文档</p>
+<blockquote>
+<p><a href="https://developer.android.com/guide/topics/connectivity/bluetooth?hl=zh-CN#FindDevices" target="_blank" rel="noopener">https://developer.android.com/guide/topics/connectivity/bluetooth?hl=zh-CN#FindDevices</a></p>
 </blockquote>
 </li>
 </ul>
@@ -563,54 +1262,111 @@
 <blockquote>
 <p>sh d2j-dex2jar.sh test.dex</p>
 <p>源码地址： <a href="https://github.com/pxb1988/dex2jar" target="_blank" rel="noopener">https://github.com/pxb1988/dex2jar</a></p>
-<p>工具地址： <a href="https://raw.githubusercontent.com/13046434521/-/master/反编译工具包.zip" target="_blank" rel="noopener">https://raw.githubusercontent.com/13046434521/-/master/%E5%8F%8D%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7%E5%8C%85.zip</a> </p>
+<p>工具地址： <a href="https://raw.githubusercontent.com/13046434521/-/master/反编译工具包.zip" target="_blank" rel="noopener">https://raw.githubusercontent.com/13046434521/-/master/%E5%8F%8D%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7%E5%8C%85.zip</a></p>
 </blockquote>
 </li>
 <li><p>jd-compiler 用于将jar|class文件 转换为 java</p>
 <blockquote>
-<p>官方网站 <a href="http://java-decompiler.github.io/" target="_blank" rel="noopener">http://java-decompiler.github.io/</a> </p>
+<p>官方网站 <a href="http://java-decompiler.github.io/" target="_blank" rel="noopener">http://java-decompiler.github.io/</a></p>
 </blockquote>
 </li>
-<li><p>IDA</p>
+<li><p>jadx 用于逆向jar 文件</p>
 <blockquote>
-<p><a href="http://bbs.pediy.com/showthread.php?t=191395&amp;highlight=ida6" target="_blank" rel="noopener">http://bbs.pediy.com/showthread.php?t=191395&amp;highlight=ida6</a> </p>
+<p>源码下载地址：<a href="https://github.com/skylot/jadx" target="_blank" rel="noopener">https://github.com/skylot/jadx</a></p>
+<p>jadx 相比JD-GUI 更加优秀，逆向出来的源码可读性更强，更准确。</p>
+</blockquote>
+</li>
+<li><p>IDA 用于逆向分析SO文件</p>
+<blockquote>
+<p>IDA 7.0 Mac 下载地址 <a href="https://xclient.info/s/hex-rays-ida-pro.html#versions" target="_blank" rel="noopener">https://xclient.info/s/hex-rays-ida-pro.html#versions</a></p>
+<p>Mac 10.14上会出现崩溃，解决方案</p>
+<p><a href="https://github.com/fjh658/IDA7.0_SP" target="_blank" rel="noopener">https://github.com/fjh658/IDA7.0_SP</a></p>
+</blockquote>
+</li>
+<li><p>夜神模拟器</p>
+<blockquote>
+<p>夜神模拟器下载 <a href="https://www.yeshen.com/" target="_blank" rel="noopener">https://www.yeshen.com/</a></p>
+</blockquote>
+</li>
+<li><p>VirtualXposed</p>
+<blockquote>
+<p>Xposed 框架 运行的虚拟环境，降低了xposed使用的门槛。</p>
+<p>介绍文章 <a href="https://sspai.com/post/44447" target="_blank" rel="noopener">https://sspai.com/post/44447</a></p>
+<p>github <a href="https://github.com/android-hacker/VirtualXposed" target="_blank" rel="noopener">https://github.com/android-hacker/VirtualXposed</a></p>
+</blockquote>
+</li>
+<li><p>EdXposed 框架</p>
+<blockquote>
+<p>支持 ART</p>
+<p><a href="https://github.com/ElderDrivers/EdXposed" target="_blank" rel="noopener">https://github.com/ElderDrivers/EdXposed</a></p>
+</blockquote>
+</li>
+<li><p>Xposed 框架</p>
+<blockquote>
+<p><a href="http://dl-xda.xposed.info/framework/" target="_blank" rel="noopener">http://dl-xda.xposed.info/framework/</a></p>
+</blockquote>
+</li>
+<li><p>XposedInstaller.apk 配合 xposed 框架使用</p>
+<blockquote>
+<p><a href="https://forum.xda-developers.com/showthread.php?t=3034811" target="_blank" rel="noopener">https://forum.xda-developers.com/showthread.php?t=3034811</a></p>
+</blockquote>
+</li>
+<li><p>太极框架</p>
+<blockquote>
+<p>支持android 5.0~Q</p>
+<p>github <a href="https://github.com/taichi-framework/TaiChi" target="_blank" rel="noopener">https://github.com/taichi-framework/TaiChi</a></p>
 </blockquote>
 </li>
 <li><p>Vim</p>
 <blockquote>
 <p>// 打开二进制文件</p>
-<p>vim -b filename  </p>
+<p>vim -b filename</p>
 <p>// 转换为16进制查看</p>
 <p>:%!xxd</p>
 <p>// 转换为正常格式</p>
 <p>:%!xxd -r</p>
-<p>参考：<a href="https://www.cnblogs.com/meibenjin/archive/2012/12/06/2806396.html" target="_blank" rel="noopener">https://www.cnblogs.com/meibenjin/archive/2012/12/06/2806396.html</a> </p>
+<p>参考：<a href="https://www.cnblogs.com/meibenjin/archive/2012/12/06/2806396.html" target="_blank" rel="noopener">https://www.cnblogs.com/meibenjin/archive/2012/12/06/2806396.html</a></p>
 </blockquote>
 </li>
-</ul>
-<ul>
 <li><p>动态调试</p>
 </li>
 <li><p>xPosed, Android-InLine_Hook</p>
 <blockquote>
-<p><a href="https://github.com/smartdone/Frida-Scripts/tree/master/unpack" target="_blank" rel="noopener">https://github.com/smartdone/Frida-Scripts/tree/master/unpack</a> </p>
+<p><a href="https://github.com/smartdone/Frida-Scripts/tree/master/unpack" target="_blank" rel="noopener">https://github.com/smartdone/Frida-Scripts/tree/master/unpack</a></p>
 </blockquote>
 </li>
-</ul>
-<ul>
-<li>dexdump </li>
-</ul>
-<ul>
-<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">adb shell dexdump -f /data/app/com.xxx.xxx/base.apk &gt; ~/test.txt</span><br><span class="line"></span><br><span class="line">dexdump: [-c] [-d] [-f] [-h] [-i] [-l layout] [-m] [-t tempfile]</span><br><span class="line">dexfile…</span><br><span class="line"></span><br><span class="line">-c : verify checksum and exit</span><br><span class="line">-d : disassemble code sections</span><br><span class="line">-f : display summary information from file header</span><br><span class="line">-h : display file header details</span><br><span class="line">-i : ignore checksum failures</span><br><span class="line">-l : output layout, either ‘plain’ or ‘xml’</span><br><span class="line">-m : dump register maps (and nothing else)</span><br><span class="line">-t : temp file name (defaults to /sdcard/dex-temp-*)</span><br></pre></td></tr></table></figure>
-
-
+<li><p>dexdump</p>
+</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">adb shell dexdump -f /data/app/com.xxx.xxx/base.apk &gt; ~/test.txt</span><br><span class="line"></span><br><span class="line">dexdump: [-c] [-d] [-f] [-h] [-i] [-l layout] [-m] [-t tempfile]</span><br><span class="line">dexfile…</span><br><span class="line"></span><br><span class="line">-c : verify checksum and exit</span><br><span class="line">-d : disassemble code sections</span><br><span class="line">-f : display summary information from file header</span><br><span class="line">-h : display file header details</span><br><span class="line">-i : ignore checksum failures</span><br><span class="line">-l : output layout, either ‘plain’ or ‘xml’</span><br><span class="line">-m : dump register maps (and nothing else)</span><br><span class="line">-t : temp file name (defaults to /sdcard/dex-temp-*)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>cmdline /proc/%d/cmdline</p>
+</li>
+<li><p>动态导出内存中的 Java Class 文件</p>
+<blockquote>
+<p><a href="https://blog.csdn.net/dotalee/article/details/78272499" target="_blank" rel="noopener">https://blog.csdn.net/dotalee/article/details/78272499</a></p>
+<p><a href="https://blog.csdn.net/hengyunabc/article/details/51106980" target="_blank" rel="noopener">https://blog.csdn.net/hengyunabc/article/details/51106980</a></p>
+<p><a href="https://search.maven.org/search?q=dumpclass" target="_blank" rel="noopener">https://search.maven.org/search?q=dumpclass</a></p>
+</blockquote>
+</li>
+<li><p>android逆向方法总结的很全面的文章</p>
+<blockquote>
+<p><a href="https://book.crifan.com/books/android_app_security_crack/website/android_background/related_info/dex_file.html" target="_blank" rel="noopener">https://book.crifan.com/books/android_app_security_crack/website/android_background/related_info/dex_file.html</a></p>
+<p><a href="https://juejin.im/post/5a5b25d0f265da3e2e6273a5" target="_blank" rel="noopener">https://juejin.im/post/5a5b25d0f265da3e2e6273a5</a></p>
+<p><a href="https://bbs.pediy.com/thread-191395.htm" target="_blank" rel="noopener">https://bbs.pediy.com/thread-191395.htm</a></p>
+</blockquote>
+</li>
+<li><p>PC Java 查看类的工具</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo java -classpath &quot;$JAVA_HOME/lib/sa-jdi.jar&quot; sun.jvm.hotspot.HSDB </span><br><span class="line">// 一个java的可视化工具，可以dump内存中的java类，启动之后通过attach PID 获取虚拟机中加载的类信息。</span><br><span class="line">// 并且在tools 中可以看到直方图等其他信息。</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
-<ul>
-<li>cmdline /proc/%d/cmdline</li>
-<li>fj hb  fp</li>
-</ul>
+<h3 id="更新-讨论android加固防内存dump的技术及vmp壳的防护强度"><a href="#更新-讨论android加固防内存dump的技术及vmp壳的防护强度" class="headerlink" title="[更新]讨论android加固防内存dump的技术及vmp壳的防护强度"></a>[更新]讨论android加固防内存dump的技术及vmp壳的防护强度</h3><p><a href="https://bbs.pediy.com/thread-206293.htm" target="_blank" rel="noopener">https://bbs.pediy.com/thread-206293.htm</a></p>
+<p>移动调试工具：UPX</p>
+<p>memdump 导出 so文件，需要拼装</p>
+<p><a href="https://cloud.tencent.com/info/fd6d7ab6e1d277bc71829125a94cf3d4.html" target="_blank" rel="noopener">https://cloud.tencent.com/info/fd6d7ab6e1d277bc71829125a94cf3d4.html</a></p>
+<p><a href="https://github.com/gnaixx/MemDump" target="_blank" rel="noopener">https://github.com/gnaixx/MemDump</a></p>
+<p>dump 内存最优方案，修改源码，加上dump class 逻辑，然后自己编译android 源码，</p>
+<p><a href="https://blog.csdn.net/tabactivity/article/details/79359736" target="_blank" rel="noopener">https://blog.csdn.net/tabactivity/article/details/79359736</a></p>
 
           
         
@@ -1377,887 +2133,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/08/22/Hive 简介/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lpl">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/blog/images/head.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="闲敲棋子落灯花">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2019/08/22/Hive 简介/" itemprop="url">Hive 简介</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-22T14:42:03+08:00">
-                2019-08-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/hive/" itemprop="url" rel="index">
-                    <span itemprop="name">hive</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="Hive简介"><a href="#Hive简介" class="headerlink" title="Hive简介"></a>Hive简介</h5><ul>
-<li>Apache Hive起初由<a href="https://zh.wikipedia.org/wiki/Facebook" target="_blank" rel="noopener">Facebook</a>开发</li>
-<li><strong>Apache Hive</strong>是一个建立在<a href="https://zh.wikipedia.org/wiki/Hadoop" target="_blank" rel="noopener">Hadoop</a>架构之上的数据仓库。</li>
-<li>可以将结构化的数据文件映射为一张数据库表</li>
-<li>Hive 定义了简单的类 SQL 查询语言，称为 HQL，它允许熟悉 SQL 的用户查询数据。</li>
-<li>底层数据是存储在 HDFS (Hadoop Distributed File System)上</li>
-<li>Hive的本质是将 SQL 语句转换为 MapReduce 任务运行</li>
-<li>使不熟悉 MapReduce 的用户很方便地利用 HQL 处理和计算 HDFS 上的结构化的数据。</li>
-</ul>
-<h5 id="Hive优缺点："><a href="#Hive优缺点：" class="headerlink" title="Hive优缺点："></a>Hive优缺点：</h5><blockquote>
-<p>直接使用 MapReduce 所面临的问题：</p>
-<p>　　1、人员学习成本太高</p>
-<p>　　2、项目周期要求太短</p>
-<p>　　3、MapReduce实现复杂查询逻辑开发难度太大</p>
-<p>为什么要使用 Hive：</p>
-<p>　　1、更友好的接口：操作接口采用类 SQL 的语法，提供快速开发的能力</p>
-<p>　　2、更低的学习成本：避免了写 MapReduce，减少开发人员的学习成本</p>
-<p>　　3、更好的扩展性：可自由扩展集群规模而无需重启服务，还支持用户自定义函数</p>
-</blockquote>
-<h5 id="Hive的特点"><a href="#Hive的特点" class="headerlink" title="Hive的特点"></a>Hive的特点</h5><blockquote>
-<p><strong>优点</strong>：</p>
-<p>　　1、<strong>可扩展性,横向扩展</strong>，Hive 可以自由的扩展集群的规模，一般情况下不需要重启服务 横向扩展：通过分担压力的方式扩展集群的规模 纵向扩展：一台服务器cpu i7-6700k 4核心8线程，8核心16线程，内存64G =&gt; 128G</p>
-<p>　　2、<strong>延展性</strong>，Hive 支持自定义函数，用户可以根据自己的需求来实现自己的函数</p>
-<p>　　3、<strong>良好的容错性</strong>，可以保障即使有节点出现问题，SQL 语句仍可完成执行</p>
-<p><strong>缺点</strong>：</p>
-<p>　　1、<strong>Hive 不支持记录级别的增删改操作</strong>，但是用户可以通过查询生成新表或者将查询结 果导入到文件中（当前选择的 hive-2.3.2 的版本支持记录级别的插入操作）</p>
-<p>　　2、<strong>Hive 的查询延时很严重</strong>，因为 MapReduce Job 的启动过程消耗很长时间，所以不能 用在交互查询系统中。</p>
-<p>　　3、<strong>Hive 不支持事务</strong>（因为不没有增删改，所以主要用来做 OLAP（联机分析处理），而 不是 OLTP（联机事务处理），这就是数据处理的两大级别）。</p>
-</blockquote>
-<h5 id="Hive的用户接口"><a href="#Hive的用户接口" class="headerlink" title="Hive的用户接口"></a>Hive的用户接口</h5><blockquote>
-<p>CLI，Shell 终端命令行（Command Line Interface），采用交互形式使用 Hive 命令行与 Hive 进行交互，最常用（学习，调试，生产）</p>
-<p>JDBC/ODBC，是 Hive 的基于 JDBC 操作提供的客户端，用户（开发员，运维人员）通过 这连接至 Hive server 服务</p>
-<p>Web UI，通过浏览器访问 Hive</p>
-</blockquote>
-<h5 id="Hive的跨语言服务"><a href="#Hive的跨语言服务" class="headerlink" title="Hive的跨语言服务"></a>Hive的跨语言服务</h5><blockquote>
-<p>Thrift 是 Facebook 开发的一个软件框架，可以用来进行可扩展且跨语言的服务的开发， Hive 集成了该服务，能让不同的编程语言调用 Hive 的接口</p>
-</blockquote>
-<h5 id="底层驱动"><a href="#底层驱动" class="headerlink" title="底层驱动"></a>底层驱动</h5><blockquote>
-<p>Driver 组件完成 HQL 查询语句从词法分析，语法分析，编译，优化，以及生成逻辑执行 计划的生成。生成的逻辑执行计划存储在 HDFS 中，并随后由 MapReduce 调用执行</p>
-<p>Hive 的核心是驱动引擎， 驱动引擎由四部分组成：</p>
-<p>(1) 解释器：解释器的作用是将 HiveSQL 语句转换为抽象语法树（AST）</p>
-<p>(2) 编译器：编译器是将语法树编译为逻辑执行计划</p>
-<p>(3) 优化器：优化器是对逻辑执行计划进行优化</p>
-<p>(4) 执行器：执行器是调用底层的运行框架执行逻辑执行计划</p>
-</blockquote>
-<h5 id="数据库存储系统"><a href="#数据库存储系统" class="headerlink" title="数据库存储系统"></a>数据库存储系统</h5><blockquote>
-<p><strong>元数据</strong>，通俗的讲，就是存储在 Hive 中的数据的描述信息。</p>
-<p>Hive 中的元数据通常包括：表的名字，表的列和分区及其属性，表的属性（内部表和 外部表），表的数据所在目录</p>
-<p>Metastore 默认存在自带的 Derby 数据库中。缺点就是不适合多用户操作，并且数据存 储目录不固定。数据库跟着 Hive 走，极度不方便管理</p>
-<p>解决方案：通常存我们自己创建的 MySQL 库（本地 或 远程）</p>
-<p>Hive 和 MySQL 之间通过 MetaStore 服务交互</p>
-</blockquote>
-<h5 id="执行流程"><a href="#执行流程" class="headerlink" title="执行流程"></a>执行流程</h5><blockquote>
-<p>HiveQL 通过命令行或者客户端提交，经过 Compiler 编译器，运用 MetaStore 中的元数 据进行类型检测和语法分析，生成一个逻辑方案(Logical Plan)，然后通过的优化处理，产生 一个 MapReduce 任务。</p>
-</blockquote>
-<h5 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h5><blockquote>
-<p><a href="https://www.cnblogs.com/qingyunzong/p/8707885.html" target="_blank" rel="noopener">https://www.cnblogs.com/qingyunzong/p/8707885.html</a></p>
-<p><a href="https://www.cnblogs.com/qingyunzong/category/1191578.html" target="_blank" rel="noopener">https://www.cnblogs.com/qingyunzong/category/1191578.html</a></p>
-</blockquote>
-<p>　　　　</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/08/22/CI架构/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lpl">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/blog/images/head.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="闲敲棋子落灯花">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2019/08/22/CI架构/" itemprop="url">CI架构</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-22T09:15:47+08:00">
-                2019-08-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/php/" itemprop="url" rel="index">
-                    <span itemprop="name">php</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="CI架构简介"><a href="#CI架构简介" class="headerlink" title="CI架构简介"></a>CI架构简介</h5><ul>
-<li><p>CI架构全拼Codeigniter，相比之下另外一个更加活跃的PHP架构是Laravel。</p>
-</li>
-<li><p>CodeIgniter 是一套给 PHP 网站开发者使用的应用程序开发框架和工具包。它的特点包括且不局限于：</p>
-<blockquote>
-<ul>
-<li>小巧但性能出色</li>
-<li>广泛兼容各种 PHP 版本</li>
-<li>几乎零配置且不需使用命令行</li>
-</ul>
-</blockquote>
-</li>
-<li><p>CI下载</p>
-<blockquote>
-<p><a href="https://www.codeigniter.com/" target="_blank" rel="noopener">https://www.codeigniter.com/</a></p>
-</blockquote>
-</li>
-<li><p>index.php 是所有 CI 程序的入口</p>
-</li>
-<li><p>设置.htaccess 文件</p>
-<blockquote>
-<p>打开.htaccess 文件并添加以下四行代码，保存并退出</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; `RewriteEngine on``RewriteCond %&#123;REQUEST_FILENAME&#125; !-f``RewriteCond %&#123;REQUEST_FILENAME&#125; !-d``RewriteRule ^(.*)$ /index.php/$<span class="number">1</span> [L]`</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<p>让我们看一下上面每行代码的作用：</p>
-<ol>
-<li>RewriteEngine on 用于打开 Apache 的 URL 重写</li>
-<li>RewriteCond %{REQUEST_FILENAME} !-f 代表如果请求的文件存在，则直接访问该文件；如果文件不存在，则进行至下一步</li>
-<li>RewriteCond %{REQUEST_FILENAME} !-d 代表如果目录存在则直接访问目录；如果目录不存在，则进行至下一步</li>
-<li>RewriteRule ^(.*)$ /index.php/$1 [L] 如果所请求的路径不是存在的文件也不是存在的目录，则在路径前追加/index.php/</li>
-</ol>
-<p>这样，我们在访问任何 CI 的 URL 时，就不需要指定任何 php 路径了。因为 index.php 是所有 CI 程序的入口。</p>
-</blockquote>
-</li>
-<li><p>定义路由</p>
-<blockquote>
-<p>对于URL Home - <a href="http://abc.om/en" target="_blank" rel="noopener">http://abc.om/en</a></p>
-<p>当 CI 接收到一个用户请求的 URL 时，首先去路由表中查询该 URL 对应的控制器。我们首先为 Home 定义一个路由。路由文件的位置是 config/routes.php。打开路由定义，添加如下代码：</p>
-<p>$route[‘en’] = ‘en/home’;</p>
-</blockquote>
-</li>
-</ul>
-<h5 id="控制器与视图入门"><a href="#控制器与视图入门" class="headerlink" title="控制器与视图入门"></a>控制器与视图入门</h5><ul>
-<li><p>控制器</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">清单 <span class="number">1.</span>controllelrs/en/home.php</span><br><span class="line"></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Home</span> <span class="keyword">extends</span> <span class="title">CI_Controller</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">  <span class="comment">//Home 控制器的构造函数</span></span><br><span class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  	<span class="keyword">parent</span>::__construct();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//Home 控制器的默认入口 index()方法</span></span><br><span class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">index</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//加载 views 目录下的/en/header.php 视图</span></span><br><span class="line">  <span class="keyword">$this</span>-&gt;load-&gt;view(<span class="string">'/en/header'</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">//加载 views 目录下的/en/home.php 视图</span></span><br><span class="line">  <span class="keyword">$this</span>-&gt;load-&gt;view(<span class="string">'/en/home'</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">//加载 views 目录下的/en/footer.php 视图</span></span><br><span class="line">  <span class="keyword">$this</span>-&gt;load-&gt;view(<span class="string">'/en/footer'</span>);</span><br><span class="line">  &#125;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<blockquote>
-<p>在 controllers 目录下，创建目录 en，在 en 目录下创建 home.php，这将是我们的第一个控制器。在 home.php 中添加如下代码：</p>
-</blockquote>
-<ul>
-<li><p>视图</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">清单 <span class="number">2.</span>views/en/header.php</span><br><span class="line">&lt;H1&gt;ABC.com - Header&lt;/H1&gt;</span><br><span class="line"></span><br><span class="line">清单 <span class="number">3.</span>views/en/home.php</span><br><span class="line">&lt;H2&gt;Welcome to ABC.com! - Body&lt;/H2&gt;</span><br><span class="line"></span><br><span class="line">清单 <span class="number">4.</span>views/en/footer.php</span><br><span class="line">&lt;H3&gt;Copyright - Footer&lt;/H3&gt;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h5 id="控制器如视图进阶"><a href="#控制器如视图进阶" class="headerlink" title="控制器如视图进阶"></a>控制器如视图进阶</h5><ul>
-<li><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">清单 <span class="number">5.</span>controllers/en/home.php</span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Home</span> <span class="keyword">extends</span> <span class="title">CI_Controller</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line"><span class="comment">//定义 Header 数据数组$headerdata</span></span><br><span class="line"><span class="keyword">protected</span> $headerdata = <span class="keyword">array</span>(</span><br><span class="line"> </span><br><span class="line">  <span class="comment">//定义页面标题数据</span></span><br><span class="line">  <span class="string">'title'</span> =&gt; <span class="string">'ABC - Home'</span>,</span><br><span class="line"></span><br><span class="line">  <span class="comment">//定义页面导航栏数据</span></span><br><span class="line">  <span class="string">'nav'</span> =&gt; <span class="keyword">array</span>(</span><br><span class="line">      <span class="string">'Home'</span> =&gt; <span class="keyword">array</span>(</span><br><span class="line">      <span class="string">'url'</span> =&gt; <span class="string">'/en'</span>,</span><br><span class="line">      <span class="string">'active'</span> =&gt; <span class="keyword">TRUE</span></span><br><span class="line">      ),</span><br><span class="line">      <span class="string">'Solutions'</span> =&gt; <span class="keyword">array</span>(</span><br><span class="line">      <span class="string">'url'</span> =&gt; <span class="string">'/en/solutions'</span>,</span><br><span class="line">      <span class="string">'active'</span> =&gt; <span class="keyword">FALSE</span></span><br><span class="line">      ),</span><br><span class="line">      <span class="string">'Services'</span> =&gt; <span class="keyword">array</span>(</span><br><span class="line">      <span class="string">'url'</span> =&gt; <span class="string">'/en/services'</span>,</span><br><span class="line">      <span class="string">'active'</span> =&gt; <span class="keyword">FALSE</span></span><br><span class="line">      ),</span><br><span class="line">      <span class="string">'Products'</span> =&gt; <span class="keyword">array</span>(</span><br><span class="line">      <span class="string">'url'</span> =&gt; <span class="string">'/en/products'</span>,</span><br><span class="line">      <span class="string">'active'</span> =&gt; <span class="keyword">FALSE</span></span><br><span class="line">      ),</span><br><span class="line">      <span class="string">'Support'</span> =&gt; <span class="keyword">array</span>(</span><br><span class="line">      <span class="string">'url'</span> =&gt; <span class="string">'/en/support'</span>,</span><br><span class="line">      <span class="string">'active'</span> =&gt; <span class="keyword">FALSE</span></span><br><span class="line">      )</span><br><span class="line">  ),</span><br><span class="line">);</span><br><span class="line"><span class="comment">//Home 控制器的构造函数</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="keyword">parent</span>::__construct();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//Home 控制器的默认入口 index()方法</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">index</span><span class="params">()</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line"><span class="comment">//加载 views 目录下的/en/header.php 视图并将$headerdata 中的导航栏数据传递给 header 视图</span></span><br><span class="line"><span class="keyword">$this</span>-&gt;load-&gt;view(<span class="string">'/en/header'</span>, <span class="keyword">$this</span>-&gt;headerdata);</span><br><span class="line"> </span><br><span class="line"><span class="comment">//加载 views 目录下的/en/home.php 视图</span></span><br><span class="line"><span class="keyword">$this</span>-&gt;load-&gt;view(<span class="string">'/en/home'</span>);</span><br><span class="line"><span class="comment">//加载 views 目录下的/en/footer.php 视图</span></span><br><span class="line"><span class="keyword">$this</span>-&gt;load-&gt;view(<span class="string">'/en/footer'</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>这段代码介绍了如何将数据从控制器传入视图。</p>
-</blockquote>
-</li>
-<li><p>视图</p>
-</li>
-<li><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">清单 <span class="number">6.</span>views/en/header.php</span><br><span class="line"></span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">  	&lt;title&gt;<span class="meta">&lt;?php</span> <span class="keyword">echo</span> $title <span class="meta">?&gt;</span>&lt;/title&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  <span class="comment">//遍历$nav 数组</span></span><br><span class="line">  <span class="keyword">foreach</span> ($nav <span class="keyword">as</span> $name =&gt; $value) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//如果当前元素为’active’状态，则显示(Active)</span></span><br><span class="line">    <span class="keyword">if</span> ($value[<span class="string">'active'</span>]) &#123;</span><br><span class="line">      <span class="keyword">echo</span> <span class="string">"$name(Active)"</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">//如果当前元素为非’active’状态，则显示该页面名称，并附有该页面的链接</span></span><br><span class="line">      <span class="keyword">echo</span> <span class="string">'&lt;a href="'</span></span><br><span class="line">      . $value[<span class="string">'url'</span>] . <span class="string">'"&gt;'</span>;</span><br><span class="line">      <span class="keyword">echo</span> $name;</span><br><span class="line">      <span class="keyword">echo</span> <span class="string">'&lt;/a&gt;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">' | '</span>;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>我们在 home 控制器中将$headerdata 传递给 header 视图，header 视图就可以直接访问$headerdata 的内部数据，无需指定数组名称。我们可以在 header.php 中，直接使用$title 来访问 home.php 中的$headerdata[‘title’]；同样我们可以在 header.php 中，直接使用$nav 来访问 home.php 中的$headerdata[‘nav’]。</p>
-</blockquote>
-</li>
-</ul>
-<h3 id="URI-传参及模型-控制器-视图-完整流程"><a href="#URI-传参及模型-控制器-视图-完整流程" class="headerlink" title="URI 传参及模型-控制器-视图 - 完整流程"></a>URI 传参及模型-控制器-视图 - 完整流程</h3><ul>
-<li><p>URI 解析</p>
-<blockquote>
-<p>根据CI 的 URI 路由特性，我们采用下面的 URL 来显示 products 的 issue001 页面</p>
-<p><a href="http://abc.com/en/support/products/issue001" target="_blank" rel="noopener">http://abc.com/en/support/products/issue001</a></p>
-<p>此 URL 的定义如下</p>
-<ol>
-<li>第一段 abc.com 代表域名</li>
-<li>第二段 en 代表控制器的目录</li>
-<li>第三段 support 代表控制器的名称</li>
-<li>第四段 products 代表控制器的函数名</li>
-<li>第五段 issue001 代表传递给控制器的参数</li>
-</ol>
-</blockquote>
-</li>
-<li><p>控制器</p>
-</li>
-<li><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">清单 <span class="number">7.</span>controllers/en/support.php</span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Support</span> <span class="keyword">extends</span> <span class="title">CI_Controller</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line"><span class="comment">//为 Support 控制器定义 Header 数据</span></span><br><span class="line"><span class="keyword">protected</span> $headerdata = <span class="keyword">array</span>(</span><br><span class="line"> </span><br><span class="line">  <span class="comment">//定义 Support 页面标题</span></span><br><span class="line">  <span class="string">'title'</span> =&gt; <span class="string">'ABC - Support'</span>,</span><br><span class="line">  <span class="comment">//定义 Support 页面导航栏</span></span><br><span class="line">  <span class="string">'nav'</span> =&gt; <span class="keyword">array</span>(</span><br><span class="line">    <span class="string">'Home'</span> =&gt; <span class="keyword">array</span>(</span><br><span class="line">    <span class="string">'url'</span> =&gt; <span class="string">'/en'</span>,</span><br><span class="line">    <span class="string">'active'</span> =&gt; <span class="keyword">FALSE</span></span><br><span class="line">    ),</span><br><span class="line">    <span class="string">'Solutions'</span> =&gt; <span class="keyword">array</span>(</span><br><span class="line">    <span class="string">'url'</span> =&gt; <span class="string">'/en/solutions'</span>,</span><br><span class="line">    <span class="string">'active'</span> =&gt; <span class="keyword">FALSE</span></span><br><span class="line">    ),</span><br><span class="line">    <span class="string">'Services'</span> =&gt; <span class="keyword">array</span>(</span><br><span class="line">    <span class="string">'url'</span> =&gt; <span class="string">'/en/services'</span>,</span><br><span class="line">    <span class="string">'active'</span> =&gt; <span class="keyword">FALSE</span></span><br><span class="line">    ),</span><br><span class="line">    <span class="string">'Products'</span> =&gt; <span class="keyword">array</span>(</span><br><span class="line">    <span class="string">'url'</span> =&gt; <span class="string">'/en/products'</span>,</span><br><span class="line">    <span class="string">'active'</span> =&gt; <span class="keyword">FALSE</span></span><br><span class="line">    ),</span><br><span class="line">    <span class="string">'Support'</span> =&gt; <span class="keyword">array</span>(</span><br><span class="line">    <span class="string">'url'</span> =&gt; <span class="string">'/en/support'</span>,</span><br><span class="line">    <span class="string">'active'</span> =&gt; <span class="keyword">TRUE</span></span><br><span class="line">    )</span><br><span class="line">  ),</span><br><span class="line">);</span><br><span class="line"><span class="comment">//定义 Support 页面的数据元素</span></span><br><span class="line"><span class="keyword">protected</span> $supportdata = <span class="keyword">array</span>(</span><br><span class="line">  <span class="string">'type'</span> =&gt; <span class="string">''</span>,</span><br><span class="line">  <span class="string">'issue'</span> =&gt; <span class="string">''</span>,</span><br><span class="line">  <span class="string">'info'</span> =&gt; <span class="string">''</span></span><br><span class="line">);</span><br><span class="line"><span class="comment">//Home 控制器的构造函数</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="comment">//构造函数</span></span><br><span class="line">  <span class="keyword">parent</span>::__construct();</span><br><span class="line">  <span class="comment">//加载 Support 的数据模型</span></span><br><span class="line">  <span class="keyword">$this</span>-&gt;load-&gt;model(<span class="string">"support_model"</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">//Support 控制器的默认入口</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">index</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="comment">//加载 header 视图并将 header 数据传递给视图</span></span><br><span class="line">  <span class="keyword">$this</span>-&gt;load-&gt;view(<span class="string">'/en/header'</span>, <span class="keyword">$this</span>-&gt;headerdata);</span><br><span class="line">  <span class="comment">//加载 footer 视图</span></span><br><span class="line">  <span class="keyword">$this</span>-&gt;load-&gt;view(<span class="string">'/en/footer'</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">//Support 控制器的 products 入口</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">products</span><span class="params">($issue)</span> </span>&#123;</span><br><span class="line">  <span class="comment">//定义 support 的数据为 Products 类型，存入$supportdata</span></span><br><span class="line">  <span class="keyword">$this</span>-&gt;supportdata[<span class="string">'type'</span>] = <span class="string">'Products'</span>;</span><br><span class="line">  <span class="comment">//将 URL 传过来的$issue 参数存入$supportdata</span></span><br><span class="line">  <span class="keyword">$this</span>-&gt;supportdata[<span class="string">'issue'</span>] = $issue;</span><br><span class="line">  <span class="comment">//从 Support 模型中取出$issue 数据并存入$supportdata</span></span><br><span class="line">  <span class="keyword">$this</span>-&gt;supportdata[<span class="string">'info'</span>] = <span class="keyword">$this</span>-&gt;support_model-&gt;get_product($issue);</span><br><span class="line">  <span class="comment">//加载 header 视图并将 header 数据传递给视图</span></span><br><span class="line">  <span class="keyword">$this</span>-&gt;load-&gt;view(<span class="string">'/en/header'</span>, <span class="keyword">$this</span>-&gt;headerdata);</span><br><span class="line">  <span class="comment">//加载 support 视图并将 supportdata 数据传递给视图</span></span><br><span class="line">  <span class="keyword">$this</span>-&gt;load-&gt;view(<span class="string">'/en/support'</span>, <span class="keyword">$this</span>-&gt;supportdata);</span><br><span class="line">  <span class="comment">//加载 footer 视图</span></span><br><span class="line">  <span class="keyword">$this</span>-&gt;load-&gt;view(<span class="string">'/en/footer'</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>模型</p>
-</li>
-<li><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">清单 <span class="number">8.</span>models/support_model.php</span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Support_model</span> <span class="keyword">extends</span> <span class="title">CI_Model</span> </span>&#123;</span><br><span class="line">  <span class="comment">//Support 模型的构造函数</span></span><br><span class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">parent</span>::__construct();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//Support 模型的 get_product 方法，用于返回$issue 所代表的数据</span></span><br><span class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">get_product</span><span class="params">($issue)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//返回$issue 的 support 信息</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">"This is the support information for $issue"</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>视图</p>
-</li>
-<li><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">清单 <span class="number">9.</span>views/en/support.php</span><br><span class="line">&lt;H2&gt;Support - Body&lt;/H2&gt;</span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">"Type: $type&lt;br&gt;"</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"Issue: $issue&lt;br&gt;"</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"Information: $info&lt;br&gt;"</span>;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>参考文档</p>
-<blockquote>
-<p><a href="https://www.ibm.com/developerworks/cn/web/1508_lizhi_phpci/index.html" target="_blank" rel="noopener">https://www.ibm.com/developerworks/cn/web/1508_lizhi_phpci/index.html</a> </p>
-</blockquote>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/08/21/PG数据库简介/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lpl">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/blog/images/head.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="闲敲棋子落灯花">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2019/08/21/PG数据库简介/" itemprop="url">PG数据库 简介</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-21T15:30:00+08:00">
-                2019-08-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/数据库/" itemprop="url" rel="index">
-                    <span itemprop="name">数据库</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h5><ul>
-<li>PG 数据库全称 PostgreSQL</li>
-<li><a href="https://zh.wikipedia.org/wiki/自由软件" target="_blank" rel="noopener">自由的</a><a href="https://zh.wikipedia.org/w/index.php?title=对象-关系型数据库&action=edit&redlink=1" target="_blank" rel="noopener">对象-关系型数据库</a>服务器（<a href="https://zh.wikipedia.org/wiki/数据库管理系统" target="_blank" rel="noopener">数据库管理系统</a>），在<a href="https://zh.wikipedia.org/wiki/BSD许可证" target="_blank" rel="noopener">BSD许可证</a>下发行。</li>
-</ul>
-<h5 id="历史"><a href="#历史" class="headerlink" title="历史"></a>历史</h5><ul>
-<li>该项目最初开始于在<a href="https://zh.wikipedia.org/wiki/UC_Berkeley" target="_blank" rel="noopener">加利福尼亚大学伯克利分校</a>的<a href="https://zh.wikipedia.org/wiki/Ingres" target="_blank" rel="noopener">Ingres</a>计划。</li>
-<li>1982年这个计划的领导者迈克尔·斯通布雷克离开加利福尼亚大学伯克利分校去推进Ingres的商业化，但最后还是返回了学术界。</li>
-<li>1985年返回伯克利之后，<a href="https://zh.wikipedia.org/wiki/迈克尔·斯通布雷克" target="_blank" rel="noopener">斯通布雷克</a>开始了post-Ingres计划，致力于解决在1980年代早期所出现一些数据库系统存在的问题。Postgres和Ingres的代码库开始（并保持）完全分离。</li>
-<li>从1986年开始，该项目组发表了一些描述这一系统基本原理的论文</li>
-<li>1988年实现并运行了一个Demo版本。</li>
-<li>1989年六月向少数用户发行了版本1.0</li>
-<li>1990年6月发行了带有全新规则系统的版本2.0</li>
-<li>1991年的版本3.0再次重写了规则系统，并增加了对多个存储管理器的支持与改进的查询引擎。</li>
-<li>1993年开始拥有大量用户，这些用户提供了大量的功能与优化建议。但是在发行了作为细节修正的版本4.0之后，Postgres计划就终止了。</li>
-<li>1994年，两个<a href="https://zh.wikipedia.org/wiki/UC_Berkeley" target="_blank" rel="noopener">加利福尼亚大学伯克利分校</a>的研究生 Andrew Yu和Jolly Chen 增加了一个<a href="https://zh.wikipedia.org/wiki/SQL" target="_blank" rel="noopener">SQL</a>语言解释器来替代早先的基于Ingres的<a href="https://zh.wikipedia.org/w/index.php?title=QUEL&action=edit&redlink=1" target="_blank" rel="noopener">QUEL</a>系统，创建了Postgres95。</li>
-<li>1996年被重命名为PostgreSQL以便突出该数据库全新的<a href="https://zh.wikipedia.org/wiki/SQL" target="_blank" rel="noopener">SQL查询语言</a>。</li>
-<li>2005年1月19日，PostgreSQL发行了版本8.0。</li>
-<li>目前最新的版本已经到了11.5。</li>
-</ul>
-<h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5><ul>
-<li><p>PostgreSQL 客户端安装</p>
-<blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> brew install postgresql</span><br><span class="line"><span class="meta">&gt;</span></span><br></pre></td></tr></table></figure>
-</blockquote>
-</li>
-<li><p>初始化数据库</p>
-<blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; initdb /usr/local/var/postgres</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-</li>
-<li><p>启动服务</p>
-<blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start</span><br><span class="line"><span class="meta">&gt;</span> # 开始或者停止pg</span><br><span class="line"><span class="meta">&gt;</span> pg_ctl start|stop</span><br><span class="line"><span class="meta">&gt;</span> # 查询pg监听端口</span><br><span class="line"><span class="meta">&gt;</span> netstat -a | grep PGSQ</span><br><span class="line"><span class="meta">&gt;</span> # 修改端口 postgresql.conf </span><br><span class="line"><span class="meta">&gt;</span></span><br></pre></td></tr></table></figure>
-</blockquote>
-</li>
-<li><p>参考文档</p>
-<blockquote>
-<p><a href="http://www.ruanyifeng.com/blog/2013/12/getting_started_with_postgresql.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2013/12/getting_started_with_postgresql.html</a></p>
-<p><a href="https://www.jianshu.com/p/10ced5145d39" target="_blank" rel="noopener">https://www.jianshu.com/p/10ced5145d39</a></p>
-</blockquote>
-</li>
-</ul>
-<h5 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h5><ul>
-<li><p>创建数据库，进入控制台</p>
-<blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> createdb</span><br><span class="line"><span class="meta">&gt;</span> # 进入PostgreSQL 控制台</span><br><span class="line"><span class="meta">&gt;</span> psql</span><br><span class="line"><span class="meta">&gt;</span> # \l 查看数据库；\q离开控制台</span><br><span class="line"><span class="meta">&gt;</span></span><br></pre></td></tr></table></figure>
-</blockquote>
-</li>
-<li><p>创建用户 jack</p>
-</li>
-<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 创建角色Jack ，密码123456</span><br><span class="line">CREATE USER jack WITH PASSWORD '123456';</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>创建属于jack的数据库nosql</p>
-</li>
-<li><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> nosql OWNER jack;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>将nosql数据库所有权限赋予jack用户</p>
-</li>
-<li><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">ALL</span> <span class="keyword">PRIVILEGES</span> <span class="keyword">ON</span> <span class="keyword">DATABASE</span> nosql <span class="keyword">to</span> jack;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>给jack用户添加创建数据库的属性</p>
-</li>
-<li><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">ROLE</span> jack CREATEDB;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>进入nosql 数据库</p>
-</li>
-<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">psql -U jack -d nosql -h [host] -p [port]；</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用sql 语句创建表</p>
-</li>
-<li><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建新表 </span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> user_tbl(<span class="keyword">name</span> <span class="built_in">VARCHAR</span>(<span class="number">20</span>), signup_date <span class="built_in">DATE</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment"># 插入数据 </span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> user_tbl(<span class="keyword">name</span>, signup_date) <span class="keyword">VALUES</span>(<span class="string">'张三'</span>, <span class="string">'2013-12-22'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment"># 选择记录 </span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> user_tbl;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>控制台常用命令</p>
-</li>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">\password：设置当前登录用户的密码</span><br><span class="line">\h：查看SQL命令的解释，比如\h select。</span><br><span class="line">\?：查看psql命令列表。</span><br><span class="line">\l：列出所有数据库。</span><br><span class="line">\c [database_name]：连接其他数据库。</span><br><span class="line">\d：列出当前数据库的所有表格。</span><br><span class="line">\d [table_name]：列出某一张表格的结构。</span><br><span class="line">\du：列出所有用户。</span><br><span class="line">\e：打开文本编辑器。</span><br><span class="line">\conninfo：列出当前数据库和连接的信息。</span><br><span class="line">\password [user]: 修改用户密码</span><br><span class="line">\q：退出</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/08/21/Redis 简介/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lpl">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/blog/images/head.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="闲敲棋子落灯花">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2019/08/21/Redis 简介/" itemprop="url">Redis 简介</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-21T09:38:55+08:00">
-                2019-08-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/数据库/" itemprop="url" rel="index">
-                    <span itemprop="name">数据库</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="Redis-简介"><a href="#Redis-简介" class="headerlink" title="Redis 简介"></a>Redis 简介</h5><ul>
-<li><p>Remote DIctionary Server(Redis) 是一个由Salvatore Sanfilippo写的key-value存储系统。</p>
-</li>
-<li><p>Redis是一个开源的使用ANSI C语言编写、遵守BSD协议、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。</p>
-<blockquote>
-<p>从2015年6月开始，Redis的开发由<a href="https://zh.wikipedia.org/w/index.php?title=Redis_Labs&action=edit&redlink=1" target="_blank" rel="noopener">Redis Labs</a>赞助，而2013年5月至2015年6月期间，其开发由<a href="https://zh.wikipedia.org/wiki/Pivotal" target="_blank" rel="noopener">Pivotal</a>赞助。<a href="https://zh.wikipedia.org/wiki/Redis#cite_note-3" target="_blank" rel="noopener">[3]</a>在2013年5月之前，其开发由<a href="https://zh.wikipedia.org/wiki/VMware" target="_blank" rel="noopener">VMware</a>赞助。<a href="https://zh.wikipedia.org/wiki/Redis#cite_note-4" target="_blank" rel="noopener">[4]</a><a href="https://zh.wikipedia.org/wiki/Redis#cite_note-5" target="_blank" rel="noopener">[5]</a>根据月度排行网站DB-Engines.com的数据，Redis是最流行的键值对存储数据库。</p>
-</blockquote>
-</li>
-</ul>
-<h5 id="数据模型"><a href="#数据模型" class="headerlink" title="数据模型"></a>数据模型</h5><ul>
-<li><p>Redis的外围由一个键、值映射的<a href="https://zh.wikipedia.org/wiki/关联数组" target="_blank" rel="noopener">字典</a>构成。与其他<a href="https://zh.wikipedia.org/wiki/非关系型数据库" target="_blank" rel="noopener">非关系型数据库</a>主要不同在于：Redis中值的类型不仅限于<a href="https://zh.wikipedia.org/wiki/字符串" target="_blank" rel="noopener">字符串</a>，还支持如下抽象数据类型：</p>
-<blockquote>
-<ul>
-<li><a href="https://zh.wikipedia.org/wiki/字符串" target="_blank" rel="noopener">字符串</a><a href="https://zh.wikipedia.org/wiki/串列_(抽象資料型別)" target="_blank" rel="noopener">列表</a></li>
-<li>无序不重复的<a href="https://zh.wikipedia.org/wiki/字符串" target="_blank" rel="noopener">字符串</a><a href="https://zh.wikipedia.org/w/index.php?title=集合_(抽象資料型別)&action=edit&redlink=1" target="_blank" rel="noopener">集合</a></li>
-<li>有序不重复的<a href="https://zh.wikipedia.org/wiki/字符串" target="_blank" rel="noopener">字符串</a><a href="https://zh.wikipedia.org/w/index.php?title=集合_(抽象資料型別)&action=edit&redlink=1" target="_blank" rel="noopener">集合</a></li>
-<li>键、值都为<a href="https://zh.wikipedia.org/wiki/字符串" target="_blank" rel="noopener">字符串</a>的<a href="https://zh.wikipedia.org/wiki/哈希表" target="_blank" rel="noopener">哈希表</a></li>
-</ul>
-</blockquote>
-</li>
-<li><p>值的类型决定了值本身支持的操作。Redis支持不同无序、有序的<a href="https://zh.wikipedia.org/wiki/串列_(抽象資料型別)" target="_blank" rel="noopener">列表</a>，无序、有序的<a href="https://zh.wikipedia.org/w/index.php?title=集合_(抽象資料型別)&action=edit&redlink=1" target="_blank" rel="noopener">集合</a>间的交集、并集等高级服务器端原子操作。</p>
-</li>
-</ul>
-<h5 id="持久化"><a href="#持久化" class="headerlink" title="持久化"></a>持久化</h5><ul>
-<li><p>Redis通常将全部的数据存储在内存中。2.4版本后可配置为使用<a href="https://zh.wikipedia.org/wiki/虚拟内存" target="_blank" rel="noopener">虚拟内存</a>，<a href="https://zh.wikipedia.org/wiki/Redis#cite_note-9" target="_blank" rel="noopener">[9]</a>一部分数据集存储在硬盘上，但这个特性废弃了。</p>
-<p>当前通过两种方式实现<a href="https://zh.wikipedia.org/w/index.php?title=持久化&action=edit&redlink=1" target="_blank" rel="noopener">持久化</a>：</p>
-<ul>
-<li><p>使用<a href="https://zh.wikipedia.org/w/index.php?title=快照&action=edit&redlink=1" target="_blank" rel="noopener">快照</a>，一种半持久耐用模式。不时的将数据集以异步方式从内存以RDB格式写入硬盘。</p>
-<blockquote>
-<p>RDB文件是Redis持久化的一种方式，Redis通过制定好的策略，按期将内存中的数据以镜像的形式转存到RDB文件中。 <a href="https://ningyu1.github.io/site/post/34-redis-rdb/" target="_blank" rel="noopener">https://ningyu1.github.io/site/post/34-redis-rdb/</a>   <a href="https://redisbook.readthedocs.io/en/latest/internal/rdb.html" target="_blank" rel="noopener">https://redisbook.readthedocs.io/en/latest/internal/rdb.html</a></p>
-</blockquote>
-</li>
-<li><p>1.1版本开始使用更安全的AOF格式替代，一种只能追加的日志类型。将数据集修改操作记录起来。Redis能够在后台对只可追加的记录作修改来避免无限增长的日志。</p>
-<blockquote>
-<p>AOF 则以协议文本的方式，将所有对数据库进行过写入的命令（及其参数）记录到 AOF 文件，以此达到记录数据库状态的目的。 <a href="https://redisbook.readthedocs.io/en/latest/internal/aof.html" target="_blank" rel="noopener">https://redisbook.readthedocs.io/en/latest/internal/aof.html</a> </p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ul>
-<h5 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h5><ul>
-<li>Redis支持主从同步。数据可以从主服务器向任意数量的从服务器上同步，从服务器可以是关联其他从服务器的主服务器。这使得Redis可执行单层树复制。从盘可以有意无意的对数据进行写操作。由于完全实现了<a href="https://zh.wikipedia.org/wiki/发布/订阅" target="_blank" rel="noopener">发布/订阅</a>机制，使得从数据库在任何地方同步树时，可订阅一个频道并接收主服务器完整的消息发布记录。同步对读取操作的可扩展性和数据冗余很有帮助。</li>
-</ul>
-<h5 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h5><ul>
-<li>当数据依赖不再需要，Redis这种基于内存的性质，与在执行一个事务时将每个变化都写入硬盘的数据库系统相比就显得执行效率非常高。<a href="https://zh.wikipedia.org/wiki/Redis#cite_note-11" target="_blank" rel="noopener">[11]</a>写与读操作速度没有明显差别。</li>
-</ul>
-<h5 id="接口介绍"><a href="#接口介绍" class="headerlink" title="接口介绍"></a>接口介绍</h5><ul>
-<li><a href="http://www.runoob.com/redis/redis-data-types.html" target="_blank" rel="noopener">http://www.runoob.com/redis/redis-data-types.html</a></li>
-</ul>
-<h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5><ul>
-<li><p>Mac 上安装redis 命令</p>
-<blockquote>
-<p>brew install redis</p>
-</blockquote>
-</li>
-<li><p>验证是否安装成功</p>
-<blockquote>
-<p>brew services start redis</p>
-</blockquote>
-</li>
-<li><p>启动客户端</p>
-<blockquote>
-<p>cd /usr/local/bin/</p>
-<p>redis-cli</p>
-</blockquote>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/blog/page/2/">2</a><a class="page-number" href="/blog/page/3/">3</a><a class="extend next" rel="next" href="/blog/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/blog/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/4/">4</a><a class="extend next" rel="next" href="/blog/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2305,7 +2185,7 @@
               
                 <a href="/blog/archives/">
               
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2327,7 +2207,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/blog/tags/index.html">
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
