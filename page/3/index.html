@@ -293,6 +293,325 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/08/06/Android Q 非SDK 检查/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lpl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/blog/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="闲敲棋子落灯花">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2019/08/06/Android Q 非SDK 检查/" itemprop="url">Android Q 非SDK检查</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-06T17:56:30+08:00">
+                2019-08-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="SDK-限制等级"><a href="#SDK-限制等级" class="headerlink" title="SDK 限制等级"></a>SDK 限制等级</h5><ul>
+<li>greylist              本系统标记为不支持调用。但是无限制，可以正常使用</li>
+<li>Blacklist             无论targetVersion如何，使用这些api，系统将会抛出错误</li>
+<li>greylist-max-o        受限制的灰名单。targetVersion &lt;= 27 可以正常访问</li>
+<li>greylist-max-p        受限制的灰名单。targetVersion &lt;= 28 可以正常访问</li>
+</ul>
+<h5 id="检查工具"><a href="#检查工具" class="headerlink" title="检查工具"></a>检查工具</h5><ul>
+<li><a href="https://android.googlesource.com/platform/prebuilts/runtime/+/master/appcompat" target="_blank" rel="noopener">工具地址</a> 下载下来，将veridex-mac.zip解压出来进行下面操作进行check检查。</li>
+</ul>
+<h5 id="Mac-平台"><a href="#Mac-平台" class="headerlink" title="Mac 平台"></a>Mac 平台</h5><ul>
+<li><p>运行如下命令：</p>
+</li>
+<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./appcompat.sh --dex-file=test.apk</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/08/06/Android Hook/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lpl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/blog/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="闲敲棋子落灯花">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2019/08/06/Android Hook/" itemprop="url">Android hook</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-06T17:38:33+08:00">
+                2019-08-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="通过hook方式拦截startActivity"><a href="#通过hook方式拦截startActivity" class="headerlink" title="通过hook方式拦截startActivity"></a>通过hook方式拦截startActivity</h5><ul>
+<li><p>针对android 8以前</p>
+</li>
+<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hookAms</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            Class&lt;?&gt; ActivityManagerNativeClss  = Class.forName(<span class="string">"android.app.ActivityManagerNative"</span>);</span><br><span class="line">            Field defaultFiled      = ActivityManagerNativeClss.getDeclaredField(<span class="string">"gDefault"</span>);</span><br><span class="line">            defaultFiled.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">            Object defaultValue     = defaultFiled.get(<span class="keyword">null</span>);</span><br><span class="line"></span><br><span class="line">            Class&lt;?&gt; SingletonClass     = Class.forName(<span class="string">"android.util.Singleton"</span>);</span><br><span class="line">            Field mInstance             = SingletonClass.getDeclaredField(<span class="string">"mInstance"</span>);</span><br><span class="line">            mInstance.setAccessible(<span class="keyword">true</span>);</span><br><span class="line"></span><br><span class="line">            Object iActivityManagerObject   = mInstance.get(defaultValue);</span><br><span class="line"></span><br><span class="line">            Class&lt;?&gt; IActivityManagerIntercept  = Class.forName(<span class="string">"android.app.IActivityManager"</span>);</span><br><span class="line"></span><br><span class="line">            AmsInvocationHandler handler        = <span class="keyword">new</span> AmsInvocationHandler(iActivityManagerObject);</span><br><span class="line"></span><br><span class="line">            Object proxy    = Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(), <span class="keyword">new</span> Class&lt;?&gt;[]&#123;IActivityManagerIntercept&#125;, handler);</span><br><span class="line"></span><br><span class="line">            mInstance.set(defaultValue, proxy);</span><br><span class="line"></span><br><span class="line">        &#125;<span class="keyword">catch</span> (Throwable e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>针对android 8 以后</p>
+</li>
+<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hookAMSAfter26</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">       <span class="comment">// 第一步：获取 IActivityManagerSingleton</span></span><br><span class="line">       Class&lt;?&gt; aClass = Class.forName(<span class="string">"android.app.ActivityManager"</span>);</span><br><span class="line">       Field declaredField = aClass.getDeclaredField(<span class="string">"IActivityManagerSingleton"</span>);</span><br><span class="line">       declaredField.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">       Object value = declaredField.get(<span class="keyword">null</span>);</span><br><span class="line">  </span><br><span class="line">       Class&lt;?&gt; singletonClz = Class.forName(<span class="string">"android.util.Singleton"</span>);</span><br><span class="line">       Field instanceField = singletonClz.getDeclaredField(<span class="string">"mInstance"</span>);</span><br><span class="line">       instanceField.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">       Object iActivityManagerObject = instanceField.get(value);</span><br><span class="line">  </span><br><span class="line">       <span class="comment">// 第二步：获取我们的代理对象，这里因为 IActivityManager 是接口，我们使用动态代理的方式</span></span><br><span class="line">       Class&lt;?&gt; iActivity = Class.forName(<span class="string">"android.app.IActivityManager"</span>);</span><br><span class="line">  </span><br><span class="line">       InvocationHandler handler = <span class="keyword">new</span> AmsInvocationHandler(iActivityManagerObject);</span><br><span class="line">       Object proxy = Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(), <span class="keyword">new</span></span><br><span class="line">               Class&lt;?&gt;[]&#123;iActivity&#125;, handler);</span><br><span class="line">  </span><br><span class="line">       <span class="comment">// 第三步：偷梁换柱，将我们的 proxy 替换原来的对象</span></span><br><span class="line">       instanceField.set(value, proxy);</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>动态代理 实现</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.pa.test.test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.util.Log;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.InvocationHandler;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AmsInvocationHandler</span> <span class="keyword">implements</span> <span class="title">InvocationHandler</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Object iActivityManagerObject;</span><br><span class="line"></span><br><span class="line">    AmsInvocationHandler(Object iamo)&#123;</span><br><span class="line">        <span class="keyword">this</span>.iActivityManagerObject     = iamo;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object o, Method method, Object[] objects)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">        Log.i(<span class="string">"HookUtil"</span>, method.getName());</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(<span class="string">"startActivity"</span>.contains(method.getName()))&#123;</span><br><span class="line">            Log.i(<span class="string">"HookUtil"</span>, <span class="string">"HookUtil Success "</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> method.invoke(iActivityManagerObject, objects);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<blockquote>
+<p>本质上都是通过反射 + 动态代理的方式，拦截指定方法。</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/08/05/Java 动态代理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1605,421 +1924,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/07/24/Android SDK 自动化测试/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lpl">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/blog/images/head.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="闲敲棋子落灯花">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2019/07/24/Android SDK 自动化测试/" itemprop="url">Android SDK 自动化测试</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-24T15:10:56+08:00">
-                2019-07-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h5><ul>
-<li><p>JUnit - JUnit 是一个 Java 编程语言的单元测试框架。<a href="https://www.w3cschool.cn/junit/" target="_blank" rel="noopener">文档</a> </p>
-</li>
-<li><p>JUnit 3 - JUnit 3 是JUnit的3.x版本</p>
-<blockquote>
-<p>在JUnit3中，如果某个类是测试类，必须将其继承类TestCase；如果某个方法是测试方法，必须让这个方法以testXX开头；如果希望指定某个测试方法运行之前运行某个初始化方法，这个方法的名称必须是setUp；如果希望在某个测试方法运行之后运行某个释放资源的方法，这个方法的名称必须是tearDown</p>
-</blockquote>
-</li>
-<li><p>JUnit 4 - 是JUnit的 4.x版本</p>
-<blockquote>
-<p>JUnit 4是与JUnit3完全不同的API，它基于Java 5.0中的注解、静态导入等构建而成。JUnit 4更简单、更丰富、更易于使用，并引入了更为灵活的初始化和清理工作，还有限时的和参数化测试用例。</p>
-<p>在junit4中，一个POJO类就是一个测试类；</p>
-<p>1、测试方法通过@Test来标识；</p>
-<p>2、初始化方法通过@Before来标识；</p>
-<p>3、释放资源的方法通过@After来标识；</p>
-<p>4、为了让junit4的测试类在junit3中也可以使用，习惯于把初始化方法命名为setUp，释放资源的方法命名为tearDown。</p>
-<p>5、Test中的测试方法一般以Test来开始。其中标识为Before注解的方法，每次运行测试类，都会执行标识为@After与@Before的方法。</p>
-</blockquote>
-</li>
-</ul>
-<ul>
-<li><p>Instrumentation - Instrumentation是Android Java API层的一个类.</p>
-<blockquote>
-<p>通过阅读源码可以发现，平时我们在用Application、Activity的时候，实际上Application的创建、Activity的实例化、生命周期里onCreate等方法的调用，都是通过Instrumentation实现的。不仅如此，通过Instrumentation还可以向APP发送用户点击、按钮事件等。获取到了权限足够的Instrumentation，几乎就可以完全控制APP甚至手机了。</p>
-</blockquote>
-</li>
-</ul>
-<ul>
-<li><p>AndroidJUnit4 - 继承于Runner抽象类，不负责具体实现。采用了委托模式，由继承于Runner的另一内部对象 AndroidJUnit4ClassRunner 负责具体实现。采用了JUnit4实现。</p>
-</li>
-<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RunWith</span>(AndroidJUnit4.class)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ExampleInstrumentedTest</span> </span>&#123;</span><br><span class="line">    <span class="comment">//    @Rule</span></span><br><span class="line">    <span class="comment">//    public ActivityTestRule activityTestRule = new ActivityTestRule(MainActivity.class);</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">useAppContext</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ul>
-<ul>
-<li><p>AndroidJUnitRunner - 用于build.gradle配置文件</p>
-</li>
-<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">android &#123;</span><br><span class="line">    defaultConfig &#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">        testInstrumentationRunner <span class="string">"android.support.test.runner.AndroidJUnitRunner"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ul>
-<ul>
-<li><p>Instrumentation Test Runner - 可以支持 JUnit Test测试和Instrmentation Unit Tests测试。均只支持JUnit3</p>
-</li>
-<li><p>Android JUnit Test Runner - 支持JUnit4，对Instumentation Test Runner 的替代。</p>
-</li>
-<li><p>Local Unit Tests - 基于JVM的，只支持JUnit测试，其测试代码直接在电脑上的JVM中运行。测试类应该放在src/test/java目录下。只能测试纯java代码。</p>
-<blockquote>
-<p>Robolectric 使用教程 ：<a href="https://blog.csdn.net/shensky711/article/details/53561172" target="_blank" rel="noopener">https://blog.csdn.net/shensky711/article/details/53561172</a> </p>
-<p>Robolectric 给 Unit Tests 提供 android框架支持。</p>
-<p>Mock 模仿android 依赖, <a href="https://www.jianshu.com/p/00ab03f3d394" target="_blank" rel="noopener">https://www.jianshu.com/p/00ab03f3d394</a> </p>
-</blockquote>
-</li>
-<li><p>Instrmentation Unit Tests - 测试类放在src/androidTest/java目录。可以在模拟器、真机上测试，支持和android 框架相关的代码部分测试。</p>
-<blockquote>
-<p>参考文章：</p>
-<p><a href="http://www.paincker.com/android-test-1" target="_blank" rel="noopener">http://www.paincker.com/android-test-1</a></p>
-<p><a href="https://developer.android.com/training/testing/?hl=zh-cn" target="_blank" rel="noopener">https://developer.android.com/training/testing/?hl=zh-cn</a></p>
-</blockquote>
-</li>
-</ul>
-<h5 id="测试Demo"><a href="#测试Demo" class="headerlink" title="测试Demo"></a>测试Demo</h5><ul>
-<li><p>Android JUnit Demo 创建。</p>
-<blockquote>
-<p>优点是：直接在JVM上运行，速度快。</p>
-</blockquote>
-</li>
-</ul>
-<ul>
-<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建Java 类，不涉及android框架相关。</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Cal</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a + b;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">multiply</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a * b;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 自动创建测试样例：在这个类中，右键-&gt; Go to -&gt; Test -&gt; Create New Test -&gt; 选择 src/test/java 目录保存  </span></span><br><span class="line"><span class="comment">// 手动创建测试样例：http://www.paincker.com/android-test-2</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 右键运行 Run CalTest</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CalTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Cal mCal;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Before</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUp</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        mCal    = <span class="keyword">new</span> Cal();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@After</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">tearDown</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        mCal    = <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        assertEquals(mCal.add(<span class="number">2</span>, <span class="number">3</span>), <span class="number">5</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">multiply</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        assertEquals(mCal.multiply(<span class="number">2</span>, <span class="number">3</span>), <span class="number">6</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ul>
-<ul>
-<li><p>Android Instrumented Tests Demo 创建</p>
-<blockquote>
-<p>优点是：运行在模拟器或者真机上，贴合场景。</p>
-<p>对于同一个Java类，可以生成两个测试用例一个Android JUnit， 一个Android Instrumented；</p>
-<p>生成方式类似，用例保存地址不同。</p>
-</blockquote>
-</li>
-<li></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/07/24/Android自动化测试/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lpl">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/blog/images/head.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="闲敲棋子落灯花">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2019/07/24/Android自动化测试/" itemprop="url">android自动化测试</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-24T14:02:44+08:00">
-                2019-07-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="android-自动化测试工具介绍："><a href="#android-自动化测试工具介绍：" class="headerlink" title="android 自动化测试工具介绍："></a>android 自动化测试工具介绍：</h4><h5 id="Monkey"><a href="#Monkey" class="headerlink" title="Monkey"></a>Monkey</h5><blockquote>
-<p> 是Android SDK自带的测试工具，在测试过程中会向系统发送伪随机的用户事件流，如按键输入、触摸屏输入、手势输入等)，实现对正在开发的应用程序进行压力测试，也有日志输出。实际上该工具只能做程序做一些压力测试，由于测试事件和数据都是随机的，不能自定义，所以有很大的局限性。</p>
-<p>参考链接：<a href="https://blog.csdn.net/hebbely/article/details/78901466" target="_blank" rel="noopener">https://blog.csdn.net/hebbely/article/details/78901466</a> 介绍了Monkey 及相关参数的用法。</p>
-</blockquote>
-<h5 id="MonkeyRunner"><a href="#MonkeyRunner" class="headerlink" title="MonkeyRunner"></a>MonkeyRunner</h5><blockquote>
-<p>也是Android SDK提供的测试工具。严格意义上来说MonkeyRunner其实是一个Api工具包，比Monkey强大，可以编写测试脚本来自定义数据、事件。缺点是脚本用Python来写，对测试人员来说要求较高，有比较大的学习成本。</p>
-</blockquote>
-<h5 id="Instrumentation"><a href="#Instrumentation" class="headerlink" title="Instrumentation"></a>Instrumentation</h5><blockquote>
-<p>是早期Google提供的Android自动化测试工具类，虽然在那时候JUnit也可以对Android进行测试，但是Instrumentation允许你对应用程序做更为复杂的测试，甚至是框架层面的。通过Instrumentation你可以模拟按键按下、抬起、屏幕点击、滚动等事件。Instrumentation是通过将主程序和测试程序运行在同一个进程来实现这些功能，你可以把Instrumentation看成一个类似Activity或者Service并且不带界面的组件，在程序运行期间监控你的主程序。缺点是对测试人员来说编写代码能力要求较高，需要对Android相关知识有一定了解，还需要配置AndroidManifest.xml文件，不能跨多个App。</p>
-</blockquote>
-<h5 id="UiAutomator"><a href="#UiAutomator" class="headerlink" title="UiAutomator"></a>UiAutomator</h5><blockquote>
-<p>也是Android提供的自动化测试框架，基本上支持所有的Android事件操作，对比Instrumentation它不需要测试人员了解代码实现细节（可以用UiAutomatorviewer抓去App页面上的控件属性而不看源码）。基于Java，测试代码结构简单、编写容易、学习成本，一次编译，所有设备或模拟器都能运行测试，能跨App（比如：很多App有选择相册、打开相机拍照，这就是跨App测试）。缺点是只支持SDK 16（Android 4.1）及以上，不支持Hybird App、WebApp。</p>
-<p>参考链接：</p>
-<p><a href="https://blog.csdn.net/eclipsexys/article/details/45622813" target="_blank" rel="noopener">https://blog.csdn.net/eclipsexys/article/details/45622813</a></p>
-</blockquote>
-<h5 id="Espresso"><a href="#Espresso" class="headerlink" title="Espresso"></a>Espresso</h5><blockquote>
-<p>是Google的开源自动化测试框架。相对于Robotium和UIAutomator，它的特点是规模更小、更简洁，API更加精确，编写测试代码简单，容易快速上手。因为是基于Instrumentation的，所以不能跨App。</p>
-<p>官方文档：<a href="https://developer.android.com/training/testing/espresso" target="_blank" rel="noopener">https://developer.android.com/training/testing/espresso</a> </p>
-</blockquote>
-<h5 id="Selendroid"><a href="#Selendroid" class="headerlink" title="Selendroid"></a>Selendroid</h5><blockquote>
-<p>也是基于Instrumentation的测试框架，可以测试Native App、Hybird App、Web App，但是网上资料较少，社区活跃度也不大。</p>
-</blockquote>
-<h5 id="Robotium"><a href="#Robotium" class="headerlink" title="Robotium"></a>Robotium</h5><blockquote>
-<p>也是基于Instrumentation的测试框架，目前国内外用的比较多，资料比较多，社区也比较活跃。缺点是对测试人员来说要有一定的Java基础，了解Android基本组件，不能跨App。</p>
-</blockquote>
-<h5 id="Athrun"><a href="#Athrun" class="headerlink" title="Athrun"></a>Athrun</h5><blockquote>
-<p>是淘宝出的一个移动测试框架/平台，同时支持iOS和Android。Android部分也是基于Instrumentation，在Android原有的ActivityInstrumentationTestCase2类基础上进行了扩展，提供一整套面向对象的API。<a href="https://link.zhihu.com/?target=http%3A//code.taobao.org/p/athrun/wiki/index/" target="_blank" rel="noopener">这里</a>有详细介绍。</p>
-<p>CSDN：<a href="https://blog.csdn.net/xiaobai20131118/article/details/43762527" target="_blank" rel="noopener">https://blog.csdn.net/xiaobai20131118/article/details/43762527</a> </p>
-<p>官方文档没有找到，可能是已经关闭了。</p>
-</blockquote>
-<h5 id="Appium"><a href="#Appium" class="headerlink" title="Appium"></a>Appium</h5><blockquote>
-<p>是最近比较热门的框架，社区也很活跃。Appium是一个跨平台工具，它允许测试人员使用同样的接口、基于不同的平台写自动化测试代码，大大增加了测试套件间代码的复用性。android部分是基于UiAutomator和Selendroid。</p>
-<p>官方文档：<a href="https://github.com/appium/appium/tree/master/docs/cn" target="_blank" rel="noopener">https://github.com/appium/appium/tree/master/docs/cn</a> </p>
-</blockquote>
-<h5 id="Macaca"><a href="#Macaca" class="headerlink" title="Macaca"></a>Macaca</h5><blockquote>
-<p>macaca 是阿里的提供的解决方案,android部分也是基于uiautomator，和AutomatorX很类似，集成了多个工具集。1.功能与AutomatorX基本相同，除了可以用wifi 2.网页的测试更好. 依赖过多，安装复杂。</p>
-<p>官方文档：<a href="https://macacajs.github.io/zh/" target="_blank" rel="noopener">https://macacajs.github.io/zh/</a> </p>
-</blockquote>
-<h5 id="AutomatorX"><a href="#AutomatorX" class="headerlink" title="AutomatorX"></a>AutomatorX</h5><blockquote>
-<p>AutomatorX是网易给出的一套解决方案，是集合了各个测试框架之后给的一个方案，所以目前看来功能点是最全的。支持夸平台。</p>
-<p>官方文档：<a href="https://github.com/NetEaseGame/ATX" target="_blank" rel="noopener">https://github.com/NetEaseGame/ATX</a></p>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2072,7 +1976,7 @@
               
                 <a href="/blog/archives/">
               
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2083,7 +1987,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/blog/categories/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2094,7 +1998,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/blog/tags/index.html">
-                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-count">32</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

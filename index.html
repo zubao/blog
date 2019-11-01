@@ -293,6 +293,454 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/10/31/Gradle 依赖包下载失败/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lpl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/blog/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="闲敲棋子落灯花">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2019/10/31/Gradle 依赖包下载失败/" itemprop="url">Gradle 依赖包下载失败解决方法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-31T14:46:50+08:00">
+                2019-10-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/Gradle/" itemprop="url" rel="index">
+                    <span itemprop="name">Gradle</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="我们在Android-studio-升级或者gradle-插件升级的时候经常碰到某个依赖包下载不了，例如：构建错误：Could-not-download-trove4j-jar。可能的原因与解决方法："><a href="#我们在Android-studio-升级或者gradle-插件升级的时候经常碰到某个依赖包下载不了，例如：构建错误：Could-not-download-trove4j-jar。可能的原因与解决方法：" class="headerlink" title="我们在Android studio 升级或者gradle 插件升级的时候经常碰到某个依赖包下载不了，例如：构建错误：Could not download trove4j.jar。可能的原因与解决方法："></a>我们在Android studio 升级或者gradle 插件升级的时候经常碰到某个依赖包下载不了，例如：构建错误：Could not download trove4j.jar。可能的原因与解决方法：</h5><ul>
+<li><p>gradle plugin 版本和 gradle 版本不一致</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 项目跟目录build.gradle</span><br><span class="line">buildscript &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        jcenter()</span><br><span class="line">        mavenCentral()</span><br><span class="line">        google()</span><br><span class="line">    &#125;</span><br><span class="line">    dependencies &#123;</span><br><span class="line">    		# 插件版本</span><br><span class="line">        classpath 'com.android.tools.build:gradle:3.4.2'</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>Tue Oct 29 14:49:28 CST 2019</span><br><span class="line">distributionBase=GRADLE_USER_HOME</span><br><span class="line">distributionPath=wrapper/dists</span><br><span class="line">zipStoreBase=GRADLE_USER_HOME</span><br><span class="line">zipStorePath=wrapper/dists</span><br><span class="line"><span class="meta">#</span> gradle 版本</span><br><span class="line">distributionUrl=https\://services.gradle.org/distributions/gradle-5.1.1-all.zip</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>gradle 插件版本和gradle 版本必须保持一致，具体的对应关系看<a href="https://developer.android.google.cn/studio/releases/gradle-plugin" target="_blank" rel="noopener">官网</a> 。</p>
+</blockquote>
+</li>
+<li><p>用 jcenter() 替换 mavenCentral(); 添加google()。</p>
+</li>
+<li><p>下载不了trove4j.jar依赖包的原因可能是因为防火墙的原因，可以试试代理，或者直接换一个代码库。例如：</p>
+</li>
+<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">maven &#123;url "https://maven.aliyun.com/repository/google"&#125;</span><br><span class="line">maven &#123;url "https://maven.aliyun.com/repository/jcenter"&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果还是解决不了，可以考虑手动下载依赖包 trove4j.jar，然后放置到gradle 缓存目录。</p>
+</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># 依赖包放置路径</span><br><span class="line">/Users/xxx/.gradle/caches/modules-2/files-2.1</span><br><span class="line"># trove4j.jar 的放置路径</span><br><span class="line">/Users/xxx/.gradle/caches/modules-2/files-2.1/org.jetbrains.trove4j/trove4j/20160824/</span><br><span class="line"># 用shasum 对 trove4j 取 hash值，用该hash值创建目录</span><br><span class="line">shasum trove4j.jar</span><br><span class="line">mkdir xxx</span><br><span class="line"># 将jar包放到该目录中。</span><br><span class="line"># 参考文章</span><br><span class="line">https://www.meiwen.com.cn/subject/pekjuctx.html </span><br><span class="line">https://www.kaelli.com/26.html</span><br><span class="line">https://chinagdg.org/2016/01/picking-your-compilesdkversion-minsdkversion-targetsdkversion/</span><br><span class="line">https://developer.android.com/studio/build/dependencies?hl=zh-cn</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>阿里代码<a href="[http://dkaishu.com/2019/06/01/Android-Studio-%E4%B8%AD%E9%85%8D%E7%BD%AE%E9%98%BF%E9%87%8C%E4%BA%91%E5%85%AC%E5%85%B1%E4%BB%A3%E7%A0%81%E5%BA%93(%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93)/](http://dkaishu.com/2019/06/01/Android-Studio-中配置阿里云公共代码库(镜像仓库)/)">仓库</a> </p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/10/22/证书申请/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lpl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/blog/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="闲敲棋子落灯花">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2019/10/22/证书申请/" itemprop="url">证书申请</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-22T14:44:41+08:00">
+                2019-10-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/ca/" itemprop="url" rel="index">
+                    <span itemprop="name">ca</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="CA-机构-Certificate-Authority"><a href="#CA-机构-Certificate-Authority" class="headerlink" title="CA 机构(Certificate Authority)"></a>CA 机构(Certificate Authority)</h5><ul>
+<li><p>CA中心又称CA机构，即证书授权中心(Certificate Authority )，或称证书授权机构，作为电子商务交易中受信任的第三方，承担公钥体系中公钥的合法性检验的责任。</p>
+</li>
+<li><p>全球有两种类型的证书颁发机构，主要分为两个部门：区域供应商和全球供应商。</p>
+<blockquote>
+<p>因为证书验证通常可以通过当地国家的法律法规，但这些证书并不被全球所有浏览器承认，只能在自己国家的浏览器承认，然而持有跨国公司CA机构屈指可数，全球市场上约50个ssl证书颁发机构，中国之前有四家，后来沃通由于滥发证书被取消了CA机构资格，国内目前三家，这些CA机构签发的证书基本被全球所有的浏览器承认。</p>
+</blockquote>
+</li>
+<li><p>目前全球主流的CA机构有<a href="https://ssl.idcspy.net/comodo/" target="_blank" rel="noopener">Comodo</a>、<a href="https://ssl.idcspy.net/symantec/" target="_blank" rel="noopener">Symantec</a>、<a href="https://ssl.idcspy.net/geotrust/" target="_blank" rel="noopener">GeoTrust</a>、DigiCert、<a href="https://ssl.idcspy.net/thawte/" target="_blank" rel="noopener">Thawte</a>、GlobalSign、<a href="https://ssl.idcspy.net/rapidssl/" target="_blank" rel="noopener">RapidSSL</a>等。</p>
+<blockquote>
+<p>Symantec、GeoTrust都是DigiCert机构的子公司，目前市场上主流的ssl证书品牌是Comodo证书、Symantec证书、GeoTrust证书、Thawte证书和RapidSSL证书，还有一些不知名的证书机构也是可以颁发数字证书的。</p>
+</blockquote>
+</li>
+<li><p>CA颁发机构根据申请ssl证书类型可分为：域名验证型DV证书、组织验证型OV证书、扩展增强型EV证书，认证机构在检验过程中，申请人提交的CSR文件必须符合CA的要求，否则申请人需要重新提交文件。</p>
+</li>
+<li><p>申请SSL证书，首先就是生成CSR证书文件，将CSR文件发送给CA机构，CA机构核实证书的真实性，然后以自身的私钥给证书签名，将签名附加在证书上发回企业。企业将CSR和自己的私钥存储在服务器或本地驱动器上的安全位置。</p>
+<blockquote>
+<p>CA机构在收到证书请求后，他们会对申请者进行验证。申请不同的SSL证书，其验证方式也不一样。其中提供的文件证明申请者的身份和商业注册取决于申请者的证书类型，如果客户提供的文件符合CA的要求，就会颁发证书。</p>
+<p>近年来，部分CA机构为了推动ssl证书的使用，或者是为了牟利，推出免费的ssl证书，因为免费安全等级相对较低，某些CA机构并没有严格审核申请人的身份，导致部分钓鱼网站也可申请免费的ssl证书，为了避免类似事件再次发生，有些浏览器纷纷对相关CA机构作出不受信任的决策。</p>
+</blockquote>
+</li>
+</ul>
+<h5 id="CA-证书"><a href="#CA-证书" class="headerlink" title="CA 证书"></a>CA 证书</h5><ul>
+<li>CA 也拥有一个证书（内含<a href="https://baike.baidu.com/item/公钥/6447788" target="_blank" rel="noopener">公钥</a>和<a href="https://baike.baidu.com/item/私钥/8973452" target="_blank" rel="noopener">私钥</a>）。网上的公众用户通过验证 CA 的签字从而信任 CA ，任何人都可以得到 CA 的证书（含公钥），用以验证它所签发的证书。CA机构的证书（包含公钥）一般会预置在操作系统或者浏览器。用于对用户证书进行认证。</li>
+</ul>
+<h5 id="证书格式"><a href="#证书格式" class="headerlink" title="证书格式"></a>证书格式</h5><ul>
+<li><h6 id="PEM-格式"><a href="#PEM-格式" class="headerlink" title="PEM 格式"></a>PEM 格式</h6><blockquote>
+<p>1、一般是文本格式，可保存证书，可保存私钥。</p>
+<p>2、PEM格式通常用于数字证书认证机构（Certificate Authorities，CA），扩展名为<strong>.pem, .crt, .cer, and .key</strong>。内容为Base64编码的ASCII码文件，有类似”—–BEGIN CERTIFICATE—–” 和 “—–END CERTIFICATE—–”的头尾标记。服务器认证证书，中级认证证书和私钥都可以储存为PEM格式（认证证书其实就是公钥）。Apache和类似的服务器使用PEM格式证书。</p>
+</blockquote>
+</li>
+<li><h6 id="DER-格式"><a href="#DER-格式" class="headerlink" title="DER 格式"></a>DER 格式</h6><blockquote>
+<p>1、文件是二进制格式，只保存证书，不保存私钥。</p>
+<p>2、DER格式与PEM不同之处在于其使用二进制而不是Base64编码的ASCII。扩展名为<strong>.der</strong>，但也经常使用<strong>.cer</strong>用作扩展名，所有类型的认证证书和私钥都可以存储为DER格式。Java使其典型使用平台。</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><h6 id="PKCS-7-P7B-格式"><a href="#PKCS-7-P7B-格式" class="headerlink" title="PKCS#7/P7B 格式"></a>PKCS#7/P7B 格式</h6><blockquote>
+<p>1、文件是文本格式，只保存证书，不保存私钥。</p>
+<p>2、PKCS#7 或 P7B格式通常以Base64的格式存储，扩展名为<strong>.p7b 或 .p7c</strong>，有类似BEGIN PKCS7—–” 和 “—–END PKCS7—–”的头尾标记。PKCS#7 或 P7B只能存储认证证书或证书路径中的证书（就是存储认证证书链，本级，上级，到根级都存到一个文件中）。不能存储私钥，Windows和Tomcat都支持这种格式。</p>
+</blockquote>
+</li>
+<li><h6 id="PKCS-12-PFX-格式"><a href="#PKCS-12-PFX-格式" class="headerlink" title="PKCS#12/PFX 格式"></a>PKCS#12/PFX 格式</h6><blockquote>
+<p>1、二进制格式，同时包含证书和私钥，一般有密码保护。</p>
+<p>2、PKCS#12 或 PFX格式是以<strong>加密</strong>的二进制形式存储服务器认证证书，中级认证证书和私钥。扩展名为<strong>.pfx 和 .p12</strong>，PXF通常用于Windows中导入导出认证证书和私钥。</p>
+</blockquote>
+</li>
+<li><h5 id="证书格式转换方式"><a href="#证书格式转换方式" class="headerlink" title="证书格式转换方式"></a>证书格式转换方式</h5><blockquote>
+<p><strong>PEM to DER</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; openssl x509 -outform der -in certificate.pem -out certificate.der</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p><strong>PEM to P7B</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; openssl crl2pkcs7 -nocrl -certfile certificate.cer -out certificate.p7b -certfile CACert.cer</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p><strong>PEM to PFX</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; openssl pkcs12 -export -out certificate.pfx -inkey privateKey.key -in certificate.crt -certfile CACert.crt</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p><strong>DER to PEM</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; openssl x509 -inform der -in certificate.cer -out certificate.pem</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p><strong>P7B to PEM</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; openssl pkcs7 -print_certs -in certificate.p7b -out certificate.cer</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p><strong>PFX to PEM</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; openssl pkcs12 -in certificate.pfx -out certificate.cer -nodes</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>PXF转PEM后<code>certificate.cer</code>文件包含认证证书和私钥，需要把它们分开存储才能使用。</p>
+</blockquote>
+</li>
+</ul>
+<h5 id="X509公钥证书标准结构"><a href="#X509公钥证书标准结构" class="headerlink" title="X509公钥证书标准结构"></a>X509公钥证书标准结构</h5><ul>
+<li><p><strong>X.509</strong>是密码学里<a href="https://zh.wikipedia.org/wiki/公钥证书" target="_blank" rel="noopener">公钥证书</a>的格式标准。X.509证书已应用在包括<a href="https://zh.wikipedia.org/wiki/TLS/SSL" target="_blank" rel="noopener">TLS/SSL</a>在内的众多<a href="https://zh.wikipedia.org/wiki/网络协议" target="_blank" rel="noopener">网络协议</a>里，同时它也用在很多非在线应用场景里，比如电子签名服务。</p>
+<blockquote>
+<p>X.509证书里含有公钥、身份信息（比如网络主机名，组织的名称或个体名称等）和签名信息（可以是证书签发机构CA的签名，也可以是自签名）。对于一份经由可信的证书签发机构签名或者可以通过其它方式验证的证书，证书的拥有者就可以用证书及相应的私钥来创建安全的通信，对文档进行<a href="https://zh.wikipedia.org/wiki/数字签名" target="_blank" rel="noopener">数字签名</a>。</p>
+<p>另外除了证书本身功能，X.509还附带了<a href="https://zh.wikipedia.org/wiki/证书吊销列表" target="_blank" rel="noopener">证书吊销列表</a>和用于从最终对证书进行签名的证书签发机构直到最终可信点为止的<a href="https://zh.wikipedia.org/w/index.php?title=证书合法性验证算法&action=edit&redlink=1" target="_blank" rel="noopener">证书合法性验证算法</a>。</p>
+<p>X.509是<a href="https://zh.wikipedia.org/wiki/ITU-T" target="_blank" rel="noopener">ITU-T</a>标准化部门基于他们之前的<a href="https://zh.wikipedia.org/wiki/ASN.1" target="_blank" rel="noopener">ASN.1</a>定义的一套证书标准。</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>证书组成结构标准用<a href="https://zh.wikipedia.org/wiki/ASN.1" target="_blank" rel="noopener">ASN.1</a>（一种标准的语言）来进行描述. X.509 v3 <a href="https://zh.wikipedia.org/wiki/数字证书" target="_blank" rel="noopener">数字证书</a>结构如下：</p>
+<blockquote>
+<ul>
+<li>证书<ul>
+<li>版本号</li>
+<li>序列号</li>
+<li>签名算法</li>
+<li>颁发者</li>
+<li>证书有效期<ul>
+<li>此日期前无效</li>
+<li>此日期后无效</li>
+</ul>
+</li>
+<li>主题</li>
+<li>主题公钥信息<ul>
+<li>公钥算法</li>
+<li>主题公钥</li>
+</ul>
+</li>
+<li>颁发者唯一身份信息（可选项）</li>
+<li>主题唯一身份信息（可选项）</li>
+<li>扩展信息（可选项）<ul>
+<li>…</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>证书签名算法</li>
+<li>数字签名</li>
+</ul>
+<p>详细介绍：<a href="https://www.cnblogs.com/chnking/archive/2007/08/28/872104.html" target="_blank" rel="noopener">https://www.cnblogs.com/chnking/archive/2007/08/28/872104.html</a> </p>
+</blockquote>
+</li>
+</ul>
+<h5 id="申请证书"><a href="#申请证书" class="headerlink" title="申请证书"></a>申请证书</h5><ul>
+<li><p>创建证书，CA机构签名</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> private key 创建私钥</span><br><span class="line"><span class="meta">$</span>openssl genrsa -des3 -out server.key 1024 </span><br><span class="line"><span class="meta">#</span> generate csr 创建证书</span><br><span class="line"><span class="meta">$</span>openssl req -new -key server.key -out server.csr</span><br><span class="line"><span class="meta">#</span> 然后将csr文件提交给CA机构，通过CA机构的审核之后，CA机构用自己的私钥给证书签名，发回开发者</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建证书，自己签名</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> MAC 系统 [流程](https://lamjack.github.io/2018/05/17/openssl-localhost-https/)</span><br><span class="line"><span class="meta">#</span> 创建CA私钥</span><br><span class="line"><span class="meta">$</span> openssl genrsa -des3 -out CA.key 2048</span><br><span class="line"><span class="meta">#</span> 创建CA证书</span><br><span class="line"><span class="meta">$</span> openssl req -x509 -new -nodes -key CA.key -sha256 -days 3650 -out CA.pem</span><br><span class="line"><span class="meta">#</span> 双击CA.pem,打开钥匙链，导入证书。邮件信任证书。</span><br><span class="line"><span class="meta">#</span> 创建v3.ext，具体配置见lamjack的博客</span><br><span class="line">vim v3.ext</span><br><span class="line"><span class="meta">#</span> 创建服务器SSL证书</span><br><span class="line"><span class="meta">$</span> openssl x509 -req -in server.csr -CA CA.pem路径 -CAkey CA.key -CAcreateserial -out server.crt -days 500 -sha256 -extfile v3.ext</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h5 id="证书认证"><a href="#证书认证" class="headerlink" title="证书认证"></a>证书认证</h5><ul>
+<li>拿到服务器的证书之后，获取证书的签发CA机构，并从系统或者浏览器获取该CA机构的证书。</li>
+<li>用CA机构的公钥对用户证书中签名解密。</li>
+<li>将解密内容和用户证书中的信息对比，验证用户证书的身份。</li>
+</ul>
+<h5 id="私钥"><a href="#私钥" class="headerlink" title="私钥"></a>私钥</h5><ul>
+<li>私钥主要用于签名和解密，由用户自定义，只有用户自己知道；</li>
+</ul>
+<h5 id="公钥"><a href="#公钥" class="headerlink" title="公钥"></a>公钥</h5><ul>
+<li>公钥用于签名验证和加密，可被多个用户共享。</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/10/15/Android 非SDK 接口检测/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2642,345 +3090,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/08/26/Mac PHP + Redis/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lpl">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/blog/images/head.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="闲敲棋子落灯花">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2019/08/26/Mac PHP + Redis/" itemprop="url">Mac PHP + Redis</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-26T10:31:05+08:00">
-                2019-08-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/PHP/" itemprop="url" rel="index">
-                    <span itemprop="name">PHP</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li><p>首先需要安装Redis、PHP、PHP-FPM、nginx</p>
-</li>
-<li><p>PHP需要安装Redis的扩展</p>
-</li>
-<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> https://github.com/phpredis/phpredis/releases 下载最新的 phpredis</span><br><span class="line"><span class="meta">#</span> 将下载安装包解压到 /usr/local </span><br><span class="line"><span class="meta">#</span> 将目录名称重命名为 phpredis</span><br><span class="line">cd phpredis</span><br><span class="line">sudo phpize              # php安装后的路径</span><br><span class="line">sudo ./configure --with-php-config=/usr/local/php/bin/php-config</span><br><span class="line">sudo make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>执行 sudo phpsize 的时候会报错</p>
-</li>
-<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">grep: /usr/include/php/main/php.h: No such file or directory</span><br><span class="line">grep: /usr/include/php/Zend/zend_modules.h: No such file or directory</span><br><span class="line">grep: /usr/include/php/Zend/zend_extensions.h: No such file or directory</span><br><span class="line">Configuring for:</span><br><span class="line">PHP Api Version:        </span><br><span class="line">Zend Module Api No:     </span><br><span class="line">Zend Extension Api No:  </span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 解决方法是：</span><br><span class="line">sudo ln -s</span><br><span class="line">/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/usr/include/ /usr/include</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>修改php.ini文件，启用phpredis扩展</p>
-</li>
-<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 初次安装可能没有php.ini,需要自己copy一份</span><br><span class="line">sudo cp php.ini.default php.ini</span><br><span class="line"><span class="meta">#</span> 打开 php.ini 添加扩展</span><br><span class="line">sudo vim php.ini</span><br><span class="line">extension_dir = "/usr/lib/php/extensions/no-debug-non-zts-20160303"</span><br><span class="line">extension=redis.so</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>重启Nginx PHP-FPM</p>
-</li>
-<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx -s reload</span><br><span class="line"><span class="meta">#</span>  /usr/local/var/run/php-fmp.pid 文件中有对应的PID</span><br><span class="line">sudo kill -USR2 php-fpm.pid</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Redis Demo 编写</p>
-</li>
-<li><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$redis 		= <span class="keyword">new</span> Redis();</span><br><span class="line"><span class="comment">// ps aux | grep redis    默认端口是6379 可以退通过命令查询到</span></span><br><span class="line">$redis-&gt;connect(<span class="string">"127.0.0.1"</span>, <span class="string">"6379"</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"&lt;h5&gt;"</span>.($redis-&gt;get(<span class="string">"foo"</span>)).<span class="string">"&lt;/h5&gt;"</span>;</span><br><span class="line"></span><br><span class="line">$redis-&gt;set(<span class="string">"date"</span>, date(<span class="string">'Y-m-d H:i:s'</span>));</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"&lt;h5&gt;"</span>.($redis-&gt;get(<span class="string">"date"</span>)).<span class="string">"&lt;/h5&gt;"</span>;</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ul>
-<ul>
-<li><p>参考文章</p>
-<blockquote>
-<p><a href="http://www.runoob.com/redis/redis-php.html" target="_blank" rel="noopener">http://www.runoob.com/redis/redis-php.html</a></p>
-<p><a href="https://segmentfault.com/q/1010000003882420" target="_blank" rel="noopener">https://segmentfault.com/q/1010000003882420</a></p>
-</blockquote>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/08/23/国内手机大厂官方文档地址/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lpl">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/blog/images/head.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="闲敲棋子落灯花">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2019/08/23/国内手机大厂官方文档地址/" itemprop="url">手机大厂官方文档地址</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-23T15:56:27+08:00">
-                2019-08-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li><p>华为</p>
-<blockquote>
-<p><a href="https://developer.huawei.com/consumer/cn/devservice/doc/50127" target="_blank" rel="noopener">https://developer.huawei.com/consumer/cn/devservice/doc/50127</a></p>
-</blockquote>
-</li>
-<li><p>小米</p>
-<blockquote>
-<p><a href="https://dev.mi.com/console/doc/detail?pId=1351" target="_blank" rel="noopener">https://dev.mi.com/console/doc/detail?pId=1351</a></p>
-</blockquote>
-</li>
-<li><p>OPPO</p>
-<blockquote>
-<p><a href="https://open.oppomobile.com/wiki/doc#id=10432" target="_blank" rel="noopener">https://open.oppomobile.com/wiki/doc#id=10432</a></p>
-</blockquote>
-</li>
-<li><p>VIVO</p>
-<blockquote>
-<p><a href="https://dev.vivo.com.cn/documentCenter/doc/235" target="_blank" rel="noopener">https://dev.vivo.com.cn/documentCenter/doc/235</a></p>
-</blockquote>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -3033,7 +3142,7 @@
               
                 <a href="/blog/archives/">
               
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -3044,7 +3153,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/blog/categories/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -3055,7 +3164,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/blog/tags/index.html">
-                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-count">32</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

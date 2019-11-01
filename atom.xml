@@ -6,7 +6,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://zubao.github.io/blog/"/>
-  <updated>2019-10-16T03:06:27.062Z</updated>
+  <updated>2019-10-31T08:19:48.972Z</updated>
   <id>https://zubao.github.io/blog/</id>
   
   <author>
@@ -15,6 +15,56 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Gradle 依赖包下载失败解决方法</title>
+    <link href="https://zubao.github.io/blog/2019/10/31/Gradle%20%E4%BE%9D%E8%B5%96%E5%8C%85%E4%B8%8B%E8%BD%BD%E5%A4%B1%E8%B4%A5/"/>
+    <id>https://zubao.github.io/blog/2019/10/31/Gradle 依赖包下载失败/</id>
+    <published>2019-10-31T06:46:50.320Z</published>
+    <updated>2019-10-31T08:19:48.972Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h5 id=&quot;我们在Android-studio-升级或者gradle-插件升级的时候经常碰到某个依赖包下载不了，例如：构建错误：Could-not-download-trove4j-jar。可能的原因与解决方法：&quot;&gt;&lt;a href=&quot;#我们在Android-studio-升级
+      
+    
+    </summary>
+    
+      <category term="Gradle" scheme="https://zubao.github.io/blog/categories/Gradle/"/>
+    
+    
+      <category term="gradle" scheme="https://zubao.github.io/blog/tags/gradle/"/>
+    
+      <category term="android studio" scheme="https://zubao.github.io/blog/tags/android-studio/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>证书申请</title>
+    <link href="https://zubao.github.io/blog/2019/10/22/%E8%AF%81%E4%B9%A6%E7%94%B3%E8%AF%B7/"/>
+    <id>https://zubao.github.io/blog/2019/10/22/证书申请/</id>
+    <published>2019-10-22T06:44:41.497Z</published>
+    <updated>2019-11-01T09:49:22.063Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h5 id=&quot;CA-机构-Certificate-Authority&quot;&gt;&lt;a href=&quot;#CA-机构-Certificate-Authority&quot; class=&quot;headerlink&quot; title=&quot;CA 机构(Certificate Authority)&quot;&gt;&lt;/a&gt;CA 机
+      
+    
+    </summary>
+    
+      <category term="ca" scheme="https://zubao.github.io/blog/categories/ca/"/>
+    
+    
+      <category term="证书" scheme="https://zubao.github.io/blog/tags/%E8%AF%81%E4%B9%A6/"/>
+    
+      <category term="ca" scheme="https://zubao.github.io/blog/tags/ca/"/>
+    
+  </entry>
   
   <entry>
     <title>Android 非SDK接口检测</title>
@@ -431,7 +481,7 @@
     <link href="https://zubao.github.io/blog/2019/08/21/Redis%20%E7%AE%80%E4%BB%8B/"/>
     <id>https://zubao.github.io/blog/2019/08/21/Redis 简介/</id>
     <published>2019-08-21T01:38:55.000Z</published>
-    <updated>2019-08-21T10:26:01.000Z</updated>
+    <updated>2019-10-22T06:51:39.813Z</updated>
     
     <summary type="html">
     
@@ -505,55 +555,6 @@
       <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
     
       <category term="IPv6" scheme="https://zubao.github.io/blog/tags/IPv6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android Q 非SDK检查</title>
-    <link href="https://zubao.github.io/blog/2019/08/06/Android%20Q%20%E9%9D%9ESDK%20%E6%A3%80%E6%9F%A5/"/>
-    <id>https://zubao.github.io/blog/2019/08/06/Android Q 非SDK 检查/</id>
-    <published>2019-08-06T09:56:30.000Z</published>
-    <updated>2019-08-06T10:03:05.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h5 id=&quot;SDK-限制等级&quot;&gt;&lt;a href=&quot;#SDK-限制等级&quot; class=&quot;headerlink&quot; title=&quot;SDK 限制等级&quot;&gt;&lt;/a&gt;SDK 限制等级&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;greylist              本系统标记为不支持调用。但是无限制，
-      
-    
-    </summary>
-    
-      <category term="android" scheme="https://zubao.github.io/blog/categories/android/"/>
-    
-    
-      <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android hook</title>
-    <link href="https://zubao.github.io/blog/2019/08/06/Android%20Hook/"/>
-    <id>https://zubao.github.io/blog/2019/08/06/Android Hook/</id>
-    <published>2019-08-06T09:38:33.000Z</published>
-    <updated>2019-08-06T09:48:58.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h5 id=&quot;通过hook方式拦截startActivity&quot;&gt;&lt;a href=&quot;#通过hook方式拦截startActivity&quot; class=&quot;headerlink&quot; title=&quot;通过hook方式拦截startActivity&quot;&gt;&lt;/a&gt;通过hook方式拦截startAc
-      
-    
-    </summary>
-    
-      <category term="android" scheme="https://zubao.github.io/blog/categories/android/"/>
-    
-    
-      <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
-    
-      <category term="hook" scheme="https://zubao.github.io/blog/tags/hook/"/>
     
   </entry>
   
