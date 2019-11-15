@@ -293,6 +293,125 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/08/01/研究android 打包流程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lpl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/blog/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="闲敲棋子落灯花">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2019/08/01/研究android 打包流程/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-01T11:18:00+08:00">
+                2019-08-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/07/25/Jar加固/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2108,328 +2227,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/06/28/android设备特性/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lpl">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/blog/images/head.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="闲敲棋子落灯花">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2019/06/28/android设备特性/" itemprop="url">获取设备名称</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-28T15:16:27+08:00">
-                2019-06-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li><p>获取设备名称</p>
-</li>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">BluetoothAdapter.getDefaultAdapter().getName()</span><br><span class="line"></span><br><span class="line">静态权限：</span><br><span class="line">android.permission.BLUETOOTH</span><br></pre></td></tr></table></figure>
-
-<p>PS：小米手机配对后可以获取真实值、努比亚需要开蓝牙才可以获取真实值。Pixel 2XL可以。</p>
-</li>
-<li><p>android 6.0开始。<code>WifiInfo.getMacAddress()</code> 方法和 <code>BluetoothAdapter.getAddress()</code> 方法现在会返回常量值 <code>02:00:00:00:00:00</code>。</p>
-</li>
-<li><p>android 6.0 引入运行时权限</p>
-</li>
-<li><p>6.0 引入低功耗模式：当用户设备未插接电源、处于静止状态且屏幕关闭时，该模式会推迟 CPU 和网络活动，从而延长电池寿命。定时短期恢复正常工作。7.0对低功耗模式进行优化，不处于静止状态也可以进入低功耗模式(例如：放在口袋)。低功耗模式第一步：关闭网络、停止同步、作业；静止一段时间进入第二步：关闭gps、闹钟，wifi扫描等。</p>
-</li>
-<li><p>6.0引入待机模式：一段时间不触摸手机，进入待机模式。</p>
-</li>
-<li><p>6.0 移除了 对 apache http支持，请使用HttpUrlConnection</p>
-</li>
-<li><p>6.0USB传输数据，必须显示启用</p>
-</li>
-<li><p>7.0 targetSDK为7.0的后台服务器不在收到网络变化的广播。所有7.0系统的手机上后台新建图片和视频的广播</p>
-</li>
-<li><p>7.0 tragetSDK为7.0+，开发者不能放宽私有文件访问权限，分享私有文件的方法为FileProvider</p>
-</li>
-<li><p>7.0 设备所有者，可以通过使用DevicePolicyManager.getWifiMacAddress访问mac地址，如果wifi没有启用过返回null</p>
-</li>
-<li><p>8.0 进一步限制清单注册的隐式广播</p>
-</li>
-<li><p>8.0 降低后台应用接收位置信息的频率</p>
-</li>
-<li><p>8.0 以前用户请求一权限组中的某一权限是，系统自动授予了权限组的其他权限。8.0后系统修复了这一bug，改为，请求那一具体权限，授予这一具体权限，但是下次请求这一具体权限所在权限组的其他权限是，系统默认授予，而不是提示用户。</p>
-<blockquote>
-<p>在 Android 8.0 之前，如果应用在运行时请求权限并且被授予该权限，系统会错误地将属于同一权限组并且在清单中注册的其他权限也一起授予应用。</p>
-<p>对于针对 Android 8.0 的应用，此行为已被纠正。系统只会授予应用明确请求的权限。然而，一旦用户为应用授予某个权限，则所有后续对该权限组中权限的请求都将被自动批准。</p>
-<p>例如，假设某个应用在其清单中列出 <code>READ_EXTERNAL_STORAGE</code> 和 <code>WRITE_EXTERNAL_STORAGE</code>。应用请求 <code>READ_EXTERNAL_STORAGE</code>，并且用户授予了该权限。如果该应用针对的是 API 级别 24 或更低级别，系统还会同时授予 <code>WRITE_EXTERNAL_STORAGE</code>，因为该权限也属于同一 <code>STORAGE</code> 权限组并且也在清单中注册过。如果该应用针对的是 Android 8.0，则系统此时仅会授予 <code>READ_EXTERNAL_STORAGE</code>；不过，如果该应用后来又请求 <code>WRITE_EXTERNAL_STORAGE</code>，则系统会立即授予该权限，而不会提示用户。</p>
-</blockquote>
-</li>
-<li><p>android 8.0 后 androidID，不同app、相同证书获取的ID相同；不同app、不同证书获取到的ID不同；相同APP，不同证书、卸载重装之后或者重启手机之后获取到的ID不同。</p>
-</li>
-<li><p>android 8.0 以后获取设备账号接口不可直接使用；需要用户授予权限GET_ACCOUNTS，然后：</p>
-</li>
-<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Intent googlePicker = AccountManager.newChooseAccountIntent(<span class="keyword">null</span>, <span class="keyword">null</span>,</span><br><span class="line">                <span class="keyword">new</span> String[] &#123; <span class="string">"com.google"</span>&#125;, <span class="keyword">true</span>, <span class="keyword">null</span>, <span class="keyword">null</span>, <span class="keyword">null</span>, <span class="keyword">null</span>);</span><br><span class="line">startActivityForResult(googlePicker, PICK_ACCOUNT_REQUEST);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>8.0 Build.SERIAL 已弃用。需要知道硬件序列号的应用应改为使用新的 <code>Build.getSerial()</code> 函数，该函数要求具有 <code>READ_PHONE_STATE</code> 权限。</p>
-</li>
-<li><p>9.0 电源管理：</p>
-<blockquote>
-<p>Android 9 引入了一项新的电池管理功能，即应用待机群组。 应用待机群组可以基于应用最近使用时间和使用频率，帮助系统排定应用请求资源的优先级。 根据使用模式，每个应用都会归类到五个优先级群组之一中。 系统将根据应用所属的群组限制每个应用可以访问的设备资源。</p>
-<p>五个群组按照以下特性将应用分组：</p>
-<ul>
-<li><p>活跃</p>
-<p>如果用户当前正在使用应用，应用将被归到“活跃”群组中，例如：应用已启动一个 Activity应用正在运行前台服务应用的同步适配器与某个前台应用使用的 content provider 关联用户在应用中点击了某个通知如果应用处于“活跃”群组，系统不会对应用的作业、报警或 FCM 消息施加任何限制。</p>
-</li>
-<li><p>工作集</p>
-<p>如果应用经常运行，但当前未处于活跃状态，它将被归到“工作集”群组中。 例如，用户在大部分时间都启动的某个社交媒体应用可能就属于“工作集”群组。 如果应用被间接使用，它们也会被升级到“工作集”群组中 。如果应用处于“工作集”群组，系统会对它运行作业和触发报警的能力施加轻度限制。 如需了解详细信息，请参阅<a href="https://developer.android.com/topic/performance/power/power-details.html?hl=zh-cn" target="_blank" rel="noopener">电源管理限制</a>。</p>
-</li>
-<li><p>常用</p>
-<p>如果应用会定期使用，但不是每天都必须使用，它将被归到“常用”群组中。 例如，用户在健身房运行的某个锻炼跟踪应用可能就属于“常用”群组。如果应用处于“常用”群组，系统将对它运行作业和触发报警的能力施加较强的限制，也会对高优先级 FCM 消息的数量设定限制。 如需了解详细信息，请参阅<a href="https://developer.android.com/topic/performance/power/power-details.html?hl=zh-cn" target="_blank" rel="noopener">电源管理限制</a>。</p>
-</li>
-<li><p>极少使用</p>
-<p>如果应用不经常使用，那么它属于“极少使用”群组。 例如，用户仅在入住酒店期间运行的酒店应用就可能属于“极少使用”群组。</p>
-</li>
-</ul>
-<p>如果应用处于“极少使用”群组，系统将对它运行作业、触发警报和接收高优先级 FCM 消息的能力施加严格限制。系统还会限制应用连接到网络的能力。 如需了解详细信息，请参阅<a href="https://developer.android.com/topic/performance/power/power-details.html?hl=zh-cn" target="_blank" rel="noopener">电源管理限制</a>。</p>
-<ul>
-<li><p>从未使用</p>
-<p>安装但是从未运行过的应用会被归到“从未使用”群组中。 系统会对这些应用施加极强的限制。</p>
-</li>
-</ul>
-<p>系统会动态地将每个应用归类到某个优先级群组，并根据需要重新归类。 系统可能会依靠某个使用机器学习的预加载应用确定每个应用的使用可能性，并将应用归类到合适的群组。 如果设备上不存在系统应用，系统默认将基于应用的最近使用时间对它们进行排序。 更为活跃的应用将被归类到为应用提供更高优先级的群组，从而让应用可以使用更多系统资源。 具体而言，群组决定应用运行作业的频率，应用可以触发报警的频率，以及应用可以接收高优先级 <a href="https://firebase.google.com/docs/cloud-messaging/?hl=zh-cn" target="_blank" rel="noopener">Firebase 云信息传递 <em>(FCM)</em></a> 消息的频率。 这些限制仅在设备使用电池电量时适用，如果设备正在充电，系统不会对应用施加这些限制。</p>
-<p>每个制造商都可以设定自己的标准来归类非活跃应用。 您不应当尝试影响应用所属的群组。 相反，您应当将精力放在确保应用在所属的群组内良好运行上。 您的应用可以通过调用新函数 <a href="https://developer.android.com/reference/android/app/usage/UsageStatsManager.html?hl=zh-cn#getAppStandbyBucket()" target="_blank" rel="noopener"><code>UsageStatsManager.getAppStandbyBucket()</code></a> 查找当前属于哪个群组。</p>
-<p>注：位于<a href="https://developer.android.com/training/monitoring-device-state/doze-standby?hl=zh-cn#support_for_other_use_cases" target="_blank" rel="noopener"> 低电耗模式白名单</a>中的应用不适用基于应用待机群组的限制。</p>
-</blockquote>
-<ul>
-<li><p>9.0 省电模式：</p>
-<blockquote>
-<p>Android 9 对省电模式进行了多处改进。 设备制造商可以决定施加的确切限制。 例如，在 AOSP 构建中，系统会应用以下限制：</p>
-<ul>
-<li>系统会更积极地将应用置于应用待机模式，而不是等待应用空闲。</li>
-<li>后台执行限制适用于所有应用，无论它们的目标 API 级别如何。</li>
-<li>当屏幕关闭时，位置服务可能会被停用。</li>
-<li>后台应用没有网络访问权限。</li>
-</ul>
-</blockquote>
-</li>
-<li><p>9.0 限制后台对传感器的访问</p>
-<blockquote>
-<p>Android 9 限制后台应用访问用户输入和传感器数据的能力。 如果您的应用在运行 Android 9 设备的后台运行，系统将对您的应用采取以下限制：</p>
-<ul>
-<li>您的应用不能访问麦克风或摄像头。</li>
-<li>使用<a href="https://source.android.com/devices/sensors/report-modes?hl=zh-cn#continuous" target="_blank" rel="noopener">连续</a>报告模式的传感器（例如加速度计和陀螺仪）不会接收事件。</li>
-<li>使用<a href="https://source.android.com/devices/sensors/report-modes?hl=zh-cn#on-change" target="_blank" rel="noopener">变化</a>或<a href="https://source.android.com/devices/sensors/report-modes?hl=zh-cn#one-shot" target="_blank" rel="noopener">一次性</a>报告模式的传感器不会接收事件。</li>
-</ul>
-<p>如果您的应用需要在运行 Android 9 的设备上检测传感器事件，请使用<a href="https://developer.android.com/guide/components/services.html?hl=zh-cn#Foreground" target="_blank" rel="noopener">前台服务</a>。</p>
-</blockquote>
-</li>
-<li><p>9.0 限制 访问通话记录</p>
-<blockquote>
-<p>Android 9 引入 <a href="https://developer.android.com/reference/android/Manifest.permission_group?hl=zh-cn#CALL_LOG" target="_blank" rel="noopener"><code>CALL_LOG</code></a> <a href="https://developer.android.com/guide/topics/permissions/overview?hl=zh-cn#perm-groups" target="_blank" rel="noopener">权限组</a>并将 <a href="https://developer.android.com/reference/android/Manifest.permission?hl=zh-cn#READ_CALL_LOG" target="_blank" rel="noopener"><code>READ_CALL_LOG</code></a>、<a href="https://developer.android.com/reference/android/Manifest.permission?hl=zh-cn#WRITE_CALL_LOG" target="_blank" rel="noopener"><code>WRITE_CALL_LOG</code></a> 和 <a href="https://developer.android.com/reference/android/Manifest.permission?hl=zh-cn#PROCESS_OUTGOING_CALLS" target="_blank" rel="noopener"><code>PROCESS_OUTGOING_CALLS</code></a> 权限移入该组。 在之前的 Android 版本中，这些权限位于 <code>PHONE</code> 权限组。</p>
-<p>对于需要访问通话敏感信息（如读取通话记录和识别电话号码）的应用，该 <code>CALL_LOG</code> 权限组为用户提供了更好的控制和可见性。</p>
-<p>如果您的应用需要访问通话记录或者需要处理去电，则您必须向 <a href="https://developer.android.com/reference/android/Manifest.permission_group?hl=zh-cn#CALL_LOG" target="_blank" rel="noopener"><code>CALL_LOG</code></a> 权限组明确请求这些权限。 否则会发生 <a href="https://developer.android.com/reference/java/lang/SecurityException?hl=zh-cn" target="_blank" rel="noopener"><code>SecurityException</code></a>。</p>
-</blockquote>
-</li>
-<li><p>9.0 限制访问电话号码</p>
-<blockquote>
-<p>在未首先获得 <a href="https://developer.android.com/reference/android/Manifest.permission?hl=zh-cn#READ_CALL_LOG" target="_blank" rel="noopener"><code>READ_CALL_LOG</code></a> 权限的情况下，除了应用的用例需要的其他权限之外，运行于 Android 9 上的应用无法读取电话号码或手机状态。</p>
-<p>与来电和去电关联的电话号码可在<a href="https://developer.android.com/reference/android/telephony/TelephonyManager?hl=zh-cn#action_phone_state_changed" target="_blank" rel="noopener">手机状态广播</a>（比如来电和去电的手机状态广播）中看到，并可通过 <a href="https://developer.android.com/reference/android/telephony/PhoneStateListener?hl=zh-cn" target="_blank" rel="noopener"><code>PhoneStateListener</code></a> 类访问。 但是，如果没有 <a href="https://developer.android.com/reference/android/Manifest.permission?hl=zh-cn#READ_CALL_LOG" target="_blank" rel="noopener"><code>READ_CALL_LOG</code></a> 权限，则 <code>PHONE_STATE_CHANGED</code> 广播和 <code>PhoneStateListener</code> 提供的电话号码字段为空。</p>
-<p>要从手机状态中读取电话号码，请根据您的用例更新应用以请求必要的权限：</p>
-<ul>
-<li>要通过 <code>PHONE_STATE</code> <a href="https://developer.android.com/guide/topics/manifest/action-element?hl=zh-cn" target="_blank" rel="noopener">Intent 操作</a>读取电话号码，同时需要 <a href="https://developer.android.com/reference/android/Manifest.permission?hl=zh-cn#READ_CALL_LOG" target="_blank" rel="noopener"><code>READ_CALL_LOG</code></a> 权限和 <a href="https://developer.android.com/reference/android/Manifest.permission.html?hl=zh-cn#READ_PHONE_STATE" target="_blank" rel="noopener"><code>READ_PHONE_STATE</code></a> 权限。</li>
-<li>要从 <a href="https://developer.android.com/reference/android/telephony/PhoneStateListener?hl=zh-cn#oncallstatechanged" target="_blank" rel="noopener"><code>onCallStateChanged()</code></a> 中读取电话号码，只需要 <a href="https://developer.android.com/reference/android/Manifest.permission?hl=zh-cn#READ_CALL_LOG" target="_blank" rel="noopener"><code>READ_CALL_LOG</code></a> 权限。 不需要 <a href="https://developer.android.com/reference/android/Manifest.permission.html?hl=zh-cn#READ_PHONE_STATE" target="_blank" rel="noopener"><code>READ_PHONE_STATE</code></a> 权限。</li>
-</ul>
-</blockquote>
-</li>
-<li><p>9.0 限制访问wifi位置和连接信息。简单说，9.0以前扫描wifi只需要2个权限，并且前台扫描无限制，后台扫描每个APP30分钟可以扫描一次；9.0以后，除了权限还需要开启位置服务，前台2分钟扫描4次，后台所有app30分钟扫描一次。</p>
-<blockquote>
-<p>在 Android 9 中，应用进行 Wi-Fi 扫描的权限要求比之前的版本更严格。 详情请参阅 <a href="https://developer.android.com/guide/topics/connectivity/wifi-scan?hl=zh-cn#wifi-scan-restrictions" target="_blank" rel="noopener">Wi-Fi 扫描限制</a>。</p>
-<p>类似的限制也适用于 <a href="https://developer.android.com/reference/android/net/wifi/WifiManager?hl=zh-cn#getConnectionInfo()" target="_blank" rel="noopener"><code>getConnectionInfo()</code></a> 函数，该函数返回描述当前 Wi-Fi 连接的 <a href="https://developer.android.com/reference/android/net/wifi/WifiInfo?hl=zh-cn" target="_blank" rel="noopener"><code>WifiInfo</code></a> 对象。 如果调用应用具有以下权限，则只能使用该对象的函数来检索 SSID 和 BSSID 值：</p>
-<ul>
-<li>ACCESS_FINE_LOCATION <strong>或</strong> ACCESS_COARSE_LOCATION</li>
-<li>ACCESS_WIFI_STATE</li>
-</ul>
-<p>检索 SSID 或 BSSID 还需要在设备上启用位置服务（在 <strong>Settings &gt; Location</strong> 下）。</p>
-</blockquote>
-</li>
-<li><p>9.0 wifi服务中移出了部分信息</p>
-<blockquote>
-<p>在 Android 9 中，下列事件和广播不接收用户位置或个人可识别数据方面的信息：</p>
-<ul>
-<li><code>WifiManager</code> 中的 <a href="https://developer.android.com/reference/android/net/wifi/WifiManager.html?hl=zh-cn#getScanResults()" target="_blank" rel="noopener"><code>getScanResults()</code></a> 和 <a href="https://developer.android.com/reference/android/net/wifi/WifiManager.html?hl=zh-cn#getConnectionInfo()" target="_blank" rel="noopener"><code>getConnectionInfo()</code></a> 函数。</li>
-<li><code>WifiP2pManager</code> 中的 [<code>discoverServices()</code>](<a href="https://developer.android.com/reference/android/net/wifi/p2p/WifiP2pManager.html?hl=zh-cn#discoverServices" target="_blank" rel="noopener">https://developer.android.com/reference/android/net/wifi/p2p/WifiP2pManager.html?hl=zh-cn#discoverServices</a>(android.net.wifi.p2p.WifiP2pManager.Channel, android.net.wifi.p2p.WifiP2pManager.ActionListener)) 和 [<code>addServiceRequest()</code>](<a href="https://developer.android.com/reference/android/net/wifi/p2p/WifiP2pManager.html?hl=zh-cn#addServiceRequest" target="_blank" rel="noopener">https://developer.android.com/reference/android/net/wifi/p2p/WifiP2pManager.html?hl=zh-cn#addServiceRequest</a>(android.net.wifi.p2p.WifiP2pManager.Channel, android.net.wifi.p2p.nsd.WifiP2pServiceRequest, android.net.wifi.p2p.WifiP2pManager.ActionListener)) 函数。</li>
-<li><a href="https://developer.android.com/reference/android/net/wifi/WifiManager.html?hl=zh-cn#NETWORK_STATE_CHANGED_ACTION" target="_blank" rel="noopener"><code>NETWORK_STATE_CHANGED_ACTION</code></a> 广播。</li>
-</ul>
-<p>Wi-Fi 的 <a href="https://developer.android.com/reference/android/net/wifi/WifiManager?hl=zh-cn#NETWORK_STATE_CHANGED_ACTION" target="_blank" rel="noopener"><code>NETWORK_STATE_CHANGED_ACTION</code></a>系统广播不再包含 SSID（之前为 EXTRA_SSID）、BSSID（之前为 EXTRA_BSSID）或连接信息（之前为 EXTRA_NETWORK_INFO）。 如果应用需要此信息，请改为调用<a href="https://developer.android.com/reference/android/net/wifi/WifiManager.html?hl=zh-cn#getConnectionInfo()" target="_blank" rel="noopener"><code>getConnectionInfo()</code></a>。</p>
-</blockquote>
-</li>
-<li><p>9.0 电话信息现在依赖设备位置设置</p>
-<blockquote>
-<ul>
-<li><a href="https://developer.android.com/reference/android/telephony/TelephonyManager.html?hl=zh-cn#getAllCellInfo()" target="_blank" rel="noopener"><code>getAllCellInfo()</code></a></li>
-<li>[<code>listen()</code>](<a href="https://developer.android.com/reference/android/telephony/TelephonyManager.html?hl=zh-cn#listen" target="_blank" rel="noopener">https://developer.android.com/reference/android/telephony/TelephonyManager.html?hl=zh-cn#listen</a>(android.telephony.PhoneStateListener, int))</li>
-<li><a href="https://developer.android.com/reference/android/telephony/TelephonyManager.html?hl=zh-cn#getCellLocation()" target="_blank" rel="noopener"><code>getCellLocation()</code></a></li>
-<li><a href="https://developer.android.com/reference/android/telephony/TelephonyManager.html?hl=zh-cn#getNeighboringCellInfo()" target="_blank" rel="noopener"><code>getNeighboringCellInfo()</code></a></li>
-</ul>
-</blockquote>
-</li>
-<li><p>9.0 加密程序变更</p>
-<blockquote>
-<p><a href="https://www.jianshu.com/p/2b22daa8e2f6" target="_blank" rel="noopener">https://www.jianshu.com/p/2b22daa8e2f6</a>  </p>
-</blockquote>
-</li>
-<li><p>Q 目标api 23以下的app会受到警告</p>
-<blockquote>
-<p>在 Android Q 中，当用户首次运行以 Android 6.0（API 级别 23）以下的版本为目标平台的任何应用时，Android 平台会向用户发出警告。如果此应用要求用户授予权限，则系统会先向用户提供调整应用权限的机会，然后才会允许此应用首次运行。</p>
-</blockquote>
-</li>
-<li><p>Q  撤消了 <code>/proc/net</code> 访问权限</p>
-</li>
-<li><p>Q 开始，应用必须具有 <code>READ_PRIVILEGED_PHONE_STATE</code> 特许权限才能访问设备的不可重置标识符（包含 IMEI 和序列号）。</p>
-<blockquote>
-<ul>
-<li>如果应用以 Android Q 为目标平台，则会发生 <a href="https://developer.android.com/reference/java/lang/SecurityException?hl=zh-cn" target="_blank" rel="noopener"><code>SecurityException</code></a>。</li>
-<li>如果应用以 Android 9（API 级别 28）或更低版本为目标平台，则相应方法会返回 <code>null</code> 或占位符数据（如果应用具有 <a href="https://developer.android.com/reference/android/Manifest.permission.html?hl=zh-cn#READ_PHONE_STATE" target="_blank" rel="noopener"><code>READ_PHONE_STATE</code></a> 权限）。否则，会发生 <code>SecurityException</code>。</li>
-</ul>
-</blockquote>
-</li>
-<li><p>Q 后台APP不可访问剪切板</p>
-</li>
-<li><p>Q 无法启用、停用 WIFI；如果必须，使用设置面板</p>
-</li>
-<li><p>Q telephony API、WLAN API 和 Bluetooth API 需要精确位置权限 </p>
-</li>
-<li><p>Q 开始，如果targetSDK 为 29+，不可以读写SDCard，如果targetSDK 为 29以下，可以继续读写。</p>
-</li>
-</ul>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/blog/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/3/">3</a><span class="page-number current">4</span>
+    <a class="extend prev" rel="prev" href="/blog/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/blog/page/5/">5</a><a class="extend next" rel="next" href="/blog/page/5/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2477,7 +2279,7 @@
               
                 <a href="/blog/archives/">
               
-                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-count">41</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2488,7 +2290,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/blog/categories/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2499,7 +2301,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/blog/tags/index.html">
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">36</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

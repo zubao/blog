@@ -6,7 +6,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://zubao.github.io/blog/"/>
-  <updated>2019-11-15T02:10:10.868Z</updated>
+  <updated>2019-11-15T02:42:58.108Z</updated>
   <id>https://zubao.github.io/blog/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>树莓派的安装配置</title>
+    <link href="https://zubao.github.io/blog/2019/11/15/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/"/>
+    <id>https://zubao.github.io/blog/2019/11/15/树莓派安装配置/</id>
+    <published>2019-11-15T02:11:14.675Z</published>
+    <updated>2019-11-15T02:42:58.108Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h5 id=&quot;硬件选购&quot;&gt;&lt;a href=&quot;#硬件选购&quot; class=&quot;headerlink&quot; title=&quot;硬件选购&quot;&gt;&lt;/a&gt;硬件选购&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;必须(主板、SDCard、电源线或者USB线-Type-C、读卡器)&lt;/li&gt;
+&lt;li&gt;可选(显示器、鼠标、键盘
+      
+    
+    </summary>
+    
+      <category term="Raspberry" scheme="https://zubao.github.io/blog/categories/Raspberry/"/>
+    
+    
+      <category term="raspberry" scheme="https://zubao.github.io/blog/tags/raspberry/"/>
+    
+      <category term="linux" scheme="https://zubao.github.io/blog/tags/linux/"/>
+    
+  </entry>
   
   <entry>
     <title>Android 使用Monky自动测试</title>
@@ -525,30 +552,6 @@
     
     
       <category term="PG" scheme="https://zubao.github.io/blog/tags/PG/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Redis 简介</title>
-    <link href="https://zubao.github.io/blog/2019/08/21/Redis%20%E7%AE%80%E4%BB%8B/"/>
-    <id>https://zubao.github.io/blog/2019/08/21/Redis 简介/</id>
-    <published>2019-08-21T01:38:55.000Z</published>
-    <updated>2019-10-22T06:51:39.813Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h5 id=&quot;Redis-简介&quot;&gt;&lt;a href=&quot;#Redis-简介&quot; class=&quot;headerlink&quot; title=&quot;Redis 简介&quot;&gt;&lt;/a&gt;Redis 简介&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Remote DIctionary Server(Redis) 是一个由S
-      
-    
-    </summary>
-    
-      <category term="数据库" scheme="https://zubao.github.io/blog/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-    
-      <category term="redis" scheme="https://zubao.github.io/blog/tags/redis/"/>
     
   </entry>
   

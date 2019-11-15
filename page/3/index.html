@@ -293,6 +293,214 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/08/21/Redis 简介/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lpl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/blog/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="闲敲棋子落灯花">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2019/08/21/Redis 简介/" itemprop="url">Redis 简介</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-21T09:38:55+08:00">
+                2019-08-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="Redis-简介"><a href="#Redis-简介" class="headerlink" title="Redis 简介"></a>Redis 简介</h5><ul>
+<li><p>Remote DIctionary Server(Redis) 是一个由Salvatore Sanfilippo写的key-value存储系统。</p>
+</li>
+<li><p>Redis是一个开源的使用ANSI C语言编写、遵守BSD协议、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。</p>
+<blockquote>
+<p>从2015年6月开始，Redis的开发由<a href="https://zh.wikipedia.org/w/index.php?title=Redis_Labs&action=edit&redlink=1" target="_blank" rel="noopener">Redis Labs</a>赞助，而2013年5月至2015年6月期间，其开发由<a href="https://zh.wikipedia.org/wiki/Pivotal" target="_blank" rel="noopener">Pivotal</a>赞助。<a href="https://zh.wikipedia.org/wiki/Redis#cite_note-3" target="_blank" rel="noopener">[3]</a>在2013年5月之前，其开发由<a href="https://zh.wikipedia.org/wiki/VMware" target="_blank" rel="noopener">VMware</a>赞助。<a href="https://zh.wikipedia.org/wiki/Redis#cite_note-4" target="_blank" rel="noopener">[4]</a><a href="https://zh.wikipedia.org/wiki/Redis#cite_note-5" target="_blank" rel="noopener">[5]</a>根据月度排行网站DB-Engines.com的数据，Redis是最流行的键值对存储数据库。</p>
+</blockquote>
+</li>
+</ul>
+<h5 id="数据模型"><a href="#数据模型" class="headerlink" title="数据模型"></a>数据模型</h5><ul>
+<li><p>Redis的外围由一个键、值映射的<a href="https://zh.wikipedia.org/wiki/关联数组" target="_blank" rel="noopener">字典</a>构成。与其他<a href="https://zh.wikipedia.org/wiki/非关系型数据库" target="_blank" rel="noopener">非关系型数据库</a>主要不同在于：Redis中值的类型不仅限于<a href="https://zh.wikipedia.org/wiki/字符串" target="_blank" rel="noopener">字符串</a>，还支持如下抽象数据类型：</p>
+<blockquote>
+<ul>
+<li><a href="https://zh.wikipedia.org/wiki/字符串" target="_blank" rel="noopener">字符串</a><a href="https://zh.wikipedia.org/wiki/串列_(抽象資料型別)" target="_blank" rel="noopener">列表</a></li>
+<li>无序不重复的<a href="https://zh.wikipedia.org/wiki/字符串" target="_blank" rel="noopener">字符串</a><a href="https://zh.wikipedia.org/w/index.php?title=集合_(抽象資料型別)&action=edit&redlink=1" target="_blank" rel="noopener">集合</a></li>
+<li>有序不重复的<a href="https://zh.wikipedia.org/wiki/字符串" target="_blank" rel="noopener">字符串</a><a href="https://zh.wikipedia.org/w/index.php?title=集合_(抽象資料型別)&action=edit&redlink=1" target="_blank" rel="noopener">集合</a></li>
+<li>键、值都为<a href="https://zh.wikipedia.org/wiki/字符串" target="_blank" rel="noopener">字符串</a>的<a href="https://zh.wikipedia.org/wiki/哈希表" target="_blank" rel="noopener">哈希表</a></li>
+</ul>
+</blockquote>
+</li>
+<li><p>值的类型决定了值本身支持的操作。Redis支持不同无序、有序的<a href="https://zh.wikipedia.org/wiki/串列_(抽象資料型別)" target="_blank" rel="noopener">列表</a>，无序、有序的<a href="https://zh.wikipedia.org/w/index.php?title=集合_(抽象資料型別)&action=edit&redlink=1" target="_blank" rel="noopener">集合</a>间的交集、并集等高级服务器端原子操作。</p>
+</li>
+</ul>
+<h5 id="持久化"><a href="#持久化" class="headerlink" title="持久化"></a>持久化</h5><ul>
+<li><p>Redis通常将全部的数据存储在内存中。2.4版本后可配置为使用<a href="https://zh.wikipedia.org/wiki/虚拟内存" target="_blank" rel="noopener">虚拟内存</a>，<a href="https://zh.wikipedia.org/wiki/Redis#cite_note-9" target="_blank" rel="noopener">[9]</a>一部分数据集存储在硬盘上，但这个特性废弃了。</p>
+<p>当前通过两种方式实现<a href="https://zh.wikipedia.org/w/index.php?title=持久化&action=edit&redlink=1" target="_blank" rel="noopener">持久化</a>：</p>
+<ul>
+<li><p>使用<a href="https://zh.wikipedia.org/w/index.php?title=快照&action=edit&redlink=1" target="_blank" rel="noopener">快照</a>，一种半持久耐用模式。不时的将数据集以异步方式从内存以RDB格式写入硬盘。</p>
+<blockquote>
+<p>RDB文件是Redis持久化的一种方式，Redis通过制定好的策略，按期将内存中的数据以镜像的形式转存到RDB文件中。 <a href="https://ningyu1.github.io/site/post/34-redis-rdb/" target="_blank" rel="noopener">https://ningyu1.github.io/site/post/34-redis-rdb/</a>   <a href="https://redisbook.readthedocs.io/en/latest/internal/rdb.html" target="_blank" rel="noopener">https://redisbook.readthedocs.io/en/latest/internal/rdb.html</a></p>
+</blockquote>
+</li>
+<li><p>1.1版本开始使用更安全的AOF格式替代，一种只能追加的日志类型。将数据集修改操作记录起来。Redis能够在后台对只可追加的记录作修改来避免无限增长的日志。</p>
+<blockquote>
+<p>AOF 则以协议文本的方式，将所有对数据库进行过写入的命令（及其参数）记录到 AOF 文件，以此达到记录数据库状态的目的。 <a href="https://redisbook.readthedocs.io/en/latest/internal/aof.html" target="_blank" rel="noopener">https://redisbook.readthedocs.io/en/latest/internal/aof.html</a> </p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h5><ul>
+<li>Redis支持主从同步。数据可以从主服务器向任意数量的从服务器上同步，从服务器可以是关联其他从服务器的主服务器。这使得Redis可执行单层树复制。从盘可以有意无意的对数据进行写操作。由于完全实现了<a href="https://zh.wikipedia.org/wiki/发布/订阅" target="_blank" rel="noopener">发布/订阅</a>机制，使得从数据库在任何地方同步树时，可订阅一个频道并接收主服务器完整的消息发布记录。同步对读取操作的可扩展性和数据冗余很有帮助。</li>
+</ul>
+<h5 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h5><ul>
+<li>当数据依赖不再需要，Redis这种基于内存的性质，与在执行一个事务时将每个变化都写入硬盘的数据库系统相比就显得执行效率非常高。<a href="https://zh.wikipedia.org/wiki/Redis#cite_note-11" target="_blank" rel="noopener">[11]</a>写与读操作速度没有明显差别。</li>
+</ul>
+<h5 id="接口介绍"><a href="#接口介绍" class="headerlink" title="接口介绍"></a>接口介绍</h5><ul>
+<li><a href="http://www.runoob.com/redis/redis-data-types.html" target="_blank" rel="noopener">http://www.runoob.com/redis/redis-data-types.html</a></li>
+</ul>
+<h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5><ul>
+<li><p>Mac 上安装redis 命令</p>
+<blockquote>
+<p>brew install redis</p>
+</blockquote>
+</li>
+<li><p>验证是否安装成功</p>
+<blockquote>
+<p>brew services start redis</p>
+</blockquote>
+</li>
+<li><p>启动客户端</p>
+<blockquote>
+<p>cd /usr/local/bin/</p>
+<p>redis-cli</p>
+</blockquote>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/08/20/WIDEVINE_UUID 获取/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1773,130 +1981,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/08/01/研究android 打包流程/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lpl">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/blog/images/head.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="闲敲棋子落灯花">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2019/08/01/研究android 打包流程/" itemprop="url">未命名</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-01T11:18:00+08:00">
-                2019-08-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/blog/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/blog/">1</a><a class="page-number" href="/blog/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/blog/page/4/">4</a><a class="extend next" rel="next" href="/blog/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/blog/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/blog/">1</a><a class="page-number" href="/blog/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/blog/page/4/">4</a><a class="page-number" href="/blog/page/5/">5</a><a class="extend next" rel="next" href="/blog/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1944,7 +2033,7 @@
               
                 <a href="/blog/archives/">
               
-                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-count">41</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1955,7 +2044,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/blog/categories/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1966,7 +2055,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/blog/tags/index.html">
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">36</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
