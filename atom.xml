@@ -6,7 +6,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://zubao.github.io/blog/"/>
-  <updated>2019-10-31T08:19:48.972Z</updated>
+  <updated>2019-11-15T02:10:10.868Z</updated>
   <id>https://zubao.github.io/blog/</id>
   
   <author>
@@ -15,6 +15,58 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Android 使用Monky自动测试</title>
+    <link href="https://zubao.github.io/blog/2019/11/15/Monkey%20%E8%87%AA%E5%8A%A8%E6%B5%8B%E8%AF%95/"/>
+    <id>https://zubao.github.io/blog/2019/11/15/Monkey 自动测试/</id>
+    <published>2019-11-15T01:31:29.818Z</published>
+    <updated>2019-11-15T02:10:10.868Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h5 id=&quot;Monkey的用途&quot;&gt;&lt;a href=&quot;#Monkey的用途&quot; class=&quot;headerlink&quot; title=&quot;Monkey的用途&quot;&gt;&lt;/a&gt;Monkey的用途&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;Monkey 主要用于Android 的压力测试。自动的一个压力测试小工
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="https://zubao.github.io/blog/categories/Android/"/>
+    
+    
+      <category term="Android" scheme="https://zubao.github.io/blog/tags/Android/"/>
+    
+      <category term="monkey" scheme="https://zubao.github.io/blog/tags/monkey/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>android 开源组件</title>
+    <link href="https://zubao.github.io/blog/2019/11/08/Android%20%E5%BC%80%E6%BA%90%E7%BB%84%E4%BB%B6/"/>
+    <id>https://zubao.github.io/blog/2019/11/08/Android 开源组件/</id>
+    <published>2019-11-08T02:31:30.844Z</published>
+    <updated>2019-11-08T06:17:00.779Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h5 id=&quot;事件分发&quot;&gt;&lt;a href=&quot;#事件分发&quot; class=&quot;headerlink&quot; title=&quot;事件分发&quot;&gt;&lt;/a&gt;事件分发&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;EventBus 3.0&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://git
+      
+    
+    </summary>
+    
+      <category term="android" scheme="https://zubao.github.io/blog/categories/android/"/>
+    
+    
+      <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
+    
+  </entry>
   
   <entry>
     <title>Gradle 依赖包下载失败解决方法</title>
@@ -497,64 +549,6 @@
     
     
       <category term="redis" scheme="https://zubao.github.io/blog/tags/redis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>android 获取 WIDEVINE_UUID</title>
-    <link href="https://zubao.github.io/blog/2019/08/20/WIDEVINE_UUID%20%E8%8E%B7%E5%8F%96/"/>
-    <id>https://zubao.github.io/blog/2019/08/20/WIDEVINE_UUID 获取/</id>
-    <published>2019-08-20T02:07:20.000Z</published>
-    <updated>2019-08-20T02:10:41.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;anroid 通过 MediaDrm 获取uuid&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;1、App 内唯一&lt;/p&gt;
-&lt;p&gt;2、App 之间不唯一&lt;/p&gt;
-&lt;p&gt;3、App卸载重装唯一&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;fig
-      
-    
-    </summary>
-    
-      <category term="android" scheme="https://zubao.github.io/blog/categories/android/"/>
-    
-    
-      <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>IPv6详解</title>
-    <link href="https://zubao.github.io/blog/2019/08/13/IPv6%E8%AF%A6%E8%A7%A3/"/>
-    <id>https://zubao.github.io/blog/2019/08/13/IPv6详解/</id>
-    <published>2019-08-13T01:15:14.000Z</published>
-    <updated>2019-08-13T01:16:26.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;##### &lt;/p&gt;
-
-      
-    
-    </summary>
-    
-      <category term="android" scheme="https://zubao.github.io/blog/categories/android/"/>
-    
-    
-      <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
-    
-      <category term="IPv6" scheme="https://zubao.github.io/blog/tags/IPv6/"/>
     
   </entry>
   

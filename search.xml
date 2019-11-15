@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Android 使用Monky自动测试]]></title>
+    <url>%2Fblog%2F2019%2F11%2F15%2FMonkey%20%E8%87%AA%E5%8A%A8%E6%B5%8B%E8%AF%95%2F</url>
+    <content type="text"><![CDATA[Monkey的用途 Monkey 主要用于Android 的压力测试。自动的一个压力测试小工具， 主要目的就是为了测试app 是否会Crash。 Monkey 参数介绍 -p &lt;允许的包名列表&gt; 用此参数指定一个或多个包。指定包之后，monkey将只允许系统启动指定的app。如果不指定包， monkey将允许系统启动设备中的所有app。 指定一个包：adb shell monkey -p com.xxx.demo 100 指定多个包：adb shell monkey -p com.xxx.demo1 –p com.xxx.demo2 100 -v 指定反馈信息级别（信息级别就是日志的详细程度），总共分3个级别，分别对应的参数如下 表所示： Level 0 : adb shell monkey -p com.xxx.demo -v 100 // 缺省值，仅提供启动提示、测试完成和最终结果等少量信息 Level 1 : adb shell monkey -p com.xxx.demo -v -v 100 // 提供较为详细的日志，包括每个发送到Activity的事件信息 Level 2 : adb shell monkey -p com.xxx.demo -v -v -v 100 // 最详细的日志，包括了测试中选中/未选中的Activity信息 -s（随机数种子） 指定伪随机数生成器的seed值，如果seed相同，则两次Monkey测试所产生的事件序列也相同的。 示例： monkey测试1：adb shell monkey -p com.xxx.demo –s 10 100 monkey测试2：adb shell monkey -p com.xxx.demo –s 10 100 –throttle &lt;毫秒&gt; 用亍指定用户操作（即事件）间的时延，单位是毫秒。 例：adb shell monkey -p com.xxx.demo –throttle 3000 100 –pct-touch 调整触摸事件的百分比 ( 触摸事件是一个 down-up 事件，它发生在屏幕上的某单一位置 ) 。 –pct-motion 调整动作事件的百分比 ( 动作事件由屏幕上某处的一个 down 事件、一系列 的伪随机事件和一个 up 事件组成 ) 。 –pct-trackball 调整轨迹事件的百分比 ( 轨迹事件由一个或几个随机的移动组成，有时还伴随有点击 ) 。 –pct-nav 调整“基本”导航事件的百分比 ( 导航事件由来自方向输入设备的 up/down/left/right 组成 ) 。 –pct-majornav 调整“主要”导航事件的百分比 ( 这些导航事件通常引发图形界面中的动作，如： 5-way 键盘的中间按键、回退按键、菜单按键 ) –pct-syskeys 调整“系统”按键事件的百分比 ( 这些按键通常被保留，由系统使用，如 Home 、 Back 、 Start Call 、 End Call 及音量控制键 ) 。 –pct-appswitch 调整启动 Activity 的百分比。在随机间隔里， Monkey 将执行一个 startActivity () 调用，作为最大程度覆盖包中全部 Activity 的一种方法。 –pct-anyevent 调整其它类型事件的百分比。它包罗了所有其它类型的事件，如：按键、其它不常用的设备按钮、等等。 约束限制 -c 如果用此参数指定了一个或几个类别， Monkey 将只允许系统启动被这些类别中的某个类别列出的 Activity 。如果不指定任何类别， Monkey 将选择下列类别中列出的 Activity ： Intent.CATEGORY_LAUNCHER 或 Intent.CATEGORY_MONKEY 。要指定多个类别，需要使用多个 -c 选项，每个 -c 选项只能用于一个类别。 调试 –dbg-no-events 设置此选项， Monkey 将执行初始启动，进入到一个测试 Activity ，然后不会再进一步生成事件。为了得到最佳结果，把它与 -v 、一个或几个包约束、以及一个保持 Monkey 运行 30 秒或更长时间的非零值联合起来，从而提供一个环境，可以监视应用程序所调用的包之间的转换。 –hprof 设置此选项，将在 Monkey 事件序列之前和之后立即生成 profiling 报告。这将会在 data/misc 中生成大文件 (~5Mb) ，所以要小心使用它。 –ignore-crashes 通常，当应用程序崩溃或发生任何失控异常时， Monkey 将停止运行。如果设置此选项， Monkey 将继续向系统发送事件，直到计数完成。 –ignore-timeouts 通常，当应用程序发生任何超时错误 ( 如“ Application Not Responding ”对话框 ) 时， Monkey 将停止运行。如果设置此选项， Monkey 将继续向系统发送事件，直到计数完成。 –ignore-security-exceptions 通常，当应用程序发生许可错误 ( 如启动一个需要某些许可的 Activity) 时， Monkey 将停止运行。如果设置了此选项， Monkey 将继续向系统发送事件，直到计数完成。 –kill-process-after-error 通常，当 Monkey 由于一个错误而停止时，出错的应用程序将继续处于运行状态。当设置了此选项时，将会通知系统停止发生错误的进程。注意，正常的 ( 成功的 ) 结束，并没有停止启动的进程，设备只是在结束事件之后，简单地保持在最后的状态。 –monitor-native-crashes 监视并报告 Android 系统中本地代码的崩溃事件。如果设置了 –kill-process-after-error ，系统将停止运行。 –wait-dbg 停止执行中的 Monkey ，直到有调试器和它相连接。 实例 1adb shell monkey –p com.xxx.demo –-throttle 100 –-pct-touch 50 –-pct-motion 50 –v –v 1000 &gt;c:\monkey.txt 最后一个数字表示将要自动操作的次数。 将事件记录保存到monkey.txt文件中。 可能问题： 小米手机上需要打开安全设置： 设置 –》 更多设置 –》 开发者选项 –》USB调试（安全设置） 参考文章 1、https://www.cnblogs.com/TankXiao/p/4815134.html 2、https://wiki.jikexueyuan.com/project/android-test-course/monkey-commond-tools.html]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>monkey</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[android 开源组件]]></title>
+    <url>%2Fblog%2F2019%2F11%2F08%2FAndroid%20%E5%BC%80%E6%BA%90%E7%BB%84%E4%BB%B6%2F</url>
+    <content type="text"><![CDATA[事件分发 EventBus 3.0 https://github.com/greenrobot/EventBus http://greenrobot.org/eventbus/documentation RxBus 依赖RxJava 页面导航 ARouter 用于页面导航、过滤或者权限检查。例如跳转到内容页面的时候检查如果没有登录跳转到登录页面。 https://github.com/alibaba/ARouter 反射简化 JOOR 工具 http://www.jooq.org/products/ https://blog.csdn.net/bibingyan/article/details/56481801 数据库 greenDAO 性能高，内存占用小，库文件小 Realm 性能更高，自有引擎，库文件大 动态权限框架 AndPermission https://github.com/yanzhenjie/AndPermission 资源混淆 AndResGuard 1、重新修改已经打包的apk的resource.arse文件 2、不依赖源码、打包过程 批量打包 AndroidMultiChannelBuildTool 使用python脚本，支持v1签名]]></content>
+      <categories>
+        <category>android</category>
+      </categories>
+      <tags>
+        <tag>android</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Gradle 依赖包下载失败解决方法]]></title>
     <url>%2Fblog%2F2019%2F10%2F31%2FGradle%20%E4%BE%9D%E8%B5%96%E5%8C%85%E4%B8%8B%E8%BD%BD%E5%A4%B1%E8%B4%A5%2F</url>
     <content type="text"><![CDATA[我们在Android studio 升级或者gradle 插件升级的时候经常碰到某个依赖包下载不了，例如：构建错误：Could not download trove4j.jar。可能的原因与解决方法： gradle plugin 版本和 gradle 版本不一致 123456789101112# 项目跟目录build.gradlebuildscript &#123; repositories &#123; jcenter() mavenCentral() google() &#125; dependencies &#123; # 插件版本 classpath 'com.android.tools.build:gradle:3.4.2' &#125;&#125; 1234567#Tue Oct 29 14:49:28 CST 2019distributionBase=GRADLE_USER_HOMEdistributionPath=wrapper/distszipStoreBase=GRADLE_USER_HOMEzipStorePath=wrapper/dists# gradle 版本distributionUrl=https\://services.gradle.org/distributions/gradle-5.1.1-all.zip gradle 插件版本和gradle 版本必须保持一致，具体的对应关系看官网 。 用 jcenter() 替换 mavenCentral(); 添加google()。 下载不了trove4j.jar依赖包的原因可能是因为防火墙的原因，可以试试代理，或者直接换一个代码库。例如： 12maven &#123;url "https://maven.aliyun.com/repository/google"&#125;maven &#123;url "https://maven.aliyun.com/repository/jcenter"&#125; 如果还是解决不了，可以考虑手动下载依赖包 trove4j.jar，然后放置到gradle 缓存目录。 12345678910111213# 依赖包放置路径/Users/xxx/.gradle/caches/modules-2/files-2.1# trove4j.jar 的放置路径/Users/xxx/.gradle/caches/modules-2/files-2.1/org.jetbrains.trove4j/trove4j/20160824/# 用shasum 对 trove4j 取 hash值，用该hash值创建目录shasum trove4j.jarmkdir xxx# 将jar包放到该目录中。# 参考文章https://www.meiwen.com.cn/subject/pekjuctx.html https://www.kaelli.com/26.htmlhttps://chinagdg.org/2016/01/picking-your-compilesdkversion-minsdkversion-targetsdkversion/https://developer.android.com/studio/build/dependencies?hl=zh-cn 阿里代码仓库]]></content>
