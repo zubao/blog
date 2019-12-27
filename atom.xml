@@ -6,7 +6,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://zubao.github.io/blog/"/>
-  <updated>2019-12-27T07:12:02.304Z</updated>
+  <updated>2019-12-27T08:52:55.460Z</updated>
   <id>https://zubao.github.io/blog/</id>
   
   <author>
@@ -17,11 +17,60 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Android Gradle配置</title>
+    <link href="https://zubao.github.io/blog/2019/12/27/Gradle%20%E9%85%8D%E7%BD%AE/"/>
+    <id>https://zubao.github.io/blog/2019/12/27/Gradle 配置/</id>
+    <published>2019-12-27T08:47:52.763Z</published>
+    <updated>2019-12-27T08:52:55.460Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h5 id=&quot;Android-Gradle-插件-与-gradle-版本的映射关系&quot;&gt;&lt;a href=&quot;#Android-Gradle-插件-与-gradle-版本的映射关系&quot; class=&quot;headerlink&quot; title=&quot;Android Gradle 插件 与 grad
+      
+    
+    </summary>
+    
+      <category term="gradle" scheme="https://zubao.github.io/blog/categories/gradle/"/>
+    
+    
+      <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
+    
+      <category term="gradle" scheme="https://zubao.github.io/blog/tags/gradle/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>androidX</title>
+    <link href="https://zubao.github.io/blog/2019/12/27/AndroidX%20%E9%80%82%E9%85%8D/"/>
+    <id>https://zubao.github.io/blog/2019/12/27/AndroidX 适配/</id>
+    <published>2019-12-27T08:04:04.673Z</published>
+    <updated>2019-12-27T08:25:30.341Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;androidX简介&quot;&gt;&lt;a href=&quot;#androidX简介&quot; class=&quot;headerlink&quot; title=&quot;androidX简介&quot;&gt;&lt;/a&gt;androidX简介&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;AndroidX 是 Android 团队用于在 
+      
+    
+    </summary>
+    
+      <category term="androidX" scheme="https://zubao.github.io/blog/categories/androidX/"/>
+    
+    
+      <category term="androidX" scheme="https://zubao.github.io/blog/tags/androidX/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Android Studio 代码检测</title>
     <link href="https://zubao.github.io/blog/2019/12/27/Android%20%E4%BB%A3%E7%A0%81%E6%A3%80%E6%B5%8B/"/>
     <id>https://zubao.github.io/blog/2019/12/27/Android 代码检测/</id>
     <published>2019-12-27T06:09:29.940Z</published>
-    <updated>2019-12-27T07:12:02.304Z</updated>
+    <updated>2019-12-27T08:38:07.149Z</updated>
     
     <summary type="html">
     
@@ -98,7 +147,7 @@
     <link href="https://zubao.github.io/blog/2019/11/18/%E8%AE%AD%E7%BB%83%E7%BD%91%E7%AB%99/"/>
     <id>https://zubao.github.io/blog/2019/11/18/训练网站/</id>
     <published>2019-11-18T00:57:13.030Z</published>
-    <updated>2019-11-18T00:59:15.238Z</updated>
+    <updated>2019-12-27T08:47:54.817Z</updated>
     
     <summary type="html">
     
@@ -489,62 +538,6 @@
 &lt;blockquote&gt;
 &lt;p&gt;apktool d test.apk&lt;/p&gt;
 &lt;p&gt;官方网站： &lt;a href=&quot;https://ibotpeaches.github.io/Apktool/&quot; target=&quot;_
-      
-    
-    </summary>
-    
-      <category term="android" scheme="https://zubao.github.io/blog/categories/android/"/>
-    
-    
-      <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Mac PHP + Redis</title>
-    <link href="https://zubao.github.io/blog/2019/08/26/Mac%20PHP%20+%20Redis/"/>
-    <id>https://zubao.github.io/blog/2019/08/26/Mac PHP + Redis/</id>
-    <published>2019-08-26T02:31:05.000Z</published>
-    <updated>2019-08-26T02:51:36.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;首先需要安装Redis、PHP、PHP-FPM、nginx&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;PHP需要安装Redis的扩展&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td clas
-      
-    
-    </summary>
-    
-      <category term="PHP" scheme="https://zubao.github.io/blog/categories/PHP/"/>
-    
-    
-      <category term="PHP" scheme="https://zubao.github.io/blog/tags/PHP/"/>
-    
-      <category term="redis" scheme="https://zubao.github.io/blog/tags/redis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>手机大厂官方文档地址</title>
-    <link href="https://zubao.github.io/blog/2019/08/23/%E5%9B%BD%E5%86%85%E6%89%8B%E6%9C%BA%E5%A4%A7%E5%8E%82%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3%E5%9C%B0%E5%9D%80/"/>
-    <id>https://zubao.github.io/blog/2019/08/23/国内手机大厂官方文档地址/</id>
-    <published>2019-08-23T07:56:27.000Z</published>
-    <updated>2019-08-23T07:59:05.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;华为&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;a href=&quot;https://developer.huawei.com/consumer/cn/devservice/doc/50127&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;ht
       
     
     </summary>

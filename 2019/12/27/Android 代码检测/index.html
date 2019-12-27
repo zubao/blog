@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="闲敲棋子落灯花">
 <meta property="og:description" content="阿里代码检测工具-AS插件 安装方式 在线安装插件 插件名称 Alibaba Java Coding Guidelines plugin support. 检测范围 - 针对代码规范检测。 离线下载地址 - https://plugins.jetbrains.com/plugin/10046-alibaba-java-coding-guidelines/   SpotBugs 静态代码检测工具，针">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-12-27T07:12:02.304Z">
+<meta property="og:updated_time" content="2019-12-27T08:38:07.149Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android Studio 代码检测">
 <meta name="twitter:description" content="阿里代码检测工具-AS插件 安装方式 在线安装插件 插件名称 Alibaba Java Coding Guidelines plugin support. 检测范围 - 针对代码规范检测。 离线下载地址 - https://plugins.jetbrains.com/plugin/10046-alibaba-java-coding-guidelines/   SpotBugs 静态代码检测工具，针">
@@ -418,7 +418,22 @@
 <p><a href="https://codeday.me/bug/20191108/2010094.html" target="_blank" rel="noopener">https://codeday.me/bug/20191108/2010094.html</a></p>
 </blockquote>
 </li>
-<li></li>
+</ul>
+<h5 id="SpotBugs-多Module的配置"><a href="#SpotBugs-多Module的配置" class="headerlink" title="SpotBugs 多Module的配置"></a>SpotBugs 多Module的配置</h5><ul>
+<li><p>spotbugs.gradle配置</p>
+</li>
+<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">    spotbugs configurations.spotbugsPlugins.dependencies</span><br><span class="line">    spotbugsPlugins <span class="string">'com.h3xstream.findsecbugs:findsecbugs-plugin:1.8.0'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//def qualityConfigDir = "$project.rootDir/config/quality"</span></span><br><span class="line">def reportsDir = <span class="string">"$project.buildDir/reports"</span></span><br><span class="line"></span><br><span class="line">spotbugs &#123;</span><br><span class="line"><span class="comment">//    toolVersion = "$spotbugs_version"</span></span><br><span class="line">    toolVersion = <span class="string">'4.0.0-beta4'</span></span><br><span class="line">    ignoreFailures = <span class="keyword">false</span></span><br><span class="line"></span><br><span class="line">    effort = <span class="string">"min"</span></span><br><span class="line">    <span class="comment">// This selects what level of bugs to report: low means low priority issues will be reported</span></span><br><span class="line">    <span class="comment">// (in addition to medium+high), which corresponds to warning about everything.</span></span><br><span class="line">    <span class="comment">// <span class="doctag">TODO:</span> boost this to low once low priority issues are fixed.</span></span><br><span class="line">    reportLevel = <span class="string">"medium"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//    excludeFilter = new File("$qualityConfigDir/config/quality/spotbugs/android-exclude-filter.xml")</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">tasks.register(<span class="string">"spotbugs"</span>, SpotBugsTask) &#123;</span><br><span class="line">    dependsOn <span class="string">'assemble'</span></span><br><span class="line">    group = <span class="string">"verification"</span></span><br><span class="line">    classes = files(<span class="string">"$projectDir.absolutePath/build/intermediates/app_classes/debug"</span>)</span><br><span class="line"></span><br><span class="line">    source = fileTree(<span class="string">'src/main/java'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// Only one report format is supported. Html is easier to read, so let's use that</span></span><br><span class="line">    <span class="comment">// (xml is the one that's enabled by default).</span></span><br><span class="line">    reports &#123;</span><br><span class="line">        xml.enabled = <span class="keyword">true</span></span><br><span class="line">        xml &#123;</span><br><span class="line">            <span class="function">destination <span class="title">file</span><span class="params">(<span class="string">"$reportsDir/spotbugs/spotbugs.xml"</span>)</span></span></span><br><span class="line"><span class="function">        &#125;</span></span><br><span class="line"><span class="function">        html.enabled </span>= <span class="keyword">true</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    classpath = files()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>项目build.gradle配置</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Top-level build file where you can add configuration options common to all sub-projects/modules.</span></span><br><span class="line"></span><br><span class="line">buildscript &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        mavenCentral()</span><br><span class="line">        jcenter()</span><br><span class="line">        maven &#123; url <span class="string">'https://maven.fabric.io/public'</span> &#125;</span><br><span class="line">        maven &#123;</span><br><span class="line">            url <span class="string">'https://maven.google.com/'</span></span><br><span class="line">            name <span class="string">'Google'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    dependencies &#123;</span><br><span class="line">        classpath <span class="string">'com.android.tools.build:gradle:3.4.2'</span></span><br><span class="line"><span class="comment">//        classpath "gradle.plugin.com.github.spotbugs:spotbugs-gradle-plugin:2.0.0" // For SpotBugs</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">plugins &#123;</span><br><span class="line">    id <span class="string">"com.github.spotbugs"</span> version <span class="string">"2.0.0"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Workaround to be able to access SpotBugsTask from external gradle script.</span></span><br><span class="line"><span class="comment">// More info: https://discuss.gradle.org/t/buildscript-dependencies-in-external-script/23243</span></span><br><span class="line">project.extensions.extraProperties.set(<span class="string">'SpotBugsTask'</span>, com.github.spotbugs.SpotBugsTask)</span><br><span class="line">apply from: <span class="string">'./app/spotbugs.gradle'</span></span><br><span class="line"></span><br><span class="line">allprojects &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        mavenCentral()</span><br><span class="line">        jcenter()</span><br><span class="line">        maven &#123; url <span class="string">'https://maven.fabric.io/public'</span> &#125;</span><br><span class="line">        maven &#123;</span><br><span class="line">            url <span class="string">'https://maven.google.com/'</span></span><br><span class="line">            name <span class="string">'Google'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">task <span class="title">clean</span><span class="params">(type: Delete)</span> </span>&#123;</span><br><span class="line">    delete rootProject.buildDir</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+</li>
 </ul>
 
       
@@ -461,6 +476,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2019/12/27/AndroidX 适配/" rel="prev" title="androidX">
+                androidX <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -539,7 +558,7 @@
               
                 <a href="/blog/archives/">
               
-                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-count">48</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -550,7 +569,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/blog/categories/index.html">
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -561,7 +580,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/blog/tags/index.html">
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">43</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -617,7 +636,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#阿里代码检测工具-AS插件"><span class="nav-number">1.</span> <span class="nav-text">阿里代码检测工具-AS插件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#SpotBugs"><span class="nav-number">2.</span> <span class="nav-text">SpotBugs</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#阿里代码检测工具-AS插件"><span class="nav-number">1.</span> <span class="nav-text">阿里代码检测工具-AS插件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#SpotBugs"><span class="nav-number">2.</span> <span class="nav-text">SpotBugs</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#SpotBugs-多Module的配置"><span class="nav-number">3.</span> <span class="nav-text">SpotBugs 多Module的配置</span></a></li></ol></div>
             
 
           </div>
