@@ -293,6 +293,977 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2020/01/14/树莓派开启自动发邮件/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lpl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/blog/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="闲敲棋子落灯花">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2020/01/14/树莓派开启自动发邮件/" itemprop="url">树莓派开机自动发邮件</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-14T16:15:08+08:00">
+                2020-01-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/Raspberry/" itemprop="url" rel="index">
+                    <span itemprop="name">Raspberry</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="安装mutt、msmtp"><a href="#安装mutt、msmtp" class="headerlink" title="安装mutt、msmtp"></a>安装mutt、msmtp</h5><ul>
+<li><p>mutt ：是一个linux下的邮件程序，mutt 类似文件管理器，不过它管理的是邮件</p>
+</li>
+<li><p>msmtp ：是linux 下一个非常简单易用的smtp客户端</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install mutt </span><br><span class="line"><span class="meta">#</span> 如果失败</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install msmtp</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>配置mutt、msmtp环境</p>
+<ul>
+<li><p>配置msmtp，在用户跟目录创建.msmtprc文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">vim .msmtprc</span><br><span class="line">account default</span><br><span class="line"></span><br><span class="line">host smtp.126.com</span><br><span class="line">from l5@126.com</span><br><span class="line">auth login</span><br><span class="line">tls off</span><br><span class="line">user l5</span><br><span class="line">password L5 (授权码)</span><br><span class="line">logfile ~/.mstmp.log</span><br><span class="line"><span class="meta">#</span> 申请126 邮箱，去设置获取授权码</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li>host 表示你的游戏的SMTP服务器地址</li>
+<li>from 发件人邮箱地址</li>
+<li>user 发件人邮箱地址</li>
+<li>password 这里是邮箱的明文密码</li>
+<li>logfile 这里是日志文件路径，发送邮件后程序会将日志写入这个文件。</li>
+</ul>
+</blockquote>
+</li>
+<li><p>测试msmtp</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 输入如下命令，测试msmtp</span><br><span class="line">msmtp -d lipeil4195@126.com</span><br><span class="line">Subject:title&lt;Hi jack&gt;</span><br><span class="line">gogogogoogogogo</span><br><span class="line"><span class="meta">#</span> 标题、正文输入完之后，输入下面命令发送邮件</span><br><span class="line">control + d</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<ul>
+<li><p>配置mutt</p>
+</li>
+<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vim .muttrc</span><br><span class="line">set sendmail="/usr/bin/msmtp"</span><br><span class="line">set use_from=yes</span><br><span class="line">set realname='l5@126.com'</span><br><span class="line">set from="l5@126.com"</span><br><span class="line">set envelope_from=yes</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>测试mutt 是否安装配置成功</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod 0600 ~/.msmtprc</span><br><span class="line">echo &quot;准备的怎样了&quot; | mutt -s &quot;周末出游&quot; 419548550@qq.com</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>参考文章 <a href="https://www.huaijiujia.com/category/操作系统/centos/centos-特有软件/" target="_blank" rel="noopener">https://www.huaijiujia.com/category/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/centos/centos-%E7%89%B9%E6%9C%89%E8%BD%AF%E4%BB%B6/</a></p>
+<p><a href="https://www.cnblogs.com/hjfeng1988/p/4464116.html" target="_blank" rel="noopener">https://www.cnblogs.com/hjfeng1988/p/4464116.html</a></p>
+<p><a href="https://www.jianshu.com/p/893352c61f93" target="_blank" rel="noopener">https://www.jianshu.com/p/893352c61f93</a></p>
+<p><a href="https://blog.csdn.net/betty13006159467/article/details/71172295" target="_blank" rel="noopener">https://blog.csdn.net/betty13006159467/article/details/71172295</a></p>
+<p><a href="https://www.jianshu.com/p/f7faa156087a" target="_blank" rel="noopener">https://www.jianshu.com/p/f7faa156087a</a></p>
+</blockquote>
+</li>
+<li><p>发送邮件配置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>!/bin/bash</span><br><span class="line"><span class="meta">#</span> check network availability</span><br><span class="line">while true</span><br><span class="line">do</span><br><span class="line">TIMEOUT=5</span><br><span class="line">SITE_TO_CHECK="www.baidu.com"</span><br><span class="line">RET_CODE=`curl -I -s --connect-timeout $TIMEOUT $SITE_TO_CHECK -w %&#123;http_code&#125; | tail -n1`</span><br><span class="line">if [ "x$RET_CODE" = "x200" ]; then</span><br><span class="line">echo "Network OK, will send mail..."</span><br><span class="line">break</span><br><span class="line">else</span><br><span class="line">echo "Network not ready, wait..."</span><br><span class="line">sleep 1s</span><br><span class="line">fi</span><br><span class="line">done</span><br><span class="line"><span class="meta">#</span> 这里如果是网线用eth0, 如果是wifi 用wlan0。</span><br><span class="line">ETH0_IP_ADDR=`ifconfig wlan0 | sed -n "2,2p" | awk '&#123;print substr($2,1)&#125;'`</span><br><span class="line">echo $ETH0_IP_ADDR</span><br><span class="line"><span class="meta">#</span> send the Email 这里给qq邮箱发提示失败(原因是垃圾邮件)，换成126自己的地址就可以。然后用QQ邮箱代收。</span><br><span class="line">echo "China Current time: `date '+%F %T'`. Good time" | mutt -s "Zubao's IP Address of Raspberry Pi: $ETH0_IP_ADDR" l5@126.com</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>开机配置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 将.msmtprc .msmtp.log .muttrc 文件copy到 /root 目录下面。需要用su进入root权限，sudo不行</span><br><span class="line"><span class="meta">#</span> 修改 /etc/rc.local 文件，在exit 之前加上</span><br><span class="line">bash /root/send_ip_mail.sh</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2020/01/13/Android Q Pixel 2 XL Root/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lpl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/blog/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="闲敲棋子落灯花">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2020/01/13/Android Q Pixel 2 XL Root/" itemprop="url">Android Q 2XL Root</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-13T15:47:20+08:00">
+                2020-01-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>#### </p>
+<h5 id="Unlock-the-Bootloader"><a href="#Unlock-the-Bootloader" class="headerlink" title="Unlock the Bootloader"></a>Unlock the Bootloader</h5><ul>
+<li>Before Unlock</li>
+</ul>
+<blockquote>
+<ol>
+<li><p>This will work only on Google Pixel 2 and Pixel 2 XL users.</p>
+</li>
+<li><p>You need Laptop or PC.</p>
+</li>
+<li><p>Working USB Cable.</p>
+</li>
+<li><p>Charge your phone to at least 70% battery.</p>
+</li>
+<li><p>GetDroidTips.com is not responsible for any damage to your phone while installing this Update.</p>
+</li>
+<li><p>Make sure that you have <strong>latest USB drivers</strong> installed.</p>
+</li>
+<li><p>Download the <a href="https://www.getdroidtips.com/how-to-install-adb-and-fastboot-on-windows/" target="_blank" rel="noopener">ADB Fastboot tools</a>. Watch Video on How to <a href="https://www.youtube.com/watch?v=myOgT9nIacg&t=7s" target="_blank" rel="noopener"><strong>Install ADB Fastboot on your PC.</strong></a></p>
+</li>
+<li><p>Take a complete <strong>backup of your phone</strong> and then proceed.</p>
+</li>
+</ol>
+</blockquote>
+<ul>
+<li><p>打开开发者模式</p>
+<blockquote>
+<p>Enable the Developer Option, Go to your Settings -&gt; About -&gt; Software Information -&gt; More -&gt; Now Tap on the Build Number 7-8 Times until you see a toast message “<strong>Developer option enabled</strong>“</p>
+</blockquote>
+</li>
+<li><p>OEM unlock</p>
+<blockquote>
+<p>Settings -&gt; Developer Option and Enable OEM Unlock and USB Debugging</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>环境配置</p>
+<blockquote>
+<p>主要是配置adb环境，android 开发者可以忽略</p>
+<p>Download and Extract the Downloaded ADB fastboot Zip file on your PC.</p>
+<p>Now connect your phone to Computer using USB Cable.</p>
+<p>When you connect your Phone to Computer, please wait until all the drivers get installed.</p>
+<p>运行 adb deviecs 检查adb 是否安装成功</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>进入bootloader模式</p>
+<blockquote>
+<p>adb reboot bootloader </p>
+</blockquote>
+</li>
+<li><p>运行 fastboot devices， 确认fastboot 驱动安装成功</p>
+</li>
+<li><p>oem unlock</p>
+</li>
+<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fastboot oem unlock</span><br><span class="line">fastboot reboot</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h5 id="下载Android-10-镜像文件-Factory-Images"><a href="#下载Android-10-镜像文件-Factory-Images" class="headerlink" title="下载Android 10 镜像文件(Factory Images)"></a>下载Android 10 镜像文件(Factory Images)</h5><ul>
+<li><a href="https://developers.google.com/android/images" target="_blank" rel="noopener">https://developers.google.com/android/images</a></li>
+</ul>
+<h5 id="解压文件"><a href="#解压文件" class="headerlink" title="解压文件"></a>解压文件</h5><blockquote>
+<p>1、将刚刚下载的zip文件解压缩</p>
+<p>2、从解压出的文件中找到image开头的文件</p>
+<p>3、继续解压</p>
+<p>4、找到boot.img文件</p>
+<p>5、将boot.img文件copy到手机的sdcard/Download目录</p>
+</blockquote>
+<h3 id="Install-Canary-Magisk-Manager"><a href="#Install-Canary-Magisk-Manager" class="headerlink" title="Install Canary Magisk Manager"></a>Install Canary Magisk Manager</h3><blockquote>
+<p>安装 Magisk Manager，</p>
+<p><a href="https://github.com/topjohnwu/Magisk" target="_blank" rel="noopener">https://github.com/topjohnwu/Magisk</a></p>
+</blockquote>
+<h5 id="修改更新通道（Update-Channel）"><a href="#修改更新通道（Update-Channel）" class="headerlink" title="修改更新通道（Update Channel）"></a>修改更新通道（Update Channel）</h5><blockquote>
+<p>1、安装Magisk manager</p>
+<p>2、Left Menu -》 Settings -》 update Channel -》 Canary</p>
+</blockquote>
+<h3 id="Patch-the-Boot-Image"><a href="#Patch-the-Boot-Image" class="headerlink" title="Patch the Boot Image"></a>Patch the Boot Image</h3><blockquote>
+<ol>
+<li>Go to the main screen of the <strong>Magisk Manager</strong>.</li>
+<li>Tap on <strong>Install</strong> and hit the <strong>Install</strong> button to bring up <strong>new set of options</strong>.</li>
+<li>From the list, tap on the <strong>Select and Patch a file</strong> option.</li>
+<li>Grant all the necessary permissions by tapping <strong>Allow</strong>.</li>
+<li>Now under the <strong>File Manger</strong>, go to the <strong>Downloads</strong> folder where you have copied the <strong>boot.img</strong> file.</li>
+<li>Tap on the <strong>boot.img</strong> file and Magisk Manager will start patching that file.</li>
+<li>Once the process is complete, tap the back arrow to finish.</li>
+</ol>
+</blockquote>
+<h3 id="Install-ADB-and-Fastboot"><a href="#Install-ADB-and-Fastboot" class="headerlink" title="Install ADB and Fastboot"></a>Install ADB and Fastboot</h3><blockquote>
+<p>android 开发者已经有了adb 和 fastboot的环境，如果没有需要自行下载并配置环境变量</p>
+</blockquote>
+<h3 id="Move-the-Patched-boot-image"><a href="#Move-the-Patched-boot-image" class="headerlink" title="Move the Patched boot image"></a>Move the Patched boot image</h3><blockquote>
+<p>将boot.img 从手机移动到PC上，重命名为magisk_patched.img</p>
+</blockquote>
+<h3 id="Boot-into-the-Fastboot-Mode"><a href="#Boot-into-the-Fastboot-Mode" class="headerlink" title="Boot into the Fastboot Mode"></a>Boot into the Fastboot Mode</h3><blockquote>
+<p>进入 fastboot mode </p>
+<ol>
+<li>Long press the <strong>Power button</strong> to shut down your phone.</li>
+<li>Now hold down the <strong>Power + Volume Down</strong> button till the Fastboot menu appears.</li>
+<li>Quickly connect your device to the PC via a USB cable.</li>
+<li>Leave the phone in that state for the further process.</li>
+</ol>
+</blockquote>
+<h3 id="Flash-the-Patched-boot-image"><a href="#Flash-the-Patched-boot-image" class="headerlink" title="Flash the Patched boot image"></a>Flash the Patched boot image</h3><blockquote>
+<p>命令行刷入 magisk_patched.img</p>
+<ol>
+<li>Type the below command in the cmd prompt;<br><code>fastboot flash boot magisk_patched.img</code></li>
+<li>Type in the next command;<br><code>fastboot reboot</code></li>
+<li>The above command will automatically reboot your device.</li>
+<li>Once your device has rebooted you can verify the root status of your device by opening the Magisk Manager app.</li>
+<li>That’s it!</li>
+</ol>
+</blockquote>
+<h5 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h5><blockquote>
+<p>1、unlock the BootLoader 不同手机不同版本可能不一样；</p>
+<p>2、去官网下载对应机型的Factory Images，解压缩得到image**文件，继续解压得到boot.img文件</p>
+<p>3、下载最新的magisk Manager </p>
+<p>4、在需要root的手机上安装 Magisk Manager 并修改 更新通道</p>
+<p>5、将boot.img文件copy到手机上，例如/sdcard/download</p>
+<p>6、Magisk Manager首页 Magisk模块后面选择安装，选择修复***，然后去文件系统里面选择boot.img。会自动下载Magisk模块，并且修改boot.img文件，最后保存为magisk_patched.img文件</p>
+<p>7、运行 adb reboot bootloader 进入fastboot mode</p>
+<p>8、运行 fastboot boot magisk_patched.img (临时) 或者 fastboot flash boot magisk_patched.img （永久）</p>
+<p>​    PS: 前者为临时刷root权限；后者为永久刷root权限，后者刷入后，手动按power键进入系统，进入Magisk Manager 再次安装Magisk，选择直接安装，之后重启，永久root生效。</p>
+<p>9、刷临时root会自动重启，进入系统。重新进入Magisk Manager 发现Magisk模块以及安装成功。</p>
+<p>10，adb shell ，然后运行su命令，发现root已经成功。</p>
+</blockquote>
+<p>参考文章：</p>
+<blockquote>
+<p>1、<a href="https://sspai.com/post/53043" target="_blank" rel="noopener">https://sspai.com/post/53043</a></p>
+<p>2、<a href="https://sspai.com/post/53809" target="_blank" rel="noopener">https://sspai.com/post/53809</a></p>
+<p>3、<a href="https://sspai.com/post/53075" target="_blank" rel="noopener">https://sspai.com/post/53075</a></p>
+<p>4、<a href="https://www.getdroidtips.com/how-to-root-any-pixel-device-running-android-10-q-pixel-2-pixel-3-3a-xl/" target="_blank" rel="noopener">https://www.getdroidtips.com/how-to-root-any-pixel-device-running-android-10-q-pixel-2-pixel-3-3a-xl/</a></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2020/01/10/Jenkins持续集成交付/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lpl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/blog/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="闲敲棋子落灯花">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2020/01/10/Jenkins持续集成交付/" itemprop="url">Jenkins 持续集成，交付</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-10T22:17:44+08:00">
+                2020-01-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="Jenkins简介"><a href="#Jenkins简介" class="headerlink" title="Jenkins简介"></a>Jenkins简介</h5><ul>
+<li><p><strong>Jenkins</strong>是一款由<a href="https://zh.wikipedia.org/wiki/Java" target="_blank" rel="noopener">Java</a>编写的<a href="https://zh.wikipedia.org/wiki/开源" target="_blank" rel="noopener">开源</a>的<a href="https://zh.wikipedia.org/wiki/持续集成" target="_blank" rel="noopener">持续集成</a>工具</p>
+</li>
+<li><p>官网地址 <a href="https://jenkins.io/zh/" target="_blank" rel="noopener">https://jenkins.io/zh/</a></p>
+</li>
+</ul>
+<h5 id="Jenkins-的卸载"><a href="#Jenkins-的卸载" class="headerlink" title="Jenkins 的卸载"></a>Jenkins 的卸载</h5><ul>
+<li>运行命令 ‘/Library/Application Support/Jenkins/Uninstall.command’</li>
+<li>参考文章 <a href="https://blog.csdn.net/weixin_40881502/article/details/84748599" target="_blank" rel="noopener">https://blog.csdn.net/weixin_40881502/article/details/84748599</a></li>
+</ul>
+<h5 id="Jenkins-命令行安装"><a href="#Jenkins-命令行安装" class="headerlink" title="Jenkins 命令行安装"></a>Jenkins 命令行安装</h5><ul>
+<li><p>brew install jenkins-lts</p>
+<blockquote>
+<p>安装好 Jenkins 之后，直接访问默认的地址：<a href="http://localhost:8080/" target="_blank" rel="noopener">http://localhost:8080/</a> 就可以启动默认设置页面了。如果访问这个默认地址不能加载 Jenkins 的，我们需要先通过 brew services start jenkins-lts 来启动 Jenkins。</p>
+<p>对应的卸载方式 brew uninstall jenkins-lts</p>
+<p>Homebrew 命令安装的 Jenkins 的目录在：~/.jenkins，而通过 .pkg 包安装的 Jenkins 目录在：/Users/Shared/Jenkins，这个就是为什么 .pkg 安装的 Jenkins 相对于 Homebrew 安装的 Jenkins 问题更多的根本原因！</p>
+<p>2.如果你不想用默认的端口号：8080，或者这个端口号已经被占用，可以通过以下位置的文件来修改默认端口号：/usr/local/Cellar/jenkins-lts/2.138.2/homebrew.mxcl.jenkins-lts.plist，当然这个位置的文件根据你的版本号不同而不同。修改第 18 行的 –httpPort= 后面的值。</p>
+<p>然后通过 brew services start jenkins-lts 命令来重启生效。</p>
+</blockquote>
+</li>
+<li><p>查看密码</p>
+</li>
+<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cat ~/.jenkins/secrets/initialAdminPassword</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装插件</p>
+</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GitLab、GitLab Hook、XCode integration、Keychains and Provisoning Profiles Management 四个插件</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置 Keychains 和 Provisioning Profiles。(For IOS)</p>
+<blockquote>
+<p>通过刚才安装的 keychains and Provisioning Profiles Management 插件，Jenkins -&gt; Manage Jenkins -&gt; Keychains and Provisioning Profiles Management，来配置 Keychains 和 Provisioning Profiles。</p>
+<p>去 macOS 以下地址：/Users/{username}/Library/Keychains。我的路径是：~/Library/Keychains，找到 login.keychain 文件，有的时候你可能看到的是 login.keychain-db 文件，没关系，将 login.keychain-db 文件修改成 login.keychain。然后通过 Upload Keychain or Provisioning Profile File -&gt; Choose File -&gt; Upload 上传：</p>
+</blockquote>
+</li>
+</ul>
+<h5 id="新建构建项目Android"><a href="#新建构建项目Android" class="headerlink" title="新建构建项目Android"></a>新建构建项目Android</h5><ul>
+<li><p>配置JDK</p>
+<blockquote>
+<p>Manage Jenkins -》Global Tool Configuration 模块配置JDK，因为本地有安装JDK，这里只需要提供路径即可。</p>
+</blockquote>
+</li>
+<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo $JAVA_HOME</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<ul>
+<li><p>配置Gradle</p>
+<blockquote>
+<p>和JDK在同一个位置配置，Gradle 可以选择使用Jenkins自己的，让它自己去下载。不用本地已经有的。</p>
+</blockquote>
+</li>
+<li><p>配置git SSH</p>
+<blockquote>
+<p>Jenkins &gt; Credentials &gt; System &gt;Global credentials (unrestricted)</p>
+<p>Git SSH 在左边控制面板下面找到Credentials ，然后安装上面顺序找到 Add Credentials，点击添加。</p>
+<p>Git配置有两种，这里我使用的是SSH方式，只需要填入用户名，ssh 私钥即可。私钥地址 .ssh/id_rsa</p>
+</blockquote>
+</li>
+<li><p>配置项目地址 Git</p>
+<blockquote>
+<p>如果上面配置的是 ssh方式，这里最好是使用<a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:xxx 这种方式，而不是http。</p>
+</blockquote>
+</li>
+<li><p>新建项目</p>
+<blockquote>
+<p>1、配置git地址</p>
+<p>2、配置构建周期(例如：H/5 * * * *)</p>
+<p>3、配置构建脚本invoke Gradle Script， 现在assembleRelease –info</p>
+</blockquote>
+</li>
+<li><p>Error 403 No valid crumb was included in the request</p>
+</li>
+<li><blockquote>
+<p>在jenkins 的Configure Global Security下 , 取消“防止跨站点请求伪造（Prevent Cross Site Request Forgery exploits）”的勾选。</p>
+</blockquote>
+</li>
+</ul>
+<h5 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h5><ul>
+<li><a href="https://www.ifeegoo.com/using-jenkins-to-set-up-the-continuous-integration-environment-of-android-and-ios-on-macos.html" target="_blank" rel="noopener">https://www.ifeegoo.com/using-jenkins-to-set-up-the-continuous-integration-environment-of-android-and-ios-on-macos.html</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/12/31/Android 命令行内存分析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lpl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/blog/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="闲敲棋子落灯花">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2019/12/31/Android 命令行内存分析/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-31T11:08:39+08:00">
+                2019-12-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/12/29/OpenCV Python Mac 配置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lpl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/blog/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="闲敲棋子落灯花">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2019/12/29/OpenCV Python Mac 配置/" itemprop="url">Mac Python OpenCV 配置</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-29T18:27:21+08:00">
+                2019-12-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/opencv/" itemprop="url" rel="index">
+                    <span itemprop="name">opencv</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo pip3 install numpy</span><br><span class="line">sudo pip3 install Matplotlib</span><br><span class="line">sudo pip3 install opencv_python</span><br></pre></td></tr></table></figure>
+
+<h5 id="模式匹配"><a href="#模式匹配" class="headerlink" title="模式匹配"></a>模式匹配</h5><ul>
+<li><p>在图像中查找指定的模板</p>
+<blockquote>
+<p><a href="https://testerhome.com/topics/12537/show_wechat" target="_blank" rel="noopener">https://testerhome.com/topics/12537/show_wechat</a></p>
+</blockquote>
+</li>
+<li><p>比较全面的opencv </p>
+<blockquote>
+<p><a href="https://juejin.im/entry/5a7c2622f265da4e7071b54a" target="_blank" rel="noopener">https://juejin.im/entry/5a7c2622f265da4e7071b54a</a></p>
+</blockquote>
+</li>
+<li></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/12/27/Gradle 配置/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1195,1008 +2166,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/11/18/训练网站/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lpl">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/blog/images/head.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="闲敲棋子落灯花">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2019/11/18/训练网站/" itemprop="url">训练网站</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-18T08:57:13+08:00">
-                2019-11-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/IT/" itemprop="url" rel="index">
-                    <span itemprop="name">IT</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="在线刷题"><a href="#在线刷题" class="headerlink" title="在线刷题"></a>在线刷题</h5><ul>
-<li><a href="https://leetcode-cn.com/" target="_blank" rel="noopener">https://leetcode-cn.com/</a> 可以在线刷题，算法、数据库</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/11/15/Android Memory 分析/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lpl">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/blog/images/head.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="闲敲棋子落灯花">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2019/11/15/Android Memory 分析/" itemprop="url">Android 内存分析</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-15T16:24:46+08:00">
-                2019-11-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="获取内存堆栈文件"><a href="#获取内存堆栈文件" class="headerlink" title="获取内存堆栈文件"></a>获取内存堆栈文件</h5><ul>
-<li><p>dump hprof文件</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 生成hprof文件</span><br><span class="line">adb shell am dumpheap com.xxx.demo /data/local/tmp/start.hprof</span><br><span class="line"><span class="meta">#</span> 拉取到电脑</span><br><span class="line">adb pull /data/local/tmp/start.hprof .</span><br><span class="line"><span class="meta">#</span> 格式转换</span><br><span class="line">hprof-conv start.hprof st.hprof</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ul>
-<h5 id="MAT工具使用"><a href="#MAT工具使用" class="headerlink" title="MAT工具使用"></a>MAT工具使用</h5><h5 id="参考文章："><a href="#参考文章：" class="headerlink" title="参考文章："></a>参考文章：</h5><blockquote>
-<p><a href="http://www.lightskystreet.com/2015/09/01/mat_usage/" target="_blank" rel="noopener">http://www.lightskystreet.com/2015/09/01/mat_usage/</a></p>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/11/15/树莓派安装配置/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lpl">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/blog/images/head.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="闲敲棋子落灯花">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2019/11/15/树莓派安装配置/" itemprop="url">树莓派的安装配置</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-15T10:11:14+08:00">
-                2019-11-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/Raspberry/" itemprop="url" rel="index">
-                    <span itemprop="name">Raspberry</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="硬件选购"><a href="#硬件选购" class="headerlink" title="硬件选购"></a>硬件选购</h5><ul>
-<li>必须(主板、SDCard、电源线或者USB线-Type-C、读卡器)</li>
-<li>可选(显示器、鼠标、键盘、风扇、外壳、各类传感器、HDMI线(一头为HDMI-micro，另一头为HDMI))</li>
-</ul>
-<h5 id="安装系统"><a href="#安装系统" class="headerlink" title="安装系统"></a>安装系统</h5><ul>
-<li><p>下载Raspberry系统镜像</p>
-<blockquote>
-<p>下载地址 <a href="https://www.raspberrypi.org/downloads/raspbian/" target="_blank" rel="noopener">https://www.raspberrypi.org/downloads/raspbian/</a></p>
-</blockquote>
-</li>
-<li><p>下载Etcher</p>
-<blockquote>
-<p><a href="https://www.balena.io/etcher/" target="_blank" rel="noopener">https://www.balena.io/etcher/</a></p>
-</blockquote>
-</li>
-<li><p>使用Etcher 将下载的img镜像文件，写入SDcard。</p>
-<blockquote>
-<p>1、Mac 上用磁盘工具将SDcard 格式化为FAT32格式，即MS-DOS(FAT)</p>
-<p>2、使用Etcher刻录，选择img文件，然后选择SDCard，开始刻录。大概30分钟左右。</p>
-</blockquote>
-</li>
-<li><p>将刻录好的Sdcard插入主板背面的插口。</p>
-</li>
-</ul>
-<h5 id="启动树莓派"><a href="#启动树莓派" class="headerlink" title="启动树莓派"></a>启动树莓派</h5><ul>
-<li><p>插上数据线，或者接上USB线，即可启动系统</p>
-</li>
-<li><p>Raspberry 最新的系统默认没有开启SSH，需要先开启SSH服务</p>
-</li>
-<li><p>SSH登录树莓派</p>
-<blockquote>
-<p>Raspbian 默认用户名/密码：pi/raspberry</p>
-</blockquote>
-</li>
-</ul>
-<h5 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h5><ul>
-<li>小米路由器禁止了Ping、SSH，需要修改路由器加密方式为WPA2。可以通过小米wifiAPP -&gt; Wi-Fi设置 -&gt; 加密方式 修改。</li>
-</ul>
-<h5 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h5><ul>
-<li><a href="https://www.ihubin.com/blog/raspberrypi-mac-install-raspbian/" target="_blank" rel="noopener">https://www.ihubin.com/blog/raspberrypi-mac-install-raspbian/</a></li>
-<li><a href="https://blog.csdn.net/freewebsys/article/details/48980993" target="_blank" rel="noopener">https://blog.csdn.net/freewebsys/article/details/48980993</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/11/15/Monkey 自动测试/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lpl">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/blog/images/head.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="闲敲棋子落灯花">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2019/11/15/Monkey 自动测试/" itemprop="url">Android 使用Monky自动测试</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-15T09:31:29+08:00">
-                2019-11-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="Monkey的用途"><a href="#Monkey的用途" class="headerlink" title="Monkey的用途"></a>Monkey的用途</h5><ul>
-<li>Monkey 主要用于Android 的压力测试。自动的一个压力测试小工具， 主要目的就是为了测试app 是否会Crash。</li>
-</ul>
-<h5 id="Monkey-参数介绍"><a href="#Monkey-参数介绍" class="headerlink" title="Monkey 参数介绍"></a>Monkey 参数介绍</h5><ul>
-<li><p>-p &lt;允许的包名列表&gt; </p>
-<blockquote>
-<p> 用此参数指定一个或多个包。指定包之后，monkey将只允许系统启动指定的app。如果不指定包， monkey将允许系统启动设备中的所有app。  </p>
-<p>指定一个包：adb shell monkey -p com.xxx.demo 100   </p>
-<p>指定多个包：adb shell monkey -p com.xxx.demo1  –p com.xxx.demo2  100  </p>
-</blockquote>
-</li>
-<li><p>-v 指定反馈信息级别（信息级别就是日志的详细程度），总共分3个级别，分别对应的参数如下 表所示：</p>
-<blockquote>
-<p>Level 0  :  adb shell monkey -p com.xxx.demo -v 100               // 缺省值，仅提供启动提示、测试完成和最终结果等少量信息   </p>
-<p>Level 1  :  adb shell monkey -p com.xxx.demo -v  -v 100          // 提供较为详细的日志，包括每个发送到Activity的事件信息</p>
-<p>Level 2  :  adb shell monkey -p com.xxx.demo -v  -v  -v 100     // 最详细的日志，包括了测试中选中/未选中的Activity信息</p>
-</blockquote>
-</li>
-</ul>
-<ul>
-<li><p>-s（随机数种子）   </p>
-<blockquote>
-<p>指定伪随机数生成器的seed值，如果seed相同，则两次Monkey测试所产生的事件序列也相同的。  示例：</p>
-<p>monkey测试1：adb shell monkey -p com.xxx.demo –s 10 100                </p>
-<p>monkey测试2：adb shell monkey -p com.xxx.demo –s 10 100           </p>
-</blockquote>
-</li>
-<li><p>–throttle &lt;毫秒&gt;   用亍指定用户操作（即事件）间的时延，单位是毫秒。</p>
-<blockquote>
-<p>例：adb shell monkey -p com.xxx.demo –throttle 3000 100</p>
-</blockquote>
-</li>
-<li><p>–pct-touch</p>
-<blockquote>
-<p> 调整触摸事件的百分比 ( 触摸事件是一个 down-up 事件，它发生在屏幕上的某单一位置 ) 。</p>
-</blockquote>
-</li>
-</ul>
-<ul>
-<li><p>–pct-motion</p>
-<blockquote>
-<p>调整动作事件的百分比 ( 动作事件由屏幕上某处的一个 down 事件、一系列 的伪随机事件和一个 up 事件组成 ) 。</p>
-</blockquote>
-</li>
-</ul>
-<ul>
-<li><p>–pct-trackball</p>
-<blockquote>
-<p>调整轨迹事件的百分比 ( 轨迹事件由一个或几个随机的移动组成，有时还伴随有点击 ) 。</p>
-</blockquote>
-</li>
-</ul>
-<ul>
-<li><p>–pct-nav</p>
-<blockquote>
-<p>调整“基本”导航事件的百分比 ( 导航事件由来自方向输入设备的 up/down/left/right 组成 ) 。</p>
-</blockquote>
-</li>
-</ul>
-<ul>
-<li><p>–pct-majornav</p>
-<blockquote>
-<p>调整“主要”导航事件的百分比 ( 这些导航事件通常引发图形界面中的动作，如： 5-way 键盘的中间按键、回退按键、菜单按键 )</p>
-</blockquote>
-</li>
-</ul>
-<ul>
-<li><p>–pct-syskeys</p>
-<blockquote>
-<p>调整“系统”按键事件的百分比 ( 这些按键通常被保留，由系统使用，如 Home 、 Back 、 Start Call 、 End Call 及音量控制键 ) 。</p>
-</blockquote>
-</li>
-</ul>
-<ul>
-<li><p>–pct-appswitch</p>
-<blockquote>
-<p>调整启动 Activity 的百分比。在随机间隔里， Monkey 将执行一个 startActivity () 调用，作为最大程度覆盖包中全部 Activity 的一种方法。</p>
-</blockquote>
-</li>
-</ul>
-<ul>
-<li><p>–pct-anyevent</p>
-<blockquote>
-<p>调整其它类型事件的百分比。它包罗了所有其它类型的事件，如：按键、其它不常用的设备按钮、等等。 约束限制</p>
-</blockquote>
-</li>
-<li><p>-c</p>
-<blockquote>
-<p>如果用此参数指定了一个或几个类别， Monkey 将只允许系统启动被这些类别中的某个类别列出的 Activity 。如果不指定任何类别， Monkey 将选择下列类别中列出的 Activity ： Intent.CATEGORY_LAUNCHER 或 Intent.CATEGORY_MONKEY 。要指定多个类别，需要使用多个 -c 选项，每个 -c 选项只能用于一个类别。</p>
-</blockquote>
-</li>
-</ul>
-<h5 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h5><ul>
-<li>–dbg-no-events</li>
-</ul>
-<blockquote>
-<p> 设置此选项， Monkey 将执行初始启动，进入到一个测试 Activity ，然后不会再进一步生成事件。为了得到最佳结果，把它与 -v 、一个或几个包约束、以及一个保持 Monkey 运行 30 秒或更长时间的非零值联合起来，从而提供一个环境，可以监视应用程序所调用的包之间的转换。</p>
-</blockquote>
-<ul>
-<li>–hprof</li>
-</ul>
-<blockquote>
-<p>设置此选项，将在 Monkey 事件序列之前和之后立即生成 profiling 报告。这将会在 data/misc 中生成大文件 (~5Mb) ，所以要小心使用它。</p>
-</blockquote>
-<ul>
-<li>–ignore-crashes</li>
-</ul>
-<blockquote>
-<p>通常，当应用程序崩溃或发生任何失控异常时， Monkey 将停止运行。如果设置此选项， Monkey 将继续向系统发送事件，直到计数完成。</p>
-</blockquote>
-<ul>
-<li>–ignore-timeouts</li>
-</ul>
-<blockquote>
-<p>通常，当应用程序发生任何超时错误 ( 如“ Application Not Responding ”对话框 ) 时， Monkey 将停止运行。如果设置此选项， Monkey 将继续向系统发送事件，直到计数完成。</p>
-</blockquote>
-<ul>
-<li>–ignore-security-exceptions</li>
-</ul>
-<blockquote>
-<p>通常，当应用程序发生许可错误 ( 如启动一个需要某些许可的 Activity) 时， Monkey 将停止运行。如果设置了此选项， Monkey 将继续向系统发送事件，直到计数完成。</p>
-</blockquote>
-<ul>
-<li>–kill-process-after-error</li>
-</ul>
-<blockquote>
-<p>通常，当 Monkey 由于一个错误而停止时，出错的应用程序将继续处于运行状态。当设置了此选项时，将会通知系统停止发生错误的进程。注意，正常的 ( 成功的 ) 结束，并没有停止启动的进程，设备只是在结束事件之后，简单地保持在最后的状态。</p>
-</blockquote>
-<ul>
-<li>–monitor-native-crashes</li>
-</ul>
-<blockquote>
-<p>监视并报告 Android 系统中本地代码的崩溃事件。如果设置了 –kill-process-after-error ，系统将停止运行。</p>
-</blockquote>
-<ul>
-<li>–wait-dbg</li>
-</ul>
-<blockquote>
-<p>停止执行中的 Monkey ，直到有调试器和它相连接。</p>
-</blockquote>
-<h5 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h5><ul>
-<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell monkey –p com.xxx.demo –-throttle 100 –-pct-touch 50 –-pct-motion 50 –v –v 1000 &gt;c:\monkey.txt</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>最后一个数字表示将要自动操作的次数。</p>
-<p>将事件记录保存到monkey.txt文件中。</p>
-</blockquote>
-</li>
-</ul>
-<h5 id="可能问题："><a href="#可能问题：" class="headerlink" title="可能问题："></a>可能问题：</h5><ul>
-<li><p>小米手机上需要打开安全设置：</p>
-<blockquote>
-<p>设置 –》 更多设置 –》 开发者选项 –》USB调试（安全设置）</p>
-</blockquote>
-</li>
-</ul>
-<h5 id="杀掉monkey进程"><a href="#杀掉monkey进程" class="headerlink" title="杀掉monkey进程"></a>杀掉monkey进程</h5><ul>
-<li>adb shell ps | grep monky</li>
-<li>adb kill pid 第一个数值就是pid</li>
-</ul>
-<h5 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h5><blockquote>
-<p>1、<a href="https://www.cnblogs.com/TankXiao/p/4815134.html" target="_blank" rel="noopener">https://www.cnblogs.com/TankXiao/p/4815134.html</a></p>
-<p>2、<a href="https://wiki.jikexueyuan.com/project/android-test-course/monkey-commond-tools.html" target="_blank" rel="noopener">https://wiki.jikexueyuan.com/project/android-test-course/monkey-commond-tools.html</a></p>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/11/08/Android 开源组件/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lpl">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/blog/images/head.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="闲敲棋子落灯花">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2019/11/08/Android 开源组件/" itemprop="url">android 开源组件</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T10:31:30+08:00">
-                2019-11-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="事件分发"><a href="#事件分发" class="headerlink" title="事件分发"></a>事件分发</h5><ul>
-<li><p>EventBus 3.0</p>
-<blockquote>
-<p><a href="https://github.com/greenrobot/EventBus" target="_blank" rel="noopener">https://github.com/greenrobot/EventBus</a></p>
-<p><a href="http://greenrobot.org/eventbus/documentation" target="_blank" rel="noopener">http://greenrobot.org/eventbus/documentation</a></p>
-</blockquote>
-</li>
-<li><p>RxBus</p>
-<blockquote>
-<p>依赖RxJava</p>
-</blockquote>
-</li>
-</ul>
-<h5 id="页面导航"><a href="#页面导航" class="headerlink" title="页面导航"></a>页面导航</h5><ul>
-<li><p>ARouter</p>
-<blockquote>
-<p>用于页面导航、过滤或者权限检查。例如跳转到内容页面的时候检查如果没有登录跳转到登录页面。</p>
-<p><a href="https://github.com/alibaba/ARouter" target="_blank" rel="noopener">https://github.com/alibaba/ARouter</a></p>
-</blockquote>
-</li>
-</ul>
-<h5 id="反射简化"><a href="#反射简化" class="headerlink" title="反射简化"></a>反射简化</h5><ul>
-<li><p>JOOR 工具</p>
-<blockquote>
-<p><a href="http://www.jooq.org/products/" target="_blank" rel="noopener">http://www.jooq.org/products/</a></p>
-<p><a href="https://blog.csdn.net/bibingyan/article/details/56481801" target="_blank" rel="noopener">https://blog.csdn.net/bibingyan/article/details/56481801</a></p>
-</blockquote>
-</li>
-</ul>
-<h5 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h5><ul>
-<li><p>greenDAO</p>
-<blockquote>
-<p>性能高，内存占用小，库文件小</p>
-</blockquote>
-</li>
-<li><p>Realm</p>
-<blockquote>
-<p>性能更高，自有引擎，库文件大</p>
-</blockquote>
-</li>
-</ul>
-<h5 id="动态权限框架"><a href="#动态权限框架" class="headerlink" title="动态权限框架"></a>动态权限框架</h5><ul>
-<li><p>AndPermission</p>
-<blockquote>
-<p><a href="https://github.com/yanzhenjie/AndPermission" target="_blank" rel="noopener">https://github.com/yanzhenjie/AndPermission</a></p>
-</blockquote>
-</li>
-</ul>
-<h5 id="资源混淆"><a href="#资源混淆" class="headerlink" title="资源混淆"></a>资源混淆</h5><ul>
-<li><p>AndResGuard</p>
-<blockquote>
-<p>1、重新修改已经打包的apk的resource.arse文件</p>
-<p>2、不依赖源码、打包过程</p>
-</blockquote>
-</li>
-</ul>
-<h5 id="批量打包"><a href="#批量打包" class="headerlink" title="批量打包"></a>批量打包</h5><ul>
-<li><p>AndroidMultiChannelBuildTool</p>
-<blockquote>
-<p>使用python脚本，支持v1签名</p>
-</blockquote>
-</li>
-</ul>
-<h5 id="调试工具"><a href="#调试工具" class="headerlink" title="调试工具"></a>调试工具</h5><ul>
-<li><p>Stetho </p>
-<blockquote>
-<p>功能：</p>
-<p>1、在浏览器上查看手机APP里面的数据库、SP中的数据</p>
-<p>2、可以拦截网络请求；针对OKhttp</p>
-</blockquote>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/blog/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/5/">5</a><a class="extend next" rel="next" href="/blog/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/blog/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/6/">6</a><a class="extend next" rel="next" href="/blog/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2244,7 +2218,7 @@
               
                 <a href="/blog/archives/">
               
-                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-count">53</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2255,7 +2229,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/blog/categories/index.html">
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2266,7 +2240,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/blog/tags/index.html">
-                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-count">46</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2326,7 +2300,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

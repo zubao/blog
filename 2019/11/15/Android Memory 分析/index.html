@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="闲敲棋子落灯花">
 <meta property="og:description" content="获取内存堆栈文件 dump hprof文件 123456# 生成hprof文件adb shell am dumpheap com.xxx.demo /data/local/tmp/start.hprof# 拉取到电脑adb pull /data/local/tmp/start.hprof .# 格式转换hprof-conv start.hprof st.hprof      MAT工具使用参考文章">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-15T09:11:13.596Z">
+<meta property="og:updated_time" content="2019-12-31T06:42:20.653Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android 内存分析">
 <meta name="twitter:description" content="获取内存堆栈文件 dump hprof文件 123456# 生成hprof文件adb shell am dumpheap com.xxx.demo /data/local/tmp/start.hprof# 拉取到电脑adb pull /data/local/tmp/start.hprof .# 格式转换hprof-conv start.hprof st.hprof      MAT工具使用参考文章">
@@ -397,6 +397,32 @@
 <h5 id="MAT工具使用"><a href="#MAT工具使用" class="headerlink" title="MAT工具使用"></a>MAT工具使用</h5><h5 id="参考文章："><a href="#参考文章：" class="headerlink" title="参考文章："></a>参考文章：</h5><blockquote>
 <p><a href="http://www.lightskystreet.com/2015/09/01/mat_usage/" target="_blank" rel="noopener">http://www.lightskystreet.com/2015/09/01/mat_usage/</a></p>
 </blockquote>
+<h5 id="命令行分析"><a href="#命令行分析" class="headerlink" title="命令行分析"></a>命令行分析</h5><ul>
+<li><p>查看内存使用情况</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell dumpsys meminfo &lt;package_name&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看当前activity</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell dumpsys activity top | grep ACTIVITY</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看activity的详细信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dumpsys activity top &gt;D:/a.txt</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h5 id="内存相关名称解释"><a href="#内存相关名称解释" class="headerlink" title="内存相关名称解释"></a>内存相关名称解释</h5><ul>
+<li>VSS- Virtual Set Size 虚拟耗用内存（包含共享库占用的内存）；VSS表示一个进程可访问的全部内存地址空间的大小。这个大小包括了进程已经申请但尚未使用的内存空间。在实际中很少用这种方式来表示进程占用内存的情况，用它来表示单个进程的内存使用情况是不准确的。</li>
+<li>RSS- Resident Set Size 实际使用物理内存（包含共享库占用的内存）。表示一个进程在RAM中实际使用的空间地址大小，包括了全部共享库占用的内存，这种表示进程占用内存的情况也是不准确的。</li>
+<li>PSS-Proportional Set Size 实际使用的物理内存（比例分配共享库占用的内存）。表示一个进程在RAM中实际使用的空间地址大小，它按比例包含了共享库占用的内存。假如有3个进程使用同一个共享库，那么每个进程的PSS就包括了1/3大小的共享库内存。这种方式表示进程的内存使用情况较准确，但当只有一个进程使用共享库时，其情况和RSS一模一样。</li>
+<li>USS- Unique Set Size 进程独自占用的物理内存（不包含共享库占用的内存）表示一个进程本身占用的内存空间大小，不包含其它任何成分，这是表示进程内存大小的最好方式！<br>可以看到:VSS&gt;=RSS&gt;=PSS&gt;=USS</li>
+</ul>
+<h5 id="CPU主频："><a href="#CPU主频：" class="headerlink" title="CPU主频："></a>CPU主频：</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">adb shell回车</span><br><span class="line">cd /sys/devices/system/cpu/cpu0/cpufreq回车</span><br><span class="line">cat cpuinfo_cur_freq</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> top命令查看cpu占用和内存占用</span><br><span class="line">adb shell top -m 10 -s cpu | grep packageName</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">参数含义：</span><br><span class="line">PID  : progress identification，应用程序ID</span><br><span class="line">S    : 进程的状态，其中S表示休眠，R表示正在运行，Z表示僵死状态，N表示该进程优先值是负数</span><br><span class="line">#THR : 程序当前所用的线程数</span><br><span class="line">VSS  : Virtual Set Size虚拟耗用内存（包含共享库占用的内存）</span><br><span class="line">RSS  : Resident Set Size实际使用物理内存（包含共享库占用的内存）</span><br><span class="line">PCY  : 前台(fg)和后台(bg)进程</span><br><span class="line">UID  : User　Identification，用户身份ID</span><br><span class="line">Name : 应用程序名称</span><br></pre></td></tr></table></figure>
+
+<h5 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h5><ul>
+<li><a href="https://blog.51cto.com/10250691/1896479" target="_blank" rel="noopener">https://blog.51cto.com/10250691/1896479</a> </li>
+<li><a href="https://testerhome.com/topics/2583" target="_blank" rel="noopener">https://testerhome.com/topics/2583</a></li>
+</ul>
 
       
     </div>
@@ -520,7 +546,7 @@
               
                 <a href="/blog/archives/">
               
-                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-count">53</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -531,7 +557,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/blog/categories/index.html">
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -542,7 +568,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/blog/tags/index.html">
-                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-count">46</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -598,7 +624,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#获取内存堆栈文件"><span class="nav-number">1.</span> <span class="nav-text">获取内存堆栈文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#MAT工具使用"><span class="nav-number">2.</span> <span class="nav-text">MAT工具使用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#参考文章："><span class="nav-number">3.</span> <span class="nav-text">参考文章：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#获取内存堆栈文件"><span class="nav-number">1.</span> <span class="nav-text">获取内存堆栈文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#MAT工具使用"><span class="nav-number">2.</span> <span class="nav-text">MAT工具使用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#参考文章："><span class="nav-number">3.</span> <span class="nav-text">参考文章：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#命令行分析"><span class="nav-number">4.</span> <span class="nav-text">命令行分析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#内存相关名称解释"><span class="nav-number">5.</span> <span class="nav-text">内存相关名称解释</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#CPU主频："><span class="nav-number">6.</span> <span class="nav-text">CPU主频：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#参考文章"><span class="nav-number">7.</span> <span class="nav-text">参考文章</span></a></li></ol></div>
             
 
           </div>
@@ -618,7 +644,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
