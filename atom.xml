@@ -6,7 +6,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://zubao.github.io/blog/"/>
-  <updated>2020-01-15T01:56:34.795Z</updated>
+  <updated>2020-06-23T08:10:58.783Z</updated>
   <id>https://zubao.github.io/blog/</id>
   
   <author>
@@ -17,44 +17,20 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>树莓派开机自动发邮件</title>
-    <link href="https://zubao.github.io/blog/2020/01/14/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%BC%80%E5%90%AF%E8%87%AA%E5%8A%A8%E5%8F%91%E9%82%AE%E4%BB%B6/"/>
-    <id>https://zubao.github.io/blog/2020/01/14/树莓派开启自动发邮件/</id>
-    <published>2020-01-14T08:15:08.671Z</published>
-    <updated>2020-01-15T01:56:34.795Z</updated>
+    <title>android 性能监控-网络</title>
+    <link href="https://zubao.github.io/blog/2020/06/23/Android%20%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7-%E7%BD%91%E7%BB%9C/"/>
+    <id>https://zubao.github.io/blog/2020/06/23/Android 性能监控-网络/</id>
+    <published>2020-06-23T05:57:27.521Z</published>
+    <updated>2020-06-23T08:10:58.783Z</updated>
     
     <summary type="html">
     
       
       
-        &lt;h5 id=&quot;安装mutt、msmtp&quot;&gt;&lt;a href=&quot;#安装mutt、msmtp&quot; class=&quot;headerlink&quot; title=&quot;安装mutt、msmtp&quot;&gt;&lt;/a&gt;安装mutt、msmtp&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;mutt ：是一个linux下的邮件程序，
-      
-    
-    </summary>
-    
-      <category term="Raspberry" scheme="https://zubao.github.io/blog/categories/Raspberry/"/>
-    
-    
-      <category term="raspberry" scheme="https://zubao.github.io/blog/tags/raspberry/"/>
-    
-      <category term="linux" scheme="https://zubao.github.io/blog/tags/linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android Q 2XL Root</title>
-    <link href="https://zubao.github.io/blog/2020/01/13/Android%20Q%20Pixel%202%20XL%20Root/"/>
-    <id>https://zubao.github.io/blog/2020/01/13/Android Q Pixel 2 XL Root/</id>
-    <published>2020-01-13T07:47:20.733Z</published>
-    <updated>2020-01-15T02:04:48.799Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;#### &lt;/p&gt;
-&lt;h5 id=&quot;Unlock-the-Bootloader&quot;&gt;&lt;a href=&quot;#Unlock-the-Bootloader&quot; class=&quot;headerlink&quot; title=&quot;Unlock the Bootloader&quot;&gt;&lt;/a&gt;Unlock the
+        &lt;h5 id=&quot;网络性能监控的指标&quot;&gt;&lt;a href=&quot;#网络性能监控的指标&quot; class=&quot;headerlink&quot; title=&quot;网络性能监控的指标&quot;&gt;&lt;/a&gt;网络性能监控的指标&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;采集DNS解析域名花费时间&lt;/li&gt;
+&lt;li&gt;采集URL&lt;/li&gt;
+&lt;l
       
     
     </summary>
@@ -64,23 +40,24 @@
     
       <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
     
-      <category term="ROM" scheme="https://zubao.github.io/blog/tags/ROM/"/>
+      <category term="apm" scheme="https://zubao.github.io/blog/tags/apm/"/>
+    
+      <category term="网络" scheme="https://zubao.github.io/blog/tags/%E7%BD%91%E7%BB%9C/"/>
     
   </entry>
   
   <entry>
-    <title>Jenkins 持续集成，交付</title>
-    <link href="https://zubao.github.io/blog/2020/01/10/Jenkins%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E4%BA%A4%E4%BB%98/"/>
-    <id>https://zubao.github.io/blog/2020/01/10/Jenkins持续集成交付/</id>
-    <published>2020-01-10T14:17:44.954Z</published>
-    <updated>2020-01-11T06:09:29.951Z</updated>
+    <title>android 性能监控-ANR</title>
+    <link href="https://zubao.github.io/blog/2020/06/23/Android%20%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7-ANR/"/>
+    <id>https://zubao.github.io/blog/2020/06/23/Android 性能监控-ANR/</id>
+    <published>2020-06-23T03:24:52.752Z</published>
+    <updated>2020-06-23T05:51:34.174Z</updated>
     
     <summary type="html">
     
       
       
-        &lt;h5 id=&quot;Jenkins简介&quot;&gt;&lt;a href=&quot;#Jenkins简介&quot; class=&quot;headerlink&quot; title=&quot;Jenkins简介&quot;&gt;&lt;/a&gt;Jenkins简介&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Jenkins&lt;/strong&gt;是一款由&lt;a hr
+        &lt;h4 id=&quot;ANR-application-not-response-监控的两种方法&quot;&gt;&lt;a href=&quot;#ANR-application-not-response-监控的两种方法&quot; class=&quot;headerlink&quot; title=&quot;ANR(application not 
       
     
     </summary>
@@ -89,69 +66,278 @@
     
     
       <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
+    
+      <category term="apm" scheme="https://zubao.github.io/blog/tags/apm/"/>
+    
+      <category term="ANR" scheme="https://zubao.github.io/blog/tags/ANR/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>android 性能监控-栈采样</title>
+    <link href="https://zubao.github.io/blog/2020/06/20/Android%20%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7-%20%E6%A0%88%E4%BF%A1%E6%81%AF%E9%87%87%E6%A0%B7/"/>
+    <id>https://zubao.github.io/blog/2020/06/20/Android 性能监控- 栈信息采样/</id>
+    <published>2020-06-20T12:39:21.098Z</published>
+    <updated>2020-06-20T12:50:41.941Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h5 id=&quot;栈采样&quot;&gt;&lt;a href=&quot;#栈采样&quot; class=&quot;headerlink&quot; title=&quot;栈采样&quot;&gt;&lt;/a&gt;栈采样&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;从当前线程中获取栈信息&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr
+      
+    
+    </summary>
+    
+      <category term="android" scheme="https://zubao.github.io/blog/categories/android/"/>
+    
+    
+      <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
+    
+      <category term="apm" scheme="https://zubao.github.io/blog/tags/apm/"/>
+    
+      <category term="stack" scheme="https://zubao.github.io/blog/tags/stack/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>android 性能监控-FPS监控</title>
+    <link href="https://zubao.github.io/blog/2020/06/20/Android%20%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7-FPS%E7%9B%91%E6%8E%A7/"/>
+    <id>https://zubao.github.io/blog/2020/06/20/Android 性能监控-FPS监控/</id>
+    <published>2020-06-20T07:25:47.354Z</published>
+    <updated>2020-06-23T03:25:20.339Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h5 id=&quot;帧率监控-的几种方法&quot;&gt;&lt;a href=&quot;#帧率监控-的几种方法&quot; class=&quot;headerlink&quot; title=&quot;帧率监控 的几种方法&quot;&gt;&lt;/a&gt;&lt;code&gt;帧率监控&lt;/code&gt; 的几种方法&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;Looper&lt;/co
+      
+    
+    </summary>
+    
+      <category term="android" scheme="https://zubao.github.io/blog/categories/android/"/>
+    
+    
+      <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
+    
+      <category term="apm" scheme="https://zubao.github.io/blog/tags/apm/"/>
+    
+      <category term="FPS" scheme="https://zubao.github.io/blog/tags/FPS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>android 设备ID</title>
+    <link href="https://zubao.github.io/blog/2020/06/18/Android%20%E8%AE%BE%E5%A4%87ID/"/>
+    <id>https://zubao.github.io/blog/2020/06/18/Android 设备ID/</id>
+    <published>2020-06-18T03:07:22.930Z</published>
+    <updated>2020-06-18T03:14:20.352Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h5 id=&quot;设备ID&quot;&gt;&lt;a href=&quot;#设备ID&quot; class=&quot;headerlink&quot; title=&quot;设备ID&quot;&gt;&lt;/a&gt;设备ID&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://wetest.qq.com/lab/view/116.html&quot; tar
+      
+    
+    </summary>
+    
+      <category term="android" scheme="https://zubao.github.io/blog/categories/android/"/>
+    
+    
+      <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>android 网络性能优化</title>
+    <link href="https://zubao.github.io/blog/2020/06/18/Android%20%E7%BD%91%E7%BB%9C%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
+    <id>https://zubao.github.io/blog/2020/06/18/Android 网络性能优化/</id>
+    <published>2020-06-18T03:04:09.526Z</published>
+    <updated>2020-06-18T03:06:40.966Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h5 id=&quot;参考文章&quot;&gt;&lt;a href=&quot;#参考文章&quot; class=&quot;headerlink&quot; title=&quot;参考文章&quot;&gt;&lt;/a&gt;参考文章&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://juejin.im/post/5eba5a39e51d454de64e49b1
+      
+    
+    </summary>
+    
+      <category term="android" scheme="https://zubao.github.io/blog/categories/android/"/>
+    
+    
+      <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
+    
+      <category term="net" scheme="https://zubao.github.io/blog/tags/net/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android mmap demo</title>
+    <link href="https://zubao.github.io/blog/2020/06/17/Android%20mmap%20demo/"/>
+    <id>https://zubao.github.io/blog/2020/06/17/Android mmap demo/</id>
+    <published>2020-06-17T08:33:11.913Z</published>
+    <updated>2020-06-17T08:47:11.245Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li&gt;&lt;p&gt;android jni mmap demo&lt;/p&gt;
+&lt;figure class=&quot;highlight c++&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span 
+      
+    
+    </summary>
+    
+      <category term="android" scheme="https://zubao.github.io/blog/categories/android/"/>
+    
+    
+      <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
+    
+      <category term="demo" scheme="https://zubao.github.io/blog/tags/demo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>android 性能监控</title>
+    <link href="https://zubao.github.io/blog/2020/06/15/Android%20%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7/"/>
+    <id>https://zubao.github.io/blog/2020/06/15/Android 性能监控/</id>
+    <published>2020-06-15T09:53:43.430Z</published>
+    <updated>2020-06-18T03:04:40.810Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li&gt;&lt;p&gt;rabbit &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://juejin.im/post/5e189537f265da3e413f4da2&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://jue
+      
+    
+    </summary>
+    
+      <category term="android" scheme="https://zubao.github.io/blog/categories/android/"/>
+    
+    
+      <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
+    
+      <category term="apm" scheme="https://zubao.github.io/blog/tags/apm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java 虚拟机 JVMTI</title>
+    <link href="https://zubao.github.io/blog/2020/06/09/Java%20%E8%99%9A%E6%8B%9F%E6%9C%BA%20JVMTI/"/>
+    <id>https://zubao.github.io/blog/2020/06/09/Java 虚拟机 JVMTI/</id>
+    <published>2020-06-09T06:50:51.939Z</published>
+    <updated>2020-06-09T06:52:35.990Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h5 id=&quot;JVMTI-JVM-tools-interface&quot;&gt;&lt;a href=&quot;#JVMTI-JVM-tools-interface&quot; class=&quot;headerlink&quot; title=&quot;JVMTI(JVM tools interface)&quot;&gt;&lt;/a&gt;JVMTI(JVM 
+      
+    
+    </summary>
+    
+      <category term="java" scheme="https://zubao.github.io/blog/categories/java/"/>
+    
+    
+      <category term="java" scheme="https://zubao.github.io/blog/tags/java/"/>
+    
+      <category term="jvm" scheme="https://zubao.github.io/blog/tags/jvm/"/>
+    
+      <category term="jvmti" scheme="https://zubao.github.io/blog/tags/jvmti/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mac gdb调试</title>
+    <link href="https://zubao.github.io/blog/2020/06/08/Mac%20GDB%E8%B0%83%E8%AF%95/"/>
+    <id>https://zubao.github.io/blog/2020/06/08/Mac GDB调试/</id>
+    <published>2020-06-08T07:54:23.486Z</published>
+    <updated>2020-06-08T09:22:37.857Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h5 id=&quot;安装gdb&quot;&gt;&lt;a href=&quot;#安装gdb&quot; class=&quot;headerlink&quot; title=&quot;安装gdb&quot;&gt;&lt;/a&gt;安装gdb&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;命令行安装&lt;/p&gt;
+&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;
+      
+    
+    </summary>
+    
+      <category term="mac" scheme="https://zubao.github.io/blog/categories/mac/"/>
+    
     
       <category term="mac" scheme="https://zubao.github.io/blog/tags/mac/"/>
     
-      <category term="jenkins" scheme="https://zubao.github.io/blog/tags/jenkins/"/>
+      <category term="gdb" scheme="https://zubao.github.io/blog/tags/gdb/"/>
     
   </entry>
   
   <entry>
-    <title></title>
-    <link href="https://zubao.github.io/blog/2019/12/31/Android%20%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%86%85%E5%AD%98%E5%88%86%E6%9E%90/"/>
-    <id>https://zubao.github.io/blog/2019/12/31/Android 命令行内存分析/</id>
-    <published>2019-12-31T03:08:39.045Z</published>
-    <updated>2019-12-31T03:08:39.045Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Mac Python OpenCV 配置</title>
-    <link href="https://zubao.github.io/blog/2019/12/29/OpenCV%20Python%20Mac%20%E9%85%8D%E7%BD%AE/"/>
-    <id>https://zubao.github.io/blog/2019/12/29/OpenCV Python Mac 配置/</id>
-    <published>2019-12-29T10:27:21.427Z</published>
-    <updated>2019-12-31T03:07:21.505Z</updated>
+    <title>Java 虚拟机 启动跟踪</title>
+    <link href="https://zubao.github.io/blog/2020/06/06/Java%20%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%90%AF%E5%8A%A8%E8%B7%9F%E8%B8%AA/"/>
+    <id>https://zubao.github.io/blog/2020/06/06/Java 虚拟机启动跟踪/</id>
+    <published>2020-06-06T13:38:44.390Z</published>
+    <updated>2020-06-09T15:39:28.221Z</updated>
     
     <summary type="html">
     
       
       
-        &lt;h5 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h5&gt;&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span 
+        &lt;h5 id=&quot;环境配置&quot;&gt;&lt;a href=&quot;#环境配置&quot; class=&quot;headerlink&quot; title=&quot;环境配置&quot;&gt;&lt;/a&gt;环境配置&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;macosx 10.14&lt;/li&gt;
+&lt;li&gt;虚拟机源码版本 OpenJDK11U&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 
       
     
     </summary>
     
-      <category term="opencv" scheme="https://zubao.github.io/blog/categories/opencv/"/>
+      <category term="java" scheme="https://zubao.github.io/blog/categories/java/"/>
     
     
-      <category term="python" scheme="https://zubao.github.io/blog/tags/python/"/>
+      <category term="java" scheme="https://zubao.github.io/blog/tags/java/"/>
     
-      <category term="opencv" scheme="https://zubao.github.io/blog/tags/opencv/"/>
+      <category term="虚拟机" scheme="https://zubao.github.io/blog/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/"/>
+    
+      <category term="JVM" scheme="https://zubao.github.io/blog/tags/JVM/"/>
     
   </entry>
   
   <entry>
-    <title>Android Gradle配置</title>
-    <link href="https://zubao.github.io/blog/2019/12/27/Gradle%20%E9%85%8D%E7%BD%AE/"/>
-    <id>https://zubao.github.io/blog/2019/12/27/Gradle 配置/</id>
-    <published>2019-12-27T08:47:52.763Z</published>
-    <updated>2019-12-27T08:52:55.460Z</updated>
+    <title>Android 打包流程</title>
+    <link href="https://zubao.github.io/blog/2020/06/03/Android%20%E6%89%93%E5%8C%85%E6%B5%81%E7%A8%8B/"/>
+    <id>https://zubao.github.io/blog/2020/06/03/Android 打包流程/</id>
+    <published>2020-06-03T07:34:01.094Z</published>
+    <updated>2020-06-03T08:39:52.955Z</updated>
     
     <summary type="html">
     
       
       
-        &lt;h5 id=&quot;Android-Gradle-插件-与-gradle-版本的映射关系&quot;&gt;&lt;a href=&quot;#Android-Gradle-插件-与-gradle-版本的映射关系&quot; class=&quot;headerlink&quot; title=&quot;Android Gradle 插件 与 grad
+        &lt;h5 id=&quot;Android-打包流程&quot;&gt;&lt;a href=&quot;#Android-打包流程&quot; class=&quot;headerlink&quot; title=&quot;Android 打包流程&quot;&gt;&lt;/a&gt;Android 打包流程&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;打包资源文件，生成R.java文件&lt;/p&gt;
       
     
     </summary>
     
-      <category term="gradle" scheme="https://zubao.github.io/blog/categories/gradle/"/>
+      <category term="android" scheme="https://zubao.github.io/blog/categories/android/"/>
     
     
       <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
@@ -161,144 +347,121 @@
   </entry>
   
   <entry>
-    <title>androidX</title>
-    <link href="https://zubao.github.io/blog/2019/12/27/AndroidX%20%E9%80%82%E9%85%8D/"/>
-    <id>https://zubao.github.io/blog/2019/12/27/AndroidX 适配/</id>
-    <published>2019-12-27T08:04:04.673Z</published>
-    <updated>2019-12-27T08:25:30.341Z</updated>
+    <title>数据加密算法</title>
+    <link href="https://zubao.github.io/blog/2020/06/03/%E6%95%B0%E6%8D%AE%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/"/>
+    <id>https://zubao.github.io/blog/2020/06/03/数据加密算法/</id>
+    <published>2020-06-03T06:29:26.922Z</published>
+    <updated>2020-06-11T12:44:27.880Z</updated>
     
     <summary type="html">
     
       
       
-        &lt;h4 id=&quot;androidX简介&quot;&gt;&lt;a href=&quot;#androidX简介&quot; class=&quot;headerlink&quot; title=&quot;androidX简介&quot;&gt;&lt;/a&gt;androidX简介&lt;/h4&gt;&lt;blockquote&gt;
-&lt;p&gt;AndroidX 是 Android 团队用于在 
+        &lt;h5 id=&quot;加密、解密的定义&quot;&gt;&lt;a href=&quot;#加密、解密的定义&quot; class=&quot;headerlink&quot; title=&quot;加密、解密的定义&quot;&gt;&lt;/a&gt;加密、解密的定义&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;加密 &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;就是对原来为 &lt;stron
       
     
     </summary>
     
-      <category term="androidX" scheme="https://zubao.github.io/blog/categories/androidX/"/>
+      <category term="加密" scheme="https://zubao.github.io/blog/categories/%E5%8A%A0%E5%AF%86/"/>
     
     
-      <category term="androidX" scheme="https://zubao.github.io/blog/tags/androidX/"/>
+      <category term="加密" scheme="https://zubao.github.io/blog/tags/%E5%8A%A0%E5%AF%86/"/>
     
   </entry>
   
   <entry>
-    <title>Android Studio 代码检测</title>
-    <link href="https://zubao.github.io/blog/2019/12/27/Android%20%E4%BB%A3%E7%A0%81%E6%A3%80%E6%B5%8B/"/>
-    <id>https://zubao.github.io/blog/2019/12/27/Android 代码检测/</id>
-    <published>2019-12-27T06:09:29.940Z</published>
-    <updated>2019-12-27T08:38:07.149Z</updated>
+    <title>Java ClassLoader</title>
+    <link href="https://zubao.github.io/blog/2020/06/01/Java%20ClassLoader/"/>
+    <id>https://zubao.github.io/blog/2020/06/01/Java ClassLoader/</id>
+    <published>2020-06-01T09:46:13.593Z</published>
+    <updated>2020-06-02T02:02:48.532Z</updated>
     
     <summary type="html">
     
       
       
-        &lt;h5 id=&quot;阿里代码检测工具-AS插件&quot;&gt;&lt;a href=&quot;#阿里代码检测工具-AS插件&quot; class=&quot;headerlink&quot; title=&quot;阿里代码检测工具-AS插件&quot;&gt;&lt;/a&gt;阿里代码检测工具-AS插件&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;安装方式 在线安装插件&lt;/li&gt;
-&lt;li
+        &lt;h5 id=&quot;Java-类是如何被加载的&quot;&gt;&lt;a href=&quot;#Java-类是如何被加载的&quot; class=&quot;headerlink&quot; title=&quot;Java 类是如何被加载的&quot;&gt;&lt;/a&gt;Java 类是如何被加载的&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;java虚拟机把描述类的数据从Cl
       
     
     </summary>
     
-      <category term="android studio" scheme="https://zubao.github.io/blog/categories/android-studio/"/>
+      <category term="java" scheme="https://zubao.github.io/blog/categories/java/"/>
     
     
-      <category term="SpotBugs" scheme="https://zubao.github.io/blog/tags/SpotBugs/"/>
+      <category term="java" scheme="https://zubao.github.io/blog/tags/java/"/>
     
-      <category term="阿里编码规范" scheme="https://zubao.github.io/blog/tags/%E9%98%BF%E9%87%8C%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83/"/>
+      <category term="jvm" scheme="https://zubao.github.io/blog/tags/jvm/"/>
     
   </entry>
   
   <entry>
-    <title>代码检测</title>
-    <link href="https://zubao.github.io/blog/2019/11/21/%E4%BB%A3%E7%A0%81%E6%A3%80%E6%B5%8B/"/>
-    <id>https://zubao.github.io/blog/2019/11/21/代码检测/</id>
-    <published>2019-11-21T08:09:48.523Z</published>
-    <updated>2019-11-29T03:34:10.778Z</updated>
+    <title>Java 虚拟机编译(JDK编译)</title>
+    <link href="https://zubao.github.io/blog/2020/06/01/Java%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%BC%96%E8%AF%91/"/>
+    <id>https://zubao.github.io/blog/2020/06/01/Java虚拟机编译/</id>
+    <published>2020-06-01T08:57:48.750Z</published>
+    <updated>2020-06-06T11:37:17.291Z</updated>
     
     <summary type="html">
     
       
       
-        &lt;h5 id=&quot;美团-https-tech-meituan-com-2019-11-07-android-static-code-canning-html&quot;&gt;&lt;a href=&quot;#美团-https-tech-meituan-com-2019-11-07-android-static
+        &lt;h5 id=&quot;Java-OpenJDK11u&quot;&gt;&lt;a href=&quot;#Java-OpenJDK11u&quot; class=&quot;headerlink&quot; title=&quot;Java OpenJDK11u&quot;&gt;&lt;/a&gt;Java OpenJDK11u&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;源码下载&lt;/p&gt;
+
       
     
     </summary>
     
-      <category term="code" scheme="https://zubao.github.io/blog/categories/code/"/>
+      <category term="java" scheme="https://zubao.github.io/blog/categories/java/"/>
     
     
-      <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
+      <category term="java" scheme="https://zubao.github.io/blog/tags/java/"/>
     
-      <category term="code" scheme="https://zubao.github.io/blog/tags/code/"/>
+      <category term="虚拟机" scheme="https://zubao.github.io/blog/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/"/>
     
   </entry>
   
   <entry>
-    <title>GC日志分析</title>
-    <link href="https://zubao.github.io/blog/2019/11/19/GC%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/"/>
-    <id>https://zubao.github.io/blog/2019/11/19/GC日志分析/</id>
-    <published>2019-11-19T01:41:22.618Z</published>
-    <updated>2019-11-19T01:45:04.763Z</updated>
+    <title>Xposed 简介</title>
+    <link href="https://zubao.github.io/blog/2020/05/30/Xposed%20%E7%9B%B8%E5%85%B3/"/>
+    <id>https://zubao.github.io/blog/2020/05/30/Xposed 相关/</id>
+    <published>2020-05-30T04:32:02.487Z</published>
+    <updated>2020-05-30T08:04:57.512Z</updated>
     
     <summary type="html">
     
       
       
-        &lt;h2 id=&quot;一、Dalvik&quot;&gt;&lt;a href=&quot;#一、Dalvik&quot; class=&quot;headerlink&quot; title=&quot;一、Dalvik&quot;&gt;&lt;/a&gt;一、Dalvik&lt;/h2&gt;&lt;h3 id=&quot;1-1-GC含义&quot;&gt;&lt;a href=&quot;#1-1-GC含义&quot; class=&quot;head
+        &lt;h5 id=&quot;xposed-相关介绍&quot;&gt;&lt;a href=&quot;#xposed-相关介绍&quot; class=&quot;headerlink&quot; title=&quot;xposed 相关介绍&quot;&gt;&lt;/a&gt;xposed 相关介绍&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;xposed框架&lt;/code&gt; &lt;/p
       
     
     </summary>
     
-      <category term="gc" scheme="https://zubao.github.io/blog/categories/gc/"/>
+      <category term="android" scheme="https://zubao.github.io/blog/categories/android/"/>
     
     
-      <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
-    
-      <category term="gc" scheme="https://zubao.github.io/blog/tags/gc/"/>
+      <category term="xposed" scheme="https://zubao.github.io/blog/tags/xposed/"/>
     
   </entry>
   
   <entry>
-    <title>训练网站</title>
-    <link href="https://zubao.github.io/blog/2019/11/18/%E8%AE%AD%E7%BB%83%E7%BD%91%E7%AB%99/"/>
-    <id>https://zubao.github.io/blog/2019/11/18/训练网站/</id>
-    <published>2019-11-18T00:57:13.030Z</published>
-    <updated>2019-12-27T08:47:54.817Z</updated>
+    <title>dex 脱壳</title>
+    <link href="https://zubao.github.io/blog/2020/05/29/dex%20%E8%84%B1%E5%A3%B3/"/>
+    <id>https://zubao.github.io/blog/2020/05/29/dex 脱壳/</id>
+    <published>2020-05-29T07:59:01.649Z</published>
+    <updated>2020-05-29T08:03:16.539Z</updated>
     
     <summary type="html">
     
       
       
-        &lt;h5 id=&quot;在线刷题&quot;&gt;&lt;a href=&quot;#在线刷题&quot; class=&quot;headerlink&quot; title=&quot;在线刷题&quot;&gt;&lt;/a&gt;在线刷题&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://leetcode-cn.com/&quot; target=&quot;_blank&quot; rel=&quot;
-      
-    
-    </summary>
-    
-      <category term="IT" scheme="https://zubao.github.io/blog/categories/IT/"/>
-    
-    
-      <category term="it" scheme="https://zubao.github.io/blog/tags/it/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android 内存分析</title>
-    <link href="https://zubao.github.io/blog/2019/11/15/Android%20Memory%20%E5%88%86%E6%9E%90/"/>
-    <id>https://zubao.github.io/blog/2019/11/15/Android Memory 分析/</id>
-    <published>2019-11-15T08:24:46.925Z</published>
-    <updated>2019-12-31T06:42:20.653Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h5 id=&quot;获取内存堆栈文件&quot;&gt;&lt;a href=&quot;#获取内存堆栈文件&quot; class=&quot;headerlink&quot; title=&quot;获取内存堆栈文件&quot;&gt;&lt;/a&gt;获取内存堆栈文件&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;dump hprof文件&lt;/p&gt;
-&lt;figure class=&quot;highl
+        &lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.52pojie.cn/thread-977325-1-1.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://www.52pojie.cn/thread-977325-1-1.htm
       
     
     </summary>
@@ -308,50 +471,73 @@
     
       <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
     
-      <category term="memory" scheme="https://zubao.github.io/blog/tags/memory/"/>
+      <category term="dex" scheme="https://zubao.github.io/blog/tags/dex/"/>
     
   </entry>
   
   <entry>
-    <title>树莓派的安装配置</title>
-    <link href="https://zubao.github.io/blog/2019/11/15/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/"/>
-    <id>https://zubao.github.io/blog/2019/11/15/树莓派安装配置/</id>
-    <published>2019-11-15T02:11:14.675Z</published>
-    <updated>2020-01-14T09:30:56.773Z</updated>
+    <title>Android dex、odex等文件格式</title>
+    <link href="https://zubao.github.io/blog/2020/05/29/Android%20dex%E7%AD%89%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F/"/>
+    <id>https://zubao.github.io/blog/2020/05/29/Android dex等文件格式/</id>
+    <published>2020-05-29T02:32:06.071Z</published>
+    <updated>2020-05-29T07:54:01.787Z</updated>
     
     <summary type="html">
     
       
       
-        &lt;h5 id=&quot;硬件选购&quot;&gt;&lt;a href=&quot;#硬件选购&quot; class=&quot;headerlink&quot; title=&quot;硬件选购&quot;&gt;&lt;/a&gt;硬件选购&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;必须(主板、SDCard、电源线或者USB线-Type-C、读卡器)&lt;/li&gt;
-&lt;li&gt;可选(显示器、鼠标、键盘
+        &lt;h5 id=&quot;文件格式含义&quot;&gt;&lt;a href=&quot;#文件格式含义&quot; class=&quot;headerlink&quot; title=&quot;文件格式含义&quot;&gt;&lt;/a&gt;文件格式含义&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Dalvik&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Dalvik是Google公司自己设
       
     
     </summary>
     
-      <category term="Raspberry" scheme="https://zubao.github.io/blog/categories/Raspberry/"/>
+      <category term="android" scheme="https://zubao.github.io/blog/categories/android/"/>
     
     
-      <category term="raspberry" scheme="https://zubao.github.io/blog/tags/raspberry/"/>
-    
-      <category term="linux" scheme="https://zubao.github.io/blog/tags/linux/"/>
+      <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
     
   </entry>
   
   <entry>
-    <title>Android 使用Monky自动测试</title>
-    <link href="https://zubao.github.io/blog/2019/11/15/Monkey%20%E8%87%AA%E5%8A%A8%E6%B5%8B%E8%AF%95/"/>
-    <id>https://zubao.github.io/blog/2019/11/15/Monkey 自动测试/</id>
-    <published>2019-11-15T01:31:29.818Z</published>
-    <updated>2019-11-18T11:45:28.902Z</updated>
+    <title>关于wait、notify</title>
+    <link href="https://zubao.github.io/blog/2020/05/27/%E5%85%B3%E4%BA%8Ewait%E3%80%81notify/"/>
+    <id>https://zubao.github.io/blog/2020/05/27/关于wait、notify/</id>
+    <published>2020-05-27T13:56:44.698Z</published>
+    <updated>2020-05-27T14:43:44.797Z</updated>
     
     <summary type="html">
     
       
       
-        &lt;h5 id=&quot;Monkey的用途&quot;&gt;&lt;a href=&quot;#Monkey的用途&quot; class=&quot;headerlink&quot; title=&quot;Monkey的用途&quot;&gt;&lt;/a&gt;Monkey的用途&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;Monkey 主要用于Android 的压力测试。自动的一个压力测试小工
+        &lt;h5 id=&quot;wait、notify、notifyAll-为什么必须与synchronized-配合使用。&quot;&gt;&lt;a href=&quot;#wait、notify、notifyAll-为什么必须与synchronized-配合使用。&quot; class=&quot;headerlink&quot; title=&quot;
+      
+    
+    </summary>
+    
+      <category term="Java" scheme="https://zubao.github.io/blog/categories/Java/"/>
+    
+    
+      <category term="多线程" scheme="https://zubao.github.io/blog/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>I/O的五中模式</title>
+    <link href="https://zubao.github.io/blog/2020/05/27/I:O%E7%9A%845%E4%B8%AD%E6%A8%A1%E5%BC%8F/"/>
+    <id>https://zubao.github.io/blog/2020/05/27/I:O的5中模式/</id>
+    <published>2020-05-27T08:37:16.836Z</published>
+    <updated>2020-05-27T09:53:55.096Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h5 id=&quot;五种I-O模式&quot;&gt;&lt;a href=&quot;#五种I-O模式&quot; class=&quot;headerlink&quot; title=&quot;五种I/O模式&quot;&gt;&lt;/a&gt;五种I/O模式&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;blocking IO - 阻塞IO &lt;/li&gt;
+&lt;li&gt;nonblocking IO 
       
     
     </summary>
@@ -359,166 +545,11 @@
       <category term="Android" scheme="https://zubao.github.io/blog/categories/Android/"/>
     
     
-      <category term="Android" scheme="https://zubao.github.io/blog/tags/Android/"/>
-    
-      <category term="monkey" scheme="https://zubao.github.io/blog/tags/monkey/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>android 开源组件</title>
-    <link href="https://zubao.github.io/blog/2019/11/08/Android%20%E5%BC%80%E6%BA%90%E7%BB%84%E4%BB%B6/"/>
-    <id>https://zubao.github.io/blog/2019/11/08/Android 开源组件/</id>
-    <published>2019-11-08T02:31:30.844Z</published>
-    <updated>2019-11-21T08:12:17.772Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h5 id=&quot;事件分发&quot;&gt;&lt;a href=&quot;#事件分发&quot; class=&quot;headerlink&quot; title=&quot;事件分发&quot;&gt;&lt;/a&gt;事件分发&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;EventBus 3.0&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;a href=&quot;https://git
-      
-    
-    </summary>
-    
-      <category term="android" scheme="https://zubao.github.io/blog/categories/android/"/>
-    
-    
       <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
     
-  </entry>
-  
-  <entry>
-    <title>Gradle 依赖包下载失败解决方法</title>
-    <link href="https://zubao.github.io/blog/2019/10/31/Gradle%20%E4%BE%9D%E8%B5%96%E5%8C%85%E4%B8%8B%E8%BD%BD%E5%A4%B1%E8%B4%A5/"/>
-    <id>https://zubao.github.io/blog/2019/10/31/Gradle 依赖包下载失败/</id>
-    <published>2019-10-31T06:46:50.320Z</published>
-    <updated>2019-10-31T08:19:48.972Z</updated>
+      <category term="I/O" scheme="https://zubao.github.io/blog/tags/I-O/"/>
     
-    <summary type="html">
-    
-      
-      
-        &lt;h5 id=&quot;我们在Android-studio-升级或者gradle-插件升级的时候经常碰到某个依赖包下载不了，例如：构建错误：Could-not-download-trove4j-jar。可能的原因与解决方法：&quot;&gt;&lt;a href=&quot;#我们在Android-studio-升级
-      
-    
-    </summary>
-    
-      <category term="Gradle" scheme="https://zubao.github.io/blog/categories/Gradle/"/>
-    
-    
-      <category term="gradle" scheme="https://zubao.github.io/blog/tags/gradle/"/>
-    
-      <category term="android studio" scheme="https://zubao.github.io/blog/tags/android-studio/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>证书申请</title>
-    <link href="https://zubao.github.io/blog/2019/10/22/%E8%AF%81%E4%B9%A6%E7%94%B3%E8%AF%B7/"/>
-    <id>https://zubao.github.io/blog/2019/10/22/证书申请/</id>
-    <published>2019-10-22T06:44:41.497Z</published>
-    <updated>2019-11-15T03:13:45.257Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h5 id=&quot;CA-机构-Certificate-Authority&quot;&gt;&lt;a href=&quot;#CA-机构-Certificate-Authority&quot; class=&quot;headerlink&quot; title=&quot;CA 机构(Certificate Authority)&quot;&gt;&lt;/a&gt;CA 机
-      
-    
-    </summary>
-    
-      <category term="ca" scheme="https://zubao.github.io/blog/categories/ca/"/>
-    
-    
-      <category term="证书" scheme="https://zubao.github.io/blog/tags/%E8%AF%81%E4%B9%A6/"/>
-    
-      <category term="ca" scheme="https://zubao.github.io/blog/tags/ca/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android 非SDK接口检测</title>
-    <link href="https://zubao.github.io/blog/2019/10/15/Android%20%E9%9D%9ESDK%20%E6%8E%A5%E5%8F%A3%E6%A3%80%E6%B5%8B/"/>
-    <id>https://zubao.github.io/blog/2019/10/15/Android 非SDK 接口检测/</id>
-    <published>2019-10-15T09:43:59.880Z</published>
-    <updated>2019-10-16T03:06:27.062Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h4 id=&quot;非-SDK-接口限制&quot;&gt;&lt;a href=&quot;#非-SDK-接口限制&quot; class=&quot;headerlink&quot; title=&quot;非 SDK 接口限制&quot;&gt;&lt;/a&gt;非 SDK 接口限制&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;&lt;h5 id=&quot;非SDK接口限制在Android-P中就已提出，
-      
-    
-    </summary>
-    
-      <category term="android" scheme="https://zubao.github.io/blog/categories/android/"/>
-    
-    
-      <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
-    
-      <category term="veridex" scheme="https://zubao.github.io/blog/tags/veridex/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android Binder</title>
-    <link href="https://zubao.github.io/blog/2019/10/09/android%20Binder%20%E8%B5%84%E6%96%99%E6%94%B6%E9%9B%86/"/>
-    <id>https://zubao.github.io/blog/2019/10/09/android Binder 资料收集/</id>
-    <published>2019-10-09T07:58:37.515Z</published>
-    <updated>2019-10-09T08:00:06.143Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h5 id=&quot;http-gityuan-com-tags-binder&quot;&gt;&lt;a href=&quot;#http-gityuan-com-tags-binder&quot; class=&quot;headerlink&quot; title=&quot;http://gityuan.com/tags/#binder&quot;&gt;&lt;/a
-      
-    
-    </summary>
-    
-      <category term="android" scheme="https://zubao.github.io/blog/categories/android/"/>
-    
-    
-      <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
-    
-      <category term="binder" scheme="https://zubao.github.io/blog/tags/binder/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Dalvik 字节码</title>
-    <link href="https://zubao.github.io/blog/2019/09/11/Dalvik%20optcode/"/>
-    <id>https://zubao.github.io/blog/2019/09/11/Dalvik optcode/</id>
-    <published>2019-09-11T09:16:20.219Z</published>
-    <updated>2019-09-12T07:11:51.232Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;Dalvik 字节码&lt;/p&gt;
-&lt;p&gt;通用设计&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;机器模型和调用规范旨在大致模仿常见的真实架构和 C 样式的调用规范：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;机器基于寄存器，而帧的大小在创建时确定后就固定不变。每一帧由特定数量的寄存器（由相应方法指定）以及执
-      
-    
-    </summary>
-    
-      <category term="android" scheme="https://zubao.github.io/blog/categories/android/"/>
-    
-    
-      <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
-    
-      <category term="dalvik" scheme="https://zubao.github.io/blog/tags/dalvik/"/>
+      <category term="Handle" scheme="https://zubao.github.io/blog/tags/Handle/"/>
     
   </entry>
   

@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="闲敲棋子落灯花">
 <meta property="og:description" content="我们在Android studio 升级或者gradle 插件升级的时候经常碰到某个依赖包下载不了，例如：构建错误：Could not download trove4j.jar。可能的原因与解决方法： gradle plugin 版本和 gradle 版本不一致 123456789101112# 项目跟目录build.gradlebuildscript &amp;#123;    repositories">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-31T08:19:48.972Z">
+<meta property="og:updated_time" content="2020-02-24T14:09:08.270Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Gradle 依赖包下载失败解决方法">
 <meta name="twitter:description" content="我们在Android studio 升级或者gradle 插件升级的时候经常碰到某个依赖包下载不了，例如：构建错误：Could not download trove4j.jar。可能的原因与解决方法： gradle plugin 版本和 gradle 版本不一致 123456789101112# 项目跟目录build.gradlebuildscript &amp;#123;    repositories">
@@ -404,10 +404,13 @@
 </li>
 <li><p>如果还是解决不了，可以考虑手动下载依赖包 trove4j.jar，然后放置到gradle 缓存目录。</p>
 </li>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># 依赖包放置路径</span><br><span class="line">/Users/xxx/.gradle/caches/modules-2/files-2.1</span><br><span class="line"># trove4j.jar 的放置路径</span><br><span class="line">/Users/xxx/.gradle/caches/modules-2/files-2.1/org.jetbrains.trove4j/trove4j/20160824/</span><br><span class="line"># 用shasum 对 trove4j 取 hash值，用该hash值创建目录</span><br><span class="line">shasum trove4j.jar</span><br><span class="line">mkdir xxx</span><br><span class="line"># 将jar包放到该目录中。</span><br><span class="line"># 参考文章</span><br><span class="line">https://www.meiwen.com.cn/subject/pekjuctx.html </span><br><span class="line">https://www.kaelli.com/26.html</span><br><span class="line">https://chinagdg.org/2016/01/picking-your-compilesdkversion-minsdkversion-targetsdkversion/</span><br><span class="line">https://developer.android.com/studio/build/dependencies?hl=zh-cn</span><br></pre></td></tr></table></figure>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">  # 依赖包放置路径</span><br><span class="line">  /Users/xxx/.gradle/caches/modules-2/files-2.1</span><br><span class="line">  # trove4j.jar 的放置路径</span><br><span class="line">  /Users/xxx/.gradle/caches/modules-2/files-2.1/org.jetbrains.trove4j/trove4j/20160824/</span><br><span class="line">  # 用shasum 对 trove4j 取 hash值，用该hash值创建目录</span><br><span class="line">  shasum trove4j.jar</span><br><span class="line">  mkdir xxx</span><br><span class="line">  # 将jar包放到该目录中。</span><br><span class="line">  # 参考文章</span><br><span class="line">  # 如果jar或者pom文件网站上找不到，可以去下面查找</span><br><span class="line">  https://bintray.com/jetbrains/trove4j/trove4j#files/org%2Fjetbrains%2Ftrove4j%2Ftrove4j%2F20160824</span><br><span class="line">  https://mvnrepository.com/search?q=trove4j</span><br><span class="line">  https://www.meiwen.com.cn/subject/pekjuctx.html </span><br><span class="line">  https://www.kaelli.com/26.html</span><br><span class="line">  https://chinagdg.org/2016/01/picking-your-compilesdkversion-minsdkversion-targetsdkversion/</span><br><span class="line">https://developer.android.com/studio/build/dependencies?hl=zh-cn</span><br></pre></td></tr></table></figure>
+
+
 </li>
-<li><p>阿里代码<a href="[http://dkaishu.com/2019/06/01/Android-Studio-%E4%B8%AD%E9%85%8D%E7%BD%AE%E9%98%BF%E9%87%8C%E4%BA%91%E5%85%AC%E5%85%B1%E4%BB%A3%E7%A0%81%E5%BA%93(%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93)/](http://dkaishu.com/2019/06/01/Android-Studio-中配置阿里云公共代码库(镜像仓库)/)">仓库</a> </p>
-</li>
+</ul>
+<ul>
+<li>阿里代码<a href="[http://dkaishu.com/2019/06/01/Android-Studio-%E4%B8%AD%E9%85%8D%E7%BD%AE%E9%98%BF%E9%87%8C%E4%BA%91%E5%85%AC%E5%85%B1%E4%BB%A3%E7%A0%81%E5%BA%93(%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93)/](http://dkaishu.com/2019/06/01/Android-Studio-中配置阿里云公共代码库(镜像仓库)/)">仓库</a> </li>
 </ul>
 
       
@@ -532,7 +535,7 @@
               
                 <a href="/blog/archives/">
               
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">81</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -543,7 +546,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/blog/categories/index.html">
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -554,7 +557,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/blog/tags/index.html">
-                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-count">70</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

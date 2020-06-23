@@ -293,7 +293,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/08/22/CI架构/">
+    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2020/01/13/Android Q Pixel 2 XL Root/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lpl">
@@ -312,7 +312,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2019/08/22/CI架构/" itemprop="url">CI架构</a></h1>
+                <a class="post-title-link" href="/blog/2020/01/13/Android Q Pixel 2 XL Root/" itemprop="url">Android Q 2XL Root</a></h1>
         
 
         <div class="post-meta">
@@ -324,8 +324,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-22T09:15:47+08:00">
-                2019-08-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-13T15:47:20+08:00">
+                2020-01-13
               </time>
             
 
@@ -347,8 +347,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/php/" itemprop="url" rel="index">
-                    <span itemprop="name">php</span>
+                  <a href="/blog/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
                   </a>
                 </span>
 
@@ -386,1496 +386,139 @@
       
         
           
-            <h5 id="CI架构简介"><a href="#CI架构简介" class="headerlink" title="CI架构简介"></a>CI架构简介</h5><ul>
-<li><p>CI架构全拼Codeigniter，相比之下另外一个更加活跃的PHP架构是Laravel。</p>
-</li>
-<li><p>CodeIgniter 是一套给 PHP 网站开发者使用的应用程序开发框架和工具包。它的特点包括且不局限于：</p>
-<blockquote>
-<ul>
-<li>小巧但性能出色</li>
-<li>广泛兼容各种 PHP 版本</li>
-<li>几乎零配置且不需使用命令行</li>
+            <h4 id="开始之前，在要root或者刷机的手机上，移除google账户。"><a href="#开始之前，在要root或者刷机的手机上，移除google账户。" class="headerlink" title="开始之前，在要root或者刷机的手机上，移除google账户。"></a>开始之前，在要root或者刷机的手机上，移除google账户。</h4><h5 id="Unlock-the-Bootloader"><a href="#Unlock-the-Bootloader" class="headerlink" title="Unlock the Bootloader"></a>Unlock the Bootloader</h5><ul>
+<li>Before Unlock</li>
 </ul>
-</blockquote>
-</li>
-<li><p>CI下载</p>
 <blockquote>
-<p><a href="https://www.codeigniter.com/" target="_blank" rel="noopener">https://www.codeigniter.com/</a></p>
-</blockquote>
-</li>
-<li><p>index.php 是所有 CI 程序的入口</p>
-</li>
-<li><p>设置.htaccess 文件</p>
-<blockquote>
-<p>打开.htaccess 文件并添加以下四行代码，保存并退出</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; `RewriteEngine on``RewriteCond %&#123;REQUEST_FILENAME&#125; !-f``RewriteCond %&#123;REQUEST_FILENAME&#125; !-d``RewriteRule ^(.*)$ /index.php/$<span class="number">1</span> [L]`</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<p>让我们看一下上面每行代码的作用：</p>
 <ol>
-<li>RewriteEngine on 用于打开 Apache 的 URL 重写</li>
-<li>RewriteCond %{REQUEST_FILENAME} !-f 代表如果请求的文件存在，则直接访问该文件；如果文件不存在，则进行至下一步</li>
-<li>RewriteCond %{REQUEST_FILENAME} !-d 代表如果目录存在则直接访问目录；如果目录不存在，则进行至下一步</li>
-<li>RewriteRule ^(.*)$ /index.php/$1 [L] 如果所请求的路径不是存在的文件也不是存在的目录，则在路径前追加/index.php/</li>
-</ol>
-<p>这样，我们在访问任何 CI 的 URL 时，就不需要指定任何 php 路径了。因为 index.php 是所有 CI 程序的入口。</p>
-</blockquote>
+<li><p>This will work only on Google Pixel 2 and Pixel 2 XL users.</p>
 </li>
-<li><p>定义路由</p>
-<blockquote>
-<p>对于URL Home - <a href="http://abc.om/en" target="_blank" rel="noopener">http://abc.om/en</a></p>
-<p>当 CI 接收到一个用户请求的 URL 时，首先去路由表中查询该 URL 对应的控制器。我们首先为 Home 定义一个路由。路由文件的位置是 config/routes.php。打开路由定义，添加如下代码：</p>
-<p>$route[‘en’] = ‘en/home’;</p>
-</blockquote>
+<li><p>You need Laptop or PC.</p>
 </li>
-</ul>
-<h5 id="控制器与视图入门"><a href="#控制器与视图入门" class="headerlink" title="控制器与视图入门"></a>控制器与视图入门</h5><ul>
-<li><p>控制器</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">清单 <span class="number">1.</span>controllelrs/en/home.php</span><br><span class="line"></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Home</span> <span class="keyword">extends</span> <span class="title">CI_Controller</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">  <span class="comment">//Home 控制器的构造函数</span></span><br><span class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  	<span class="keyword">parent</span>::__construct();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//Home 控制器的默认入口 index()方法</span></span><br><span class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">index</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//加载 views 目录下的/en/header.php 视图</span></span><br><span class="line">  <span class="keyword">$this</span>-&gt;load-&gt;view(<span class="string">'/en/header'</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">//加载 views 目录下的/en/home.php 视图</span></span><br><span class="line">  <span class="keyword">$this</span>-&gt;load-&gt;view(<span class="string">'/en/home'</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">//加载 views 目录下的/en/footer.php 视图</span></span><br><span class="line">  <span class="keyword">$this</span>-&gt;load-&gt;view(<span class="string">'/en/footer'</span>);</span><br><span class="line">  &#125;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<li><p>Working USB Cable.</p>
 </li>
-</ul>
-<blockquote>
-<p>在 controllers 目录下，创建目录 en，在 en 目录下创建 home.php，这将是我们的第一个控制器。在 home.php 中添加如下代码：</p>
-</blockquote>
-<ul>
-<li><p>视图</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">清单 <span class="number">2.</span>views/en/header.php</span><br><span class="line">&lt;H1&gt;ABC.com - Header&lt;/H1&gt;</span><br><span class="line"></span><br><span class="line">清单 <span class="number">3.</span>views/en/home.php</span><br><span class="line">&lt;H2&gt;Welcome to ABC.com! - Body&lt;/H2&gt;</span><br><span class="line"></span><br><span class="line">清单 <span class="number">4.</span>views/en/footer.php</span><br><span class="line">&lt;H3&gt;Copyright - Footer&lt;/H3&gt;</span><br></pre></td></tr></table></figure>
-
+<li><p>Charge your phone to at least 70% battery.</p>
 </li>
-</ul>
-<h5 id="控制器如视图进阶"><a href="#控制器如视图进阶" class="headerlink" title="控制器如视图进阶"></a>控制器如视图进阶</h5><ul>
-<li><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">清单 <span class="number">5.</span>controllers/en/home.php</span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Home</span> <span class="keyword">extends</span> <span class="title">CI_Controller</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line"><span class="comment">//定义 Header 数据数组$headerdata</span></span><br><span class="line"><span class="keyword">protected</span> $headerdata = <span class="keyword">array</span>(</span><br><span class="line"> </span><br><span class="line">  <span class="comment">//定义页面标题数据</span></span><br><span class="line">  <span class="string">'title'</span> =&gt; <span class="string">'ABC - Home'</span>,</span><br><span class="line"></span><br><span class="line">  <span class="comment">//定义页面导航栏数据</span></span><br><span class="line">  <span class="string">'nav'</span> =&gt; <span class="keyword">array</span>(</span><br><span class="line">      <span class="string">'Home'</span> =&gt; <span class="keyword">array</span>(</span><br><span class="line">      <span class="string">'url'</span> =&gt; <span class="string">'/en'</span>,</span><br><span class="line">      <span class="string">'active'</span> =&gt; <span class="keyword">TRUE</span></span><br><span class="line">      ),</span><br><span class="line">      <span class="string">'Solutions'</span> =&gt; <span class="keyword">array</span>(</span><br><span class="line">      <span class="string">'url'</span> =&gt; <span class="string">'/en/solutions'</span>,</span><br><span class="line">      <span class="string">'active'</span> =&gt; <span class="keyword">FALSE</span></span><br><span class="line">      ),</span><br><span class="line">      <span class="string">'Services'</span> =&gt; <span class="keyword">array</span>(</span><br><span class="line">      <span class="string">'url'</span> =&gt; <span class="string">'/en/services'</span>,</span><br><span class="line">      <span class="string">'active'</span> =&gt; <span class="keyword">FALSE</span></span><br><span class="line">      ),</span><br><span class="line">      <span class="string">'Products'</span> =&gt; <span class="keyword">array</span>(</span><br><span class="line">      <span class="string">'url'</span> =&gt; <span class="string">'/en/products'</span>,</span><br><span class="line">      <span class="string">'active'</span> =&gt; <span class="keyword">FALSE</span></span><br><span class="line">      ),</span><br><span class="line">      <span class="string">'Support'</span> =&gt; <span class="keyword">array</span>(</span><br><span class="line">      <span class="string">'url'</span> =&gt; <span class="string">'/en/support'</span>,</span><br><span class="line">      <span class="string">'active'</span> =&gt; <span class="keyword">FALSE</span></span><br><span class="line">      )</span><br><span class="line">  ),</span><br><span class="line">);</span><br><span class="line"><span class="comment">//Home 控制器的构造函数</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="keyword">parent</span>::__construct();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//Home 控制器的默认入口 index()方法</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">index</span><span class="params">()</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line"><span class="comment">//加载 views 目录下的/en/header.php 视图并将$headerdata 中的导航栏数据传递给 header 视图</span></span><br><span class="line"><span class="keyword">$this</span>-&gt;load-&gt;view(<span class="string">'/en/header'</span>, <span class="keyword">$this</span>-&gt;headerdata);</span><br><span class="line"> </span><br><span class="line"><span class="comment">//加载 views 目录下的/en/home.php 视图</span></span><br><span class="line"><span class="keyword">$this</span>-&gt;load-&gt;view(<span class="string">'/en/home'</span>);</span><br><span class="line"><span class="comment">//加载 views 目录下的/en/footer.php 视图</span></span><br><span class="line"><span class="keyword">$this</span>-&gt;load-&gt;view(<span class="string">'/en/footer'</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>这段代码介绍了如何将数据从控制器传入视图。</p>
-</blockquote>
+<li><p>GetDroidTips.com is not responsible for any damage to your phone while installing this Update.</p>
 </li>
-<li><p>视图</p>
+<li><p>Make sure that you have <strong>latest USB drivers</strong> installed.</p>
 </li>
-<li><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">清单 <span class="number">6.</span>views/en/header.php</span><br><span class="line"></span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">  	&lt;title&gt;<span class="meta">&lt;?php</span> <span class="keyword">echo</span> $title <span class="meta">?&gt;</span>&lt;/title&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  <span class="comment">//遍历$nav 数组</span></span><br><span class="line">  <span class="keyword">foreach</span> ($nav <span class="keyword">as</span> $name =&gt; $value) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//如果当前元素为’active’状态，则显示(Active)</span></span><br><span class="line">    <span class="keyword">if</span> ($value[<span class="string">'active'</span>]) &#123;</span><br><span class="line">      <span class="keyword">echo</span> <span class="string">"$name(Active)"</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">//如果当前元素为非’active’状态，则显示该页面名称，并附有该页面的链接</span></span><br><span class="line">      <span class="keyword">echo</span> <span class="string">'&lt;a href="'</span></span><br><span class="line">      . $value[<span class="string">'url'</span>] . <span class="string">'"&gt;'</span>;</span><br><span class="line">      <span class="keyword">echo</span> $name;</span><br><span class="line">      <span class="keyword">echo</span> <span class="string">'&lt;/a&gt;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">' | '</span>;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>我们在 home 控制器中将$headerdata 传递给 header 视图，header 视图就可以直接访问$headerdata 的内部数据，无需指定数组名称。我们可以在 header.php 中，直接使用$title 来访问 home.php 中的$headerdata[‘title’]；同样我们可以在 header.php 中，直接使用$nav 来访问 home.php 中的$headerdata[‘nav’]。</p>
-</blockquote>
+<li><p>Download the <a href="https://www.getdroidtips.com/how-to-install-adb-and-fastboot-on-windows/" target="_blank" rel="noopener">ADB Fastboot tools</a>. Watch Video on How to <a href="https://www.youtube.com/watch?v=myOgT9nIacg&t=7s" target="_blank" rel="noopener"><strong>Install ADB Fastboot on your PC.</strong></a></p>
 </li>
-</ul>
-<h3 id="URI-传参及模型-控制器-视图-完整流程"><a href="#URI-传参及模型-控制器-视图-完整流程" class="headerlink" title="URI 传参及模型-控制器-视图 - 完整流程"></a>URI 传参及模型-控制器-视图 - 完整流程</h3><ul>
-<li><p>URI 解析</p>
-<blockquote>
-<p>根据CI 的 URI 路由特性，我们采用下面的 URL 来显示 products 的 issue001 页面</p>
-<p><a href="http://abc.com/en/support/products/issue001" target="_blank" rel="noopener">http://abc.com/en/support/products/issue001</a></p>
-<p>此 URL 的定义如下</p>
-<ol>
-<li>第一段 abc.com 代表域名</li>
-<li>第二段 en 代表控制器的目录</li>
-<li>第三段 support 代表控制器的名称</li>
-<li>第四段 products 代表控制器的函数名</li>
-<li>第五段 issue001 代表传递给控制器的参数</li>
+<li><p>Take a complete <strong>backup of your phone</strong> and then proceed.</p>
+</li>
 </ol>
 </blockquote>
-</li>
-<li><p>控制器</p>
-</li>
-<li><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">清单 <span class="number">7.</span>controllers/en/support.php</span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Support</span> <span class="keyword">extends</span> <span class="title">CI_Controller</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line"><span class="comment">//为 Support 控制器定义 Header 数据</span></span><br><span class="line"><span class="keyword">protected</span> $headerdata = <span class="keyword">array</span>(</span><br><span class="line"> </span><br><span class="line">  <span class="comment">//定义 Support 页面标题</span></span><br><span class="line">  <span class="string">'title'</span> =&gt; <span class="string">'ABC - Support'</span>,</span><br><span class="line">  <span class="comment">//定义 Support 页面导航栏</span></span><br><span class="line">  <span class="string">'nav'</span> =&gt; <span class="keyword">array</span>(</span><br><span class="line">    <span class="string">'Home'</span> =&gt; <span class="keyword">array</span>(</span><br><span class="line">    <span class="string">'url'</span> =&gt; <span class="string">'/en'</span>,</span><br><span class="line">    <span class="string">'active'</span> =&gt; <span class="keyword">FALSE</span></span><br><span class="line">    ),</span><br><span class="line">    <span class="string">'Solutions'</span> =&gt; <span class="keyword">array</span>(</span><br><span class="line">    <span class="string">'url'</span> =&gt; <span class="string">'/en/solutions'</span>,</span><br><span class="line">    <span class="string">'active'</span> =&gt; <span class="keyword">FALSE</span></span><br><span class="line">    ),</span><br><span class="line">    <span class="string">'Services'</span> =&gt; <span class="keyword">array</span>(</span><br><span class="line">    <span class="string">'url'</span> =&gt; <span class="string">'/en/services'</span>,</span><br><span class="line">    <span class="string">'active'</span> =&gt; <span class="keyword">FALSE</span></span><br><span class="line">    ),</span><br><span class="line">    <span class="string">'Products'</span> =&gt; <span class="keyword">array</span>(</span><br><span class="line">    <span class="string">'url'</span> =&gt; <span class="string">'/en/products'</span>,</span><br><span class="line">    <span class="string">'active'</span> =&gt; <span class="keyword">FALSE</span></span><br><span class="line">    ),</span><br><span class="line">    <span class="string">'Support'</span> =&gt; <span class="keyword">array</span>(</span><br><span class="line">    <span class="string">'url'</span> =&gt; <span class="string">'/en/support'</span>,</span><br><span class="line">    <span class="string">'active'</span> =&gt; <span class="keyword">TRUE</span></span><br><span class="line">    )</span><br><span class="line">  ),</span><br><span class="line">);</span><br><span class="line"><span class="comment">//定义 Support 页面的数据元素</span></span><br><span class="line"><span class="keyword">protected</span> $supportdata = <span class="keyword">array</span>(</span><br><span class="line">  <span class="string">'type'</span> =&gt; <span class="string">''</span>,</span><br><span class="line">  <span class="string">'issue'</span> =&gt; <span class="string">''</span>,</span><br><span class="line">  <span class="string">'info'</span> =&gt; <span class="string">''</span></span><br><span class="line">);</span><br><span class="line"><span class="comment">//Home 控制器的构造函数</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="comment">//构造函数</span></span><br><span class="line">  <span class="keyword">parent</span>::__construct();</span><br><span class="line">  <span class="comment">//加载 Support 的数据模型</span></span><br><span class="line">  <span class="keyword">$this</span>-&gt;load-&gt;model(<span class="string">"support_model"</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">//Support 控制器的默认入口</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">index</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="comment">//加载 header 视图并将 header 数据传递给视图</span></span><br><span class="line">  <span class="keyword">$this</span>-&gt;load-&gt;view(<span class="string">'/en/header'</span>, <span class="keyword">$this</span>-&gt;headerdata);</span><br><span class="line">  <span class="comment">//加载 footer 视图</span></span><br><span class="line">  <span class="keyword">$this</span>-&gt;load-&gt;view(<span class="string">'/en/footer'</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">//Support 控制器的 products 入口</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">products</span><span class="params">($issue)</span> </span>&#123;</span><br><span class="line">  <span class="comment">//定义 support 的数据为 Products 类型，存入$supportdata</span></span><br><span class="line">  <span class="keyword">$this</span>-&gt;supportdata[<span class="string">'type'</span>] = <span class="string">'Products'</span>;</span><br><span class="line">  <span class="comment">//将 URL 传过来的$issue 参数存入$supportdata</span></span><br><span class="line">  <span class="keyword">$this</span>-&gt;supportdata[<span class="string">'issue'</span>] = $issue;</span><br><span class="line">  <span class="comment">//从 Support 模型中取出$issue 数据并存入$supportdata</span></span><br><span class="line">  <span class="keyword">$this</span>-&gt;supportdata[<span class="string">'info'</span>] = <span class="keyword">$this</span>-&gt;support_model-&gt;get_product($issue);</span><br><span class="line">  <span class="comment">//加载 header 视图并将 header 数据传递给视图</span></span><br><span class="line">  <span class="keyword">$this</span>-&gt;load-&gt;view(<span class="string">'/en/header'</span>, <span class="keyword">$this</span>-&gt;headerdata);</span><br><span class="line">  <span class="comment">//加载 support 视图并将 supportdata 数据传递给视图</span></span><br><span class="line">  <span class="keyword">$this</span>-&gt;load-&gt;view(<span class="string">'/en/support'</span>, <span class="keyword">$this</span>-&gt;supportdata);</span><br><span class="line">  <span class="comment">//加载 footer 视图</span></span><br><span class="line">  <span class="keyword">$this</span>-&gt;load-&gt;view(<span class="string">'/en/footer'</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>模型</p>
-</li>
-<li><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">清单 <span class="number">8.</span>models/support_model.php</span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Support_model</span> <span class="keyword">extends</span> <span class="title">CI_Model</span> </span>&#123;</span><br><span class="line">  <span class="comment">//Support 模型的构造函数</span></span><br><span class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">parent</span>::__construct();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//Support 模型的 get_product 方法，用于返回$issue 所代表的数据</span></span><br><span class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">get_product</span><span class="params">($issue)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//返回$issue 的 support 信息</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">"This is the support information for $issue"</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>视图</p>
-</li>
-<li><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">清单 <span class="number">9.</span>views/en/support.php</span><br><span class="line">&lt;H2&gt;Support - Body&lt;/H2&gt;</span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">"Type: $type&lt;br&gt;"</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"Issue: $issue&lt;br&gt;"</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"Information: $info&lt;br&gt;"</span>;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>参考文档</p>
-<blockquote>
-<p><a href="https://www.ibm.com/developerworks/cn/web/1508_lizhi_phpci/index.html" target="_blank" rel="noopener">https://www.ibm.com/developerworks/cn/web/1508_lizhi_phpci/index.html</a> </p>
-</blockquote>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/08/21/PG数据库简介/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lpl">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/blog/images/head.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="闲敲棋子落灯花">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2019/08/21/PG数据库简介/" itemprop="url">PG数据库 简介</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-21T15:30:00+08:00">
-                2019-08-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/数据库/" itemprop="url" rel="index">
-                    <span itemprop="name">数据库</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h5><ul>
-<li>PG 数据库全称 PostgreSQL</li>
-<li><a href="https://zh.wikipedia.org/wiki/自由软件" target="_blank" rel="noopener">自由的</a><a href="https://zh.wikipedia.org/w/index.php?title=对象-关系型数据库&action=edit&redlink=1" target="_blank" rel="noopener">对象-关系型数据库</a>服务器（<a href="https://zh.wikipedia.org/wiki/数据库管理系统" target="_blank" rel="noopener">数据库管理系统</a>），在<a href="https://zh.wikipedia.org/wiki/BSD许可证" target="_blank" rel="noopener">BSD许可证</a>下发行。</li>
-</ul>
-<h5 id="历史"><a href="#历史" class="headerlink" title="历史"></a>历史</h5><ul>
-<li>该项目最初开始于在<a href="https://zh.wikipedia.org/wiki/UC_Berkeley" target="_blank" rel="noopener">加利福尼亚大学伯克利分校</a>的<a href="https://zh.wikipedia.org/wiki/Ingres" target="_blank" rel="noopener">Ingres</a>计划。</li>
-<li>1982年这个计划的领导者迈克尔·斯通布雷克离开加利福尼亚大学伯克利分校去推进Ingres的商业化，但最后还是返回了学术界。</li>
-<li>1985年返回伯克利之后，<a href="https://zh.wikipedia.org/wiki/迈克尔·斯通布雷克" target="_blank" rel="noopener">斯通布雷克</a>开始了post-Ingres计划，致力于解决在1980年代早期所出现一些数据库系统存在的问题。Postgres和Ingres的代码库开始（并保持）完全分离。</li>
-<li>从1986年开始，该项目组发表了一些描述这一系统基本原理的论文</li>
-<li>1988年实现并运行了一个Demo版本。</li>
-<li>1989年六月向少数用户发行了版本1.0</li>
-<li>1990年6月发行了带有全新规则系统的版本2.0</li>
-<li>1991年的版本3.0再次重写了规则系统，并增加了对多个存储管理器的支持与改进的查询引擎。</li>
-<li>1993年开始拥有大量用户，这些用户提供了大量的功能与优化建议。但是在发行了作为细节修正的版本4.0之后，Postgres计划就终止了。</li>
-<li>1994年，两个<a href="https://zh.wikipedia.org/wiki/UC_Berkeley" target="_blank" rel="noopener">加利福尼亚大学伯克利分校</a>的研究生 Andrew Yu和Jolly Chen 增加了一个<a href="https://zh.wikipedia.org/wiki/SQL" target="_blank" rel="noopener">SQL</a>语言解释器来替代早先的基于Ingres的<a href="https://zh.wikipedia.org/w/index.php?title=QUEL&action=edit&redlink=1" target="_blank" rel="noopener">QUEL</a>系统，创建了Postgres95。</li>
-<li>1996年被重命名为PostgreSQL以便突出该数据库全新的<a href="https://zh.wikipedia.org/wiki/SQL" target="_blank" rel="noopener">SQL查询语言</a>。</li>
-<li>2005年1月19日，PostgreSQL发行了版本8.0。</li>
-<li>目前最新的版本已经到了11.5。</li>
-</ul>
-<h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5><ul>
-<li><p>PostgreSQL 客户端安装</p>
-<blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> brew install postgresql</span><br><span class="line"><span class="meta">&gt;</span></span><br></pre></td></tr></table></figure>
-</blockquote>
-</li>
-<li><p>初始化数据库</p>
-<blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; initdb /usr/local/var/postgres</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-</li>
-<li><p>启动服务</p>
-<blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start</span><br><span class="line"><span class="meta">&gt;</span> # 开始或者停止pg</span><br><span class="line"><span class="meta">&gt;</span> pg_ctl start|stop</span><br><span class="line"><span class="meta">&gt;</span> # 查询pg监听端口</span><br><span class="line"><span class="meta">&gt;</span> netstat -a | grep PGSQ</span><br><span class="line"><span class="meta">&gt;</span> # 修改端口 postgresql.conf </span><br><span class="line"><span class="meta">&gt;</span></span><br></pre></td></tr></table></figure>
-</blockquote>
-</li>
-<li><p>参考文档</p>
-<blockquote>
-<p><a href="http://www.ruanyifeng.com/blog/2013/12/getting_started_with_postgresql.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2013/12/getting_started_with_postgresql.html</a></p>
-<p><a href="https://www.jianshu.com/p/10ced5145d39" target="_blank" rel="noopener">https://www.jianshu.com/p/10ced5145d39</a></p>
-</blockquote>
-</li>
-</ul>
-<h5 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h5><ul>
-<li><p>创建数据库，进入控制台</p>
-<blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> createdb</span><br><span class="line"><span class="meta">&gt;</span> # 进入PostgreSQL 控制台</span><br><span class="line"><span class="meta">&gt;</span> psql</span><br><span class="line"><span class="meta">&gt;</span> # \l 查看数据库；\q离开控制台</span><br><span class="line"><span class="meta">&gt;</span></span><br></pre></td></tr></table></figure>
-</blockquote>
-</li>
-<li><p>创建用户 jack</p>
-</li>
-<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 创建角色Jack ，密码123456</span><br><span class="line">CREATE USER jack WITH PASSWORD '123456';</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>创建属于jack的数据库nosql</p>
-</li>
-<li><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> nosql OWNER jack;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>将nosql数据库所有权限赋予jack用户</p>
-</li>
-<li><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">ALL</span> <span class="keyword">PRIVILEGES</span> <span class="keyword">ON</span> <span class="keyword">DATABASE</span> nosql <span class="keyword">to</span> jack;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>给jack用户添加创建数据库的属性</p>
-</li>
-<li><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">ROLE</span> jack CREATEDB;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>进入nosql 数据库</p>
-</li>
-<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">psql -U jack -d nosql -h [host] -p [port]；</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用sql 语句创建表</p>
-</li>
-<li><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建新表 </span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> user_tbl(<span class="keyword">name</span> <span class="built_in">VARCHAR</span>(<span class="number">20</span>), signup_date <span class="built_in">DATE</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment"># 插入数据 </span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> user_tbl(<span class="keyword">name</span>, signup_date) <span class="keyword">VALUES</span>(<span class="string">'张三'</span>, <span class="string">'2013-12-22'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment"># 选择记录 </span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> user_tbl;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>控制台常用命令</p>
-</li>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">\password：设置当前登录用户的密码</span><br><span class="line">\h：查看SQL命令的解释，比如\h select。</span><br><span class="line">\?：查看psql命令列表。</span><br><span class="line">\l：列出所有数据库。</span><br><span class="line">\c [database_name]：连接其他数据库。</span><br><span class="line">\d：列出当前数据库的所有表格。</span><br><span class="line">\d [table_name]：列出某一张表格的结构。</span><br><span class="line">\du：列出所有用户。</span><br><span class="line">\e：打开文本编辑器。</span><br><span class="line">\conninfo：列出当前数据库和连接的信息。</span><br><span class="line">\password [user]: 修改用户密码</span><br><span class="line">\q：退出</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/08/21/Redis 简介/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lpl">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/blog/images/head.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="闲敲棋子落灯花">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2019/08/21/Redis 简介/" itemprop="url">Redis 简介</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-21T09:38:55+08:00">
-                2019-08-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/数据库/" itemprop="url" rel="index">
-                    <span itemprop="name">数据库</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="Redis-简介"><a href="#Redis-简介" class="headerlink" title="Redis 简介"></a>Redis 简介</h5><ul>
-<li><p>Remote DIctionary Server(Redis) 是一个由Salvatore Sanfilippo写的key-value存储系统。</p>
-</li>
-<li><p>Redis是一个开源的使用ANSI C语言编写、遵守BSD协议、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。</p>
-<blockquote>
-<p>从2015年6月开始，Redis的开发由<a href="https://zh.wikipedia.org/w/index.php?title=Redis_Labs&action=edit&redlink=1" target="_blank" rel="noopener">Redis Labs</a>赞助，而2013年5月至2015年6月期间，其开发由<a href="https://zh.wikipedia.org/wiki/Pivotal" target="_blank" rel="noopener">Pivotal</a>赞助。<a href="https://zh.wikipedia.org/wiki/Redis#cite_note-3" target="_blank" rel="noopener">[3]</a>在2013年5月之前，其开发由<a href="https://zh.wikipedia.org/wiki/VMware" target="_blank" rel="noopener">VMware</a>赞助。<a href="https://zh.wikipedia.org/wiki/Redis#cite_note-4" target="_blank" rel="noopener">[4]</a><a href="https://zh.wikipedia.org/wiki/Redis#cite_note-5" target="_blank" rel="noopener">[5]</a>根据月度排行网站DB-Engines.com的数据，Redis是最流行的键值对存储数据库。</p>
-</blockquote>
-</li>
-</ul>
-<h5 id="数据模型"><a href="#数据模型" class="headerlink" title="数据模型"></a>数据模型</h5><ul>
-<li><p>Redis的外围由一个键、值映射的<a href="https://zh.wikipedia.org/wiki/关联数组" target="_blank" rel="noopener">字典</a>构成。与其他<a href="https://zh.wikipedia.org/wiki/非关系型数据库" target="_blank" rel="noopener">非关系型数据库</a>主要不同在于：Redis中值的类型不仅限于<a href="https://zh.wikipedia.org/wiki/字符串" target="_blank" rel="noopener">字符串</a>，还支持如下抽象数据类型：</p>
-<blockquote>
 <ul>
-<li><a href="https://zh.wikipedia.org/wiki/字符串" target="_blank" rel="noopener">字符串</a><a href="https://zh.wikipedia.org/wiki/串列_(抽象資料型別)" target="_blank" rel="noopener">列表</a></li>
-<li>无序不重复的<a href="https://zh.wikipedia.org/wiki/字符串" target="_blank" rel="noopener">字符串</a><a href="https://zh.wikipedia.org/w/index.php?title=集合_(抽象資料型別)&action=edit&redlink=1" target="_blank" rel="noopener">集合</a></li>
-<li>有序不重复的<a href="https://zh.wikipedia.org/wiki/字符串" target="_blank" rel="noopener">字符串</a><a href="https://zh.wikipedia.org/w/index.php?title=集合_(抽象資料型別)&action=edit&redlink=1" target="_blank" rel="noopener">集合</a></li>
-<li>键、值都为<a href="https://zh.wikipedia.org/wiki/字符串" target="_blank" rel="noopener">字符串</a>的<a href="https://zh.wikipedia.org/wiki/哈希表" target="_blank" rel="noopener">哈希表</a></li>
-</ul>
+<li><p>打开开发者模式</p>
+<blockquote>
+<p>Enable the Developer Option, Go to your Settings -&gt; About -&gt; Software Information -&gt; More -&gt; Now Tap on the Build Number 7-8 Times until you see a toast message “<strong>Developer option enabled</strong>“</p>
 </blockquote>
 </li>
-<li><p>值的类型决定了值本身支持的操作。Redis支持不同无序、有序的<a href="https://zh.wikipedia.org/wiki/串列_(抽象資料型別)" target="_blank" rel="noopener">列表</a>，无序、有序的<a href="https://zh.wikipedia.org/w/index.php?title=集合_(抽象資料型別)&action=edit&redlink=1" target="_blank" rel="noopener">集合</a>间的交集、并集等高级服务器端原子操作。</p>
+<li><p>OEM unlock</p>
+<blockquote>
+<p>Settings -&gt; Developer Option and Enable OEM Unlock and USB Debugging</p>
+</blockquote>
 </li>
 </ul>
-<h5 id="持久化"><a href="#持久化" class="headerlink" title="持久化"></a>持久化</h5><ul>
-<li><p>Redis通常将全部的数据存储在内存中。2.4版本后可配置为使用<a href="https://zh.wikipedia.org/wiki/虚拟内存" target="_blank" rel="noopener">虚拟内存</a>，<a href="https://zh.wikipedia.org/wiki/Redis#cite_note-9" target="_blank" rel="noopener">[9]</a>一部分数据集存储在硬盘上，但这个特性废弃了。</p>
-<p>当前通过两种方式实现<a href="https://zh.wikipedia.org/w/index.php?title=持久化&action=edit&redlink=1" target="_blank" rel="noopener">持久化</a>：</p>
 <ul>
-<li><p>使用<a href="https://zh.wikipedia.org/w/index.php?title=快照&action=edit&redlink=1" target="_blank" rel="noopener">快照</a>，一种半持久耐用模式。不时的将数据集以异步方式从内存以RDB格式写入硬盘。</p>
+<li><p>环境配置</p>
 <blockquote>
-<p>RDB文件是Redis持久化的一种方式，Redis通过制定好的策略，按期将内存中的数据以镜像的形式转存到RDB文件中。 <a href="https://ningyu1.github.io/site/post/34-redis-rdb/" target="_blank" rel="noopener">https://ningyu1.github.io/site/post/34-redis-rdb/</a>   <a href="https://redisbook.readthedocs.io/en/latest/internal/rdb.html" target="_blank" rel="noopener">https://redisbook.readthedocs.io/en/latest/internal/rdb.html</a></p>
-</blockquote>
-</li>
-<li><p>1.1版本开始使用更安全的AOF格式替代，一种只能追加的日志类型。将数据集修改操作记录起来。Redis能够在后台对只可追加的记录作修改来避免无限增长的日志。</p>
-<blockquote>
-<p>AOF 则以协议文本的方式，将所有对数据库进行过写入的命令（及其参数）记录到 AOF 文件，以此达到记录数据库状态的目的。 <a href="https://redisbook.readthedocs.io/en/latest/internal/aof.html" target="_blank" rel="noopener">https://redisbook.readthedocs.io/en/latest/internal/aof.html</a> </p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ul>
-<h5 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h5><ul>
-<li>Redis支持主从同步。数据可以从主服务器向任意数量的从服务器上同步，从服务器可以是关联其他从服务器的主服务器。这使得Redis可执行单层树复制。从盘可以有意无意的对数据进行写操作。由于完全实现了<a href="https://zh.wikipedia.org/wiki/发布/订阅" target="_blank" rel="noopener">发布/订阅</a>机制，使得从数据库在任何地方同步树时，可订阅一个频道并接收主服务器完整的消息发布记录。同步对读取操作的可扩展性和数据冗余很有帮助。</li>
-</ul>
-<h5 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h5><ul>
-<li>当数据依赖不再需要，Redis这种基于内存的性质，与在执行一个事务时将每个变化都写入硬盘的数据库系统相比就显得执行效率非常高。<a href="https://zh.wikipedia.org/wiki/Redis#cite_note-11" target="_blank" rel="noopener">[11]</a>写与读操作速度没有明显差别。</li>
-</ul>
-<h5 id="接口介绍"><a href="#接口介绍" class="headerlink" title="接口介绍"></a>接口介绍</h5><ul>
-<li><a href="http://www.runoob.com/redis/redis-data-types.html" target="_blank" rel="noopener">http://www.runoob.com/redis/redis-data-types.html</a></li>
-</ul>
-<h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5><ul>
-<li><p>Mac 上安装redis 命令</p>
-<blockquote>
-<p>brew install redis</p>
-</blockquote>
-</li>
-<li><p>验证是否安装成功</p>
-<blockquote>
-<p>brew services start redis</p>
-</blockquote>
-</li>
-<li><p>启动客户端</p>
-<blockquote>
-<p>cd /usr/local/bin/</p>
-<p>redis-cli</p>
+<p>主要是配置adb环境，android 开发者可以忽略</p>
+<p>Download and Extract the Downloaded ADB fastboot Zip file on your PC.</p>
+<p>Now connect your phone to Computer using USB Cable.</p>
+<p>When you connect your Phone to Computer, please wait until all the drivers get installed.</p>
+<p>运行 adb deviecs 检查adb 是否安装成功</p>
 </blockquote>
 </li>
 </ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/08/20/WIDEVINE_UUID 获取/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lpl">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/blog/images/head.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="闲敲棋子落灯花">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2019/08/20/WIDEVINE_UUID 获取/" itemprop="url">android 获取 WIDEVINE_UUID</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-20T10:07:20+08:00">
-                2019-08-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li><p>anroid 通过 MediaDrm 获取uuid</p>
+<ul>
+<li><p>进入bootloader模式</p>
 <blockquote>
-<p>1、App 内唯一</p>
-<p>2、App 之间不唯一</p>
-<p>3、App卸载重装唯一</p>
+<p>adb reboot bootloader </p>
 </blockquote>
 </li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">UUID WIDEVINE_UUID = <span class="keyword">new</span> UUID(-<span class="number">0x121074568629b532L</span>, -<span class="number">0x5c37d8232ae2de13L</span>);</span><br><span class="line"></span><br><span class="line">MediaDrm wvDrm =  <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        wvDrm   = <span class="keyword">new</span> MediaDrm(WIDEVINE_UUID);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (UnsupportedSchemeException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">byte</span>[] data     = wvDrm.getPropertyByteArray(MediaDrm.PROPERTY_DEVICE_UNIQUE_ID);</span><br><span class="line">    String ID       = Base64.getEncoder().encodeToString(data).trim();</span><br><span class="line">    Log.i(<span class="string">"MAIN"</span>, <span class="string">"UUID: "</span>+ ID);</span><br><span class="line">wvDrm.close();</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/08/13/IPv6详解/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lpl">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/blog/images/head.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="闲敲棋子落灯花">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2019/08/13/IPv6详解/" itemprop="url">IPv6详解</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-13T09:15:14+08:00">
-                2019-08-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>##### </p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/08/06/Android Q 非SDK 检查/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lpl">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/blog/images/head.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="闲敲棋子落灯花">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2019/08/06/Android Q 非SDK 检查/" itemprop="url">Android Q 非SDK检查</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-06T17:56:30+08:00">
-                2019-08-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="SDK-限制等级"><a href="#SDK-限制等级" class="headerlink" title="SDK 限制等级"></a>SDK 限制等级</h5><ul>
-<li>greylist              本系统标记为不支持调用。但是无限制，可以正常使用</li>
-<li>Blacklist             无论targetVersion如何，使用这些api，系统将会抛出错误</li>
-<li>greylist-max-o        受限制的灰名单。targetVersion &lt;= 27 可以正常访问</li>
-<li>greylist-max-p        受限制的灰名单。targetVersion &lt;= 28 可以正常访问</li>
-</ul>
-<h5 id="检查工具"><a href="#检查工具" class="headerlink" title="检查工具"></a>检查工具</h5><ul>
-<li><a href="https://android.googlesource.com/platform/prebuilts/runtime/+/master/appcompat" target="_blank" rel="noopener">工具地址</a> 下载下来，将veridex-mac.zip解压出来进行下面操作进行check检查。</li>
-</ul>
-<h5 id="Mac-平台"><a href="#Mac-平台" class="headerlink" title="Mac 平台"></a>Mac 平台</h5><ul>
-<li><p>运行如下命令：</p>
+<li><p>运行 fastboot devices， 确认fastboot 驱动安装成功</p>
 </li>
-<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./appcompat.sh --dex-file=test.apk</span><br></pre></td></tr></table></figure>
-
-
+<li><p>oem unlock</p>
+</li>
+<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fastboot oem unlock</span><br><span class="line">fastboot reboot</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/08/06/Android Hook/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lpl">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/blog/images/head.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="闲敲棋子落灯花">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2019/08/06/Android Hook/" itemprop="url">Android hook</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-06T17:38:33+08:00">
-                2019-08-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="通过hook方式拦截startActivity"><a href="#通过hook方式拦截startActivity" class="headerlink" title="通过hook方式拦截startActivity"></a>通过hook方式拦截startActivity</h5><ul>
-<li><p>针对android 8以前</p>
-</li>
-<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hookAms</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            Class&lt;?&gt; ActivityManagerNativeClss  = Class.forName(<span class="string">"android.app.ActivityManagerNative"</span>);</span><br><span class="line">            Field defaultFiled      = ActivityManagerNativeClss.getDeclaredField(<span class="string">"gDefault"</span>);</span><br><span class="line">            defaultFiled.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">            Object defaultValue     = defaultFiled.get(<span class="keyword">null</span>);</span><br><span class="line"></span><br><span class="line">            Class&lt;?&gt; SingletonClass     = Class.forName(<span class="string">"android.util.Singleton"</span>);</span><br><span class="line">            Field mInstance             = SingletonClass.getDeclaredField(<span class="string">"mInstance"</span>);</span><br><span class="line">            mInstance.setAccessible(<span class="keyword">true</span>);</span><br><span class="line"></span><br><span class="line">            Object iActivityManagerObject   = mInstance.get(defaultValue);</span><br><span class="line"></span><br><span class="line">            Class&lt;?&gt; IActivityManagerIntercept  = Class.forName(<span class="string">"android.app.IActivityManager"</span>);</span><br><span class="line"></span><br><span class="line">            AmsInvocationHandler handler        = <span class="keyword">new</span> AmsInvocationHandler(iActivityManagerObject);</span><br><span class="line"></span><br><span class="line">            Object proxy    = Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(), <span class="keyword">new</span> Class&lt;?&gt;[]&#123;IActivityManagerIntercept&#125;, handler);</span><br><span class="line"></span><br><span class="line">            mInstance.set(defaultValue, proxy);</span><br><span class="line"></span><br><span class="line">        &#125;<span class="keyword">catch</span> (Throwable e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>针对android 8 以后</p>
-</li>
-<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hookAMSAfter26</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">       <span class="comment">// 第一步：获取 IActivityManagerSingleton</span></span><br><span class="line">       Class&lt;?&gt; aClass = Class.forName(<span class="string">"android.app.ActivityManager"</span>);</span><br><span class="line">       Field declaredField = aClass.getDeclaredField(<span class="string">"IActivityManagerSingleton"</span>);</span><br><span class="line">       declaredField.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">       Object value = declaredField.get(<span class="keyword">null</span>);</span><br><span class="line">  </span><br><span class="line">       Class&lt;?&gt; singletonClz = Class.forName(<span class="string">"android.util.Singleton"</span>);</span><br><span class="line">       Field instanceField = singletonClz.getDeclaredField(<span class="string">"mInstance"</span>);</span><br><span class="line">       instanceField.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">       Object iActivityManagerObject = instanceField.get(value);</span><br><span class="line">  </span><br><span class="line">       <span class="comment">// 第二步：获取我们的代理对象，这里因为 IActivityManager 是接口，我们使用动态代理的方式</span></span><br><span class="line">       Class&lt;?&gt; iActivity = Class.forName(<span class="string">"android.app.IActivityManager"</span>);</span><br><span class="line">  </span><br><span class="line">       InvocationHandler handler = <span class="keyword">new</span> AmsInvocationHandler(iActivityManagerObject);</span><br><span class="line">       Object proxy = Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(), <span class="keyword">new</span></span><br><span class="line">               Class&lt;?&gt;[]&#123;iActivity&#125;, handler);</span><br><span class="line">  </span><br><span class="line">       <span class="comment">// 第三步：偷梁换柱，将我们的 proxy 替换原来的对象</span></span><br><span class="line">       instanceField.set(value, proxy);</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>动态代理 实现</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.pa.test.test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.util.Log;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.InvocationHandler;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AmsInvocationHandler</span> <span class="keyword">implements</span> <span class="title">InvocationHandler</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Object iActivityManagerObject;</span><br><span class="line"></span><br><span class="line">    AmsInvocationHandler(Object iamo)&#123;</span><br><span class="line">        <span class="keyword">this</span>.iActivityManagerObject     = iamo;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object o, Method method, Object[] objects)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">        Log.i(<span class="string">"HookUtil"</span>, method.getName());</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(<span class="string">"startActivity"</span>.contains(method.getName()))&#123;</span><br><span class="line">            Log.i(<span class="string">"HookUtil"</span>, <span class="string">"HookUtil Success "</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> method.invoke(iActivityManagerObject, objects);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
+<h5 id="下载Android-10-镜像文件-Factory-Images"><a href="#下载Android-10-镜像文件-Factory-Images" class="headerlink" title="下载Android 10 镜像文件(Factory Images)"></a>下载Android 10 镜像文件(Factory Images)</h5><ul>
+<li><a href="https://developers.google.com/android/images" target="_blank" rel="noopener">https://developers.google.com/android/images</a></li>
 </ul>
-<blockquote>
-<p>本质上都是通过反射 + 动态代理的方式，拦截指定方法。</p>
+<h5 id="解压文件"><a href="#解压文件" class="headerlink" title="解压文件"></a>解压文件</h5><blockquote>
+<p>1、将刚刚下载的zip文件解压缩</p>
+<p>2、从解压出的文件中找到image开头的文件</p>
+<p>3、继续解压</p>
+<p>4、找到boot.img文件</p>
+<p>5、将boot.img文件copy到手机的sdcard/Download目录</p>
 </blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/08/05/Java 动态代理/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lpl">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/blog/images/head.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="闲敲棋子落灯花">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2019/08/05/Java 动态代理/" itemprop="url">Java 动态代理</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-05T17:22:10+08:00">
-                2019-08-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/java/" itemprop="url" rel="index">
-                    <span itemprop="name">java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h4><blockquote>
-<p>代理模式分为动态代理、静态代理（略）。它的定义：                                                                                         </p>
-<p>当无法直接访问某个对象或访问某个对象存在困难时可以通过一个代理对象来间接访问，为了保证客户端使用的透明性，所访问的真实对象与代理对象需要实现相同的接口。</p>
-<p>代理模式是设计模式中的一种,而且在实际的开发中使用的频率非常高 ,比如spring AOP,mybatis代理都是我们经常使用的.</p>
-<p>动态代理的优势：</p>
-<p>1、降低各个功能模块之间的耦合度，提高开发的效率和方便程序的维护度。</p>
-<p>2、减少代码量。</p>
-<p>3、不关注目标的具体实现。</p>
+<h3 id="Install-Canary-Magisk-Manager"><a href="#Install-Canary-Magisk-Manager" class="headerlink" title="Install Canary Magisk Manager"></a>Install Canary Magisk Manager</h3><blockquote>
+<p>安装 Magisk Manager，</p>
+<p><a href="https://github.com/topjohnwu/Magisk" target="_blank" rel="noopener">https://github.com/topjohnwu/Magisk</a></p>
 </blockquote>
-<h4 id="Java实现分为4个步骤，如下："><a href="#Java实现分为4个步骤，如下：" class="headerlink" title="Java实现分为4个步骤，如下："></a>Java实现分为4个步骤，如下：</h4><h5 id="需要代理的接口、类："><a href="#需要代理的接口、类：" class="headerlink" title="需要代理的接口、类："></a>需要代理的接口、类：</h5><ul>
-<li><p>首先要创建文件夹 proxy</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir proxy</span><br><span class="line">mkdir com/sun/proxy // 后续输出 $proxy用</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> proxy;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">IAction</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">sayHello</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> proxy;</span><br><span class="line"><span class="keyword">import</span> proxy.IAction;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> <span class="keyword">implements</span> <span class="title">IAction</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sayHello</span><span class="params">()</span></span>&#123;</span><br><span class="line">				System.out.println(<span class="string">"hello world"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h5 id="实现-InvocationHandler-接口"><a href="#实现-InvocationHandler-接口" class="headerlink" title="实现 InvocationHandler 接口"></a>实现 InvocationHandler 接口</h5><ul>
-<li><p>创建 PIHandler.java 类</p>
-</li>
-<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> proxy;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.InvocationHandler;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line"><span class="keyword">import</span> proxy.Person;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PIHandler</span> <span class="keyword">implements</span> <span class="title">InvocationHandler</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Person person;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">PIHandler</span><span class="params">(Person person)</span></span>&#123;</span><br><span class="line">    	<span class="keyword">this</span>.person 	= person;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object obj, Method method, Object[] objs)</span> <span class="keyword">throws</span> Throwable</span>&#123;</span><br><span class="line"></span><br><span class="line">    	<span class="keyword">return</span> method.invoke(<span class="keyword">this</span>.person, objs);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ul>
-<h5 id="创建代理Demo"><a href="#创建代理Demo" class="headerlink" title="创建代理Demo"></a>创建代理Demo</h5><ul>
-<li><p>创建Main.java类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> proxy;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.InvocationHandler;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> proxy.*;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span><span class="keyword">throws</span> Throwable</span>&#123;</span><br><span class="line">      <span class="comment">// 从源码中得知，设置这个值，可以把生成的代理类，输出出来。</span></span><br><span class="line">      System.getProperties().put(<span class="string">"sun.misc.ProxyGenerator.saveGeneratedFiles"</span>, <span class="string">"true"</span>);</span><br><span class="line">      System.out.println(Proxy.getProxyClass(IAction.class.getClassLoader(), 			  IAction.class));</span><br><span class="line">      PIHandler ph 	= <span class="keyword">new</span> PIHandler(<span class="keyword">new</span> Person());</span><br><span class="line">      IAction ac 	= (IAction) Proxy.newProxyInstance(Person.class.getClassLoader(),</span><br><span class="line">      <span class="keyword">new</span> Class&lt;?&gt;[] &#123;IAction.class&#125;, ph);</span><br><span class="line"></span><br><span class="line">      ac.sayHello();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>会将生成的$Proxy0.class 类输出到和proxy 目录同级的com/sun/proxy目录下面。</p>
-</li>
-</ul>
-<h5 id="Proxy0-class-查看"><a href="#Proxy0-class-查看" class="headerlink" title="$Proxy0.class 查看"></a>$Proxy0.class 查看</h5><ul>
-<li><p>编译java文件</p>
-</li>
-<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javac proxy/Main.java</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>执行java文件</p>
-</li>
-<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java proxy.Main</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>$proxy0.class</p>
-</li>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br></pre></td><td class="code"><pre><span class="line">package com.sun.proxy;</span><br><span class="line"></span><br><span class="line">import java.lang.reflect.InvocationHandler;</span><br><span class="line">import java.lang.reflect.Method;</span><br><span class="line">import java.lang.reflect.Proxy;</span><br><span class="line">import java.lang.reflect.UndeclaredThrowableException;</span><br><span class="line">import proxy.IAction;</span><br><span class="line"></span><br><span class="line">public final class $Proxy0</span><br><span class="line">  extends Proxy</span><br><span class="line">  implements IAction</span><br><span class="line">&#123;</span><br><span class="line">  private static Method m1;</span><br><span class="line">  private static Method m3;</span><br><span class="line">  private static Method m2;</span><br><span class="line">  private static Method m0;</span><br><span class="line">  </span><br><span class="line">  public $Proxy0(InvocationHandler paramInvocationHandler)</span><br><span class="line">  &#123;</span><br><span class="line">    super(paramInvocationHandler);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  public final boolean equals(Object paramObject)</span><br><span class="line">  &#123;</span><br><span class="line">    try</span><br><span class="line">    &#123;</span><br><span class="line">      return ((Boolean)this.h.invoke(this, m1, new Object[] &#123; paramObject &#125;)).booleanValue();</span><br><span class="line">    &#125;</span><br><span class="line">    catch (Error|RuntimeException localError)</span><br><span class="line">    &#123;</span><br><span class="line">      throw localError;</span><br><span class="line">    &#125;</span><br><span class="line">    catch (Throwable localThrowable)</span><br><span class="line">    &#123;</span><br><span class="line">      throw new UndeclaredThrowableException(localThrowable);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  public final void sayHello()</span><br><span class="line">  &#123;</span><br><span class="line">    try</span><br><span class="line">    &#123;</span><br><span class="line">      this.h.invoke(this, m3, null);</span><br><span class="line">      return;</span><br><span class="line">    &#125;</span><br><span class="line">    catch (Error|RuntimeException localError)</span><br><span class="line">    &#123;</span><br><span class="line">      throw localError;</span><br><span class="line">    &#125;</span><br><span class="line">    catch (Throwable localThrowable)</span><br><span class="line">    &#123;</span><br><span class="line">      throw new UndeclaredThrowableException(localThrowable);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  public final String toString()</span><br><span class="line">  &#123;</span><br><span class="line">    try</span><br><span class="line">    &#123;</span><br><span class="line">      return (String)this.h.invoke(this, m2, null);</span><br><span class="line">    &#125;</span><br><span class="line">    catch (Error|RuntimeException localError)</span><br><span class="line">    &#123;</span><br><span class="line">      throw localError;</span><br><span class="line">    &#125;</span><br><span class="line">    catch (Throwable localThrowable)</span><br><span class="line">    &#123;</span><br><span class="line">      throw new UndeclaredThrowableException(localThrowable);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  public final int hashCode()</span><br><span class="line">  &#123;</span><br><span class="line">    try</span><br><span class="line">    &#123;</span><br><span class="line">      return ((Integer)this.h.invoke(this, m0, null)).intValue();</span><br><span class="line">    &#125;</span><br><span class="line">    catch (Error|RuntimeException localError)</span><br><span class="line">    &#123;</span><br><span class="line">      throw localError;</span><br><span class="line">    &#125;</span><br><span class="line">    catch (Throwable localThrowable)</span><br><span class="line">    &#123;</span><br><span class="line">      throw new UndeclaredThrowableException(localThrowable);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  static</span><br><span class="line">  &#123;</span><br><span class="line">    try</span><br><span class="line">    &#123;</span><br><span class="line">      m1 = Class.forName(&quot;java.lang.Object&quot;).getMethod(&quot;equals&quot;, new Class[] &#123; Class.forName(&quot;java.lang.Object&quot;) &#125;);</span><br><span class="line">      m3 = Class.forName(&quot;proxy.IAction&quot;).getMethod(&quot;sayHello&quot;, new Class[0]);</span><br><span class="line">      m2 = Class.forName(&quot;java.lang.Object&quot;).getMethod(&quot;toString&quot;, new Class[0]);</span><br><span class="line">      m0 = Class.forName(&quot;java.lang.Object&quot;).getMethod(&quot;hashCode&quot;, new Class[0]);</span><br><span class="line">      return;</span><br><span class="line">    &#125;</span><br><span class="line">    catch (NoSuchMethodException localNoSuchMethodException)</span><br><span class="line">    &#123;</span><br><span class="line">      throw new NoSuchMethodError(localNoSuchMethodException.getMessage());</span><br><span class="line">    &#125;</span><br><span class="line">    catch (ClassNotFoundException localClassNotFoundException)</span><br><span class="line">    &#123;</span><br><span class="line">      throw new NoClassDefFoundError(localClassNotFoundException.getMessage());</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
+<h5 id="修改更新通道（Update-Channel）"><a href="#修改更新通道（Update-Channel）" class="headerlink" title="修改更新通道（Update Channel）"></a>修改更新通道（Update Channel）</h5><blockquote>
+<p>1、安装Magisk manager</p>
+<p>2、Left Menu -》 Settings -》 update Channel -》 Canary</p>
+</blockquote>
+<h3 id="Patch-the-Boot-Image"><a href="#Patch-the-Boot-Image" class="headerlink" title="Patch the Boot Image"></a>Patch the Boot Image</h3><blockquote>
+<ol>
+<li>Go to the main screen of the <strong>Magisk Manager</strong>.</li>
+<li>Tap on <strong>Install</strong> and hit the <strong>Install</strong> button to bring up <strong>new set of options</strong>.</li>
+<li>From the list, tap on the <strong>Select and Patch a file</strong> option.</li>
+<li>Grant all the necessary permissions by tapping <strong>Allow</strong>.</li>
+<li>Now under the <strong>File Manger</strong>, go to the <strong>Downloads</strong> folder where you have copied the <strong>boot.img</strong> file.</li>
+<li>Tap on the <strong>boot.img</strong> file and Magisk Manager will start patching that file.</li>
+<li>Once the process is complete, tap the back arrow to finish.</li>
+</ol>
+</blockquote>
+<h3 id="Install-ADB-and-Fastboot"><a href="#Install-ADB-and-Fastboot" class="headerlink" title="Install ADB and Fastboot"></a>Install ADB and Fastboot</h3><blockquote>
+<p>android 开发者已经有了adb 和 fastboot的环境，如果没有需要自行下载并配置环境变量</p>
+</blockquote>
+<h3 id="Move-the-Patched-boot-image"><a href="#Move-the-Patched-boot-image" class="headerlink" title="Move the Patched boot image"></a>Move the Patched boot image</h3><blockquote>
+<p>将boot.img 从手机移动到PC上，重命名为magisk_patched.img</p>
+</blockquote>
+<h3 id="Boot-into-the-Fastboot-Mode"><a href="#Boot-into-the-Fastboot-Mode" class="headerlink" title="Boot into the Fastboot Mode"></a>Boot into the Fastboot Mode</h3><blockquote>
+<p>进入 fastboot mode </p>
+<ol>
+<li>Long press the <strong>Power button</strong> to shut down your phone.</li>
+<li>Now hold down the <strong>Power + Volume Down</strong> button till the Fastboot menu appears.</li>
+<li>Quickly connect your device to the PC via a USB cable.</li>
+<li>Leave the phone in that state for the further process.</li>
+</ol>
+</blockquote>
+<h3 id="Flash-the-Patched-boot-image"><a href="#Flash-the-Patched-boot-image" class="headerlink" title="Flash the Patched boot image"></a>Flash the Patched boot image</h3><blockquote>
+<p>命令行刷入 magisk_patched.img</p>
+<ol>
+<li>Type the below command in the cmd prompt;<br><code>fastboot flash boot magisk_patched.img</code></li>
+<li>Type in the next command;<br><code>fastboot reboot</code></li>
+<li>The above command will automatically reboot your device.</li>
+<li>Once your device has rebooted you can verify the root status of your device by opening the Magisk Manager app.</li>
+<li>That’s it!</li>
+</ol>
+</blockquote>
+<h5 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h5><blockquote>
+<p>1、unlock the BootLoader 不同手机不同版本可能不一样；</p>
+<p>2、去官网下载对应机型的Factory Images，解压缩得到image**文件，继续解压得到boot.img文件</p>
+<p>3、下载最新的magisk Manager </p>
+<p>4、在需要root的手机上安装 Magisk Manager 并修改 更新通道</p>
+<p>5、将boot.img文件copy到手机上，例如/sdcard/download</p>
+<p>6、Magisk Manager首页 Magisk模块后面选择安装，选择修复***，然后去文件系统里面选择boot.img。会自动下载Magisk模块，并且修改boot.img文件，最后保存为magisk_patched.img文件</p>
+<p>7、运行 adb reboot bootloader 进入fastboot mode</p>
+<p>8、运行 fastboot boot magisk_patched.img (临时) 或者 fastboot flash boot magisk_patched.img （永久）</p>
+<p>​    PS: 前者为临时刷root权限；后者为永久刷root权限，后者刷入后，手动按power键进入系统，进入Magisk Manager 再次安装Magisk，选择直接安装，之后重启，永久root生效。</p>
+<p>9、刷临时root会自动重启，进入系统。重新进入Magisk Manager 发现Magisk模块以及安装成功。</p>
+<p>10，adb shell ，然后运行su命令，发现root已经成功。</p>
+</blockquote>
 <p>参考文章：</p>
-<p><a href="https://www.cnblogs.com/MOBIN/p/5597215.html" target="_blank" rel="noopener">https://www.cnblogs.com/MOBIN/p/5597215.html</a></p>
-<p><a href="https://juejin.im/entry/5a4af4116fb9a045104ad95b" target="_blank" rel="noopener">https://juejin.im/entry/5a4af4116fb9a045104ad95b</a></p>
-<p><a href="https://my.oschina.net/daijunjian/blog/1549753" target="_blank" rel="noopener">https://my.oschina.net/daijunjian/blog/1549753</a></p>
-<p><a href="https://www.jianshu.com/p/d5d9215bf8ad" target="_blank" rel="noopener">https://www.jianshu.com/p/d5d9215bf8ad</a></p>
-</blockquote>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/08/05/单例模式/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lpl">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/blog/images/head.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="闲敲棋子落灯花">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2019/08/05/单例模式/" itemprop="url">懒加载的单例模式</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-05T16:42:27+08:00">
-                2019-08-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/设计模式/" itemprop="url" rel="index">
-                    <span itemprop="name">设计模式</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="辅助类-Singleton"><a href="#辅助类-Singleton" class="headerlink" title="辅助类 Singleton"></a>辅助类 Singleton</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> T mInstance;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">abstract</span> T <span class="title">create</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> T <span class="title">get</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">synchronized</span> (<span class="keyword">this</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (mInstance == <span class="keyword">null</span>) &#123;</span><br><span class="line">                mInstance = create();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> mInstance;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h5 id="创建单例："><a href="#创建单例：" class="headerlink" title="创建单例："></a>创建单例：</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton&lt;IActivityManager&gt; IActivityManagerSingleton =</span><br><span class="line">            <span class="keyword">new</span> Singleton&lt;IActivityManager&gt;() &#123;</span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">protected</span> IActivityManager <span class="title">create</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                    <span class="keyword">final</span> IBinder b = ServiceManager.getService(Context.ACTIVITY_SERVICE);</span><br><span class="line">                    <span class="keyword">final</span> IActivityManager am = IActivityManager.Stub.asInterface(b);</span><br><span class="line">                    <span class="keyword">return</span> am;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;;</span><br></pre></td></tr></table></figure>
-
 <blockquote>
-<p>1、优点是，提高加载速度。类初始化的时候，没有立即初始化开销大的对象A，而是先初始化了一个接口类。等到实际使用的时候再去初始化对象A。</p>
+<p>1、<a href="https://sspai.com/post/53043" target="_blank" rel="noopener">https://sspai.com/post/53043</a></p>
+<p>2、<a href="https://sspai.com/post/53809" target="_blank" rel="noopener">https://sspai.com/post/53809</a></p>
+<p>3、<a href="https://sspai.com/post/53075" target="_blank" rel="noopener">https://sspai.com/post/53075</a></p>
+<p>4、<a href="https://www.getdroidtips.com/how-to-root-any-pixel-device-running-android-10-q-pixel-2-pixel-3-3a-xl/" target="_blank" rel="noopener">https://www.getdroidtips.com/how-to-root-any-pixel-device-running-android-10-q-pixel-2-pixel-3-3a-xl/</a></p>
 </blockquote>
 
           
@@ -1925,7 +568,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/08/05/Android 源码目录结构/">
+    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2020/01/10/Jenkins持续集成交付/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lpl">
@@ -1944,7 +587,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2019/08/05/Android 源码目录结构/" itemprop="url">Android 源码目录结构</a></h1>
+                <a class="post-title-link" href="/blog/2020/01/10/Jenkins持续集成交付/" itemprop="url">Jenkins 持续集成，交付</a></h1>
         
 
         <div class="post-meta">
@@ -1956,8 +599,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-05T14:54:09+08:00">
-                2019-08-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-10T22:17:44+08:00">
+                2020-01-10
               </time>
             
 
@@ -2018,79 +661,1421 @@
       
         
           
-            <h5 id="一级目录："><a href="#一级目录：" class="headerlink" title="一级目录："></a>一级目录：</h5><ul>
-<li>art - Android Runtime，一种app运行模式，区别去传统的Dalvik虚拟机，目的是提高android系统的流畅性。</li>
-<li>bionic - 集成C库源代码，android改造的c/c++库。</li>
-<li>bootable - android程序启动引导，适合各种bootloader的通用代码。包括一个recovery目录。</li>
-<li>build - 存放系统编译规则以及generic等基础开发包配置。</li>
-<li>compatibility - android 兼容计划。</li>
-<li>cts - android兼容性测试标准。</li>
-<li>dalvik - android dalvik虚拟机相关内容。</li>
-<li>developers - 开发者参考文档。</li>
-<li>development - android 应用开发基础设施相关。</li>
-<li>device - android 支持的各种设备及相关配置。</li>
-<li>external - android 中使用的各种外部开源库。</li>
-<li>frameworks - 应用层框架，android系统的核心部分，又java、c++实现。</li>
-<li>hardware - 硬件适配接口。</li>
-<li>kernel - linux 内核，android 默认不提供，只有一个tests目录，需要另外下载。</li>
-<li>libcore - android java 核心类库。</li>
-<li>libnativehelper - android 动态库，实现jni的基础。</li>
-<li>packages - 应用程序包。</li>
-<li>pdk - Plug development kit，本地开发套件。</li>
-<li>plaform_testing - android 平台测试程序。</li>
-<li>prebuilds - x86 和 arm 架构下预编译的一些资源。</li>
-<li>sdk - android java层SDK。</li>
-<li>system - android底层文件系统库，应用、组件。</li>
-<li>test - android Vendor测试框架。</li>
-<li>toolchain - android 工具链文件。</li>
-<li>tools - android 工具文件。</li>
-<li>Android.bp - android 7.0 开始代替 android.mk 文件， 它告诉ndk将jni编译为动态库的脚本。</li>
-<li>Makefile - 全局Makefile文件，用来定义编译规则。</li>
+            <h5 id="Jenkins简介"><a href="#Jenkins简介" class="headerlink" title="Jenkins简介"></a>Jenkins简介</h5><ul>
+<li><p><strong>Jenkins</strong>是一款由<a href="https://zh.wikipedia.org/wiki/Java" target="_blank" rel="noopener">Java</a>编写的<a href="https://zh.wikipedia.org/wiki/开源" target="_blank" rel="noopener">开源</a>的<a href="https://zh.wikipedia.org/wiki/持续集成" target="_blank" rel="noopener">持续集成</a>工具</p>
+</li>
+<li><p>官网地址 <a href="https://jenkins.io/zh/" target="_blank" rel="noopener">https://jenkins.io/zh/</a></p>
+</li>
 </ul>
-<h5 id="framework-二级目录-："><a href="#framework-二级目录-：" class="headerlink" title="framework 二级目录 ："></a>framework 二级目录 ：</h5><ul>
-<li>av - 多媒体框架。</li>
-<li>base - android 源码的主要核心目录。</li>
-<li>compile - 编译相关。</li>
-<li>ex - 文件解析器。</li>
-<li>hardware - 硬件适配接口。</li>
-<li>layoutlib - 布局相关。</li>
-<li>minikin - android 原生字体，连体字效果。</li>
-<li>ml - 机器学习。</li>
-<li>multidex - 多dex 加载器。</li>
-<li>native - native 实现。</li>
-<li>opt - 一些软件。</li>
-<li>rs - Render Script ，创建3D接口。</li>
-<li>support - framework 支持文件。</li>
-<li>wilhelm - 基于 Khronos 的OpenGL ES/ OpenGLMax AL audio/multi media实现。</li>
+<h5 id="Jenkins-的卸载"><a href="#Jenkins-的卸载" class="headerlink" title="Jenkins 的卸载"></a>Jenkins 的卸载</h5><ul>
+<li>运行命令 ‘/Library/Application Support/Jenkins/Uninstall.command’</li>
+<li>参考文章 <a href="https://blog.csdn.net/weixin_40881502/article/details/84748599" target="_blank" rel="noopener">https://blog.csdn.net/weixin_40881502/article/details/84748599</a></li>
 </ul>
-<h5 id="base-三级目录："><a href="#base-三级目录：" class="headerlink" title="base 三级目录："></a>base 三级目录：</h5><ul>
-<li>apct-test - 性能优化测试。</li>
-<li>api - android应用框架层声明类、属性、资源。</li>
-<li>cmds - android 系统启动时用到的commands。</li>
-<li>core - framwork的核心框架组件。</li>
-<li>data - android系统下的资源(声音、视屏、字体、软盘等)。</li>
-<li>docs - android 项目说明文档。</li>
-<li>drm - 实现权限管理，数字内容解密等模块的工作。</li>
-<li>graphics - 图像渲染模块。</li>
-<li>keystore - 密钥库。</li>
-<li>libs - 库信息(界面、存储、USB)</li>
-<li>location - 位置信息。</li>
-<li>media - 手机媒体管理。</li>
-<li>native - 本地方法实现（传感器、输入、界面、窗体）。</li>
-<li>nfc-extras - 近场通讯。</li>
-<li>obex - 蓝牙。</li>
-<li>opengl - 2D、3D图形绘制。</li>
-<li>pacakges - 框架床的实现(界面、服务、存储)。</li>
-<li>proto - 协议框架。</li>
-<li>rs - 资源框架。</li>
-<li>samples - 例子程序。</li>
-<li>sax - xml 解析器。</li>
-<li>Services - 各种服务程序。</li>
-<li>telecomm - telecomm 通信框架。</li>
-<li>telephony - 电话通信框架。</li>
-<li>tests - 各种测试。</li>
-<li>vr - 虚拟现实相关。</li>
-<li>wifi - wifi模块。 </li>
+<h5 id="Jenkins-命令行安装"><a href="#Jenkins-命令行安装" class="headerlink" title="Jenkins 命令行安装"></a>Jenkins 命令行安装</h5><ul>
+<li><p>brew install jenkins-lts</p>
+<blockquote>
+<p>安装好 Jenkins 之后，直接访问默认的地址：<a href="http://localhost:8080/" target="_blank" rel="noopener">http://localhost:8080/</a> 就可以启动默认设置页面了。如果访问这个默认地址不能加载 Jenkins 的，我们需要先通过 brew services start jenkins-lts 来启动 Jenkins。</p>
+<p>对应的卸载方式 brew uninstall jenkins-lts</p>
+<p>Homebrew 命令安装的 Jenkins 的目录在：~/.jenkins，而通过 .pkg 包安装的 Jenkins 目录在：/Users/Shared/Jenkins，这个就是为什么 .pkg 安装的 Jenkins 相对于 Homebrew 安装的 Jenkins 问题更多的根本原因！</p>
+<p>2.如果你不想用默认的端口号：8080，或者这个端口号已经被占用，可以通过以下位置的文件来修改默认端口号：/usr/local/Cellar/jenkins-lts/2.138.2/homebrew.mxcl.jenkins-lts.plist，当然这个位置的文件根据你的版本号不同而不同。修改第 18 行的 –httpPort= 后面的值。</p>
+<p>然后通过 brew services start jenkins-lts 命令来重启生效。</p>
+</blockquote>
+</li>
+<li><p>查看密码</p>
+</li>
+<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cat ~/.jenkins/secrets/initialAdminPassword</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装插件</p>
+</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GitLab、GitLab Hook、XCode integration、Keychains and Provisoning Profiles Management 四个插件</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置 Keychains 和 Provisioning Profiles。(For IOS)</p>
+<blockquote>
+<p>通过刚才安装的 keychains and Provisioning Profiles Management 插件，Jenkins -&gt; Manage Jenkins -&gt; Keychains and Provisioning Profiles Management，来配置 Keychains 和 Provisioning Profiles。</p>
+<p>去 macOS 以下地址：/Users/{username}/Library/Keychains。我的路径是：~/Library/Keychains，找到 login.keychain 文件，有的时候你可能看到的是 login.keychain-db 文件，没关系，将 login.keychain-db 文件修改成 login.keychain。然后通过 Upload Keychain or Provisioning Profile File -&gt; Choose File -&gt; Upload 上传：</p>
+</blockquote>
+</li>
+</ul>
+<h5 id="新建构建项目Android"><a href="#新建构建项目Android" class="headerlink" title="新建构建项目Android"></a>新建构建项目Android</h5><ul>
+<li><p>配置JDK</p>
+<blockquote>
+<p>Manage Jenkins -》Global Tool Configuration 模块配置JDK，因为本地有安装JDK，这里只需要提供路径即可。</p>
+</blockquote>
+</li>
+<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo $JAVA_HOME</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<ul>
+<li><p>配置Gradle</p>
+<blockquote>
+<p>和JDK在同一个位置配置，Gradle 可以选择使用Jenkins自己的，让它自己去下载。不用本地已经有的。</p>
+</blockquote>
+</li>
+<li><p>配置git SSH</p>
+<blockquote>
+<p>Jenkins &gt; Credentials &gt; System &gt;Global credentials (unrestricted)</p>
+<p>Git SSH 在左边控制面板下面找到Credentials ，然后安装上面顺序找到 Add Credentials，点击添加。</p>
+<p>Git配置有两种，这里我使用的是SSH方式，只需要填入用户名，ssh 私钥即可。私钥地址 .ssh/id_rsa</p>
+</blockquote>
+</li>
+<li><p>配置项目地址 Git</p>
+<blockquote>
+<p>如果上面配置的是 ssh方式，这里最好是使用<a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:xxx 这种方式，而不是http。</p>
+</blockquote>
+</li>
+<li><p>新建项目</p>
+<blockquote>
+<p>1、配置git地址</p>
+<p>2、配置构建周期(例如：H/5 * * * *)</p>
+<p>3、配置构建脚本invoke Gradle Script， 现在assembleRelease –info</p>
+</blockquote>
+</li>
+<li><p>Error 403 No valid crumb was included in the request</p>
+</li>
+<li><blockquote>
+<p>在jenkins 的Configure Global Security下 , 取消“防止跨站点请求伪造（Prevent Cross Site Request Forgery exploits）”的勾选。</p>
+</blockquote>
+</li>
+</ul>
+<h5 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h5><ul>
+<li><a href="https://www.ifeegoo.com/using-jenkins-to-set-up-the-continuous-integration-environment-of-android-and-ios-on-macos.html" target="_blank" rel="noopener">https://www.ifeegoo.com/using-jenkins-to-set-up-the-continuous-integration-environment-of-android-and-ios-on-macos.html</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/12/31/Android 命令行内存分析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lpl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/blog/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="闲敲棋子落灯花">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2019/12/31/Android 命令行内存分析/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-31T11:08:39+08:00">
+                2019-12-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/12/29/OpenCV Python Mac 配置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lpl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/blog/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="闲敲棋子落灯花">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2019/12/29/OpenCV Python Mac 配置/" itemprop="url">Mac Python OpenCV 配置</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-29T18:27:21+08:00">
+                2019-12-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/opencv/" itemprop="url" rel="index">
+                    <span itemprop="name">opencv</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo pip3 install numpy</span><br><span class="line">sudo pip3 install Matplotlib</span><br><span class="line">sudo pip3 install opencv_python</span><br><span class="line">sudo pip3 install pytesseract</span><br></pre></td></tr></table></figure>
+
+<h5 id="模式匹配"><a href="#模式匹配" class="headerlink" title="模式匹配"></a>模式匹配</h5><ul>
+<li><p>在图像中查找指定的模板</p>
+<blockquote>
+<p><a href="https://testerhome.com/topics/12537/show_wechat" target="_blank" rel="noopener">https://testerhome.com/topics/12537/show_wechat</a></p>
+</blockquote>
+</li>
+<li><p>比较全面的opencv </p>
+<blockquote>
+<p><a href="https://juejin.im/entry/5a7c2622f265da4e7071b54a" target="_blank" rel="noopener">https://juejin.im/entry/5a7c2622f265da4e7071b54a</a></p>
+</blockquote>
+</li>
+<li></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/12/27/Gradle 配置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lpl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/blog/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="闲敲棋子落灯花">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2019/12/27/Gradle 配置/" itemprop="url">Android Gradle配置</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-27T16:47:52+08:00">
+                2019-12-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/gradle/" itemprop="url" rel="index">
+                    <span itemprop="name">gradle</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="Android-Gradle-插件-与-gradle-版本的映射关系"><a href="#Android-Gradle-插件-与-gradle-版本的映射关系" class="headerlink" title="Android Gradle 插件 与 gradle 版本的映射关系"></a>Android Gradle 插件 与 gradle 版本的映射关系</h5><ul>
+<li><table>
+<thead>
+<tr>
+<th align="left">插件版本</th>
+<th align="left">所需的 Gradle 版本</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">1.0.0 - 1.1.3</td>
+<td align="left">2.2.1 - 2.3</td>
+</tr>
+<tr>
+<td align="left">1.2.0 - 1.3.1</td>
+<td align="left">2.2.1 - 2.9</td>
+</tr>
+<tr>
+<td align="left">1.5.0</td>
+<td align="left">2.2.1 - 2.13</td>
+</tr>
+<tr>
+<td align="left">2.0.0 - 2.1.2</td>
+<td align="left">2.10 - 2.13</td>
+</tr>
+<tr>
+<td align="left">2.1.3 - 2.2.3</td>
+<td align="left">2.14.1+</td>
+</tr>
+<tr>
+<td align="left">2.3.0+</td>
+<td align="left">3.3+</td>
+</tr>
+<tr>
+<td align="left">3.0.0+</td>
+<td align="left">4.1+</td>
+</tr>
+<tr>
+<td align="left">3.1.0+</td>
+<td align="left">4.4+</td>
+</tr>
+<tr>
+<td align="left">3.2.0 - 3.2.1</td>
+<td align="left">4.6+</td>
+</tr>
+<tr>
+<td align="left">3.3.0 - 3.3.2</td>
+<td align="left">4.10.1+</td>
+</tr>
+<tr>
+<td align="left">3.4.0+</td>
+<td align="left">5.1.1+</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<blockquote>
+<p> <a href="https://developer.android.google.cn/studio/releases/gradle-plugin" target="_blank" rel="noopener">https://developer.android.google.cn/studio/releases/gradle-plugin</a></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/12/27/AndroidX 适配/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lpl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/blog/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="闲敲棋子落灯花">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2019/12/27/AndroidX 适配/" itemprop="url">androidX</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-27T16:04:04+08:00">
+                2019-12-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/androidX/" itemprop="url" rel="index">
+                    <span itemprop="name">androidX</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="androidX简介"><a href="#androidX简介" class="headerlink" title="androidX简介"></a>androidX简介</h4><blockquote>
+<p>AndroidX 是 Android 团队用于在 <a href="https://developer.android.com/jetpack" target="_blank" rel="noopener">Jetpack</a> 中开发，测试，打包，版本和发布库的开源项目 。</p>
+<p>AndroidX 是对原始 Android <a href="https://developer.android.com/topic/libraries/support-library/index" target="_blank" rel="noopener">Support Library</a>的重大改进 。与支持库一样，AndroidX 与 Android 操作系统分开提供，并提供跨 Android 版本的向后兼容性。AndroidX 通过提供功能奇偶校验和新库完全取代了支持库。此外，AndroidX 还包括以下功能：</p>
+<ul>
+<li>AndroidX 中的所有软件包都以字符串开头，位于一致的命名空间中 <code>androidx</code>。支持库包已映射到相应的 <code>androidx.*</code> 包中。有关所有旧类和构建组件的完整映射到新构件。</li>
+<li>与支持库不同，AndroidX 软件包是单独维护和更新的。这些 <code>androidx</code> 包使用从版本 1.0.0 开始的严格语义版本控制。开发者可以单独更新项目中的 AndroidX 库。</li>
+<li>所有新的支持库开发都将在 AndroidX 库中进行。这包括维护原始支持库组件和引入新的 Jetpack 组件</li>
+<li><a href="https://henleylee.github.io/posts/2018/3e59253e.html" target="_blank" rel="noopener">https://henleylee.github.io/posts/2018/3e59253e.html</a></li>
+<li><a href="https://www.infoq.cn/article/2018/05/androidx-library-alpha" target="_blank" rel="noopener">https://www.infoq.cn/article/2018/05/androidx-library-alpha</a></li>
+</ul>
+</blockquote>
+<h5 id="androidX-迁移"><a href="#androidX-迁移" class="headerlink" title="androidX 迁移"></a>androidX 迁移</h5><blockquote>
+<p><a href="https://yumibb.cn/2019/12/12/介绍两款androidX迁移利器/" target="_blank" rel="noopener">https://yumibb.cn/2019/12/12/%E4%BB%8B%E7%BB%8D%E4%B8%A4%E6%AC%BEandroidX%E8%BF%81%E7%A7%BB%E5%88%A9%E5%99%A8/</a></p>
+</blockquote>
+<h5 id="androidX-官方文档"><a href="#androidX-官方文档" class="headerlink" title="androidX 官方文档"></a>androidX 官方文档</h5><blockquote>
+<p><a href="https://developer.android.google.cn/jetpack/androidx/migrate" target="_blank" rel="noopener">https://developer.android.google.cn/jetpack/androidx/migrate</a> </p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/12/27/Android 代码检测/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lpl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/blog/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="闲敲棋子落灯花">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2019/12/27/Android 代码检测/" itemprop="url">Android Studio 代码检测</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-27T14:09:29+08:00">
+                2019-12-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/android-studio/" itemprop="url" rel="index">
+                    <span itemprop="name">android studio</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="阿里代码检测工具-AS插件"><a href="#阿里代码检测工具-AS插件" class="headerlink" title="阿里代码检测工具-AS插件"></a>阿里代码检测工具-AS插件</h5><ul>
+<li>安装方式 在线安装插件</li>
+<li>插件名称 Alibaba Java Coding Guidelines plugin support.</li>
+<li>检测范围 - 针对代码规范检测。</li>
+<li>离线下载地址 - <a href="https://plugins.jetbrains.com/plugin/10046-alibaba-java-coding-guidelines/" target="_blank" rel="noopener">https://plugins.jetbrains.com/plugin/10046-alibaba-java-coding-guidelines/</a></li>
+<li></li>
+</ul>
+<h5 id="SpotBugs"><a href="#SpotBugs" class="headerlink" title="SpotBugs"></a>SpotBugs</h5><ul>
+<li><p>静态代码检测工具，针对字节码进行检测。基于FindBugs</p>
+</li>
+<li><p>安装方式</p>
+</li>
+<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">buildscript &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        jcenter()</span><br><span class="line">        maven &#123;</span><br><span class="line">            url <span class="string">"https://plugins.gradle.org/m2/"</span> <span class="comment">// For SpotBugs</span></span><br><span class="line">        &#125;</span><br><span class="line">        maven &#123;</span><br><span class="line">            url <span class="string">'https://maven.google.com/'</span></span><br><span class="line">            name <span class="string">'Google'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    dependencies &#123;</span><br><span class="line">        classpath <span class="string">'com.android.tools.build:gradle:3.4.2'</span></span><br><span class="line">        classpath <span class="string">"gradle.plugin.com.github.spotbugs:spotbugs-gradle-plugin:2.0.0"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">allprojects &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        jcenter()</span><br><span class="line">        maven &#123;</span><br><span class="line">            url <span class="string">'https://maven.google.com/'</span></span><br><span class="line">            name <span class="string">'Google'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">task <span class="title">clean</span><span class="params">(type: Delete)</span> </span>&#123;</span><br><span class="line">    delete rootProject.buildDir</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: <span class="string">'com.android.application'</span></span><br><span class="line">apply plugin: <span class="string">"com.github.spotbugs"</span></span><br><span class="line"></span><br><span class="line">android &#123;</span><br><span class="line">    compileSdkVersion <span class="number">28</span></span><br><span class="line">    buildToolsVersion <span class="string">"28.0.3"</span></span><br><span class="line">    defaultConfig &#123;</span><br><span class="line">        applicationId <span class="string">"xxx"</span></span><br><span class="line">        minSdkVersion <span class="number">23</span></span><br><span class="line">        targetSdkVersion <span class="number">28</span></span><br><span class="line">        versionCode <span class="number">1</span></span><br><span class="line">        versionName <span class="string">"1.0"</span></span><br><span class="line">    &#125;</span><br><span class="line">    buildTypes &#123;</span><br><span class="line">        release &#123;</span><br><span class="line">            minifyEnabled <span class="keyword">false</span></span><br><span class="line">            <span class="function">proguardFiles <span class="title">getDefaultProguardFile</span><span class="params">(<span class="string">'proguard-android-optimize.txt'</span>)</span>, 'proguard-rules.pro'</span></span><br><span class="line"><span class="function">        &#125;</span></span><br><span class="line"><span class="function">    &#125;</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">    lintOptions </span>&#123;</span><br><span class="line">        abortOnError <span class="keyword">false</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">sourceSets &#123;</span><br><span class="line">    main &#123;</span><br><span class="line">        java.srcDirs = []</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">spotbugs &#123;</span><br><span class="line">    ignoreFailures = <span class="keyword">true</span></span><br><span class="line">    reportsDir = file(<span class="string">"$project.buildDir/SpotBugsReports"</span>)</span><br><span class="line">    effort = <span class="string">"max"</span></span><br><span class="line">    reportLevel = <span class="string">"high"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">tasks.withType(com.github.spotbugs.SpotBugsTask) &#123;</span><br><span class="line">    dependsOn <span class="string">'assembleDebug'</span></span><br><span class="line">    classes = files(<span class="string">"$project.buildDir/intermediates/javac"</span>) <span class="comment">// </span></span><br><span class="line">    source = fileTree(<span class="string">'src/main/java'</span>)</span><br><span class="line">    reports &#123;</span><br><span class="line">        <span class="comment">// Enable HTML report only</span></span><br><span class="line">        html.enabled = <span class="keyword">true</span></span><br><span class="line">        xml.enabled = <span class="keyword">false</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">repositories &#123;</span><br><span class="line">    <span class="comment">//引入aar包</span></span><br><span class="line">    flatDir &#123; dirs <span class="string">'libs'</span> &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">    <span class="function">implementation <span class="title">fileTree</span><span class="params">(include: [<span class="string">'*.jar'</span>], dir: <span class="string">'libs'</span>)</span></span></span><br><span class="line"><span class="function">    implementation 'com.android.support:appcompat-v7:28.0.0'</span></span><br><span class="line"><span class="function">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 执行方式, 实测可以生成检测报告</span><br><span class="line">./gradlew check</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>环境配置</p>
+<blockquote>
+<p>1、AS 版本为3.5.3</p>
+<p>2、gradle tools 版本为 3.4.2</p>
+<p>3、gradle 版本为 5.1.1</p>
+</blockquote>
+</li>
+<li><p>SpotBugs 官网 <a href="https://spotbugs.readthedocs.io/en/latest/gradle.html" target="_blank" rel="noopener">https://spotbugs.readthedocs.io/en/latest/gradle.html</a></p>
+</li>
+<li><p>其他参考文章 <a href="https://juejin.im/post/59c9d14451882579e955588d" target="_blank" rel="noopener">https://juejin.im/post/59c9d14451882579e955588d</a> </p>
+<blockquote>
+<p><a href="https://codeday.me/bug/20191108/2010094.html" target="_blank" rel="noopener">https://codeday.me/bug/20191108/2010094.html</a></p>
+</blockquote>
+</li>
+</ul>
+<h5 id="SpotBugs-多Module的配置"><a href="#SpotBugs-多Module的配置" class="headerlink" title="SpotBugs 多Module的配置"></a>SpotBugs 多Module的配置</h5><ul>
+<li><p>spotbugs.gradle配置</p>
+</li>
+<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">    spotbugs configurations.spotbugsPlugins.dependencies</span><br><span class="line">    spotbugsPlugins <span class="string">'com.h3xstream.findsecbugs:findsecbugs-plugin:1.8.0'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//def qualityConfigDir = "$project.rootDir/config/quality"</span></span><br><span class="line">def reportsDir = <span class="string">"$project.buildDir/reports"</span></span><br><span class="line"></span><br><span class="line">spotbugs &#123;</span><br><span class="line"><span class="comment">//    toolVersion = "$spotbugs_version"</span></span><br><span class="line">    toolVersion = <span class="string">'4.0.0-beta4'</span></span><br><span class="line">    ignoreFailures = <span class="keyword">false</span></span><br><span class="line"></span><br><span class="line">    effort = <span class="string">"min"</span></span><br><span class="line">    <span class="comment">// This selects what level of bugs to report: low means low priority issues will be reported</span></span><br><span class="line">    <span class="comment">// (in addition to medium+high), which corresponds to warning about everything.</span></span><br><span class="line">    <span class="comment">// <span class="doctag">TODO:</span> boost this to low once low priority issues are fixed.</span></span><br><span class="line">    reportLevel = <span class="string">"medium"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//    excludeFilter = new File("$qualityConfigDir/config/quality/spotbugs/android-exclude-filter.xml")</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">tasks.register(<span class="string">"spotbugs"</span>, SpotBugsTask) &#123;</span><br><span class="line">    dependsOn <span class="string">'assemble'</span></span><br><span class="line">    group = <span class="string">"verification"</span></span><br><span class="line">    classes = files(<span class="string">"$projectDir.absolutePath/build/intermediates/app_classes/debug"</span>)</span><br><span class="line"></span><br><span class="line">    source = fileTree(<span class="string">'src/main/java'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// Only one report format is supported. Html is easier to read, so let's use that</span></span><br><span class="line">    <span class="comment">// (xml is the one that's enabled by default).</span></span><br><span class="line">    reports &#123;</span><br><span class="line">        xml.enabled = <span class="keyword">true</span></span><br><span class="line">        xml &#123;</span><br><span class="line">            <span class="function">destination <span class="title">file</span><span class="params">(<span class="string">"$reportsDir/spotbugs/spotbugs.xml"</span>)</span></span></span><br><span class="line"><span class="function">        &#125;</span></span><br><span class="line"><span class="function">        html.enabled </span>= <span class="keyword">true</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    classpath = files()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>项目build.gradle配置</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Top-level build file where you can add configuration options common to all sub-projects/modules.</span></span><br><span class="line"></span><br><span class="line">buildscript &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        mavenCentral()</span><br><span class="line">        jcenter()</span><br><span class="line">        maven &#123; url <span class="string">'https://maven.fabric.io/public'</span> &#125;</span><br><span class="line">        maven &#123;</span><br><span class="line">            url <span class="string">'https://maven.google.com/'</span></span><br><span class="line">            name <span class="string">'Google'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    dependencies &#123;</span><br><span class="line">        classpath <span class="string">'com.android.tools.build:gradle:3.4.2'</span></span><br><span class="line"><span class="comment">//        classpath "gradle.plugin.com.github.spotbugs:spotbugs-gradle-plugin:2.0.0" // For SpotBugs</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">plugins &#123;</span><br><span class="line">    id <span class="string">"com.github.spotbugs"</span> version <span class="string">"2.0.0"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Workaround to be able to access SpotBugsTask from external gradle script.</span></span><br><span class="line"><span class="comment">// More info: https://discuss.gradle.org/t/buildscript-dependencies-in-external-script/23243</span></span><br><span class="line">project.extensions.extraProperties.set(<span class="string">'SpotBugsTask'</span>, com.github.spotbugs.SpotBugsTask)</span><br><span class="line">apply from: <span class="string">'./app/spotbugs.gradle'</span></span><br><span class="line"></span><br><span class="line">allprojects &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        mavenCentral()</span><br><span class="line">        jcenter()</span><br><span class="line">        maven &#123; url <span class="string">'https://maven.fabric.io/public'</span> &#125;</span><br><span class="line">        maven &#123;</span><br><span class="line">            url <span class="string">'https://maven.google.com/'</span></span><br><span class="line">            name <span class="string">'Google'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">task <span class="title">clean</span><span class="params">(type: Delete)</span> </span>&#123;</span><br><span class="line">    delete rootProject.buildDir</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/11/21/代码检测/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lpl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/blog/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="闲敲棋子落灯花">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2019/11/21/代码检测/" itemprop="url">代码检测</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-21T16:09:48+08:00">
+                2019-11-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/code/" itemprop="url" rel="index">
+                    <span itemprop="name">code</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="美团-https-tech-meituan-com-2019-11-07-android-static-code-canning-html"><a href="#美团-https-tech-meituan-com-2019-11-07-android-static-code-canning-html" class="headerlink" title="- 美团 https://tech.meituan.com/2019/11/07/android-static-code-canning.html"></a>- 美团 <a href="https://tech.meituan.com/2019/11/07/android-static-code-canning.html" target="_blank" rel="noopener">https://tech.meituan.com/2019/11/07/android-static-code-canning.html</a></h5><ul>
+<li>android IDE 代码检测工具介绍</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/11/19/GC日志分析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lpl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/blog/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="闲敲棋子落灯花">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2019/11/19/GC日志分析/" itemprop="url">GC日志分析</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-19T09:41:22+08:00">
+                2019-11-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/gc/" itemprop="url" rel="index">
+                    <span itemprop="name">gc</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="一、Dalvik"><a href="#一、Dalvik" class="headerlink" title="一、Dalvik"></a>一、Dalvik</h2><h3 id="1-1-GC含义"><a href="#1-1-GC含义" class="headerlink" title="1.1 GC含义"></a>1.1 GC含义</h3><p>Dalvik虚拟机，每一次GC打印内容格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">D/dalvikvm: &lt;GC_Reason&gt; &lt;Amount_freed&gt;,</span><br><span class="line"> &lt;Heap_stats&gt;, &lt;External_memory_stats&gt;, &lt;Pause_time&gt;</span><br></pre></td></tr></table></figure>
+
+<p>对应项：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">D/dalvikvm: &lt;GC触发原因&gt; &lt;GC释放内存大小&gt;, </span><br><span class="line">&lt;堆统计信息&gt;, &lt;外部内存统计&gt;, &lt;暂停时间&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>含义解析</strong></p>
+<ul>
+<li>GC Reason(GC触发原因)<ul>
+<li>GC_CONCURRENT：当已分配内存达到某一值时，触发并发GC；</li>
+<li>GC_FOR_MALLOC：当尝试在堆上分配内存不足时触发的GC；系统必须停止应用程序并回收内存；</li>
+<li>GC_HPROF_DUMP_HEAP： 当需要创建HPROF文件来分析堆内存时触发的GC；</li>
+<li>GC_EXPLICIT：当明确的调用GC时，例如调用System.gc()等；</li>
+<li>GC_EXTERNAL_ALLOC： 仅在API级别为10或者更低时（新版本分配内存都在Dalvik堆上）</li>
+</ul>
+</li>
+<li>Amount freed GC回收的内存大小</li>
+<li>Heap stats 堆上的空闲内存百分比 （已用内存）/（堆上总内存）</li>
+<li>External memory stats API级别为10或者更低：（已分配的内存量）/ （即将发生垃圾的极限）</li>
+<li>Pause time（暂停时间） 较大的堆将有较大的暂停时间。并发暂停时间显示有两个停顿：一个是垃圾回收的开头和另一接近垃圾回收的结尾。</li>
+</ul>
+<h3 id="1-2-实例"><a href="#1-2-实例" class="headerlink" title="1.2 实例"></a>1.2 实例</h3><p><strong>实例：</strong> D/dalvikvm: <code>GC_CONCURRENT</code> freed <code>2049K</code>, <code>65% free 3571K/9991K</code>, external <code>4703K/5261K</code>, paused <code>2ms+2ms</code></p>
+<p><strong>含义：</strong></p>
+<ul>
+<li>GC触发原因：GC_CONCURRENT;</li>
+<li>GC释放内存大小：2049K;</li>
+<li>堆统计信息：堆空闲内存为65%，已用内存:3571K， 堆上总内存：9991K;</li>
+<li>暂停时间：总共暂时4ms。</li>
+</ul>
+<h3 id="1-3-小结"><a href="#1-3-小结" class="headerlink" title="1.3 小结"></a>1.3 小结</h3><p>根据不断增加的日志信息，观察增加的堆统计信息（在上例中的3571K/9991K值），若该值持续增加，可能有内存泄漏。</p>
+<h2 id="二、ART"><a href="#二、ART" class="headerlink" title="二、ART"></a>二、ART</h2><p>ART的log不同于Dalvik的log机制，正常情况不会打印非明确调用的GCs的log信息。GCs打印出来的log信息都是被认为是执行比较缓慢的信息，更准确地说，就是<strong>GC暂停的时间超过5ms或者GC执行的总时间超过100ms</strong>。 如果app不处于暂停的感知状态，那么没有GC会被认为是缓慢的。但是明确地调用GCs会记录log信息。</p>
+<h3 id="2-1-GC含义"><a href="#2-1-GC含义" class="headerlink" title="2.1 GC含义"></a>2.1 GC含义</h3><p>ART虚拟机，每一次GC打印内容格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">I/art: &lt;GC_Reason&gt; &lt;GC_Name&gt; &lt;Objects_freed&gt;(&lt;Size_freed&gt;) AllocSpace Objects,</span><br><span class="line">&lt;Large_objects_freed&gt;(&lt;Large_object_size_freed&gt;) &lt;Heap_stats&gt; LOS objects, &lt;Pause_time(s)&gt;</span><br></pre></td></tr></table></figure>
+
+<p>对应项：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">I/art: &lt;GC触发原因&gt; &lt;GC名称&gt;   &lt;释放对象个数&gt;(&lt;释放字节数&gt;)    AllocSpace Objects, </span><br><span class="line">&lt;释放大对象个数&gt;(&lt;释放大对象字节数&gt;)  &lt;堆统计&gt; LOS objects, &lt;暂停时间&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-GC解析"><a href="#2-2-GC解析" class="headerlink" title="2.2 GC解析"></a>2.2 GC解析</h3><h4 id="2-2-1-GC-Reason"><a href="#2-2-1-GC-Reason" class="headerlink" title="2.2.1 GC Reason"></a>2.2.1 GC Reason</h4><ol>
+<li><code>Concurrent</code>： 并发GC，不会使app线程挂起，该GC是在后台线程运行的，也不会阻止内存分配。</li>
+<li><code>Alloc</code>:当<strong>堆内存已满</strong>时，app尝试申请内存，会触发该GC。在这种情况下，垃圾回收发生在正在分配内存的线程。</li>
+<li><code>Explicit</code>: 明确的调用垃圾回收，比如gc().与dalvik一样，应尽可能避免明确调用gc。<strong>不建议使用</strong>，由于程序的GC会阻塞分配线程和不必要的CPU周期，如果其他线程获取抢占资源也可能导致jank。</li>
+<li><code>NativeAlloc</code>: 垃圾回收是由于<strong>native内存过重</strong>而触发的，例如Bitmaps或者RenderScript分配的对象。</li>
+<li><code>CollectorTransition</code>: 由于堆过渡触发的。收集器转换包括拷贝所有的对象从一个自由列表支持空间到指针空间，也包括反过来拷贝。目前垃圾回收器传输仅发生在<strong>低内存设备的app进程状态转移</strong>，包含从一个可感知的暂停状态转换到非暂停可感知状态，或者非暂停态到暂停态。</li>
+<li><code>HomogeneousSpaceCompact</code>:齐性空间压缩是指空闲列表到压缩的空闲列表空间，通常发生在当app已经移动到暂停可感知的进程状态。这样做的主要原因是减少了内存使用情况和<strong>堆碎片整理</strong>。</li>
+<li><code>DisableMovingGc</code>:这并非真实的GC触发原因，只是标记垃圾回收被阻塞，由于并非堆压缩正在发生时使用了GetPrimitiveArrayCritical。由于其对移动收集器的限制，使用GetPrimitiveArrayCritical是<strong>强烈不建议</strong>。</li>
+<li><code>HeapTrim</code>: 这并非GC触发原因，只是标记垃圾回收被阻塞直到堆整理完成。</li>
+</ol>
+<h4 id="2-2-2-GC-Name"><a href="#2-2-2-GC-Name" class="headerlink" title="2.2.2 GC Name"></a>2.2.2 GC Name</h4><ol>
+<li><code>Concurrent mark sweep (CMS)</code>: 完整的堆垃圾回收器，能释放<strong>除去图片空间之外</strong>的所有的垃圾。</li>
+<li><code>Concurrent partial mark sweep</code>: 绝大多数的堆垃圾回收器，能释放<strong>除去图片和zygote空间之外</strong>的所有的垃圾。</li>
+<li><code>Concurrent sticky mark sweep</code>: 一般性的垃圾回收器，只能释放上一次GC所关联的对象。该垃圾回收器运行得<strong>更常用，有更低的暂停时间</strong>。</li>
+<li><code>Marksweep + semispace</code>: 非并发gc,复制GC用于堆过渡以及齐性空间压缩（堆碎片整理）。</li>
+</ol>
+<h4 id="2-2-3-GC其他参数"><a href="#2-2-3-GC其他参数" class="headerlink" title="2.2.3 GC其他参数"></a>2.2.3 GC其他参数</h4><ul>
+<li>Objects_freed： 从非大对象空间回收到的对象数；</li>
+<li>Size_freed：从非大对象空间回收到的字节数；</li>
+<li>Large_objects_freed：从大对象空间回收到的对象数；</li>
+<li>Large_object_size_freed：从大对象空间回收到的字节数；</li>
+<li>Heap_stats： 堆上的空闲内存百分比 （已用内存）/（堆上总内存）；</li>
+<li>Pause_time：暂停时间跟GC正在运行时引用对象被改变的对象数成正比。目前，ART的CMD GC仅有一次停顿，出现在GC的结尾附近。移动GC有一个长的暂停时间持续在GC的大多数期间。</li>
+</ul>
+<h3 id="2-3-实例"><a href="#2-3-实例" class="headerlink" title="2.3 实例"></a>2.3 实例</h3><p>I/art : <code>Explicit</code> <code>concurrent mark sweep GC</code> freed <code>104710</code>(<code>7MB</code>) AllocSpace objects, <code>21</code>(<code>416KB</code>) LOS objects, <code>33% free, 25MB/38MB</code>, paused <code>1.230ms</code> total <code>67.216ms</code></p>
+<p><strong>含义：</strong></p>
+<ul>
+<li>GC触发原因：Explicit</li>
+<li>GC名称：concurrent mark sweep GC</li>
+<li>释放对象个数：104710</li>
+<li>释放字节数：7MB</li>
+<li>释放大对象个数：21</li>
+<li>释放大对象字节数：416KB</li>
+<li>堆统计：堆空闲内存为33%，已用内存:25MB， 总内存总：38MB</li>
+<li>暂停时间：GC暂停时长：1.230ms，GC总时长：67.216ms</li>
+</ul>
+<h3 id="2-4-小结"><a href="#2-4-小结" class="headerlink" title="2.4 小结"></a>2.4 小结</h3><ul>
+<li>当看到大量的GC log信息在logcat，可查看堆统计(如样例中 5MB/38MB)。如果这个值持续增长，并且一直不见它变小，那可能发生了内存泄露。</li>
+<li>如果看到GC触发条件是<code>Alloc</code>，那当前环境已经接近堆内存的上限了，在不久后很快会出现OOM。</li>
+</ul>
+<h5 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h5><ul>
+<li><p><a href="http://developer.android.com/tools/debugging/debugging-memory.html" target="_blank" rel="noopener">http://developer.android.com/tools/debugging/debugging-memory.html</a></p>
+</li>
+<li><p><a href="http://gityuan.com/2015/10/03/Android-GC/" target="_blank" rel="noopener">http://gityuan.com/2015/10/03/Android-GC/</a></p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/11/18/训练网站/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lpl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/blog/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="闲敲棋子落灯花">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2019/11/18/训练网站/" itemprop="url">训练网站</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-18T08:57:13+08:00">
+                2019-11-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/IT/" itemprop="url" rel="index">
+                    <span itemprop="name">IT</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="在线刷题"><a href="#在线刷题" class="headerlink" title="在线刷题"></a>在线刷题</h5><ul>
+<li><a href="https://leetcode-cn.com/" target="_blank" rel="noopener">https://leetcode-cn.com/</a> 可以在线刷题，算法、数据库</li>
 </ul>
 
           
@@ -2131,7 +2116,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/blog/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/blog/page/5/">5</a><a class="page-number" href="/blog/page/6/">6</a><a class="extend next" rel="next" href="/blog/page/5/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/blog/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/blog/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/9/">9</a><a class="extend next" rel="next" href="/blog/page/5/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2179,7 +2164,7 @@
               
                 <a href="/blog/archives/">
               
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">81</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2190,7 +2175,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/blog/categories/index.html">
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2201,7 +2186,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/blog/tags/index.html">
-                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-count">70</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="闲敲棋子落灯花">
 <meta property="og:description" content="安装Nginx  1brew install nginx  12345678910#测试nginx配置是否有语法错误nginx -t#打开 nginxsudo nginx#重新加载配置|重启|停止|退出 nginxnginx -s reload|reopen|stop|quit#也可以使用Mac的launchctl来启动|停止 nginxlaunchctl unload ~/Library/La">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-09T08:41:55.874Z">
+<meta property="og:updated_time" content="2020-03-28T04:46:27.176Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mac Nginx + PHP 环境搭建">
 <meta name="twitter:description" content="安装Nginx  1brew install nginx  12345678910#测试nginx配置是否有语法错误nginx -t#打开 nginxsudo nginx#重新加载配置|重启|停止|退出 nginxnginx -s reload|reopen|stop|quit#也可以使用Mac的launchctl来启动|停止 nginxlaunchctl unload ~/Library/La">
@@ -411,12 +411,22 @@
 </li>
 <li><p>新建配置php站点服务自己的配置文件 vim /usr/local/etc/nginx/services/php-demo.conf</p>
 </li>
-<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    server_name  www.xxx.com;</span><br><span class="line">    # 指定php工程地址</span><br><span class="line">    root         /usr/local/var/www/demo;</span><br><span class="line">    access_log  /usr/local/var/log/nginx/default.access.log  main;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        try_files $uri $uri/ /index.php?$query_string;</span><br><span class="line">        index  index.html index.htm index.php;</span><br><span class="line">        autoindex   on;</span><br><span class="line">        include     /usr/local/etc/nginx/php-fpm;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="meta"> #</span> pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000</span><br><span class="line">        location ~ \.php$ &#123;</span><br><span class="line">            try_files $uri = 404;</span><br><span class="line">						# 端口号，被占用可以修改</span><br><span class="line">						fastcgi_pass   127.0.0.1:9000;</span><br><span class="line">            fastcgi_index  index.php;</span><br><span class="line">            fastcgi_param  SCRIPT_FILENAME $document_root$fastcgi_script_name;</span><br><span class="line">            include        fastcgi_params;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    error_page  404     /404.html;</span><br><span class="line">    error_page  403     /403.html;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    server_name  www.xxx.com;</span><br><span class="line">    # 指定php工程地址</span><br><span class="line">    root         /usr/local/var/www/demo;</span><br><span class="line">    access_log  /usr/local/var/log/nginx/default.access.log  main;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        try_files $uri $uri/ /index.php?$query_string;</span><br><span class="line">        index  index.html index.htm index.php;</span><br><span class="line">        autoindex   on;</span><br><span class="line">        include     /usr/local/etc/nginx/php-fpm;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="meta"> #</span> pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000</span><br><span class="line">        location ~ \.php$ &#123;</span><br><span class="line">            try_files $uri = 404;</span><br><span class="line">cd						fastcgi_pass   127.0.0.1:9000;</span><br><span class="line">            fastcgi_index  index.php;</span><br><span class="line">            fastcgi_param  SCRIPT_FILENAME $document_root$fastcgi_script_name;</span><br><span class="line">            include        fastcgi_params;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    error_page  404     /404.html;</span><br><span class="line">    error_page  403     /403.html;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
 </li>
+</ul>
+</li>
+</ul>
+<ul>
 <li><p>重启nginx</p>
 </li>
 <li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx -s reload</span><br></pre></td></tr></table></figure>
+
+
 </li>
+</ul>
+<ul>
 <li><p>安装Postgre 数据库</p>
 </li>
 <li><p>下载CI框架</p>
@@ -427,8 +437,7 @@
 
 
 
-</li>
-</ul>
+
 </li>
 </ul>
 <ul>
@@ -561,7 +570,7 @@
               
                 <a href="/blog/archives/">
               
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">81</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -572,7 +581,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/blog/categories/index.html">
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -583,7 +592,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/blog/tags/index.html">
-                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-count">70</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

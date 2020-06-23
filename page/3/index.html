@@ -293,7 +293,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/09/11/Android Studio 动态调试无源码APK/">
+    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2020/04/05/python 处理Excel/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lpl">
@@ -312,7 +312,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2019/09/11/Android Studio 动态调试无源码APK/" itemprop="url">Android Studio 动态调试无源码的APK</a></h1>
+                <a class="post-title-link" href="/blog/2020/04/05/python 处理Excel/" itemprop="url">Python 处理 Excel</a></h1>
         
 
         <div class="post-meta">
@@ -324,8 +324,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-11T17:16:19+08:00">
-                2019-09-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-05T13:13:08+08:00">
+                2020-04-05
               </time>
             
 
@@ -347,8 +347,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
+                  <a href="/blog/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
                   </a>
                 </span>
 
@@ -386,44 +386,15 @@
       
         
           
-            <ul>
-<li><p>安装Android Studio 插件 <a href="https://bitbucket.org/JesusFreke/smali/downloads/smalidea-0.05.zip" target="_blank" rel="noopener">smalidea-0.05.zip</a> </p>
-<blockquote>
-<p>插件源码地址 ： <a href="https://github.com/JesusFreke/smali" target="_blank" rel="noopener">https://github.com/JesusFreke/smali</a> </p>
-</blockquote>
-</li>
-<li><p>Android Studio 尽量升级到最新版本</p>
-</li>
-<li><p>确保APK可调试</p>
-<blockquote>
-<p>1、root 手机，然后刷mprop 将手机刷为可以调试。推荐</p>
-<p>2、使用模拟器，模拟器一般都是可以调试的。</p>
-<p>3、apktool 逆向 apk，修改AndroidManifest debuggable属性，然后重新打包安装。</p>
-</blockquote>
-</li>
-<li><p>apktools d test.apk 逆向apk</p>
-<blockquote>
-<p>apktools  <a href="https://ibotpeaches.github.io/Apktool/" target="_blank" rel="noopener">https://ibotpeaches.github.io/Apktool/</a> </p>
-</blockquote>
-</li>
-<li><p>Android Studio 导入 上一步得到的文件夹</p>
-</li>
-<li><p>然后右键工程主目录：Mark Directory As -&gt; Sources Root</p>
-</li>
-<li><p>项目目录–&gt;右键–&gt;Open ModuleSettings：设置sdk，最后和测试手机的系统版本一致</p>
-</li>
-<li><p>接下来配置：<code>Run/Debug Configurations</code>里面的配置文件，打开后我们点击左上角的+，然后选择Remote，添加一个远程调试。端口配置为8700，和DDMS 中进程调试端口号保持一致。PS：默认为5005.</p>
-</li>
-<li><p>手机上启动APP，打开DDMS 即Android/sdk/tools/monitor。选中app对应的进程，后面会显示8700字样。另外如果手机可以调试，最上面设备行末尾会显示debug字样。</p>
-</li>
-<li><p>在Android studio 上面设置断点</p>
-</li>
-<li><p>点击右上角的调试按钮，然后点击手机上的APP内按钮。即可以进入调试状态。  </p>
+            <h5 id="安装python-插件"><a href="#安装python-插件" class="headerlink" title="安装python 插件"></a>安装python 插件</h5><ul>
+<li><p>sudo pip3 install xlrd xlwt</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 打开读文件</span></span><br><span class="line">data    = xlrd.open_workbook(<span class="string">'ljs.xlsx'</span>)</span><br><span class="line">  <span class="comment"># 打开写文件  </span></span><br><span class="line">  workbook = xlwt.Workbook(encoding = <span class="string">'ascii'</span>)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">5</span>):</span><br><span class="line">        <span class="comment"># 读取第i个sheet表格</span></span><br><span class="line">        table   = data.sheet_by_index(i)</span><br><span class="line">        names   = data.sheet_names()</span><br><span class="line">        <span class="comment"># 第i个表格的名字</span></span><br><span class="line">        name    = names[i]</span><br><span class="line">        <span class="comment"># 创建一个表格</span></span><br><span class="line">        worksheet = workbook.add_sheet(name)</span><br><span class="line">        <span class="keyword">for</span> row <span class="keyword">in</span> range(table.nrows):</span><br><span class="line">            <span class="keyword">for</span> col <span class="keyword">in</span> range(table.ncols):</span><br><span class="line">                <span class="keyword">if</span> row &gt;= <span class="number">0</span> <span class="keyword">and</span> col &gt;= <span class="number">0</span>:</span><br><span class="line">                    <span class="comment"># 获取第row、col单元的值</span></span><br><span class="line">                    content     = table.cell(row, col).value</span><br><span class="line">                    <span class="keyword">if</span> col == <span class="number">9</span>:</span><br><span class="line">                        index   = content.rfind(<span class="string">"&gt;"</span>)</span><br><span class="line">                        <span class="keyword">if</span> index &gt; <span class="number">-1</span>:</span><br><span class="line">                            content = content[index+<span class="number">1</span>:]</span><br><span class="line">                    print(<span class="string">"row %d col %d"</span> % (row, col))</span><br><span class="line">                    <span class="comment"># 写入到第row、col单元</span></span><br><span class="line">                    worksheet.write(row, col, content)</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    workbook.save(<span class="string">'ljs_copy.xlsx'</span>)</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>参考文章</p>
-<blockquote>
-<p><a href="https://www.jianshu.com/p/1a28e6439c6a" target="_blank" rel="noopener">https://www.jianshu.com/p/1a28e6439c6a</a></p>
-</blockquote>
+</li>
+<li><p><a href="https://www.cnblogs.com/mrljc/p/3715783.html" target="_blank" rel="noopener">https://www.cnblogs.com/mrljc/p/3715783.html</a></p>
+</li>
+<li><p><a href="https://www.cnblogs.com/tynam/p/11204895.html" target="_blank" rel="noopener">https://www.cnblogs.com/tynam/p/11204895.html</a></p>
 </li>
 </ul>
 
@@ -474,7 +445,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/09/11/Android Dex 真机动态调试/">
+    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2020/03/29/树莓派Nginx4b+PHP7.3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lpl">
@@ -493,7 +464,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2019/09/11/Android Dex 真机动态调试/" itemprop="url">Mac IDA Android Dex 模拟器、真机 动态调试</a></h1>
+                <a class="post-title-link" href="/blog/2020/03/29/树莓派Nginx4b+PHP7.3/" itemprop="url">树莓派Nginx4b + PHP7.3</a></h1>
         
 
         <div class="post-meta">
@@ -505,8 +476,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-11T10:53:25+08:00">
-                2019-09-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-29T19:43:42+08:00">
+                2020-03-29
               </time>
             
 
@@ -528,8 +499,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
+                  <a href="/blog/categories/Raspberry/" itemprop="url" rel="index">
+                    <span itemprop="name">Raspberry</span>
                   </a>
                 </span>
 
@@ -567,271 +538,42 @@
       
         
           
-            <ul>
-<li><p>JDWP(Java Debug Wire Protocol)</p>
-<blockquote>
-<p><em>JDWP（Java Debug Wire Protocol）是一个为 Java 调试而设计的一个通讯交互协议，它定义了调试器和被调试程序之间<strong><em>传递的信息的格式</em></strong>。在 JPDA 体系中，作为前端（front-end）的调试者（debugger）进程和后端（back-end）的被调试程序（debuggee）进程之间的交互数据的格式就是由 JDWP 来描述的，它详细完整地定义了请求命令、回应数据和错误代码，保证了前端和后端的 JVMTI 和 JDI 的通信通畅。比如在 Sun 公司提供的实现中，它提供了一个名为 jdwp.dll（jdwp.so）的动态链接库文件，这个动态库文件实现了一个 Agent，它会负责解析前端发出的请求或者命令，并将其转化为 JVMTI 调用，然后将 JVMTI 函数的返回值封装成 JDWP 数据发还给后端。</em></p>
-<p>参考</p>
-<p> <a href="https://qsli.github.io/2018/08/12/jdwp/" target="_blank" rel="noopener">https://qsli.github.io/2018/08/12/jdwp/</a></p>
-<p><a href="https://www.ibm.com/developerworks/cn/java/j-lo-jpda3/index.html" target="_blank" rel="noopener">https://www.ibm.com/developerworks/cn/java/j-lo-jpda3/index.html</a></p>
-</blockquote>
-</li>
-<li><p>JDB(Java Debugger)</p>
-<blockquote>
-<p>Java™ 调试器 (JDB) 包含在 SDK 中。 该调试器通过 <strong>jdb</strong> 命令启动；它使用 JPDA 连接到 JVM。</p>
-<p><a href="https://www.ibm.com/developerworks/cn/java/joy-jdb/index.html" target="_blank" rel="noopener">https://www.ibm.com/developerworks/cn/java/joy-jdb/index.html</a></p>
-<p><a href="https://www.ibm.com/support/knowledgecenter/zh/SSYKE2_7.0.0/com.ibm.java.win.70.doc/user/jdb.html" target="_blank" rel="noopener">https://www.ibm.com/support/knowledgecenter/zh/SSYKE2_7.0.0/com.ibm.java.win.70.doc/user/jdb.html</a></p>
-</blockquote>
-</li>
-<li><p>动态调试，参考</p>
-<blockquote>
-<p><a href="https://bbs.pediy.com/thread-217612.htm" target="_blank" rel="noopener">https://bbs.pediy.com/thread-217612.htm</a></p>
-<p>端口可以使用23946，使用IDA的时候需要关掉DDMS、AS等。如果出现异常可能是APK做了反逆向。</p>
-<p>如果真机碰到问题，可以先试试用模拟器</p>
-</blockquote>
-</li>
+            <h5 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h5><ul>
+<li>sudo apt-get install nginx</li>
 </ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/09/09/Mac + IDA Pro 7.0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lpl">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/blog/images/head.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="闲敲棋子落灯花">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2019/09/09/Mac + IDA Pro 7.0/" itemprop="url">Mac IDA Pro逆向 android</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-09T16:41:24+08:00">
-                2019-09-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li><p>硬件设备</p>
-<blockquote>
-<p>MAC PRO 10.14</p>
-<p>nexus 5s, android 6.0 </p>
-</blockquote>
-</li>
-<li><p>Mac 下载IDA Pro 7.0 </p>
-<blockquote>
-<p>IDA 7.0 Mac 下载地址 <a href="https://xclient.info/s/hex-rays-ida-pro.html#versions" target="_blank" rel="noopener">https://xclient.info/s/hex-rays-ida-pro.html#versions</a></p>
-<p>IDA 在Mac 10.14上出现崩溃的解决方案 <a href="https://github.com/fjh658/IDA7.0_SP" target="_blank" rel="noopener">https://github.com/fjh658/IDA7.0_SP</a></p>
-<p>PS: 安装的时候需要输入密码，密码在网站上有</p>
-</blockquote>
-</li>
-<li><p>IDA 调试环境配置</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cd /Applications/IDA Pro 7.0/dbgsrv</span><br><span class="line">adb push android_server /data   #将文件拷贝到手机data目录</span><br><span class="line">adb shell</span><br><span class="line">cd /data</span><br><span class="line">chmod 755 android_server    #更改权限，赋予可执行权限</span><br><span class="line">./android_server            #运行</span><br><span class="line">root@Che1:/data # ./android_server</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>出现 bind: Address already in use 错误</p>
-</li>
-<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ps | grep android_server </span><br><span class="line">kill -s 9</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>端口转发</p>
-</li>
-<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb forward tcp:23946 tcp:23946</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>以debug模式启动APP</p>
-</li>
-<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell am start -D -n com.pa.test.devicetest/.MainActivity</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>启动IDA，Debugger-&gt;attach-&gt;Remote ARMLinux/Android debugger</p>
-<blockquote>
-<p>参考：<a href="https://blog.csdn.net/daide2012/article/details/75675210" target="_blank" rel="noopener">https://blog.csdn.net/daide2012/article/details/75675210</a> </p>
-</blockquote>
-</li>
-<li><p>JDB 连接, 端口号可以通过DDMS 查看当前运行进程和端口号</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jdb -connect com.sun.jdi.SocketAttach:hostname=127.0.0.1,port=8700</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>java.net.ConnectException: Connection refused</p>
-<blockquote>
-<p>出现如上异常的原因是app 不可以debugable，解决方案：</p>
-<p>1、如果是自己的app，可以在AndroidManifest.xml 中 application节点上加上 debugable = true</p>
-<p>2、如果是别人的app，可以解压之后修改AndroidManifest.xml文件，然后重新打包签名</p>
-<p>3、修改系统属性，将defalut.prop中ro.debugable设置为1，然后刷机进去；</p>
-<p>4、通过mprop 工具修改 内存中的ro.debugable值 <a href="https://www.bodkin.ren/index.php/archives/533/" target="_blank" rel="noopener">https://www.bodkin.ren/index.php/archives/533/</a></p>
-<p>5、通过基于Xposed的 BDOpener 工具修改程序的 debugable 值 <a href="https://security.tencent.com/index.php/opensource/detail/17" target="_blank" rel="noopener">https://security.tencent.com/index.php/opensource/detail/17</a></p>
-</blockquote>
-</li>
-<li><p>mprop修改ro.debugable</p>
-</li>
-<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 下载 mprop https://github.com/wpvsyou/mprop</span><br><span class="line">git clone git@github.com:wpvsyou/mprop.git</span><br><span class="line"><span class="meta">#</span> 将mprop 推到手机</span><br><span class="line">adb push mprop /data/local/tmp</span><br><span class="line">adb shell </span><br><span class="line"><span class="meta">#</span> 查看 硬盘中的 属性</span><br><span class="line">cat default.prop | grep debug </span><br><span class="line"><span class="meta">#</span> 查看 内存中的属性</span><br><span class="line">getprop ro.debuggable</span><br><span class="line">su</span><br><span class="line">cd /data/local/tmp</span><br><span class="line"><span class="meta">#</span> 修改内存中属性</span><br><span class="line">./mprop ro.debuggable 1</span><br><span class="line"><span class="meta">#</span> 重启adbd 生效</span><br><span class="line">stop;start</span><br><span class="line"><span class="meta">#</span> 查看 硬盘中的 属性</span><br><span class="line">cat default.prop | grep debug </span><br><span class="line"><span class="meta">#</span> 查看 内存中的属性</span><br><span class="line">getprop ro.debuggable</span><br></pre></td></tr></table></figure>
+<h5 id="安装PHP7-3"><a href="#安装PHP7-3" class="headerlink" title="安装PHP7.3"></a>安装PHP7.3</h5><ul>
+<li>sudo apt-get install php</li>
+</ul>
+<h5 id="Nginx-环境配置"><a href="#Nginx-环境配置" class="headerlink" title="Nginx 环境配置"></a>Nginx 环境配置</h5><ul>
+<li><p>nginx.conf 文件配置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 修改导入的文件</span><br><span class="line">include /etc/nginx/sites-enabled/*.conf;</span><br><span class="line"><span class="meta">#</span>include /etc/nginx/sites-enabled/*;</span><br></pre></td></tr></table></figure>
 
 
 
 </li>
 </ul>
 <ul>
-<li><p>DDMS 最新版本的AS IDE删掉了DDMS入口，需要去tools里面用shell启动。</p>
+<li><p>sites-enabled/default文件配置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 目录/etc/nginx/sites-enabled/default</span><br><span class="line"><span class="meta">#</span> 首先备份默认配置文件；PS：sites-enabled/default 与 sites-available/default文件为同一份。</span><br><span class="line">cp default my.conf</span><br><span class="line"><span class="meta">#</span> 尝试填入下面的规则</span><br><span class="line">location / &#123;</span><br><span class="line"></span><br><span class="line">		try_files $uri $uri/ /index.php?$query_string;</span><br><span class="line">        	#index  index.html index.htm index.php;</span><br><span class="line">        	autoindex   on;</span><br><span class="line">		fastcgi_intercept_errors    on;</span><br><span class="line">	        #include snippets/fastcgi-php.conf;</span><br><span class="line"><span class="meta">	  #</span> 从php-fpm 的 www.conf配置文件中获取</span><br><span class="line">		fastcgi_pass 	unix:/run/php/php7.3-fpm.sock;</span><br><span class="line">		fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;</span><br><span class="line">		include fastcgi_params;</span><br><span class="line">    	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    	location ~ \.php$ &#123;</span><br><span class="line">        	#try_files $uri = 404;</span><br><span class="line">	        include snippets/fastcgi-php.conf;</span><br><span class="line">		fastcgi_pass 	unix:/run/php/php7.3-fpm.sock;</span><br><span class="line"><span class="meta">		#</span>fastcgi_pass   127.0.0.1:9000;</span><br><span class="line">            	#fastcgi_index  index.php;</span><br><span class="line">		fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;</span><br><span class="line">		include fastcgi_params;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd ~/Library/Android/sdk/tools/monitor</span><br></pre></td></tr></table></figure>
+<li><p>配置php-fpm</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 路径 /etc/php/7.3/fpm/pool.d/www.conf</span><br><span class="line"><span class="meta">#</span> 找到listen 对应的 *.sock文件；删除前面的';' </span><br><span class="line">listen = /run/php/php7.3-fpm.sock</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>启动IDA，attach android进程之后，需要去找到需要的so文件，快捷键control+F</p>
-</li>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Android 4.4版本之前 系统函数在libdvm.so</span><br><span class="line">Android 5.0之后 系统函数在libart.so</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>选中so文件之后，需要查找对应的方法，快捷键control+F。然后右键添加断点。</p>
-</li>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">libdvm.so 对应的是 dvmDexFileOpenPartial方法</span><br><span class="line">libart.so 对应的是 Openmemory 方法</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>点击左上角的绿色三角形按钮，运行到断点</p>
-</li>
-<li><p>在General Registers 可以看到 dex 在内存中的起始地址和大小。我这边是X0，X1</p>
-</li>
-<li><p>在 Hex View 面板右键选择x0，可以定位到X0寄存器保存地址所在位置，即dex文件所在位置。可以看到dex.035字样</p>
-</li>
-<li><p>File -&gt; Script Command 自定义脚本导出dex文件</p>
-</li>
-<li><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    <span class="keyword">auto</span> fp, begin, end, dexbyte;</span><br><span class="line">    <span class="comment">//打开或创建一个文件</span></span><br><span class="line">    fp = fopen(<span class="string">"/Users/xxx/128dump.dex"</span>, <span class="string">"wb"</span>);</span><br><span class="line">    <span class="comment">//dex基址，即X0的值</span></span><br><span class="line">    begin =  <span class="number">0x7f962c5000</span>;    </span><br><span class="line">		<span class="comment">//dex基址 + dex文件大小 即X1大小</span></span><br><span class="line">    end = begin + <span class="number">0xc204</span>;</span><br><span class="line">    <span class="keyword">for</span> ( dexbyte = begin; dexbyte &lt; end;     dexbyte ++ )&#123;</span><br><span class="line">			<span class="comment">//按字节将其dump到本地文件中</span></span><br><span class="line">				fputc(Byte(dexbyte), fp);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>用jadx 工具反编译dex文件。</p>
-</li>
-<li><p>总结</p>
+<li><p>使用CI框架3.10.2；</p>
 <blockquote>
-<p>dump dex 流程</p>
-<p>1、刷mprop 属性</p>
-<p>2、启动android_server</p>
-<p>3、端口映射</p>
-<p>4、启动app</p>
-<p>5、启动monitor</p>
-<p>6、启动IDA，绑定调试app进程，设置断点</p>
-<p>7、执行jdb命令</p>
-<p>8、运行到断点</p>
-<p>9、执行脚本，dump dex；</p>
+<p>CI框架需要特别注意文件大小写，如果大小写不正确可能导致404</p>
 </blockquote>
 </li>
-<li><p>参考文章</p>
+<li><p>启动服务命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>开启nginx</span><br><span class="line">sudo nginx</span><br><span class="line"><span class="meta">#</span> 重启 ng</span><br><span class="line">sudo nginx -s reload</span><br><span class="line"><span class="meta">#</span> 重启php-fpm</span><br><span class="line">sudo /etc/init.d/php7.3-fpm restart</span><br><span class="line"><span class="meta">#</span> 查看日志</span><br><span class="line">systemctl status php7.3-fpm.service</span><br><span class="line"><span class="meta">#</span> 服务器日志路径</span><br><span class="line">/var/log/nginx/</span><br></pre></td></tr></table></figure>
 </li>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">5.0以上系统 https://bbs.ichunqiu.com/thread-35905-1-1.html</span><br><span class="line">4.x系统 https://blog.csdn.net/daide2012/article/details/75675210</span><br></pre></td></tr></table></figure>
-
-
-
+<li><p>参考文章</p>
+<blockquote>
+<p>1、<a href="https://www.cnblogs.com/jpfss/p/10418150.html" target="_blank" rel="noopener">https://www.cnblogs.com/jpfss/p/10418150.html</a></p>
+<p>2、<a href="https://baijiahao.baidu.com/s?id=1642243866657041522&amp;wfr=spider&amp;for=pc" target="_blank" rel="noopener">https://baijiahao.baidu.com/s?id=1642243866657041522&amp;wfr=spider&amp;for=pc</a></p>
+<p>3、<a href="https://zhuanlan.zhihu.com/p/39785392" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/39785392</a></p>
+<p>4、<a href="https://www.runoob.com/w3cnote/linux-check-port-usage.html" target="_blank" rel="noopener">https://www.runoob.com/w3cnote/linux-check-port-usage.html</a></p>
+</blockquote>
 </li>
 </ul>
 
@@ -882,7 +624,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/08/30/android 蓝牙通讯/">
+    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2020/03/12/Android 插件发布/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lpl">
@@ -901,7 +643,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2019/08/30/android 蓝牙通讯/" itemprop="url">android 蓝牙通讯</a></h1>
+                <a class="post-title-link" href="/blog/2020/03/12/Android 插件发布/" itemprop="url">Android 插件发布</a></h1>
         
 
         <div class="post-meta">
@@ -913,8 +655,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-30T17:59:29+08:00">
-                2019-08-30
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-12T13:54:30+08:00">
+                2020-03-12
               </time>
             
 
@@ -975,36 +717,18 @@
       
         
           
-            <ul>
-<li><p>配置权限</p>
-</li>
-<li><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">  </span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.BLUETOOTH"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.BLUETOOTH_ADMIN"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.ACCESS_FINE_LOCATION"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>蓝牙设备扫描</p>
-</li>
-<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">startDiscovery</span><span class="params">()</span></span>&#123;</span><br><span class="line">      <span class="comment">// 设备扫描方式1</span></span><br><span class="line">        BluetoothAdapter adapter    =  BluetoothAdapter.getDefaultAdapter();</span><br><span class="line">        adapter.startDiscovery();</span><br><span class="line">        mBuletoothDeviceList.clear();</span><br><span class="line">        mHashMap.clear();</span><br><span class="line">        mTxScanDevices.setText(<span class="string">""</span>);</span><br><span class="line">        sb.delete(<span class="number">0</span>, sb.length());</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 方式二，这个api可以拿到信号强度，官方不推荐使用了</span></span><br><span class="line"><span class="comment">//        final StringBuilder sb    = new StringBuilder();</span></span><br><span class="line"><span class="comment">//        adapter.startLeScan(new BluetoothAdapter.LeScanCallback() &#123;</span></span><br><span class="line"><span class="comment">//            @Override</span></span><br><span class="line"><span class="comment">//            public void onLeScan(BluetoothDevice bluetoothDevice, int i, byte[] bytes) &#123;</span></span><br><span class="line"><span class="comment">//                BluetoothDevice device          = bluetoothDevice;</span></span><br><span class="line"><span class="comment">//                String deviceName               = device.getName();</span></span><br><span class="line"><span class="comment">//                String deviceHardwareAddress    = device.getAddress(); // MAC address</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//                mBuletoothDeviceList.add(device);</span></span><br><span class="line"><span class="comment">//                sb.append(""+mBuletoothDeviceList.size()).append(deviceHardwareAddress)</span></span><br><span class="line"><span class="comment">//                        .append("--")</span></span><br><span class="line"><span class="comment">//                        .append(deviceName)</span></span><br><span class="line"><span class="comment">//                        .append("--")</span></span><br><span class="line"><span class="comment">//                        .append(device.getType())</span></span><br><span class="line"><span class="comment">//                        .append("--")</span></span><br><span class="line"><span class="comment">//                        .append(device.getBondState())</span></span><br><span class="line"><span class="comment">//                        .append("--")</span></span><br><span class="line"><span class="comment">//                        .append(i)</span></span><br><span class="line"><span class="comment">//                        .append("\n");</span></span><br><span class="line"><span class="comment">//                mTxScanDevices.setText(mTxScanDevices.getText().toString() + sb.toString());</span></span><br><span class="line"><span class="comment">//            &#125;</span></span><br><span class="line"><span class="comment">//        &#125;);</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">		<span class="comment">// 使用方式1，通过广播接收扫描到的设备信息</span></span><br><span class="line">    <span class="comment">// Create a BroadcastReceiver for ACTION_FOUND.</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> BroadcastReceiver receiver = <span class="keyword">new</span> BroadcastReceiver() &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceive</span><span class="params">(Context context, Intent intent)</span> </span>&#123;</span><br><span class="line">            Log.d(<span class="string">"TAG"</span>, <span class="string">"onReceive"</span>);</span><br><span class="line">            String action = intent.getAction();</span><br><span class="line">            <span class="keyword">if</span> (BluetoothDevice.ACTION_FOUND.equals(action)) &#123;</span><br><span class="line">                <span class="comment">// Discovery has found a device. Get the BluetoothDevice</span></span><br><span class="line">                <span class="comment">// object and its info from the Intent.</span></span><br><span class="line">                BluetoothDevice device          = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);</span><br><span class="line">                String deviceName               = device.getName();</span><br><span class="line">                String deviceHardwareAddress    = device.getAddress(); <span class="comment">// MAC address</span></span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span>(TextUtils.isEmpty(deviceName) == <span class="keyword">false</span> &amp;&amp; !mHashMap.containsKey(deviceHardwareAddress))&#123;</span><br><span class="line">                    mBuletoothDeviceList.add(device);</span><br><span class="line">                    mHashMap.put(deviceHardwareAddress, deviceName);</span><br><span class="line">                    sb.append(mBuletoothDeviceList.size()+<span class="string">"、"</span>)</span><br><span class="line">                            .append(deviceHardwareAddress)</span><br><span class="line">                            .append(<span class="string">"--"</span>)</span><br><span class="line">                            .append(deviceName)</span><br><span class="line">                            .append(<span class="string">"--"</span>)</span><br><span class="line">                            .append(device.getType())</span><br><span class="line">                            .append(<span class="string">"\n"</span>);</span><br><span class="line"></span><br><span class="line">                    mTxScanDevices.setText(sb.toString());</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(BluetoothAdapter.ACTION_DISCOVERY_FINISHED.equals(action))&#123;</span><br><span class="line">                Log.d(<span class="string">"TAG"</span>, <span class="string">"onReceive finish"</span>);</span><br><span class="line"></span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(BluetoothAdapter.ACTION_DISCOVERY_STARTED.equals(action))&#123;</span><br><span class="line">                Log.d(<span class="string">"TAG"</span>, <span class="string">"onReceive start"</span>);</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>蓝牙客户端实现</p>
-</li>
-<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BluetoothClient</span> <span class="keyword">extends</span> <span class="title">Thread</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> BluetoothSocket mmSocket;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> BluetoothDevice mmDevice;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String TAG    = <span class="string">"BluetoothTest"</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> BluetoothAdapter bluetoothAdapter;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Handler mHandler;</span><br><span class="line">    <span class="keyword">private</span> ConnectedThread mConnectedThread;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">BluetoothClient</span><span class="params">(BluetoothDevice device, Handler handler)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// Use a temporary object that is later assigned to mmSocket</span></span><br><span class="line">        <span class="comment">// because mmSocket is final.</span></span><br><span class="line">        BluetoothSocket tmp = <span class="keyword">null</span>;</span><br><span class="line">        mmDevice = device;</span><br><span class="line">        bluetoothAdapter    = BluetoothAdapter.getDefaultAdapter();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// Get a BluetoothSocket to connect with the given BluetoothDevice.</span></span><br><span class="line">            <span class="comment">// MY_UUID is the app's UUID string, also used in the server code.</span></span><br><span class="line">            tmp = device.createRfcommSocketToServiceRecord(UUID.fromString(Config.UUID));</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            Log.e(TAG, <span class="string">"Socket's create() method failed"</span>, e);</span><br><span class="line">        &#125;</span><br><span class="line">        mmSocket = tmp;</span><br><span class="line">        mHandler    = handler;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// Cancel discovery because it otherwise slows down the connection.</span></span><br><span class="line">        Log.i(TAG, <span class="string">"start connect..."</span>);</span><br><span class="line">        bluetoothAdapter.cancelDiscovery();</span><br><span class="line">        Message writtenMsg = mHandler.obtainMessage(Config.MESSAGE_STATE, -<span class="number">1</span>, -<span class="number">1</span>, <span class="string">"客户端发起连接..."</span>);</span><br><span class="line">        writtenMsg.sendToTarget();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// Connect to the remote device through the socket. This call blocks</span></span><br><span class="line">            <span class="comment">// until it succeeds or throws an exception.</span></span><br><span class="line">            mmSocket.connect();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException connectException) &#123;</span><br><span class="line">            <span class="comment">// Unable to connect; close the socket and return.</span></span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                mmSocket.close();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (IOException closeException) &#123;</span><br><span class="line">                Log.e(TAG, <span class="string">"Could not close the client socket"</span>, closeException);</span><br><span class="line">            &#125;</span><br><span class="line">            writtenMsg = mHandler.obtainMessage(Config.MESSAGE_STATE, -<span class="number">1</span>, -<span class="number">1</span>, <span class="string">"连接失败！"</span>);</span><br><span class="line">            writtenMsg.sendToTarget();</span><br><span class="line">            Log.i(TAG, <span class="string">"connect failed"</span>);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Log.i(TAG, <span class="string">"connect success"</span>);</span><br><span class="line"></span><br><span class="line">        writtenMsg = mHandler.obtainMessage(Config.MESSAGE_STATE, -<span class="number">1</span>, -<span class="number">1</span>, <span class="string">"连接成功！"</span>);</span><br><span class="line">        writtenMsg.sendToTarget();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// The connection attempt succeeded. Perform work associated with</span></span><br><span class="line">        <span class="comment">// the connection in a separate thread.</span></span><br><span class="line">        manageMyConnectedSocket(mmSocket);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sendData</span><span class="params">(String data)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(mConnectedThread != <span class="keyword">null</span>)&#123;</span><br><span class="line">            mConnectedThread.write(data.getBytes());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">manageMyConnectedSocket</span><span class="params">(BluetoothSocket socket)</span></span>&#123;</span><br><span class="line">        mConnectedThread    = <span class="keyword">new</span> ConnectedThread(socket, mHandler);</span><br><span class="line">        mConnectedThread.start();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Closes the client socket and causes the thread to finish.</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">cancel</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            mmSocket.close();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            Log.e(TAG, <span class="string">"Could not close the client socket"</span>, e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>蓝牙服务器实现</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BluetoothService</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> BluetoothServerSocket mmServerSocket;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> BluetoothAdapter bluetoothAdapter;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String TAG = <span class="string">"BluetoothTest"</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Handler mHandler;</span><br><span class="line">    <span class="keyword">private</span> ConnectedThread mConnectedThread;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">BluetoothService</span><span class="params">(Handler handler)</span> </span>&#123;</span><br><span class="line">        BluetoothServerSocket tmp = <span class="keyword">null</span>;</span><br><span class="line">        bluetoothAdapter    = BluetoothAdapter.getDefaultAdapter();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            tmp = bluetoothAdapter.listenUsingRfcommWithServiceRecord(<span class="string">"bluetooth_test"</span>, UUID.fromString(Config.UUID));</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            Log.e(TAG, <span class="string">"Socket's listen() method failed"</span>, e);</span><br><span class="line">        &#125;</span><br><span class="line">        mmServerSocket = tmp;</span><br><span class="line">        mHandler    = handler;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        BluetoothSocket socket = <span class="keyword">null</span>;</span><br><span class="line">        <span class="comment">// Keep listening until exception occurs or a socket is returned.</span></span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line"></span><br><span class="line">            Log.i(TAG, <span class="string">"service start wait connect..."</span>);</span><br><span class="line"></span><br><span class="line">            Message writtenMsg = mHandler.obtainMessage(Config.MESSAGE_STATE, -<span class="number">1</span>, -<span class="number">1</span>, <span class="string">"服务端等待连接..."</span>);</span><br><span class="line">            writtenMsg.sendToTarget();</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                socket = mmServerSocket.accept();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                Log.e(TAG, <span class="string">"Socket's accept() method failed"</span>, e);</span><br><span class="line">                writtenMsg = mHandler.obtainMessage(Config.MESSAGE_STATE, -<span class="number">1</span>, -<span class="number">1</span>, <span class="string">"服务端异常！"</span>);</span><br><span class="line">                writtenMsg.sendToTarget();</span><br><span class="line">                Log.i(TAG, <span class="string">"service connect failed"</span>);</span><br><span class="line"></span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (socket != <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="comment">// A connection was accepted. Perform work associated with</span></span><br><span class="line">                <span class="comment">// the connection in a separate thread.</span></span><br><span class="line">                Log.i(TAG, <span class="string">"connect success "</span>);</span><br><span class="line"></span><br><span class="line">                writtenMsg = mHandler.obtainMessage(Config.MESSAGE_STATE, -<span class="number">1</span>, -<span class="number">1</span>, <span class="string">"服务端连接成功！"</span>);</span><br><span class="line">                writtenMsg.sendToTarget();</span><br><span class="line">                manageMyConnectedSocket(socket);</span><br><span class="line"></span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    mmServerSocket.close();</span><br><span class="line">                &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sendData</span><span class="params">(String data)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(mConnectedThread != <span class="keyword">null</span>)&#123;</span><br><span class="line">            mConnectedThread.write(data.getBytes());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">manageMyConnectedSocket</span><span class="params">(BluetoothSocket socket)</span></span>&#123;</span><br><span class="line">        mConnectedThread    = <span class="keyword">new</span> ConnectedThread(socket, mHandler);</span><br><span class="line">        mConnectedThread.start();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Closes the connect socket and causes the thread to finish.</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">cancel</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            mmServerSocket.close();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            Log.e(TAG, <span class="string">"Could not close the connect socket"</span>, e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>读写流管理</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConnectedThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG = <span class="string">"ConnectedThread"</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> BluetoothSocket mmSocket;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> InputStream mmInStream;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> OutputStream mmOutStream;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Handler handler;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">byte</span>[] mmBuffer; <span class="comment">// mmBuffer store for the stream</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ConnectedThread</span><span class="params">(BluetoothSocket socket, Handler h)</span> </span>&#123;</span><br><span class="line">        mmSocket = socket;</span><br><span class="line">        InputStream tmpIn = <span class="keyword">null</span>;</span><br><span class="line">        OutputStream tmpOut = <span class="keyword">null</span>;</span><br><span class="line">        handler         = h;</span><br><span class="line">        <span class="comment">// Get the input and output streams; using temp objects because</span></span><br><span class="line">        <span class="comment">// member streams are final.</span></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            tmpIn = socket.getInputStream();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            Log.e(TAG, <span class="string">"Error occurred when creating input stream"</span>, e);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            tmpOut = socket.getOutputStream();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            Log.e(TAG, <span class="string">"Error occurred when creating output stream"</span>, e);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        mmInStream = tmpIn;</span><br><span class="line">        mmOutStream = tmpOut;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        mmBuffer = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>];</span><br><span class="line">        <span class="keyword">int</span> numBytes; <span class="comment">// bytes returned from read()</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// Keep listening to the InputStream until an exception occurs.</span></span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="comment">// Read from the InputStream.</span></span><br><span class="line">                numBytes = mmInStream.read(mmBuffer);</span><br><span class="line">                <span class="comment">// Send the obtained bytes to the UI activity.</span></span><br><span class="line">                String data     = <span class="keyword">new</span> String(mmBuffer, <span class="number">0</span>, numBytes);</span><br><span class="line">                Message readMsg = handler.obtainMessage(</span><br><span class="line">                        Config.MESSAGE_READ, numBytes, -<span class="number">1</span>,</span><br><span class="line">                        data);</span><br><span class="line">                readMsg.sendToTarget();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                Log.d(TAG, <span class="string">"Input stream was disconnected"</span>, e);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Call this from the main activity to send data to the remote device.</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">write</span><span class="params">(<span class="keyword">byte</span>[] bytes)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            mmOutStream.write(bytes);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// Share the sent message with the UI activity.</span></span><br><span class="line">            Message writtenMsg = handler.obtainMessage(</span><br><span class="line">                    Config.MESSAGE_WRITE, -<span class="number">1</span>, -<span class="number">1</span>, <span class="keyword">new</span> String(bytes));</span><br><span class="line">            writtenMsg.sendToTarget();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            Log.e(TAG, <span class="string">"Error occurred when sending data"</span>, e);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// Send a failure message back to the activity.</span></span><br><span class="line">            Message writeErrorMsg =</span><br><span class="line">                    handler.obtainMessage(Config.MESSAGE_TOAST);</span><br><span class="line">            Bundle bundle = <span class="keyword">new</span> Bundle();</span><br><span class="line">            bundle.putString(<span class="string">"toast"</span>,<span class="string">"Couldn't send data to the other device"</span>);</span><br><span class="line">            writeErrorMsg.setData(bundle);</span><br><span class="line">            handler.sendMessage(writeErrorMsg);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Call this method from the main activity to shut down the connection.</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">cancel</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            mmSocket.close();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            Log.e(TAG, <span class="string">"Could not close the connect socket"</span>, e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>github 项目地址</p>
-<blockquote>
-<p><a href="https://github.com/zubao/BluetoothTest" target="_blank" rel="noopener">https://github.com/zubao/BluetoothTest</a></p>
+            <h5 id="插件编写好之后，可以使用Nexus本地发布，快速验证"><a href="#插件编写好之后，可以使用Nexus本地发布，快速验证" class="headerlink" title="插件编写好之后，可以使用Nexus本地发布，快速验证"></a>插件编写好之后，可以使用Nexus本地发布，快速验证</h5><blockquote>
+<p>nexus 下载地址 <a href="https://help.sonatype.com/repomanager2/download" target="_blank" rel="noopener">https://help.sonatype.com/repomanager2/download</a></p>
+<p>nexus 流程说明 <a href="https://juejin.im/post/5a51e44b518825733e604764" target="_blank" rel="noopener">https://juejin.im/post/5a51e44b518825733e604764</a></p>
+<p><a href="https://blog.csdn.net/doris_d/article/details/88891833" target="_blank" rel="noopener">https://blog.csdn.net/doris_d/article/details/88891833</a></p>
+<p>本地验证</p>
+<p><a href="http://localhost:8081/nexus/#view-repositories;Maven~browseindex" target="_blank" rel="noopener">http://localhost:8081/nexus/#view-repositories;Maven~browseindex</a></p>
 </blockquote>
-</li>
-<li><p>蓝牙官方文档</p>
-<blockquote>
-<p><a href="https://developer.android.com/guide/topics/connectivity/bluetooth?hl=zh-CN#FindDevices" target="_blank" rel="noopener">https://developer.android.com/guide/topics/connectivity/bluetooth?hl=zh-CN#FindDevices</a></p>
+<h5 id="本地验证通过，发布的jcenter"><a href="#本地验证通过，发布的jcenter" class="headerlink" title="本地验证通过，发布的jcenter"></a>本地验证通过，发布的jcenter</h5><blockquote>
+<p><a href="https://bintray.com/" target="_blank" rel="noopener">https://bintray.com/</a> </p>
+<p>注册建议使用github账号。</p>
+<p>发布流程： <a href="https://www.jianshu.com/p/47ebb159836c" target="_blank" rel="noopener">https://www.jianshu.com/p/47ebb159836c</a></p>
 </blockquote>
-</li>
-</ul>
 
           
         
@@ -1053,7 +777,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/08/29/Android逆向/">
+    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2020/03/12/Android 硬件参数 默认值/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lpl">
@@ -1072,7 +796,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2019/08/29/Android逆向/" itemprop="url">Android 逆向</a></h1>
+                <a class="post-title-link" href="/blog/2020/03/12/Android 硬件参数 默认值/" itemprop="url">android 硬件参数默认值</a></h1>
         
 
         <div class="post-meta">
@@ -1084,8 +808,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-29T13:59:51+08:00">
-                2019-08-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-12T10:11:04+08:00">
+                2020-03-12
               </time>
             
 
@@ -1146,295 +870,15 @@
       
         
           
-            <ul>
-<li><p>apktool 用于解密xml文件</p>
-<blockquote>
-<p>apktool d test.apk</p>
-<p>官方网站： <a href="https://ibotpeaches.github.io/Apktool/" target="_blank" rel="noopener">https://ibotpeaches.github.io/Apktool/</a></p>
+            <h5 id="Mac-地址默认值"><a href="#Mac-地址默认值" class="headerlink" title="- Mac 地址默认值"></a>- Mac 地址默认值</h5><ul>
+<li><h5 id="00：09：4c：11：22：33"><a href="#00：09：4c：11：22：33" class="headerlink" title="00：09：4c：11：22：33"></a>00：09：4c：11：22：33</h5><blockquote>
+<p>如果wifi在本次开机期间从来没有打开过，返回的mac地址就可能是上面那个。</p>
+<p>cat /sys/class/net/wlan0/address</p>
 </blockquote>
 </li>
-<li><p>dex2jar 用于将dex转换为jar</p>
+<li><p>02:00:00:00:00:00</p>
 <blockquote>
-<p>sh d2j-dex2jar.sh test.dex</p>
-<p>源码地址： <a href="https://github.com/pxb1988/dex2jar" target="_blank" rel="noopener">https://github.com/pxb1988/dex2jar</a></p>
-<p>工具地址： <a href="https://raw.githubusercontent.com/13046434521/-/master/反编译工具包.zip" target="_blank" rel="noopener">https://raw.githubusercontent.com/13046434521/-/master/%E5%8F%8D%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7%E5%8C%85.zip</a></p>
-</blockquote>
-</li>
-<li><p>jd-compiler 用于将jar|class文件 转换为 java</p>
-<blockquote>
-<p>官方网站 <a href="http://java-decompiler.github.io/" target="_blank" rel="noopener">http://java-decompiler.github.io/</a></p>
-</blockquote>
-</li>
-<li><p>jadx 用于逆向jar 文件</p>
-<blockquote>
-<p>源码下载地址：<a href="https://github.com/skylot/jadx" target="_blank" rel="noopener">https://github.com/skylot/jadx</a></p>
-<p>jadx 相比JD-GUI 更加优秀，逆向出来的源码可读性更强，更准确。</p>
-</blockquote>
-</li>
-<li><p>IDA 用于逆向分析SO文件</p>
-<blockquote>
-<p>IDA 7.0 Mac 下载地址 <a href="https://xclient.info/s/hex-rays-ida-pro.html#versions" target="_blank" rel="noopener">https://xclient.info/s/hex-rays-ida-pro.html#versions</a></p>
-<p>Mac 10.14上会出现崩溃，解决方案</p>
-<p><a href="https://github.com/fjh658/IDA7.0_SP" target="_blank" rel="noopener">https://github.com/fjh658/IDA7.0_SP</a></p>
-</blockquote>
-</li>
-<li><p>夜神模拟器</p>
-<blockquote>
-<p>夜神模拟器下载 <a href="https://www.yeshen.com/" target="_blank" rel="noopener">https://www.yeshen.com/</a></p>
-</blockquote>
-</li>
-<li><p>VirtualXposed</p>
-<blockquote>
-<p>Xposed 框架 运行的虚拟环境，降低了xposed使用的门槛。</p>
-<p>介绍文章 <a href="https://sspai.com/post/44447" target="_blank" rel="noopener">https://sspai.com/post/44447</a></p>
-<p>github <a href="https://github.com/android-hacker/VirtualXposed" target="_blank" rel="noopener">https://github.com/android-hacker/VirtualXposed</a></p>
-</blockquote>
-</li>
-<li><p>EdXposed 框架</p>
-<blockquote>
-<p>支持 ART</p>
-<p><a href="https://github.com/ElderDrivers/EdXposed" target="_blank" rel="noopener">https://github.com/ElderDrivers/EdXposed</a></p>
-</blockquote>
-</li>
-<li><p>Xposed 框架</p>
-<blockquote>
-<p><a href="http://dl-xda.xposed.info/framework/" target="_blank" rel="noopener">http://dl-xda.xposed.info/framework/</a></p>
-</blockquote>
-</li>
-<li><p>XposedInstaller.apk 配合 xposed 框架使用</p>
-<blockquote>
-<p><a href="https://forum.xda-developers.com/showthread.php?t=3034811" target="_blank" rel="noopener">https://forum.xda-developers.com/showthread.php?t=3034811</a></p>
-</blockquote>
-</li>
-<li><p>太极框架</p>
-<blockquote>
-<p>支持android 5.0~Q</p>
-<p>github <a href="https://github.com/taichi-framework/TaiChi" target="_blank" rel="noopener">https://github.com/taichi-framework/TaiChi</a></p>
-</blockquote>
-</li>
-<li><p>Vim</p>
-<blockquote>
-<p>// 打开二进制文件</p>
-<p>vim -b filename</p>
-<p>// 转换为16进制查看</p>
-<p>:%!xxd</p>
-<p>// 转换为正常格式</p>
-<p>:%!xxd -r</p>
-<p>参考：<a href="https://www.cnblogs.com/meibenjin/archive/2012/12/06/2806396.html" target="_blank" rel="noopener">https://www.cnblogs.com/meibenjin/archive/2012/12/06/2806396.html</a></p>
-</blockquote>
-</li>
-<li><p>动态调试</p>
-</li>
-<li><p>xPosed, Android-InLine_Hook</p>
-<blockquote>
-<p><a href="https://github.com/smartdone/Frida-Scripts/tree/master/unpack" target="_blank" rel="noopener">https://github.com/smartdone/Frida-Scripts/tree/master/unpack</a></p>
-</blockquote>
-</li>
-<li><p>dexdump</p>
-</li>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">adb shell dexdump -f /data/app/com.xxx.xxx/base.apk &gt; ~/test.txt</span><br><span class="line"></span><br><span class="line">dexdump: [-c] [-d] [-f] [-h] [-i] [-l layout] [-m] [-t tempfile]</span><br><span class="line">dexfile…</span><br><span class="line"></span><br><span class="line">-c : verify checksum and exit</span><br><span class="line">-d : disassemble code sections</span><br><span class="line">-f : display summary information from file header</span><br><span class="line">-h : display file header details</span><br><span class="line">-i : ignore checksum failures</span><br><span class="line">-l : output layout, either ‘plain’ or ‘xml’</span><br><span class="line">-m : dump register maps (and nothing else)</span><br><span class="line">-t : temp file name (defaults to /sdcard/dex-temp-*)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>cmdline /proc/%d/cmdline</p>
-</li>
-<li><p>动态导出内存中的 Java Class 文件</p>
-<blockquote>
-<p><a href="https://blog.csdn.net/dotalee/article/details/78272499" target="_blank" rel="noopener">https://blog.csdn.net/dotalee/article/details/78272499</a></p>
-<p><a href="https://blog.csdn.net/hengyunabc/article/details/51106980" target="_blank" rel="noopener">https://blog.csdn.net/hengyunabc/article/details/51106980</a></p>
-<p><a href="https://search.maven.org/search?q=dumpclass" target="_blank" rel="noopener">https://search.maven.org/search?q=dumpclass</a></p>
-</blockquote>
-</li>
-<li><p>android逆向方法总结的很全面的文章</p>
-<blockquote>
-<p><a href="https://book.crifan.com/books/android_app_security_crack/website/android_background/related_info/dex_file.html" target="_blank" rel="noopener">https://book.crifan.com/books/android_app_security_crack/website/android_background/related_info/dex_file.html</a></p>
-<p><a href="https://juejin.im/post/5a5b25d0f265da3e2e6273a5" target="_blank" rel="noopener">https://juejin.im/post/5a5b25d0f265da3e2e6273a5</a></p>
-<p><a href="https://bbs.pediy.com/thread-191395.htm" target="_blank" rel="noopener">https://bbs.pediy.com/thread-191395.htm</a></p>
-</blockquote>
-</li>
-<li><p>PC Java 查看类的工具</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo java -classpath &quot;$JAVA_HOME/lib/sa-jdi.jar&quot; sun.jvm.hotspot.HSDB </span><br><span class="line">// 一个java的可视化工具，可以dump内存中的java类，启动之后通过attach PID 获取虚拟机中加载的类信息。</span><br><span class="line">// 并且在tools 中可以看到直方图等其他信息。</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h3 id="更新-讨论android加固防内存dump的技术及vmp壳的防护强度"><a href="#更新-讨论android加固防内存dump的技术及vmp壳的防护强度" class="headerlink" title="[更新]讨论android加固防内存dump的技术及vmp壳的防护强度"></a>[更新]讨论android加固防内存dump的技术及vmp壳的防护强度</h3><p><a href="https://bbs.pediy.com/thread-206293.htm" target="_blank" rel="noopener">https://bbs.pediy.com/thread-206293.htm</a></p>
-<p>移动调试工具：UPX</p>
-<p>memdump 导出 so文件，需要拼装</p>
-<p><a href="https://cloud.tencent.com/info/fd6d7ab6e1d277bc71829125a94cf3d4.html" target="_blank" rel="noopener">https://cloud.tencent.com/info/fd6d7ab6e1d277bc71829125a94cf3d4.html</a></p>
-<p><a href="https://github.com/gnaixx/MemDump" target="_blank" rel="noopener">https://github.com/gnaixx/MemDump</a></p>
-<p>dump 内存最优方案，修改源码，加上dump class 逻辑，然后自己编译android 源码，</p>
-<p><a href="https://blog.csdn.net/tabactivity/article/details/79359736" target="_blank" rel="noopener">https://blog.csdn.net/tabactivity/article/details/79359736</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/08/26/Mac PHP + Redis/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lpl">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/blog/images/head.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="闲敲棋子落灯花">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2019/08/26/Mac PHP + Redis/" itemprop="url">Mac PHP + Redis</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-26T10:31:05+08:00">
-                2019-08-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/PHP/" itemprop="url" rel="index">
-                    <span itemprop="name">PHP</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li><p>首先需要安装Redis、PHP、PHP-FPM、nginx</p>
-</li>
-<li><p>PHP需要安装Redis的扩展</p>
-</li>
-<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> https://github.com/phpredis/phpredis/releases 下载最新的 phpredis</span><br><span class="line"><span class="meta">#</span> 将下载安装包解压到 /usr/local </span><br><span class="line"><span class="meta">#</span> 将目录名称重命名为 phpredis</span><br><span class="line">cd phpredis</span><br><span class="line">sudo phpize              # php安装后的路径</span><br><span class="line">sudo ./configure --with-php-config=/usr/local/php/bin/php-config</span><br><span class="line">sudo make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>执行 sudo phpsize 的时候会报错</p>
-</li>
-<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">grep: /usr/include/php/main/php.h: No such file or directory</span><br><span class="line">grep: /usr/include/php/Zend/zend_modules.h: No such file or directory</span><br><span class="line">grep: /usr/include/php/Zend/zend_extensions.h: No such file or directory</span><br><span class="line">Configuring for:</span><br><span class="line">PHP Api Version:        </span><br><span class="line">Zend Module Api No:     </span><br><span class="line">Zend Extension Api No:  </span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 解决方法是：</span><br><span class="line">sudo ln -s</span><br><span class="line">/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/usr/include/ /usr/include</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>修改php.ini文件，启用phpredis扩展</p>
-</li>
-<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 初次安装可能没有php.ini,需要自己copy一份</span><br><span class="line">sudo cp php.ini.default php.ini</span><br><span class="line"><span class="meta">#</span> 打开 php.ini 添加扩展</span><br><span class="line">sudo vim php.ini</span><br><span class="line">extension_dir = "/usr/lib/php/extensions/no-debug-non-zts-20160303"</span><br><span class="line">extension=redis.so</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>重启Nginx PHP-FPM</p>
-</li>
-<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx -s reload</span><br><span class="line"><span class="meta">#</span>  /usr/local/var/run/php-fmp.pid 文件中有对应的PID</span><br><span class="line">sudo kill -USR2 php-fpm.pid</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Redis Demo 编写</p>
-</li>
-<li><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$redis 		= <span class="keyword">new</span> Redis();</span><br><span class="line"><span class="comment">// ps aux | grep redis    默认端口是6379 可以退通过命令查询到</span></span><br><span class="line">$redis-&gt;connect(<span class="string">"127.0.0.1"</span>, <span class="string">"6379"</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"&lt;h5&gt;"</span>.($redis-&gt;get(<span class="string">"foo"</span>)).<span class="string">"&lt;/h5&gt;"</span>;</span><br><span class="line"></span><br><span class="line">$redis-&gt;set(<span class="string">"date"</span>, date(<span class="string">'Y-m-d H:i:s'</span>));</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"&lt;h5&gt;"</span>.($redis-&gt;get(<span class="string">"date"</span>)).<span class="string">"&lt;/h5&gt;"</span>;</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ul>
-<ul>
-<li><p>参考文章</p>
-<blockquote>
-<p><a href="http://www.runoob.com/redis/redis-php.html" target="_blank" rel="noopener">http://www.runoob.com/redis/redis-php.html</a></p>
-<p><a href="https://segmentfault.com/q/1010000003882420" target="_blank" rel="noopener">https://segmentfault.com/q/1010000003882420</a></p>
+<p>android 默认mac地址值</p>
 </blockquote>
 </li>
 </ul>
@@ -1486,7 +930,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/08/23/国内手机大厂官方文档地址/">
+    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2020/02/20/adb 远程连接/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lpl">
@@ -1505,7 +949,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2019/08/23/国内手机大厂官方文档地址/" itemprop="url">手机大厂官方文档地址</a></h1>
+                <a class="post-title-link" href="/blog/2020/02/20/adb 远程连接/" itemprop="url">Adb 远程连接</a></h1>
         
 
         <div class="post-meta">
@@ -1517,8 +961,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-23T15:56:27+08:00">
-                2019-08-23
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-20T09:32:01+08:00">
+                2020-02-20
               </time>
             
 
@@ -1579,26 +1023,197 @@
       
         
           
-            <ul>
-<li><p>华为</p>
+            <h5 id="获取手机IP地址"><a href="#获取手机IP地址" class="headerlink" title="获取手机IP地址"></a>获取手机IP地址</h5><ul>
+<li>连接usb线，使用adb shell 进入手机命令行，运行ifconfig命令查询</li>
+<li>手机上安装命令行工具，在工具中运行ifconfig查询</li>
+<li>通过wifi助手查询</li>
+<li>编写程序，Runtime 运行 ifconfig 查询</li>
+<li>通过抓包工具查看源IP查询。</li>
+</ul>
+<h5 id="adb-无线连接手机"><a href="#adb-无线连接手机" class="headerlink" title="adb 无线连接手机"></a>adb 无线连接手机</h5><ul>
+<li>adb usb 重置</li>
+<li>adb tcpip 5555设置端口</li>
+<li>adb devices 列出当前连接的设备</li>
+<li>adb connect 192.168.1.112:5555 连接远程设备</li>
+<li>adb disconnect 192.168.1.112:5555 断开连接</li>
+<li>adb -s 192.168.1.112:5555 shell 远程进入设备shell</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2020/02/11/Android APK 代码注入/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lpl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/blog/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="闲敲棋子落灯花">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2020/02/11/Android APK 代码注入/" itemprop="url">Android apk代码注入</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-11T16:25:12+08:00">
+                2020-02-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="准备工具"><a href="#准备工具" class="headerlink" title="准备工具"></a>准备工具</h5><ul>
+<li><p>apktool </p>
 <blockquote>
-<p><a href="https://developer.huawei.com/consumer/cn/devservice/doc/50127" target="_blank" rel="noopener">https://developer.huawei.com/consumer/cn/devservice/doc/50127</a></p>
+<p><a href="https://ibotpeaches.github.io/Apktool/" target="_blank" rel="noopener">https://ibotpeaches.github.io/Apktool/</a></p>
+<p>去官网下载最新的apktool jar文件</p>
 </blockquote>
 </li>
-<li><p>小米</p>
+<li><p>jadx 用来反编译apk文件，查看class、smali文件</p>
+</li>
+<li><p>创建keystore证书</p>
 <blockquote>
-<p><a href="https://dev.mi.com/console/doc/detail?pId=1351" target="_blank" rel="noopener">https://dev.mi.com/console/doc/detail?pId=1351</a></p>
+<p>keytool -genkey -alias zemo -keyalg RSA -validity 20000 -keystore zemo.keystore</p>
 </blockquote>
 </li>
-<li><p>OPPO</p>
-<blockquote>
-<p><a href="https://open.oppomobile.com/wiki/doc#id=10432" target="_blank" rel="noopener">https://open.oppomobile.com/wiki/doc#id=10432</a></p>
-</blockquote>
+</ul>
+<h5 id="开始代码注入"><a href="#开始代码注入" class="headerlink" title="开始代码注入"></a>开始代码注入</h5><ul>
+<li><p>解压缩apk文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar apktool_2.4.1.jar d app-release.apk</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>VIVO</p>
-<blockquote>
-<p><a href="https://dev.vivo.com.cn/documentCenter/doc/235" target="_blank" rel="noopener">https://dev.vivo.com.cn/documentCenter/doc/235</a></p>
-</blockquote>
+<li><p>修改smail文件</p>
+</li>
+<li><p>重新打包apk文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar apktool_2.4.1.jar b app-release/ -o app-release.rb.apk</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>遇到 No resource identifier found for attribute ‘keyboardNavigationCluster’ in package ‘android’</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">删除 /Users/xxx/Library/apktool/framework/1.apk 文件</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重新签名</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jarsigner -verbose -keystore zemo.keystore -signedjar app-release.rb.signed.apk app-release.papd.rb.apk zemo -storepass 123456 -keypass 123456</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用jadx 逆向重新签名的apk，查看修改是否正确。</p>
+</li>
+<li><p>一般apk会有签名校验，搜索签名相关的关键字，找到签名校验的代码，删除即可。</p>
+</li>
+<li><p>有时候注入代码过多可能会出现失败，将代码分到其他smali文件夹就好。</p>
 </li>
 </ul>
 
@@ -1649,7 +1264,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/08/22/Mac Nginx + PHP 搭建环境/">
+    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2020/01/19/Android ANR/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lpl">
@@ -1668,7 +1283,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2019/08/22/Mac Nginx + PHP 搭建环境/" itemprop="url">Mac Nginx + PHP 环境搭建</a></h1>
+                <a class="post-title-link" href="/blog/2020/01/19/Android ANR/" itemprop="url">Android ANR</a></h1>
         
 
         <div class="post-meta">
@@ -1680,8 +1295,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-22T17:52:53+08:00">
-                2019-08-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-19T11:24:39+08:00">
+                2020-01-19
               </time>
             
 
@@ -1703,8 +1318,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/php/" itemprop="url" rel="index">
-                    <span itemprop="name">php</span>
+                  <a href="/blog/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
                   </a>
                 </span>
 
@@ -1742,57 +1357,449 @@
       
         
           
-            <ul>
-<li><p>安装Nginx</p>
-</li>
-<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install nginx</span><br></pre></td></tr></table></figure>
-</li>
-<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>测试nginx配置是否有语法错误</span><br><span class="line">nginx -t</span><br><span class="line"><span class="meta">#</span>打开 nginx</span><br><span class="line">sudo nginx</span><br><span class="line"><span class="meta">#</span>重新加载配置|重启|停止|退出 nginx</span><br><span class="line">nginx -s reload|reopen|stop|quit</span><br><span class="line"><span class="meta">#</span>也可以使用Mac的launchctl来启动|停止 nginx</span><br><span class="line">launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.nginx.plist</span><br><span class="line">launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.nginx.plist</span><br><span class="line"><span class="meta">#</span> 浏览器打开 http://127.0.0.1:8080/ 验证ng是否正常启动</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>配置NG</p>
+            <h5 id="ANR类型-出现ANR的一般有以下几种类型："><a href="#ANR类型-出现ANR的一般有以下几种类型：" class="headerlink" title="ANR类型,出现ANR的一般有以下几种类型："></a>ANR类型,出现ANR的一般有以下几种类型：</h5><ul>
+<li><p>1:<strong>KeyDispatchTimeout</strong>（常见）</p>
 <blockquote>
-<h5 id="配置nginx-让它监听php-fpm的进程，这样当用户打开浏览器访问的时候，身为反向代理的nignx就能把东西让php去执行了。"><a href="#配置nginx-让它监听php-fpm的进程，这样当用户打开浏览器访问的时候，身为反向代理的nignx就能把东西让php去执行了。" class="headerlink" title="配置nginx,让它监听php-fpm的进程，这样当用户打开浏览器访问的时候，身为反向代理的nignx就能把东西让php去执行了。"></a>配置nginx,让它监听php-fpm的进程，这样当用户打开浏览器访问的时候，身为反向代理的nignx就能把东西让php去执行了。</h5><p>我们要配置nginx.conf文件，创建一个php-fpm文件（监听php-fpm）, 还要约定下将nginx.pid文件，log日志，以及以后我们要配置的站点.conf的路径，我们的路径约定还是按照brew默认的目录来设置,如下：</p>
+<p>input事件在<code>5S</code>内没有处理完成发生了ANR。<br> logcat日志关键字：<code>Input event dispatching timed out</code></p>
 </blockquote>
 </li>
-<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> nginx.conf,已经被创建好了，我们一会要更改下</span><br><span class="line">/usr/local/etc/nginx/nginx.conf</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> php-fpm,这个我们就放在和nginx.conf一样的路径下吧，这个要我们自己创建</span><br><span class="line">/usr/local/etc/nginx/php-fpm</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 日志文件放在/usr/local/var/log/nginx中，默认已经有了access.log和error.log文件了</span><br><span class="line">/usr/local/var/log/nginx/</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> nginx.pid文件,放在/usr/local/var/run/下面，和php-fpm.pid放一堆</span><br><span class="line">/usr/local/var/run/</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 以后要配置的站点.conf, 我们就放在/usr/local/etc/nginx/servers/下面，这个servers文件夹本身就存在的</span><br><span class="line">/usr/local/etc/nginx/servers/</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 站点的根目录,也就用brew给我们设置的吧</span><br><span class="line">/usr/local/var/www/</span><br></pre></td></tr></table></figure>
-
+<li><p>2:<strong>BroadcastTimeout</strong></p>
+<blockquote>
+<p>前台Broadcast：onReceiver在<code>10S</code>内没有处理完成发生ANR。<br> 后台Broadcast：onReceiver在<code>60s</code>内没有处理完成发生ANR。<br> logcat日志关键字：<code>Timeout of broadcast BroadcastRecord</code></p>
+</blockquote>
+</li>
+<li><p>3:<strong>ServiceTimeout</strong></p>
+<blockquote>
+<p>前台Service：<code>onCreate</code>，<code>onStart</code>，<code>onBind</code>等生命周期在<code>20s</code>内没有处理完成发生ANR。<br> 后台Service：<code>onCreate</code>，<code>onStart</code>，<code>onBind</code>等生命周期在<code>200s</code>内没有处理完成发生ANR<br> logcat日志关键字：<code>Timeout executing service</code></p>
+</blockquote>
+</li>
+<li><p>4：<strong>ContentProviderTimeout</strong></p>
+<blockquote>
+<p>ContentProvider 在<code>10S</code>内没有处理完成发生ANR。 logcat日志关键字：timeout publishing content providers</p>
+</blockquote>
+</li>
+</ul>
+<h5 id="ANR出现的原因"><a href="#ANR出现的原因" class="headerlink" title="ANR出现的原因"></a>ANR出现的原因</h5><ul>
+<li>1:主线程频繁进行耗时的IO操作：如数据库读写</li>
+<li>2:多线程操作的死锁，主线程被block；</li>
+<li>3:主线程被Binder 对端block；</li>
+<li>4:<code>System Server</code>中WatchDog出现ANR；</li>
+<li>5:<code>service binder</code>的连接达到上线无法和和System Server通信</li>
+<li>6:系统资源已耗尽（管道、CPU、IO）</li>
+</ul>
+<h5 id="trace信息需要了解几点："><a href="#trace信息需要了解几点：" class="headerlink" title="trace信息需要了解几点："></a>trace信息需要了解几点：</h5><ul>
+<li>traces中都是按照进程去进行的，会有pid提示。</li>
+<li>当一个线程占有一个锁的时候，会打印-locked&lt;0xxxxxxx&gt;</li>
+<li>当该线程正在等待别的线程释放该锁，会打印waiting to lock &lt;0xxxxxx&gt;</li>
+<li>如果代码中有wait()调用的话，首先是locked，然后会打印waiting on &lt;0xxxxxx&gt;</li>
+</ul>
+<p>参考文章：</p>
 <ul>
-<li><p>配置 vim /usr/local/etc/nginx/nginx.conf </p>
+<li><a href="https://maoao530.github.io/2017/02/21/anr-analyse/" target="_blank" rel="noopener">https://maoao530.github.io/2017/02/21/anr-analyse/</a></li>
+<li><a href="https://juejin.im/post/5be698d4e51d452acb74ea4c" target="_blank" rel="noopener">https://juejin.im/post/5be698d4e51d452acb74ea4c</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2020/01/17/Hadoop、Spark相关概念/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lpl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/blog/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="闲敲棋子落灯花">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2020/01/17/Hadoop、Spark相关概念/" itemprop="url">Hadoop、Spark相关概念</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-17T10:54:06+08:00">
+                2020-01-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/hadoop/" itemprop="url" rel="index">
+                    <span itemprop="name">hadoop</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="Hadoop-相关概念"><a href="#Hadoop-相关概念" class="headerlink" title="Hadoop 相关概念"></a>Hadoop 相关概念</h5><ul>
+<li><p><strong>Apache Hadoop</strong>是一款支持数据密集型<a href="https://zh.wikipedia.org/w/index.php?title=分佈式&action=edit&redlink=1" target="_blank" rel="noopener">分布式</a>应用程序并以Apache 2.0许可协议发布的<a href="https://zh.wikipedia.org/wiki/开源" target="_blank" rel="noopener">开源</a><a href="https://zh.wikipedia.org/wiki/軟體框架" target="_blank" rel="noopener">软件框架</a>。</p>
+<blockquote>
+<p>它支持在商品硬件构建的大型集群上运行的应用程序。Hadoop是根据<a href="https://zh.wikipedia.org/wiki/谷歌公司" target="_blank" rel="noopener">谷歌公司</a>发表的<a href="https://zh.wikipedia.org/wiki/MapReduce" target="_blank" rel="noopener">MapReduce</a>和<a href="https://zh.wikipedia.org/wiki/Google檔案系統" target="_blank" rel="noopener">Google文件系统</a>的论文自行实现而成。所有的Hadoop模块都有一个基本假设，即硬件故障是常见情况，应该由框架自动处理。</p>
+<p><a href="https://zh.wikipedia.org/wiki/Apache_Hadoop" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/Apache_Hadoop</a></p>
+</blockquote>
 </li>
-<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">worker_processes  1;</span><br><span class="line"></span><br><span class="line">error_log   /usr/local/var/log/nginx/error.log debug;</span><br><span class="line"><span class="meta">#</span> 指定pid</span><br><span class="line">pid        /usr/local/var/run/nginx.pid;</span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    worker_connections  256;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    include       mime.types;</span><br><span class="line">    default_type  application/octet-stream;</span><br><span class="line"><span class="meta">		#</span> 这个必须在前面</span><br><span class="line">    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '</span><br><span class="line">                      '$status $body_bytes_sent "$http_referer" '</span><br><span class="line">                      '"$http_user_agent" "$http_x_forwarded_for"';</span><br><span class="line"><span class="meta">		#</span> main 指的是上面的 main</span><br><span class="line">    access_log  /usr/local/var/log/nginx/access.log  main;</span><br><span class="line"></span><br><span class="line">    sendfile        on;</span><br><span class="line">    keepalive_timeout  65;</span><br><span class="line">    port_in_redirect off;</span><br><span class="line"></span><br><span class="line">    include /usr/local/etc/nginx/servers/*;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li><p>Apache Hadoop“平台”包括Hadoop内核、MapReduce、Hadoop分布式文件系统（HDFS）以及一些相关项目，有Apache Hive和Apache HBase等等。</p>
 </li>
-<li><p>配置php-fpm 需要自己创建 vim /usr/local/etc/nginx/php-fpm</p>
+<li><p>MapReduce：分布式计算，是Google提出的一个软件架构，用于大规模数据集（大于1<a href="https://zh.wikipedia.org/wiki/Terabyte" target="_blank" rel="noopener">TB</a>）的并行运算。</p>
 </li>
-<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">location ~ \.php$ &#123;</span><br><span class="line">       try_files                   $uri = 404;</span><br><span class="line">       # 端口号默认是9000，如果被占用可以修改</span><br><span class="line">       fastcgi_pass                127.0.0.1:9000;</span><br><span class="line">       fastcgi_index               index.php;</span><br><span class="line">       fastcgi_intercept_errors    on;</span><br><span class="line">       include /usr/local/etc/nginx/fastcgi.conf;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<li><p>Map (映射): 一个映射函数就是对一些独立元素组成的列表的每一个元素进行指定的操作。</p>
+<blockquote>
+<p>比如，有人发现所有学生的成绩都被高估了一分，他可以定义一个“减一”的映射函数，用来修正这个错误。事实上，每个元素都是被独立操作的，而原始列表没有被更改，因为这里创建了一个新的列表来保存新的答案。这就是说，Map操作是可以高度并行的，这对高性能要求的应用以及<a href="https://zh.wikipedia.org/wiki/并行计算" target="_blank" rel="noopener">并行计算</a>领域的需求非常有用。</p>
+</blockquote>
 </li>
-<li><p>新建配置php站点服务自己的配置文件 vim /usr/local/etc/nginx/services/php-demo.conf</p>
+<li><p>Reduce(归纳): 归纳操作指的是对一个列表的元素进行适当的合并</p>
+<blockquote>
+<p>继续看前面的例子，如果有人想知道班级的平均分该怎么做？他可以定义一个归纳函数，通过让列表中的奇数（odd）或偶数（even）元素跟自己的相邻的元素相加的方式把列表减半，如此递归运算直到列表只剩下一个元素，然后用这个元素除以人数，就得到了平均分。虽然他不如映射函数那么并行，但是因为归纳总是有一个简单的答案，大规模的运算相对独立，所以归纳函数在高度并行环境下也很有用。</p>
+</blockquote>
 </li>
-<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    server_name  www.xxx.com;</span><br><span class="line">    # 指定php工程地址</span><br><span class="line">    root         /usr/local/var/www/demo;</span><br><span class="line">    access_log  /usr/local/var/log/nginx/default.access.log  main;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        try_files $uri $uri/ /index.php?$query_string;</span><br><span class="line">        index  index.html index.htm index.php;</span><br><span class="line">        autoindex   on;</span><br><span class="line">        include     /usr/local/etc/nginx/php-fpm;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="meta"> #</span> pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000</span><br><span class="line">        location ~ \.php$ &#123;</span><br><span class="line">            try_files $uri = 404;</span><br><span class="line">						# 端口号，被占用可以修改</span><br><span class="line">						fastcgi_pass   127.0.0.1:9000;</span><br><span class="line">            fastcgi_index  index.php;</span><br><span class="line">            fastcgi_param  SCRIPT_FILENAME $document_root$fastcgi_script_name;</span><br><span class="line">            include        fastcgi_params;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    error_page  404     /404.html;</span><br><span class="line">    error_page  403     /403.html;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li><p>HDFS(Hadoop Distributed File System 分布式文件系统):是指被设计成适合运行在通用硬件(commodity hardware)上的分布式文件系统</p>
+<blockquote>
+<p><a href="https://baike.baidu.com/item/HDFS" target="_blank" rel="noopener">https://baike.baidu.com/item/HDFS</a></p>
+<p>HDFS是一个高度容错性的系统，适合部署在廉价的机器上。HDFS能提供高吞吐量的数据访问，非常适合大规模数据集上的应用。</p>
+</blockquote>
 </li>
-<li><p>重启nginx</p>
+<li><p><strong>YARN:</strong> 分布式资源管理</p>
+<blockquote>
+<p><a href="https://wiki.jikexueyuan.com/project/hadoop/node-manager.html" target="_blank" rel="noopener">https://wiki.jikexueyuan.com/project/hadoop/node-manager.html</a></p>
+</blockquote>
 </li>
-<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx -s reload</span><br></pre></td></tr></table></figure>
+</ul>
+<h5 id="Spark"><a href="#Spark" class="headerlink" title="Spark"></a>Spark</h5><ul>
+<li><h5 id="Hbase-Hadoop-database"><a href="#Hbase-Hadoop-database" class="headerlink" title="Hbase(Hadoop database)"></a>Hbase(Hadoop database)</h5></li>
+<li><p>Hbase是一种在Hadoop之上的NoSQL 的Key/vale数据库</p>
 </li>
-<li><p>安装Postgre 数据库</p>
+<li><p>Hbase非常适合用来进行大数据的实时查询</p>
 </li>
-<li><p>下载CI框架</p>
+</ul>
+<h5 id="Hive"><a href="#Hive" class="headerlink" title="Hive"></a>Hive</h5><ul>
+<li>Hive是Hadoop数据仓库，严格来说，不是数据库，主要是让开发人员能够通过SQL来计算和处理HDFS上的结构化数据。</li>
+<li>通过元数据来描述Hdfs上的结构化文本数据，通俗点来说，就是定义一张表来描述HDFS上的结构化文本，包括各列数据名称，数据类型是什么等，方便我们处理数据，当前很多SQL ON Hadoop的计算引擎均用的是hive的元数据，如Spark SQL、Impala等；</li>
+<li>Hive是一种类SQL的引擎，并且运行MapReduce任务</li>
+<li>Hive适合用来对一段时间内的数据进行分析查询</li>
+</ul>
+<h5 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h5><ul>
+<li><a href="https://juejin.im/post/5cc3db50f265da03a436d7bd" target="_blank" rel="noopener">https://juejin.im/post/5cc3db50f265da03a436d7bd</a> (hive hbase 区别)</li>
+<li><a href="https://www.cnblogs.com/justinzhang/p/4273470.html" target="_blank" rel="noopener">https://www.cnblogs.com/justinzhang/p/4273470.html</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2020/01/16/树莓派4 Spark环境配置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lpl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/blog/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="闲敲棋子落灯花">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2020/01/16/树莓派4 Spark环境配置/" itemprop="url">树莓派4Spark环境配置</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-16T10:11:19+08:00">
+                2020-01-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/Raspberry/" itemprop="url" rel="index">
+                    <span itemprop="name">Raspberry</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="Java-环境配置"><a href="#Java-环境配置" class="headerlink" title="Java 环境配置"></a>Java 环境配置</h5><ul>
+<li><p>安装java</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">pi@raspberrypi:~ $ sudo apt-get purge openjdk-8-jre-headless</span><br><span class="line">pi@raspberrypi:~ $ sudo apt-get install openjdk-8-jre-headless</span><br><span class="line">pi@raspberrypi:~ $ sudo apt-get install openjdk-8-jre</span><br><span class="line">pi@raspberrypi:~ $ java -version </span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 或者试试这个</span><br><span class="line">sudo apt-get install default-jdk</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 或者去官网下载</span><br><span class="line">https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>第一个nginx + PHP + PostgreSQL demo</p>
+<li><p>Java环境变量配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"> </span><br></pre></td></tr></table></figure>
 </li>
-<li><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建数据库的部分自己手动在命令行做了</span></span><br><span class="line">$dsn 	= <span class="string">"pgsql:port=5432;host=127.0.0.1;dbname=nosql"</span>;</span><br><span class="line">$username 	= <span class="string">"jack"</span>;</span><br><span class="line">$password	= <span class="string">"123456"</span>;</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  $pdo 	= <span class="keyword">new</span> PDO($dsn, $username, $password);</span><br><span class="line">  <span class="keyword">if</span>(!$pdo)&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"&lt;h5&gt;PG:PDO连接失败&lt;/h5&gt;"</span>;</span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"&lt;h5&gt;PG:PDO连接成功&lt;/h5&gt;"</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;<span class="keyword">catch</span>(<span class="keyword">Exception</span> $e)&#123;</span><br><span class="line">  print_r($e-&gt;getMessage());</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 插入数据库字段需要用单引号</span></span><br><span class="line">$sql 	= <span class="string">"select * from user_tbl;"</span>;</span><br><span class="line">$result = $pdo-&gt;query($sql);</span><br><span class="line"></span><br><span class="line"><span class="keyword">foreach</span>($result <span class="keyword">as</span> $row) &#123;</span><br><span class="line">  print_r($row[<span class="string">'name'</span>]);</span><br><span class="line">  print_r($row[<span class="string">'signup_date'</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li><p>或者使用SDKMAN </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 安装sdkman https://sdkman.io/</span><br><span class="line">pi@raspberrypi:~ $ curl -s "https://get.sdkman.io" | bash</span><br><span class="line"><span class="meta">#</span></span><br></pre></td></tr></table></figure>
 
 
 
 </li>
 </ul>
+<h5 id="Scala-环境配置"><a href="#Scala-环境配置" class="headerlink" title="Scala 环境配置"></a>Scala 环境配置</h5><ul>
+<li><p>Mac 或者 树莓派 上安装Scala</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> Mac</span><br><span class="line">brew install scala</span><br><span class="line"><span class="meta">#</span> Mac 或者其他 平台</span><br><span class="line">sdk install scala</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 官网下载</span><br><span class="line">scala-2.13.1.tgz(可执行文件)； scala-2.13.1.tar.gz(源码)</span><br><span class="line"><span class="meta">#</span> 如果是树莓派</span><br><span class="line">scp scala-2.13.1.tgz pi@192.168.1.1:/home/pi </span><br><span class="line"><span class="meta">#</span> 解压缩</span><br><span class="line">sudo tar -zvxf scala-2.13.1.tgz -C /usr/local/</span><br><span class="line">cd /usr/local</span><br><span class="line">sudo mv scala-2.13.1 scala</span><br><span class="line"><span class="meta">#</span> 配置环境变量</span><br><span class="line">vim .bash_profile</span><br><span class="line"><span class="meta">#</span> for scala</span><br><span class="line">SCALA_HOME=/usr/local/scala</span><br><span class="line">PATH=$PATH:$SCALA_HOME/bin</span><br><span class="line">export SCALA_HOME PATH</span><br><span class="line"><span class="meta">#</span> 验证</span><br><span class="line">scala -version</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h5 id="sbt-安装"><a href="#sbt-安装" class="headerlink" title="sbt 安装"></a>sbt 安装</h5><ul>
+<li><p>安装 sdkman</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pi@raspberrypi:~ $ curl -s "https://get.sdkman.io" | bash</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过sdkman 安装 sbt</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sdk install sbt</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>sbt 安装验证</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 创建工作目录</span><br><span class="line">mkdir sbtworkspace</span><br><span class="line">cd sbtworkspace</span><br><span class="line"><span class="meta">#</span> 创建新目录，比较耗时 结束提示输入项目名称，例如hello</span><br><span class="line">sbt new scala/hello-world.g8</span><br><span class="line"><span class="meta">#</span> 进入工程目录 </span><br><span class="line">cd hello</span><br><span class="line"><span class="meta">#</span> 构建项目 (比较耗时)</span><br><span class="line">sbt</span><br><span class="line"><span class="meta">#</span> 运行项目</span><br><span class="line">run</span><br><span class="line"><span class="meta">#</span> 持续运行项目(修改保存之后会自动运行)</span><br><span class="line">~run</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h5 id="下载Apache-Spark"><a href="#下载Apache-Spark" class="headerlink" title="下载Apache Spark"></a>下载Apache Spark</h5><ul>
+<li><p>安装pySpark，如果使用python 可以直接这么安装，否则先下载安装包，手动安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pyspark.</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>spark压缩包安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo tar -zvxf spark-3.0.0-preview2-bin-hadoop2.7.tgz -C /usr/local/</span><br><span class="line">cd /usr/local</span><br><span class="line">sudo mv spark-3.0.0-preview2-bin-hadoop2.7.tgz spark</span><br></pre></td></tr></table></figure>
+
+
+
 </li>
 </ul>
 <ul>
-<li><p>参考文章</p>
-<blockquote>
-<p><a href="https://cloud.tencent.com/developer/article/1335520" target="_blank" rel="noopener">https://cloud.tencent.com/developer/article/1335520</a></p>
-</blockquote>
+<li><p>Spark 环境配置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> .bashrc 或者 .bash_profile 中添加</span><br><span class="line"><span class="meta">#</span> spark env</span><br><span class="line">SPARK_HOME=/usr/local/spark</span><br><span class="line">export PATH=$PATH:$SPARK_HOME/bin</span><br><span class="line"><span class="meta">#</span> 配置生效</span><br><span class="line">source .bashrc|.bash_profile</span><br><span class="line"><span class="meta">#</span> 验证是否配置成功</span><br><span class="line">spark-shell</span><br></pre></td></tr></table></figure>
+
+
+
 </li>
+</ul>
+<h5 id="scala-安装参考文档"><a href="#scala-安装参考文档" class="headerlink" title="scala 安装参考文档"></a>scala 安装参考文档</h5><ul>
+<li><a href="https://blog.csdn.net/danlei94/article/details/78082131" target="_blank" rel="noopener">https://blog.csdn.net/danlei94/article/details/78082131</a></li>
+<li>scala 官网 <a href="https://www.scala-lang.org/download/" target="_blank" rel="noopener">https://www.scala-lang.org/download/</a></li>
+</ul>
+<h5 id="sbt-文档"><a href="#sbt-文档" class="headerlink" title="sbt 文档"></a>sbt 文档</h5><ul>
+<li>sbt 官方文档 <a href="https://www.scala-sbt.org/1.x/docs/Installing-sbt-on-Linux.html" target="_blank" rel="noopener">https://www.scala-sbt.org/1.x/docs/Installing-sbt-on-Linux.html</a></li>
+<li>sbt 中文文档 <a href="https://wiki.jikexueyuan.com/project/sbt-getting-started/running.html" target="_blank" rel="noopener">https://wiki.jikexueyuan.com/project/sbt-getting-started/running.html</a></li>
+</ul>
+<h5 id="spark文档"><a href="#spark文档" class="headerlink" title="spark文档"></a>spark文档</h5><ul>
+<li>spark 中文文档 <a href="http://doc.codingdict.com/spark/25/" target="_blank" rel="noopener">http://doc.codingdict.com/spark/25/</a></li>
+<li>spark 下载地址 <a href="http://spark.apache.org/downloads.html" target="_blank" rel="noopener">http://spark.apache.org/downloads.html</a>  (可能需要多尝试几次)</li>
+<li></li>
+</ul>
+<h5 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h5><ul>
+<li><a href="https://blog.csdn.net/danlei94/article/details/78082131" target="_blank" rel="noopener">https://blog.csdn.net/danlei94/article/details/78082131</a></li>
 </ul>
 
           
@@ -1842,7 +1849,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/08/22/Mac PHP 启动/">
+    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2020/01/14/树莓派开启自动发邮件/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lpl">
@@ -1861,7 +1868,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2019/08/22/Mac PHP 启动/" itemprop="url">Mac 自带PHP 启动</a></h1>
+                <a class="post-title-link" href="/blog/2020/01/14/树莓派开启自动发邮件/" itemprop="url">树莓派开机自动发邮件</a></h1>
         
 
         <div class="post-meta">
@@ -1873,8 +1880,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-22T17:05:07+08:00">
-                2019-08-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-14T16:15:08+08:00">
+                2020-01-14
               </time>
             
 
@@ -1896,8 +1903,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/PHP/" itemprop="url" rel="index">
-                    <span itemprop="name">PHP</span>
+                  <a href="/blog/categories/Raspberry/" itemprop="url" rel="index">
+                    <span itemprop="name">Raspberry</span>
                   </a>
                 </span>
 
@@ -1935,265 +1942,62 @@
       
         
           
-            <ul>
-<li><p>Mac 自带 php-fpm，在终端执行 php-fpm，会报如下错误：</p>
+            <h5 id="安装mutt、msmtp"><a href="#安装mutt、msmtp" class="headerlink" title="安装mutt、msmtp"></a>安装mutt、msmtp</h5><ul>
+<li><p>mutt ：是一个linux下的邮件程序，mutt 类似文件管理器，不过它管理的是邮件</p>
 </li>
-<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ERROR: failed to open configuration file '/private/etc/php-fpm.conf': No such file or directory (2)</span><br><span class="line">ERROR: failed to load configuration file '/private/etc/php-fpm.conf'</span><br><span class="line">ERROR: FPM initialization failed</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>错误信息显示，不能打开配置文件，cd /private/etc，发现没有 php-fpm.conf 文件，但是有 php-fpm.conf.default 文件。这个文件是默认配置，我们可以复制一份，改名为 php-fpm.conf，然后再根据需要改动配置。</p>
-</blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp /private/etc/php-fpm.conf.default /private/etc/php-fpm.conf</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>执行 php-fpm，再次报错：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[22-Aug-2019 16:50:55] WARNING: Nothing matches the include pattern '/private/etc/php-fpm.d/*.conf' from /private/etc/php-fpm.conf at line 125.</span><br><span class="line">[22-Aug-2019 16:50:55] ERROR: failed to open error_log (/usr/var/log/php-fpm.log): No such file or directory (2)</span><br><span class="line">[22-Aug-2019 16:50:55] ERROR: failed to post process the configuration</span><br><span class="line">[22-Aug-2019 16:50:55] ERROR: FPM initialization failed</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>错误信息显示，不能打开错误日志文件。cd /usr/var/log 发现根本没有这个目录，甚至连 var 目录都没有，加上为了避免权限问题，干脆配置到 /usr/local/var/log 目录。</p>
-</blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo vim php-fpm.conf</span><br><span class="line"><span class="meta">#</span> 记得将前面的';'去掉</span><br><span class="line">error_log = /usr/local/var/log/php-fpm.log</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>执行 php-fpm，再次报错：</p>
-</li>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[22-Aug-2019 16:54:36] WARNING: Nothing matches the include pattern &apos;/private/etc/php-fpm.d/*.conf&apos; from /private/etc/php-fpm.conf at line 125.</span><br><span class="line">[22-Aug-2019 16:54:36] ERROR: No pool defined. at least one pool section must be specified in config file</span><br><span class="line">[22-Aug-2019 16:54:36] ERROR: failed to post process the configuration</span><br><span class="line">[22-Aug-2019 16:54:36] ERROR: FPM initialization failed</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>解决方法是：</p>
-<p>进入PHP安装目录/etc/php-fpm.d</p>
-</blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp www.conf.default www.conf</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>执行 php-fpm，再次报错：</p>
-</li>
-<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[22-Aug-2019 16:58:23] NOTICE: [pool www] 'user' directive is ignored when FPM is not running as root</span><br><span class="line">[22-Aug-2019 16:58:23] NOTICE: [pool www] 'group' directive is ignored when FPM is not running as root</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 解决方法</span><br><span class="line">sudo php-fpm</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>执行 sudo  php-fpm，再次报错：</p>
-</li>
-<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">No log handling enabled - using stderr logging</span><br><span class="line">Created directory: /var/db/net-snmp</span><br><span class="line">Created directory: /var/db/net-snmp/mib_indexes</span><br><span class="line">[22-Aug-2019 16:58:54] ERROR: unable to bind listening socket for address '127.0.0.1:9000': Address already in use (48)</span><br><span class="line">[22-Aug-2019 16:58:54] ERROR: FPM initialization failed</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 问题的原因是端口被占用，换一个端口就可以了。</span><br><span class="line"><span class="meta">#</span> 解决方法</span><br><span class="line">cd /etc/php-fpm.d/www.conf</span><br><span class="line">listen = 127.0.0.1:9999</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>执行 sudo  php-fpm，再次报错：</p>
-</li>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[23-Aug-2019 10:27:21] ERROR: Unable to create the PID file (/usr/var/run/php-fpm.pid).: No such file or directory (2)</span><br><span class="line">[23-Aug-2019 10:27:21] ERROR: FPM initialization failed</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 原因是php-fpm.conf 文件中配置的 PID 路径没有权限；修复方法如下</span><br><span class="line">pid = /usr/local/var/run/php-fpm.pid</span><br></pre></td></tr></table></figure>
+<li><p>msmtp ：是linux 下一个非常简单易用的smtp客户端</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install mutt </span><br><span class="line"><span class="meta">#</span> 如果失败</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install msmtp</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
-<h5 id="PHP-FPM-重启方法"><a href="#PHP-FPM-重启方法" class="headerlink" title="PHP-FPM 重启方法"></a>PHP-FPM 重启方法</h5><ul>
-<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 启动</span><br><span class="line">sudo php-fpm</span><br><span class="line"><span class="meta">#</span> 终止 php-fpm.pid 需要在 php-fpm.conf中配置</span><br><span class="line">sudo kill -INT 'cat /usr/local/var/run/php-fpm.pid'</span><br><span class="line"><span class="meta">#</span> 重启</span><br><span class="line">sudo kill -USR2 'cat /usr/local/var/run/php-fpm.pid'</span><br><span class="line"><span class="meta">#</span> 平滑终止</span><br><span class="line">sudo kill -QUIT 'cat /usr/local/var/run/php-fpm.pid'</span><br><span class="line"><span class="meta">#</span> 如果没有php-fpm.pid 文件</span><br><span class="line">ps aux | grep php</span><br><span class="line">sudo kill -INT|USR2 pid</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>参考文章</p>
+<p>配置mutt、msmtp环境</p>
+<ul>
+<li><p>配置msmtp，在用户跟目录创建.msmtprc文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">vim .msmtprc</span><br><span class="line">account default</span><br><span class="line"></span><br><span class="line">host smtp.126.com</span><br><span class="line">from l5@126.com</span><br><span class="line">auth login</span><br><span class="line">tls off</span><br><span class="line">user l5</span><br><span class="line">password L5 (授权码)</span><br><span class="line">logfile ~/.mstmp.log</span><br><span class="line"><span class="meta">#</span> 申请126 邮箱，去设置获取授权码</span><br></pre></td></tr></table></figure>
+
 <blockquote>
-<p><a href="https://blog.csdn.net/zrainload/article/details/78962062" target="_blank" rel="noopener">https://blog.csdn.net/zrainload/article/details/78962062</a></p>
-<p><a href="https://blog.csdn.net/gb4215287/article/details/75247335" target="_blank" rel="noopener">https://blog.csdn.net/gb4215287/article/details/75247335</a></p>
+<ul>
+<li>host 表示你的游戏的SMTP服务器地址</li>
+<li>from 发件人邮箱地址</li>
+<li>user 发件人邮箱地址</li>
+<li>password 这里是邮箱的明文密码</li>
+<li>logfile 这里是日志文件路径，发送邮件后程序会将日志写入这个文件。</li>
+</ul>
 </blockquote>
 </li>
+<li><p>测试msmtp</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 输入如下命令，测试msmtp</span><br><span class="line">msmtp -d lipeil4195@126.com</span><br><span class="line">Subject:title&lt;Hi jack&gt;</span><br><span class="line">gogogogoogogogo</span><br><span class="line"><span class="meta">#</span> 标题、正文输入完之后，输入下面命令发送邮件</span><br><span class="line">control + d</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
 </ul>
+<ul>
+<li><p>配置mutt</p>
+</li>
+<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vim .muttrc</span><br><span class="line">set sendmail="/usr/bin/msmtp"</span><br><span class="line">set use_from=yes</span><br><span class="line">set realname='l5@126.com'</span><br><span class="line">set from="l5@126.com"</span><br><span class="line">set envelope_from=yes</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>测试mutt 是否安装配置成功</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod 0600 ~/.msmtprc</span><br><span class="line">echo &quot;准备的怎样了&quot; | mutt -s &quot;周末出游&quot; 419548550@qq.com</span><br></pre></td></tr></table></figure>
 
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
+<blockquote>
+<p>参考文章 <a href="https://www.huaijiujia.com/category/操作系统/centos/centos-特有软件/" target="_blank" rel="noopener">https://www.huaijiujia.com/category/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/centos/centos-%E7%89%B9%E6%9C%89%E8%BD%AF%E4%BB%B6/</a></p>
+<p><a href="https://www.cnblogs.com/hjfeng1988/p/4464116.html" target="_blank" rel="noopener">https://www.cnblogs.com/hjfeng1988/p/4464116.html</a></p>
+<p><a href="https://www.jianshu.com/p/893352c61f93" target="_blank" rel="noopener">https://www.jianshu.com/p/893352c61f93</a></p>
+<p><a href="https://blog.csdn.net/betty13006159467/article/details/71172295" target="_blank" rel="noopener">https://blog.csdn.net/betty13006159467/article/details/71172295</a></p>
+<p><a href="https://www.jianshu.com/p/f7faa156087a" target="_blank" rel="noopener">https://www.jianshu.com/p/f7faa156087a</a></p>
+</blockquote>
+</li>
+<li><p>发送邮件配置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>!/bin/bash</span><br><span class="line"><span class="meta">#</span> check network availability</span><br><span class="line">while true</span><br><span class="line">do</span><br><span class="line">TIMEOUT=5</span><br><span class="line">SITE_TO_CHECK="www.baidu.com"</span><br><span class="line">RET_CODE=`curl -I -s --connect-timeout $TIMEOUT $SITE_TO_CHECK -w %&#123;http_code&#125; | tail -n1`</span><br><span class="line">if [ "x$RET_CODE" = "x200" ]; then</span><br><span class="line">echo "Network OK, will send mail..."</span><br><span class="line">break</span><br><span class="line">else</span><br><span class="line">echo "Network not ready, wait..."</span><br><span class="line">sleep 1s</span><br><span class="line">fi</span><br><span class="line">done</span><br><span class="line"><span class="meta">#</span> 这里如果是网线用eth0, 如果是wifi 用wlan0。</span><br><span class="line">ETH0_IP_ADDR=`ifconfig wlan0 | sed -n "2,2p" | awk '&#123;print substr($2,1)&#125;'`</span><br><span class="line">echo $ETH0_IP_ADDR</span><br><span class="line"><span class="meta">#</span> send the Email 这里给qq邮箱发提示失败(原因是垃圾邮件)，换成126自己的地址就可以。然后用QQ邮箱代收。</span><br><span class="line">echo "China Current time: `date '+%F %T'`. Good time" | mutt -s "Zubao's IP Address of Raspberry Pi: $ETH0_IP_ADDR" l5@126.com</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>开机配置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 将.msmtprc .msmtp.log .muttrc 文件copy到 /root 目录下面。需要用su进入root权限，sudo不行</span><br><span class="line"><span class="meta">#</span> 修改 /etc/rc.local 文件，在exit 之前加上</span><br><span class="line">bash /root/send_ip_mail.sh</span><br></pre></td></tr></table></figure>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/08/22/Hive 简介/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lpl">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/blog/images/head.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="闲敲棋子落灯花">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2019/08/22/Hive 简介/" itemprop="url">Hive 简介</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-22T14:42:03+08:00">
-                2019-08-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/hive/" itemprop="url" rel="index">
-                    <span itemprop="name">hive</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="Hive简介"><a href="#Hive简介" class="headerlink" title="Hive简介"></a>Hive简介</h5><ul>
-<li>Apache Hive起初由<a href="https://zh.wikipedia.org/wiki/Facebook" target="_blank" rel="noopener">Facebook</a>开发</li>
-<li><strong>Apache Hive</strong>是一个建立在<a href="https://zh.wikipedia.org/wiki/Hadoop" target="_blank" rel="noopener">Hadoop</a>架构之上的数据仓库。</li>
-<li>可以将结构化的数据文件映射为一张数据库表</li>
-<li>Hive 定义了简单的类 SQL 查询语言，称为 HQL，它允许熟悉 SQL 的用户查询数据。</li>
-<li>底层数据是存储在 HDFS (Hadoop Distributed File System)上</li>
-<li>Hive的本质是将 SQL 语句转换为 MapReduce 任务运行</li>
-<li>使不熟悉 MapReduce 的用户很方便地利用 HQL 处理和计算 HDFS 上的结构化的数据。</li>
+</li>
 </ul>
-<h5 id="Hive优缺点："><a href="#Hive优缺点：" class="headerlink" title="Hive优缺点："></a>Hive优缺点：</h5><blockquote>
-<p>直接使用 MapReduce 所面临的问题：</p>
-<p>　　1、人员学习成本太高</p>
-<p>　　2、项目周期要求太短</p>
-<p>　　3、MapReduce实现复杂查询逻辑开发难度太大</p>
-<p>为什么要使用 Hive：</p>
-<p>　　1、更友好的接口：操作接口采用类 SQL 的语法，提供快速开发的能力</p>
-<p>　　2、更低的学习成本：避免了写 MapReduce，减少开发人员的学习成本</p>
-<p>　　3、更好的扩展性：可自由扩展集群规模而无需重启服务，还支持用户自定义函数</p>
-</blockquote>
-<h5 id="Hive的特点"><a href="#Hive的特点" class="headerlink" title="Hive的特点"></a>Hive的特点</h5><blockquote>
-<p><strong>优点</strong>：</p>
-<p>　　1、<strong>可扩展性,横向扩展</strong>，Hive 可以自由的扩展集群的规模，一般情况下不需要重启服务 横向扩展：通过分担压力的方式扩展集群的规模 纵向扩展：一台服务器cpu i7-6700k 4核心8线程，8核心16线程，内存64G =&gt; 128G</p>
-<p>　　2、<strong>延展性</strong>，Hive 支持自定义函数，用户可以根据自己的需求来实现自己的函数</p>
-<p>　　3、<strong>良好的容错性</strong>，可以保障即使有节点出现问题，SQL 语句仍可完成执行</p>
-<p><strong>缺点</strong>：</p>
-<p>　　1、<strong>Hive 不支持记录级别的增删改操作</strong>，但是用户可以通过查询生成新表或者将查询结 果导入到文件中（当前选择的 hive-2.3.2 的版本支持记录级别的插入操作）</p>
-<p>　　2、<strong>Hive 的查询延时很严重</strong>，因为 MapReduce Job 的启动过程消耗很长时间，所以不能 用在交互查询系统中。</p>
-<p>　　3、<strong>Hive 不支持事务</strong>（因为不没有增删改，所以主要用来做 OLAP（联机分析处理），而 不是 OLTP（联机事务处理），这就是数据处理的两大级别）。</p>
-</blockquote>
-<h5 id="Hive的用户接口"><a href="#Hive的用户接口" class="headerlink" title="Hive的用户接口"></a>Hive的用户接口</h5><blockquote>
-<p>CLI，Shell 终端命令行（Command Line Interface），采用交互形式使用 Hive 命令行与 Hive 进行交互，最常用（学习，调试，生产）</p>
-<p>JDBC/ODBC，是 Hive 的基于 JDBC 操作提供的客户端，用户（开发员，运维人员）通过 这连接至 Hive server 服务</p>
-<p>Web UI，通过浏览器访问 Hive</p>
-</blockquote>
-<h5 id="Hive的跨语言服务"><a href="#Hive的跨语言服务" class="headerlink" title="Hive的跨语言服务"></a>Hive的跨语言服务</h5><blockquote>
-<p>Thrift 是 Facebook 开发的一个软件框架，可以用来进行可扩展且跨语言的服务的开发， Hive 集成了该服务，能让不同的编程语言调用 Hive 的接口</p>
-</blockquote>
-<h5 id="底层驱动"><a href="#底层驱动" class="headerlink" title="底层驱动"></a>底层驱动</h5><blockquote>
-<p>Driver 组件完成 HQL 查询语句从词法分析，语法分析，编译，优化，以及生成逻辑执行 计划的生成。生成的逻辑执行计划存储在 HDFS 中，并随后由 MapReduce 调用执行</p>
-<p>Hive 的核心是驱动引擎， 驱动引擎由四部分组成：</p>
-<p>(1) 解释器：解释器的作用是将 HiveSQL 语句转换为抽象语法树（AST）</p>
-<p>(2) 编译器：编译器是将语法树编译为逻辑执行计划</p>
-<p>(3) 优化器：优化器是对逻辑执行计划进行优化</p>
-<p>(4) 执行器：执行器是调用底层的运行框架执行逻辑执行计划</p>
-</blockquote>
-<h5 id="数据库存储系统"><a href="#数据库存储系统" class="headerlink" title="数据库存储系统"></a>数据库存储系统</h5><blockquote>
-<p><strong>元数据</strong>，通俗的讲，就是存储在 Hive 中的数据的描述信息。</p>
-<p>Hive 中的元数据通常包括：表的名字，表的列和分区及其属性，表的属性（内部表和 外部表），表的数据所在目录</p>
-<p>Metastore 默认存在自带的 Derby 数据库中。缺点就是不适合多用户操作，并且数据存 储目录不固定。数据库跟着 Hive 走，极度不方便管理</p>
-<p>解决方案：通常存我们自己创建的 MySQL 库（本地 或 远程）</p>
-<p>Hive 和 MySQL 之间通过 MetaStore 服务交互</p>
-</blockquote>
-<h5 id="执行流程"><a href="#执行流程" class="headerlink" title="执行流程"></a>执行流程</h5><blockquote>
-<p>HiveQL 通过命令行或者客户端提交，经过 Compiler 编译器，运用 MetaStore 中的元数 据进行类型检测和语法分析，生成一个逻辑方案(Logical Plan)，然后通过的优化处理，产生 一个 MapReduce 任务。</p>
-</blockquote>
-<h5 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h5><blockquote>
-<p><a href="https://www.cnblogs.com/qingyunzong/p/8707885.html" target="_blank" rel="noopener">https://www.cnblogs.com/qingyunzong/p/8707885.html</a></p>
-<p><a href="https://www.cnblogs.com/qingyunzong/category/1191578.html" target="_blank" rel="noopener">https://www.cnblogs.com/qingyunzong/category/1191578.html</a></p>
-</blockquote>
-<p>　　　　</p>
 
           
         
@@ -2233,7 +2037,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/blog/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/blog/">1</a><a class="page-number" href="/blog/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/blog/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/6/">6</a><a class="extend next" rel="next" href="/blog/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/blog/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/blog/">1</a><a class="page-number" href="/blog/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/blog/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/9/">9</a><a class="extend next" rel="next" href="/blog/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2281,7 +2085,7 @@
               
                 <a href="/blog/archives/">
               
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">81</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2292,7 +2096,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/blog/categories/index.html">
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2303,7 +2107,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/blog/tags/index.html">
-                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-count">70</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="闲敲棋子落灯花">
 <meta property="og:description" content="硬件选购 必须(主板、SDCard、电源线或者USB线-Type-C、读卡器) 可选(显示器、鼠标、键盘、风扇、外壳、各类传感器、HDMI线(一头为HDMI-micro，另一头为HDMI))  安装系统 下载Raspberry系统镜像  下载地址 https://www.raspberrypi.org/downloads/raspbian/   下载Etcher  https://www.bale">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-01-14T09:30:56.773Z">
+<meta property="og:updated_time" content="2020-04-17T14:13:51.573Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="树莓派的安装配置">
 <meta name="twitter:description" content="硬件选购 必须(主板、SDCard、电源线或者USB线-Type-C、读卡器) 可选(显示器、鼠标、键盘、风扇、外壳、各类传感器、HDMI线(一头为HDMI-micro，另一头为HDMI))  安装系统 下载Raspberry系统镜像  下载地址 https://www.raspberrypi.org/downloads/raspbian/   下载Etcher  https://www.bale">
@@ -427,9 +427,51 @@
 <h5 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h5><ul>
 <li>小米路由器禁止了Ping、SSH，需要修改路由器加密方式为WPA2。可以通过小米wifiAPP -&gt; Wi-Fi设置 -&gt; 加密方式 修改。</li>
 </ul>
+<h5 id="SSH反向代理"><a href="#SSH反向代理" class="headerlink" title="SSH反向代理"></a>SSH反向代理</h5><ul>
+<li><p>ssh 免密码登陆</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 第一步在.ssh目录下生成密钥对</span><br><span class="line">ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa</span><br><span class="line"><span class="meta">#</span> 第二步将公钥copy到树莓派|服务器</span><br><span class="line">scp id_rsa.pub pi@host:/user/.ssh</span><br><span class="line"><span class="meta">#</span> 第三方将公钥copy到.ssh 目录下authorized_keys文件中。如果免密登陆失败，看下公钥是否另起一行。</span><br><span class="line">cat id_rsa.pub &gt;&gt; authorized_keys</span><br><span class="line"><span class="meta">#</span> 第四步在本地.ssh目录下新建config文件</span><br><span class="line">Host *</span><br><span class="line">    ServerAliveInterval 20</span><br><span class="line">    ServerAliveCountMax 3</span><br><span class="line">    ForwardAgent yes</span><br><span class="line">    CheckHostIP no</span><br><span class="line">    Compression yes</span><br><span class="line">    TCPKeepAlive yes</span><br><span class="line"></span><br><span class="line">    ControlMaster auto</span><br><span class="line">    ControlPath /tmp/ssh_connection_%h_%p_%r.sock</span><br><span class="line">Host ali</span><br><span class="line">	User root</span><br><span class="line">	Hostname 树莓派|服务器ip</span><br><span class="line">	IdentityFile ~/.ssh/id_rsa</span><br><span class="line"><span class="meta">#</span> 第五步 通过别名 ali 免密登陆</span><br><span class="line">ssh ali</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 服务器设置防火墙</span><br><span class="line">firewall-cmd --zone=public --add-port=33389/tcp --permanent</span><br><span class="line">firewall-cmd --zone=public --add-port=20443/tcp --permanent</span><br><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>ubuntu 端口操作</p>
+<blockquote>
+<p>ufw enable </p>
+<p>ufw reload</p>
+<p>ufw status</p>
+<p>ufw allow 9000</p>
+<p>ufw deny 9000</p>
+<p>ufw delete allow 9000</p>
+<p><a href="https://www.cnblogs.com/toughlife/p/5475615.html" target="_blank" rel="noopener">https://www.cnblogs.com/toughlife/p/5475615.html</a></p>
+<p><a href="https://blog.csdn.net/jiaochiwuzui/article/details/80907521" target="_blank" rel="noopener">https://blog.csdn.net/jiaochiwuzui/article/details/80907521</a></p>
+</blockquote>
+</li>
+<li><p>kill端口号为xxx的进程</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lsof -ti:5901 | xargs kill -9</span><br><span class="line">netstat -tunpl | grep 端口号</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>ssh反向代理</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 树莓派上建立反向代理(内网)</span><br><span class="line">ssh -fNR 9333:localhost:22 root@x.x.x.x</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> VPS上 用9333端口 连接 树莓派；VPS 公网 ；PS这步测试用</span><br><span class="line">ssh -p 9333 pi@localhost</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> VPS 上建立正向代理</span><br><span class="line">ssh -fCNL *:10008:localhost:9333 localhost</span><br><span class="line"><span class="meta">#</span> 开通端口10008</span><br><span class="line">iptables -I INPUT -p tcp --dport 10008 -j ACCEPT</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> PC 上 使用ssh 访问 树莓派；PC(另外一个内网)，</span><br><span class="line">ssh -p 10008 pi@x.x.x.x (公网ip)</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 端口检查</span><br><span class="line">netstat -ale | grep 10008</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><a href="https://blog.csdn.net/j5856004/article/details/102311180" target="_blank" rel="noopener">https://blog.csdn.net/j5856004/article/details/102311180</a></p>
+<p><a href="http://ukonline2000.com/?p=865" target="_blank" rel="noopener">http://ukonline2000.com/?p=865</a></p>
+</blockquote>
+</li>
+<li><p>goproxy 内网穿透</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 在vps上安装goproxy https://github.com/snail007/goproxy/blob/master/README_ZH.md</span><br><span class="line"><span class="meta">#</span> 注意安装最好选择手动安装，选择好对应系统、32|64 bit的安装包。</span><br><span class="line"><span class="meta">#</span> 去vps管理后台，开通需要用到的端口</span><br><span class="line"><span class="meta">#</span> 在vps主机上，开通需要用到的端口</span><br><span class="line"><span class="meta">#</span> vps 上生成证书 proxy.crt proxy.key</span><br><span class="line"> proxy keygen -C proxy</span><br><span class="line"><span class="meta">#</span> vps 运行如下命令</span><br><span class="line"> proxy bridge -p ":33080" -C proxy.crt -K proxy.key --daemon --forever --log proxy.log </span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> vps 开启服务, 同时映射80、22两个端口</span><br><span class="line">proxy server -r ":28080@:80" -r ":29090@:22" --k test -P "127.0.0.1:33080" -C proxy.crt -K proxy.key</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 如果要在自己的电脑上通过vps连接树莓派，-p后面 改为vps的ip地址</span><br><span class="line">proxy server -r ":28080@:80" -r ":29090@:22" --k test -P "22.22.22.22:33080" -C proxy.crt -K proxy.key</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 不同的client 用过 --k后面的 字符串区分</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 树莓派 安装 goproxy </span><br><span class="line"><span class="meta">#</span> 树莓派 将vps 上生成的证书copy下来</span><br><span class="line"><span class="meta">#</span> 树莓派 开启客户端 </span><br><span class="line">proxy client --k test -P "22.22.22.22:33080" -C proxy.crt -K proxy.key</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 第二种方法 用户界面。视频教程 https://www.bilibili.com/video/av73727323</span><br><span class="line"><span class="meta">#</span> 第一步在 vps上安装 proxyadmin 工具 https://github.com/snail007/proxy_admin_free/blob/master/README_ZH.md#%E8%A7%86%E9%A2%91%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B</span><br><span class="line"><span class="meta">#</span> 第二步 在树莓派上安装 proxyadmin 工具</span><br><span class="line"><span class="meta">#</span> 第三步 在浏览器访问 vps的 proxyadmin 工具(ip:32080)，在上面重置证书。</span><br><span class="line"><span class="meta">#</span> 第四步，将生成的证书下载下来，导入树莓派生 上面的 proxyadmin工具</span><br><span class="line"><span class="meta">#</span> 第五步，在vps上的proxyadmin 进入 内网穿透，启动监听，新增映射。具体参考视频教程</span><br><span class="line"><span class="meta">#</span> 第六步，在树莓派上的proxyadmin，进入自定义服务，具体参考视频教程</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> kill proxy 进程</span><br><span class="line">ps -aux | grep proxy</span><br><span class="line">kill -9 pid (第二列)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>树莓派定时任务</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">crontab -l</span><br><span class="line">crontab -e</span><br><span class="line"><span class="meta">#</span> 命令范式</span><br><span class="line"><span class="meta">#</span> m h  dom mon dow   command</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> m： 表示分钟，范围0到59</span><br><span class="line"><span class="meta">#</span> h：表示小时，范围0到23</span><br><span class="line"><span class="meta">#</span> dom：表示日，范围1到31</span><br><span class="line"><span class="meta">#</span> mon：表示月，范围1到12</span><br><span class="line"><span class="meta">#</span> dow：表示星期，范围0到7，0和7都是星期日</span><br><span class="line"><span class="meta">#</span> command：表示命令</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 特殊字符含义</span><br><span class="line"><span class="meta">#</span> *：表示所有的值，如果m字段是星号，这说明每分钟都运行。</span><br><span class="line"><span class="meta">#</span> ,：表示一个列表，如果m字段是 "1，5，15，58"，这说明在第1分钟，第5分钟，第15分钟和第58分钟会运行</span><br><span class="line"><span class="meta">#</span> -：表示一个范围，如果m字段是 1-5，这说明第1分钟、第2分钟、第3分钟、第4分钟和第5分钟都会运行</span><br><span class="line"><span class="meta">#</span> /：表示时间间隔，如果m字段是 */10，这说明每隔10分钟运行</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
 <h5 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h5><ul>
 <li><a href="https://www.ihubin.com/blog/raspberrypi-mac-install-raspbian/" target="_blank" rel="noopener">https://www.ihubin.com/blog/raspberrypi-mac-install-raspbian/</a></li>
 <li><a href="https://blog.csdn.net/freewebsys/article/details/48980993" target="_blank" rel="noopener">https://blog.csdn.net/freewebsys/article/details/48980993</a></li>
+<li><a href="https://blog.csdn.net/Winterto1990/article/details/90208724" target="_blank" rel="noopener">https://blog.csdn.net/Winterto1990/article/details/90208724</a></li>
+<li><a href="https://github.com/snail007/proxy_admin_free/blob/master/README_ZH.md#%E8%A7%86%E9%A2%91%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B" target="_blank" rel="noopener">https://github.com/snail007/proxy_admin_free/blob/master/README_ZH.md#%E8%A7%86%E9%A2%91%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B</a></li>
+<li><a href="https://github.com/snail007/goproxy/blob/master/README_ZH.md" target="_blank" rel="noopener">https://github.com/snail007/goproxy/blob/master/README_ZH.md</a></li>
+<li><a href="https://www.cnblogs.com/felixnet/p/7767191.html" target="_blank" rel="noopener">https://www.cnblogs.com/felixnet/p/7767191.html</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/108624497" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/108624497</a></li>
 </ul>
 
       
@@ -554,7 +596,7 @@
               
                 <a href="/blog/archives/">
               
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">81</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -565,7 +607,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/blog/categories/index.html">
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -576,7 +618,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/blog/tags/index.html">
-                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-count">70</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -632,7 +674,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#硬件选购"><span class="nav-number">1.</span> <span class="nav-text">硬件选购</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#安装系统"><span class="nav-number">2.</span> <span class="nav-text">安装系统</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#启动树莓派"><span class="nav-number">3.</span> <span class="nav-text">启动树莓派</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#问题"><span class="nav-number">4.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#参考资料"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#硬件选购"><span class="nav-number">1.</span> <span class="nav-text">硬件选购</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#安装系统"><span class="nav-number">2.</span> <span class="nav-text">安装系统</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#启动树莓派"><span class="nav-number">3.</span> <span class="nav-text">启动树莓派</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#问题"><span class="nav-number">4.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#SSH反向代理"><span class="nav-number">5.</span> <span class="nav-text">SSH反向代理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#参考资料"><span class="nav-number">6.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
             
 
           </div>
