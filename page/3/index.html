@@ -293,6 +293,570 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2020/05/29/Android dex等文件格式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lpl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/blog/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="闲敲棋子落灯花">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2020/05/29/Android dex等文件格式/" itemprop="url">Android dex、odex等文件格式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-29T10:32:06+08:00">
+                2020-05-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="文件格式含义"><a href="#文件格式含义" class="headerlink" title="文件格式含义"></a>文件格式含义</h5><ul>
+<li><p>Dalvik</p>
+<blockquote>
+<p>Dalvik是Google公司自己设计用于Android平台的Java虚拟机。Dalvik虚拟机是Google等厂商合作开发的Android移动设备平台的核心组成部分之一。</p>
+<p>Dalvik 经过优化，允许在有限的内存中同时运行多个虚拟机的实例，并且每一个Dalvik 应用作为一个独立的Linux 进程执行。独立的进程可以防止在虚拟机崩溃的时候所有程序都被关闭。</p>
+<p>参考 <a href="https://www.cnblogs.com/sjjg/p/5319038.html" target="_blank" rel="noopener">https://www.cnblogs.com/sjjg/p/5319038.html</a></p>
+</blockquote>
+</li>
+<li><p>ART (Android Runtime)</p>
+<blockquote>
+<p>Android Runtime (ART) 是 Android 上的应用和部分系统服务使用的托管式运行时。ART 及其前身 Dalvik 最初是专为 Android 项目打造的。作为运行时的 ART 可执行 Dalvik 可执行文件并遵循 Dex 字节码规范。</p>
+<p>ART 和 Dalvik 是运行 Dex 字节码的兼容运行时，因此针对 Dalvik 开发的应用也能在 ART 环境中运作。不过，一些能在 Dalvik 运转的技术，在 ART 上却不能。</p>
+<p>ART 包括一个编译器（<code>dex2oat</code> 工具）和一个为启动 Zygote 而加载的运行时 (<code>libart.so</code>)。</p>
+<p>参考 <a href="https://source.android.google.cn/devices/tech/dalvik?hl=zh-cn" target="_blank" rel="noopener">https://source.android.google.cn/devices/tech/dalvik?hl=zh-cn</a></p>
+</blockquote>
+</li>
+<li><p>dex </p>
+<blockquote>
+<p>Dex文件是Android虚拟机下的可执行文件，包含了应用程序所用到所有操作指令和运行时数据。在程序编译过程中，java源文件先被编译成class文件，然后通过dx工具将多个class文件整合为一个dex文件。这样的文件结构使得各个类能够共享数据，充分减少了存储空间，提升了运行效率。</p>
+<p>参考 <a href="https://blog.csdn.net/qq1084283172/article/details/53584495" target="_blank" rel="noopener">https://blog.csdn.net/qq1084283172/article/details/53584495</a></p>
+</blockquote>
+</li>
+<li><p>dey 优化后的dex的魔数就是dey。</p>
+<blockquote>
+<p>参考 <a href="https://blog.csdn.net/pang3510726681/article/details/11610365" target="_blank" rel="noopener">https://blog.csdn.net/pang3510726681/article/details/11610365</a></p>
+</blockquote>
+</li>
+<li><p>odex</p>
+<blockquote>
+<p>其中包含 APK 中已经过 AOT 编译的方法代码。Android O 版本中由 dex2oat 处理 dex 生成。</p>
+<p>参考 <a href="https://source.android.google.cn/devices/tech/dalvik/configure?hl=zh-cn" target="_blank" rel="noopener">https://source.android.google.cn/devices/tech/dalvik/configure?hl=zh-cn</a></p>
+<p>在程序第一次被加载的时候，为了提高以后的启动速度和执行效率，Android系统会对这个class.dex文件做一定程度的优化，并生成一个ODEX文件，存放在/data/dalvik-cache目录下。以后再运行这个程序的时候，就只要直接加载这个优化过的ODEX文件就行了，省去了每次都要优化的时间。</p>
+<p>不过，这个优化过程会根据不同设备上Dalvik虚拟机的版本、Framework库的不同等因素而不同。在一台设备上被优化过的ODEX文件，拷贝到另一台设备上不一定能够运行。<br>参考 <a href="https://blog.csdn.net/roland_sun/java/article/details/47183119" target="_blank" rel="noopener">https://blog.csdn.net/roland_sun/java/article/details/47183119</a></p>
+</blockquote>
+</li>
+<li><p>AOT(预先编译)</p>
+<blockquote>
+<p>ART 引入了预先编译机制，可提高应用的性能。ART 还具有比 Dalvik 更严格的安装时验证。</p>
+<p>在安装时，ART 使用设备自带的 <strong>dex2oat</strong> 工具来编译应用。此实用工具接受 <a href="https://source.android.google.cn/devices/tech/dalvik/dex-format?hl=zh-cn" target="_blank" rel="noopener">DEX</a> 文件作为输入，并为目标设备生成经过编译的应用可执行文件。该工具应能够顺利编译所有有效的 DEX 文件。但是，一些后处理工具会生成无效文件，Dalvik 可以接受这些文件，但 ART 无法编译这些文件。</p>
+<p>参考 <a href="https://source.android.google.cn/devices/tech/dalvik?hl=zh-cn" target="_blank" rel="noopener">https://source.android.google.cn/devices/tech/dalvik?hl=zh-cn</a></p>
+</blockquote>
+</li>
+<li><p><code>.vdex</code>：其中包含 APK 的未压缩 DEX 代码，以及一些旨在加快验证速度的元数据。Android O 版本中 dex2oat 生成</p>
+</li>
+<li><p><code>.art (optional)</code>：其中包含 APK 中列出的某些字符串和类的 ART 内部表示，用于加快应用启动速度。同上。</p>
+</li>
+<li><p><code>.oat:</code> oat文件本质上是一个ELF文件，它将OAT文件格式内嵌在ELF文件里。</p>
+<blockquote>
+<p>在oat文件的dymanic section中，导出了三个符号oatdata、oatexec和oatlastword，分别用来描述oatdata和oatexec段加载到内存后的起止地址。</p>
+<p>参考 <a href="https://www.jianshu.com/p/065e358b9599" target="_blank" rel="noopener">https://www.jianshu.com/p/065e358b9599</a> 包含提取dex工具</p>
+</blockquote>
+</li>
+<li><p><code>elf</code>: 可执行文件格式。例如.so、.a文件都是elf格式的</p>
+<blockquote>
+<p>elf的详解，包含格式、解析等</p>
+<p><a href="https://www.cnblogs.com/1024Planet/p/6272620.html" target="_blank" rel="noopener">https://www.cnblogs.com/1024Planet/p/6272620.html</a></p>
+<p><a href="https://www.jianshu.com/p/143c717dfcf4" target="_blank" rel="noopener">https://www.jianshu.com/p/143c717dfcf4</a></p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p><code>libdvm.so</code> dalvik 虚拟机。</p>
+</li>
+<li><p><code>libart.so</code> art虚拟机。art和dalvik都是虚拟机，但是art会对dex做预处理，加快运行时速度。预处理的时机有可能是在安装的时候，也有可能是在安装之后，手机充电的时候。具体：</p>
+<blockquote>
+<p>ART运作方式 </p>
+<p>参考 <a href="https://source.android.google.cn/devices/tech/dalvik/configure?hl=zh-cn" target="_blank" rel="noopener">https://source.android.google.cn/devices/tech/dalvik/configure?hl=zh-cn</a></p>
+</blockquote>
+</li>
+</ul>
+<p>##### </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2020/05/27/关于wait、notify/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lpl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/blog/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="闲敲棋子落灯花">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2020/05/27/关于wait、notify/" itemprop="url">关于wait、notify</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-27T21:56:44+08:00">
+                2020-05-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="wait、notify、notifyAll-为什么必须与synchronized-配合使用。"><a href="#wait、notify、notifyAll-为什么必须与synchronized-配合使用。" class="headerlink" title="wait、notify、notifyAll 为什么必须与synchronized 配合使用。"></a>wait、notify、notifyAll 为什么必须与synchronized 配合使用。</h5><ul>
+<li><p>synchronized(obj){} 表示持有当前obj对象的锁，在此线程的这一代码块结束之前，1、其他线程不能进入这段代码块；2、其他线程也不能在任何地方持有obj的对象锁，即不能进入另外一处代码中的synchronized(obj){}代码块。</p>
+</li>
+<li><p>obj.wait 意思是放弃当前对象的锁并堵塞线程，线程挂起。既然要放弃锁，必须先持有锁。持有锁的语法为synchronized(obj);</p>
+</li>
+<li><p>obj.notify 、obj.notifyAll，notify表示根据算法唤醒一个线程竞争锁；notifyAll唤醒所有线程竞争锁。当前线程如果想要唤醒其他线程去竞争对象锁，必须自己持有该对象锁，并很快会释放。</p>
+<blockquote>
+<p>反例：如果自己不持有obj对象锁，却唤醒其他线程去竞争obj对象锁。假如这个时候有某一个线程正持有obj对象锁，并且在执行一个耗时的操作。这种情况唤醒是没有意义的，不会有线程可以竞争到obj对象锁。</p>
+<p>故，必须当前线程自己先竞争到obj对象锁，然后再去唤醒其他线程。</p>
+</blockquote>
+</li>
+</ul>
+<h5 id="wait、sleep、yield"><a href="#wait、sleep、yield" class="headerlink" title="wait、sleep、yield"></a>wait、sleep、yield</h5><ul>
+<li>都可以让当前线程堵塞</li>
+<li>都可以堵塞指定时间</li>
+<li>wait、sleep、join 都可以被中断。或者说只有当线程处于3个状态的时候。调用改线程的interrupt()方法才会抛中断异常。</li>
+<li>wait 表示当前线程释放对象锁，让其他线程有机会获取锁。</li>
+<li>sleep、yield 侧重于让当前线程释放CPU资源，让其他线程有更多机会执行。</li>
+</ul>
+<h5 id="参考文章："><a href="#参考文章：" class="headerlink" title="参考文章："></a>参考文章：</h5><ul>
+<li><a href="https://www.cnblogs.com/huojg-21442/p/7119895.html" target="_blank" rel="noopener">https://www.cnblogs.com/huojg-21442/p/7119895.html</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2020/05/27/I:O的5中模式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lpl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/blog/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="闲敲棋子落灯花">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2020/05/27/I:O的5中模式/" itemprop="url">I/O的五中模式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-27T16:37:16+08:00">
+                2020-05-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="五种I-O模式"><a href="#五种I-O模式" class="headerlink" title="五种I/O模式"></a>五种I/O模式</h5><ul>
+<li>blocking IO - 阻塞IO </li>
+<li>nonblocking IO - 非阻塞IO </li>
+<li>IO multiplexing - IO多路复用 </li>
+<li>signal driven IO - 信号驱动IO </li>
+<li>asynchronous IO - 异步IO</li>
+</ul>
+<h5 id="I-O模型的异同点"><a href="#I-O模型的异同点" class="headerlink" title="I/O模型的异同点"></a>I/O模型的异同点</h5><blockquote>
+<p>以network IO中的read读操作为切入点，一般情况下一次网络IO读操作会涉及:</p>
+<p>两个系统对象：</p>
+<p>a、用户进程(线程)Process；</p>
+<p>b、内核对象kernel;</p>
+<p>两个处理阶段：</p>
+<p>a、 Waiting for the data to be ready - 等待数据准备好</p>
+<p>b、 Copying the data from the kernel to the process - 将数据从内核空间的buffer拷贝到用户空间进程的buffer</p>
+<p>IO模型的异同点就是区分在这两个系统对象、两个处理阶段的不同上。</p>
+</blockquote>
+<h5 id="阻塞IO"><a href="#阻塞IO" class="headerlink" title="阻塞IO"></a>阻塞IO</h5><ul>
+<li>用户进程向内核对象请求数据，如果内核对象数据没准备好，则用户进程一直等下去，直到内核将数据准备好，并且复制到用户进程。即直到a、b、两个阶段完成之后结束堵塞。</li>
+</ul>
+<h5 id="非堵塞IO"><a href="#非堵塞IO" class="headerlink" title="非堵塞IO"></a>非堵塞IO</h5><ul>
+<li>实际上就是用户进程不断轮寻，看内核进程的数据是否准备好，当然第二阶段(kernel将数据copy到自己的buffer)用户进程是需要等待的。即 阶段a不堵塞，有用户轮询；阶段b堵塞。</li>
+</ul>
+<h5 id="多路复用IO"><a href="#多路复用IO" class="headerlink" title="多路复用IO"></a>多路复用IO</h5><ul>
+<li>IO多路复用，就是我们熟知的select、poll、epoll模型。在IO多路复用的时候，process在两个处理阶段都是单独block住等待的。初看好像IO多路复用没什么用，其实select、poll、epoll的优势在于可以以较少的代价来同时监听处理多个IO。</li>
+</ul>
+<h5 id="异步IO"><a href="#异步IO" class="headerlink" title="异步IO"></a>异步IO</h5><ul>
+<li>a阶段调用后立即返回结果给用户进程，没有堵塞；b阶段结束后通知用户进程，也不堵塞用户进程。</li>
+</ul>
+<h5 id="Object-的wait-、notify-与-nativePollOnce、nativeWake的区别"><a href="#Object-的wait-、notify-与-nativePollOnce、nativeWake的区别" class="headerlink" title="Object 的wait 、notify 与 nativePollOnce、nativeWake的区别"></a>Object 的wait 、notify 与 nativePollOnce、nativeWake的区别</h5><ul>
+<li><p>wait、notify 基于  Linux futex 调用</p>
+<blockquote>
+<p>Futex，Fast Userspace muTEXes，作为linux下的一种快速同步（互斥）机制。</p>
+</blockquote>
+</li>
+<li><p>nativePollOnce、nativeWake 基于epoll</p>
+</li>
+<li><p>wait基于对象，一般用于单个进程的线程之间；</p>
+</li>
+<li><p>nativePollOnce 基于文件描述符，通常可以用于多进程、多线程。</p>
+</li>
+</ul>
+<h5 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h5><ul>
+<li><a href="https://www.jianshu.com/p/97e6e6c981b6" target="_blank" rel="noopener">https://www.jianshu.com/p/97e6e6c981b6</a></li>
+<li><a href="https://www.cnblogs.com/jiy-for-you/p/11707356.html" target="_blank" rel="noopener">https://www.cnblogs.com/jiy-for-you/p/11707356.html</a></li>
+<li><a href="https://www.cnblogs.com/bbqzsl/p/6763711.html" target="_blank" rel="noopener">https://www.cnblogs.com/bbqzsl/p/6763711.html</a></li>
+<li><a href="https://blog.csdn.net/mitushutong11/article/details/51336136" target="_blank" rel="noopener">https://blog.csdn.net/mitushutong11/article/details/51336136</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2020/04/05/python 处理Excel/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -624,7 +1188,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2020/03/12/Android 插件发布/">
+    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2020/03/12/Android gradle plugin/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lpl">
@@ -643,7 +1207,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2020/03/12/Android 插件发布/" itemprop="url">Android 插件发布</a></h1>
+                <a class="post-title-link" href="/blog/2020/03/12/Android gradle plugin/" itemprop="url">Android gradle plugin</a></h1>
         
 
         <div class="post-meta">
@@ -717,18 +1281,144 @@
       
         
           
-            <h5 id="插件编写好之后，可以使用Nexus本地发布，快速验证"><a href="#插件编写好之后，可以使用Nexus本地发布，快速验证" class="headerlink" title="插件编写好之后，可以使用Nexus本地发布，快速验证"></a>插件编写好之后，可以使用Nexus本地发布，快速验证</h5><blockquote>
-<p>nexus 下载地址 <a href="https://help.sonatype.com/repomanager2/download" target="_blank" rel="noopener">https://help.sonatype.com/repomanager2/download</a></p>
-<p>nexus 流程说明 <a href="https://juejin.im/post/5a51e44b518825733e604764" target="_blank" rel="noopener">https://juejin.im/post/5a51e44b518825733e604764</a></p>
-<p><a href="https://blog.csdn.net/doris_d/article/details/88891833" target="_blank" rel="noopener">https://blog.csdn.net/doris_d/article/details/88891833</a></p>
-<p>本地验证</p>
-<p><a href="http://localhost:8081/nexus/#view-repositories;Maven~browseindex" target="_blank" rel="noopener">http://localhost:8081/nexus/#view-repositories;Maven~browseindex</a></p>
+            <h4 id="方式一、直接在app下面build-gradle-中编辑"><a href="#方式一、直接在app下面build-gradle-中编辑" class="headerlink" title="方式一、直接在app下面build.gradle 中编辑"></a>方式一、直接在app下面build.gradle 中编辑</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//使用插件</span><br><span class="line">apply plugin: CustomPlugin</span><br><span class="line"></span><br><span class="line">//自定义插件：实现Plugin类接口，重写apply方法</span><br><span class="line">class CustomPlugin implements Plugin&lt;Project&gt; &#123;</span><br><span class="line">    @Override</span><br><span class="line">    void apply(Project project) &#123;</span><br><span class="line">        project.task(&apos;CustomPluginTask&apos;) &#123;</span><br><span class="line">            doLast &#123;</span><br><span class="line">                println &quot;大家好,我是一个自定义插件，在这里写下你的具体功能&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="方式二、创建本地插件Module"><a href="#方式二、创建本地插件Module" class="headerlink" title="方式二、创建本地插件Module"></a>方式二、创建本地插件Module</h4><ul>
+<li><p>工程下面创建文件夹buildSrc</p>
+</li>
+<li><p>buildSrc下面创建空文件build.gradle</p>
+</li>
+<li><p>创建src目录，其中内容与方式三相同。</p>
+</li>
+<li><p>插件的使用方式，直接在app的build.gradle 加入，下面语句</p>
+</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: &apos;com.pa.gradleplugin&apos;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>测试插件是否集成成功</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// testTask 为在 PluginImpl.groovy文件中定义的任务</span><br><span class="line">./gradlew testTask</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h4 id="方式三、创建独立的gradle-插件工程"><a href="#方式三、创建独立的gradle-插件工程" class="headerlink" title="方式三、创建独立的gradle 插件工程"></a>方式三、创建独立的gradle 插件工程</h4><h5 id="创建Android-项目，添加Android-Library-module-，具体参考"><a href="#创建Android-项目，添加Android-Library-module-，具体参考" class="headerlink" title="创建Android 项目，添加Android Library module ，具体参考"></a>创建Android 项目，添加Android Library module ，具体参考</h5><blockquote>
+<p><a href="https://www.jianshu.com/p/af2b0a43133f" target="_blank" rel="noopener">https://www.jianshu.com/p/af2b0a43133f</a></p>
 </blockquote>
-<h5 id="本地验证通过，发布的jcenter"><a href="#本地验证通过，发布的jcenter" class="headerlink" title="本地验证通过，发布的jcenter"></a>本地验证通过，发布的jcenter</h5><blockquote>
+<h5 id="删除部分用不到的文件、文件夹"><a href="#删除部分用不到的文件、文件夹" class="headerlink" title="删除部分用不到的文件、文件夹"></a>删除部分用不到的文件、文件夹</h5><ul>
+<li>删除main下面的java、res目录</li>
+<li>删除AndroidManifest.xml 文件</li>
+<li>删除混淆文件</li>
+</ul>
+<h5 id="修改插件文件"><a href="#修改插件文件" class="headerlink" title="修改插件文件"></a>修改插件文件</h5><ul>
+<li><p>修改新建module的build.gradle 文件</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: <span class="string">'groovy'</span></span><br><span class="line">apply plugin: <span class="string">'maven'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">dependencies</span> &#123;</span><br><span class="line">    implementation gradleApi()</span><br><span class="line">    implementation localGroovy()</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">repositories</span> &#123;</span><br><span class="line">    mavenCentral()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">uploadArchives &#123;</span><br><span class="line">    <span class="keyword">repositories</span> &#123;</span><br><span class="line">        mavenDeployer &#123;</span><br><span class="line">            <span class="comment">//设置插件的GAV参数</span></span><br><span class="line">            pom.groupId = <span class="string">'com.pa.gradleplugin'</span><span class="comment">//你的包名</span></span><br><span class="line">            pom.artifactId = <span class="string">'myPlugin'</span></span><br><span class="line">            pom.version = <span class="string">'1.0.0'</span><span class="comment">//版本号</span></span><br><span class="line">            <span class="comment">//文件发布到下面目录  ../是父目录</span></span><br><span class="line">            repository(url: uri(<span class="string">'../repo'</span>))</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>参考：<a href="https://www.jianshu.com/p/af2b0a43133f" target="_blank" rel="noopener">https://www.jianshu.com/p/af2b0a43133f</a></p>
+</blockquote>
+</li>
+</ul>
+<h5 id="增加部分插件相关的文件"><a href="#增加部分插件相关的文件" class="headerlink" title="增加部分插件相关的文件"></a>增加部分插件相关的文件</h5><ul>
+<li><p>新建groovy目录，在groovy目录下，<strong>新建一个包（包名随意）</strong>，包内新建一个文件，必须以.groovy作为后缀名（文件名随意），这里起名为PluginImpl.groovy</p>
+</li>
+<li><p>main下面新建resources目录，在resources目录下新建一个META-INF文件夹，在META-INF文件夹下新建一个gradle-plugins文件夹，在gradle-plugins里创建一个.properties文件,他的文件名<strong>必须是上面提到的那个包名</strong> </p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 文件 com.pa.plugin.properties </span><br><span class="line">implementation-class=com.pa.plugin.PluginImpl</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行uploadArchives命令发布插件到本地</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">执行命令</span><br><span class="line">./gradlew uploadArchives</span><br><span class="line">会生成repo的目录</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h5 id="使用本地插件"><a href="#使用本地插件" class="headerlink" title="使用本地插件"></a>使用本地插件</h5><ul>
+<li><p>配置工程目录下build.gradle文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">// Top-level build file where you can add configuration options common to all sub-projects/modules.</span><br><span class="line"></span><br><span class="line">buildscript &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        google()</span><br><span class="line">        jcenter()</span><br><span class="line">        maven &#123;//本地Maven仓库地址</span><br><span class="line">            url uri(&apos;./repo&apos;)</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    dependencies &#123;</span><br><span class="line">        classpath &apos;com.android.tools.build:gradle:3.5.3&apos;</span><br><span class="line">        classpath &apos;com.pa.plugin:myPlugin:1.0.0&apos;</span><br><span class="line"></span><br><span class="line">        // NOTE: Do not place your application dependencies here; they belong</span><br><span class="line">        // in the individual module build.gradle files</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">allprojects &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        google()</span><br><span class="line">        jcenter()</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">task clean(type: Delete) &#123;</span><br><span class="line">    delete rootProject.buildDir</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>app Module的build.gradle文件中引用 插件定义的任务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: &apos;com.pa.plugin&apos;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行PluginImpl.groovy文件中定义的任务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gradlew testTaskPlugin</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h5 id="使用nexus搭建本地的代码仓库，模拟jcenter"><a href="#使用nexus搭建本地的代码仓库，模拟jcenter" class="headerlink" title="使用nexus搭建本地的代码仓库，模拟jcenter"></a>使用nexus搭建本地的代码仓库，模拟jcenter</h5><ul>
+<li><p>下载nexus工具</p>
+<blockquote>
+<p>nexus 下载地址 <a href="https://help.sonatype.com/repomanager2/download" target="_blank" rel="noopener">https://help.sonatype.com/repomanager2/download</a></p>
+</blockquote>
+</li>
+<li><p>启动nexus</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /Users/xxx/tools/nexus-2.14.16-01-bundle/nexus-2.14.16-01/bin</span><br><span class="line">./nexus start</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在浏览器打开nexus页面</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://localhost:8081/nexus/#view-repositories</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在插件Module的build.gradle中添加配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: &apos;signing&apos;</span><br><span class="line"></span><br><span class="line">// 获取仓库url</span><br><span class="line">def getRepositoryUrl() &#123;</span><br><span class="line">    return &quot;http://localhost:8081/nexus/content/repositories/Maven/&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">def siteUrl = &apos;https://github.com/zubao&apos;</span><br><span class="line">def gitUrl = &apos;https://github.com/zubao&apos;</span><br><span class="line"></span><br><span class="line">configurations &#123;</span><br><span class="line">    deployerJars</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 判断版本是Release or Snapshots</span><br><span class="line">def isReleaseBuild() &#123;</span><br><span class="line">    return true</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 进行数字签名</span><br><span class="line">signing &#123;</span><br><span class="line">    // 当 发布版本 &amp; 存在&quot;uploadArchives&quot;任务时，才执行</span><br><span class="line">    required &#123; isReleaseBuild() &amp;&amp; gradle.taskGraph.hasTask(&quot;uploadArchives&quot;) &#125;</span><br><span class="line">    sign configurations.archives</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 生成javadoc.jar</span><br><span class="line">task androidJavadocsJar(type: Jar, dependsOn: javadoc) &#123;</span><br><span class="line">    // 指定文档名称</span><br><span class="line">    classifier = &apos;javadoc&apos;</span><br><span class="line">    from javadoc.destinationDir</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 生成sources.jar</span><br><span class="line">task androidSourcesJar(type: Jar) &#123;</span><br><span class="line">    classifier = &apos;sources&apos;</span><br><span class="line">    from sourceSets.main.allSource</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 产生相关配置文件的任务</span><br><span class="line">artifacts &#123;</span><br><span class="line">    archives androidSourcesJar</span><br><span class="line">    archives androidJavadocsJar</span><br><span class="line">&#125;</span><br><span class="line">uploadArchives &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        mavenDeployer &#123;</span><br><span class="line">            beforeDeployment &#123;</span><br><span class="line">                MavenDeployment deployment -&gt; signing.signPom(deployment)</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            pom.version = &quot;1.0.0&quot;</span><br><span class="line">            pom.artifactId = &quot;myPlugin&quot;</span><br><span class="line">            pom.groupId = &quot;com.pa.plugin&quot;</span><br><span class="line"></span><br><span class="line">            repository(url: getRepositoryUrl()) &#123;</span><br><span class="line">                authentication(userName: &quot;admin&quot;, password: &quot;admin123&quot;) // maven授权信息</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            // （非必须）库生成的pom.xml文件内容</span><br><span class="line">            pom &#123;</span><br><span class="line">                project &#123;</span><br><span class="line">                    packaging &apos;jar&apos;</span><br><span class="line">                    name &apos;The official Android SDK Plugin for SkyEye Analytics.&apos;</span><br><span class="line">                    url siteUrl</span><br><span class="line"></span><br><span class="line">                    licenses &#123;</span><br><span class="line">                        license &#123;</span><br><span class="line">                            name &apos;The Apache Software License, Version 2.0&apos;</span><br><span class="line">                            url &apos;http://www.apache.org/licenses/LICENSE-2.0.txt&apos;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    developers &#123;</span><br><span class="line">                        developer &#123;</span><br><span class="line">                            id &apos;zubao&apos;</span><br><span class="line">                            name &apos;wang li&apos;</span><br><span class="line">                            email &apos;lipeil4195@gmail.com&apos;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    scm &#123;</span><br><span class="line">                        connection gitUrl</span><br><span class="line">                        developerConnection gitUrl</span><br><span class="line">                        url siteUrl</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>发布到nexus</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gradlew uploadArchives</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用nexus仓库的文件, 替换本地仓库地址为nexus地址，就可以切换插件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">buildscript &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        google()</span><br><span class="line">        jcenter()</span><br><span class="line">        maven &#123;//本地Maven仓库地址</span><br><span class="line">            // url uri(&apos;./repo&apos;)</span><br><span class="line">            url uri(&apos;http://localhost:8081/nexus/content/repositories/Maven/&apos;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    dependencies &#123;</span><br><span class="line">        classpath &apos;com.android.tools.build:gradle:3.5.3&apos;</span><br><span class="line">        classpath &apos;com.pa.plugin:myPlugin:1.0.0&apos;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">allprojects &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        google()</span><br><span class="line">        jcenter()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">task clean(type: Delete) &#123;</span><br><span class="line">    delete rootProject.buildDir</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<ul>
+<li><p>参考文章</p>
+<blockquote>
+<p><a href="https://juejin.im/post/5a51e44b518825733e604764" target="_blank" rel="noopener">https://juejin.im/post/5a51e44b518825733e604764</a></p>
+</blockquote>
+</li>
+</ul>
+<h5 id="发布到jcenter"><a href="#发布到jcenter" class="headerlink" title="发布到jcenter"></a>发布到jcenter</h5><ul>
+<li>注册bintray账号</li>
+</ul>
+<blockquote>
 <p><a href="https://bintray.com/" target="_blank" rel="noopener">https://bintray.com/</a> </p>
 <p>注册建议使用github账号。</p>
 <p>发布流程： <a href="https://www.jianshu.com/p/47ebb159836c" target="_blank" rel="noopener">https://www.jianshu.com/p/47ebb159836c</a></p>
 </blockquote>
+<ul>
+<li><p>发布准备, 使用github账号登录bintray，进入Edit Profile 获取api key</p>
+</li>
+<li><p>配置build.gradle</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">// 发布到jcenter</span><br><span class="line">apply plugin: &apos;com.jfrog.bintray&apos;</span><br><span class="line">apply plugin: &apos;maven-publish&apos;</span><br><span class="line">apply plugin: &apos;java&apos;</span><br><span class="line"></span><br><span class="line">version = &apos;1.0.0&apos;</span><br><span class="line">project.archivesBaseName = &quot;myPlugin&quot;</span><br><span class="line"></span><br><span class="line">task javadocJar(type: Jar, dependsOn: javadoc) &#123;</span><br><span class="line">    classifier = &apos;javadoc&apos;</span><br><span class="line">    from javadoc.destinationDir</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">task sourceJar(type: Jar) &#123;</span><br><span class="line">    classifier = &apos;sources&apos;</span><br><span class="line">    from sourceSets.main.allSource</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ext &#123;</span><br><span class="line">    pomFilePath = &quot;$&#123;project.buildDir.absolutePath&#125;/tmp/pom.xml&quot;</span><br><span class="line">    pomFile = file(pomFilePath)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">configurations &#123;</span><br><span class="line">    pom</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">artifacts &#123;</span><br><span class="line">    archives jar</span><br><span class="line">    archives sourceJar</span><br><span class="line">    archives javadocJar</span><br><span class="line">    if (pomFile.exists()) &#123;</span><br><span class="line">        pom pomFile</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">task signJars(type: Sign, dependsOn: [jar, javadocJar, sourceJar]) &#123;</span><br><span class="line">    sign configurations.archives</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">task signPom(type: Sign) &#123;</span><br><span class="line">    sign configurations.pom</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">if (project.ext.pomFile.exists()) &#123;</span><br><span class="line">    task preparePublication(dependsOn: [signJars, signPom])</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    task preparePublication(dependsOn: signJars)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">def getSignatureFiles = &#123;</span><br><span class="line">    def allFiles = project.tasks.signJars.signatureFiles.collect&#123;it&#125;</span><br><span class="line">    def signedSources = allFiles.find&#123; it.name.contains(&apos;-sources&apos;) &#125;</span><br><span class="line">    def signedJavadoc = allFiles.find&#123; it.name.contains(&apos;-javadoc&apos;) &#125;</span><br><span class="line">    def signedJar = (allFiles - [signedSources, signJars])[0]</span><br><span class="line">    return [</span><br><span class="line">            [archive: signedSources, classifier: &apos;sources&apos;, extension: &apos;jar.asc&apos;],</span><br><span class="line">            [archive: signedJavadoc, classifier: &apos;javadoc&apos;, extension: &apos;jar.asc&apos;],</span><br><span class="line">            [archive: signedJar, classifier: &apos;null&apos;, extension: &apos;jar.asc&apos;]</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">def getPomSignature = &#123;</span><br><span class="line">    return project.tasks.signPom.signatureFiles.collect&#123; it &#125;[0]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">def siteUrl = &apos;https://github.com/zubao/plugin&apos;</span><br><span class="line">def gitUrl = &apos;https://github.com/zubao/plugin.git&apos;</span><br><span class="line">def issueUrl = &apos;https://github.com/zubao/plugin/issues&apos;</span><br><span class="line">group = &quot;com.pa.plugin&quot;</span><br><span class="line"></span><br><span class="line">install &#123;</span><br><span class="line">    repositories.mavenInstaller &#123;</span><br><span class="line">        pom &#123;</span><br><span class="line">            project &#123;</span><br><span class="line">                packaging &apos;jar&apos;</span><br><span class="line">                name &apos;The official Android SDK Plugin for SkyEye Analytics.&apos;</span><br><span class="line">                url siteUrl</span><br><span class="line"></span><br><span class="line">                licenses &#123;</span><br><span class="line">                    license &#123;</span><br><span class="line">                        name &apos;The Apache Software License, Version 2.0&apos;</span><br><span class="line">                        url &apos;http://www.apache.org/licenses/LICENSE-2.0.txt&apos;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                developers &#123;</span><br><span class="line">                    developer &#123;</span><br><span class="line">                        id &apos;zubao&apos;</span><br><span class="line">                        name &apos;wang li&apos;</span><br><span class="line">                        email &apos;lipeil4195@gmail.com&apos;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                scm &#123;</span><br><span class="line">                    connection gitUrl</span><br><span class="line">                    developerConnection gitUrl</span><br><span class="line">                    url siteUrl</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Properties properties = new Properties()</span><br><span class="line">properties.load(project.rootProject.file(&apos;local.properties&apos;).newDataInputStream())</span><br><span class="line"></span><br><span class="line">bintray &#123;</span><br><span class="line">    user    = &apos;zubao&apos;</span><br><span class="line">    key     = &apos;xxx api key&apos;</span><br><span class="line">    println user</span><br><span class="line">    println key</span><br><span class="line">    configurations = [&apos;archives&apos;]</span><br><span class="line">    pkg &#123;</span><br><span class="line">        userOrg = &apos;zubao&apos;</span><br><span class="line">        repo = &quot;Maven&quot;</span><br><span class="line">        name = &quot;myPlugin&quot;</span><br><span class="line">        desc = &apos;The official Android SDK Plugin for plugin.&apos;</span><br><span class="line">        websiteUrl = siteUrl</span><br><span class="line">        vcsUrl = gitUrl</span><br><span class="line">        issueTrackerUrl = issueUrl</span><br><span class="line">        licenses = [&quot;Apache-2.0&quot;]</span><br><span class="line">        labels = &apos;Groovy&apos;</span><br><span class="line">        publicDownloadNumbers = true</span><br><span class="line">        publish = true</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<ul>
+<li><p>将项目上传到github，jcenter只支持发布开源项目。(疑)</p>
+</li>
+<li><p>如果上传到bintray失败，多尝试几次</p>
+</li>
+<li><p>如果上传到bintray之后，进入package 详情，看不到Add to jcenter 的按钮，可以重新注册一个账号试试</p>
+</li>
+<li><p>使用jcenter仓库，只需要替换上面nexus的url就行。</p>
+</li>
+<li><p>发布到jcenter流程参考</p>
+<blockquote>
+<p><a href="https://www.jianshu.com/p/a58f8d52448d" target="_blank" rel="noopener">https://www.jianshu.com/p/a58f8d52448d</a></p>
+<p><a href="https://www.jianshu.com/p/47ebb159836c" target="_blank" rel="noopener">https://www.jianshu.com/p/47ebb159836c</a></p>
+</blockquote>
+</li>
+</ul>
+<h5 id="github地址"><a href="#github地址" class="headerlink" title="github地址"></a>github地址</h5><ul>
+<li><a href="https://github.com/zubao/PluginTest" target="_blank" rel="noopener">https://github.com/zubao/PluginTest</a></li>
+</ul>
+<h5 id="编写gradle-插件的3中方式"><a href="#编写gradle-插件的3中方式" class="headerlink" title="编写gradle 插件的3中方式"></a>编写gradle 插件的3中方式</h5><ul>
+<li><a href="https://juejin.im/post/5cce895f51882541e27b0cae" target="_blank" rel="noopener">https://juejin.im/post/5cce895f51882541e27b0cae</a></li>
+</ul>
+<h5 id="nexus-使用说明"><a href="#nexus-使用说明" class="headerlink" title="nexus 使用说明"></a>nexus 使用说明</h5><ul>
+<li><a href="https://juejin.im/post/5a51e44b518825733e604764" target="_blank" rel="noopener">https://juejin.im/post/5a51e44b518825733e604764</a></li>
+<li><a href="https://blog.csdn.net/doris_d/article/details/88891833" target="_blank" rel="noopener">https://blog.csdn.net/doris_d/article/details/88891833</a></li>
+</ul>
 
           
         
@@ -1433,606 +2123,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2020/01/17/Hadoop、Spark相关概念/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lpl">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/blog/images/head.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="闲敲棋子落灯花">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2020/01/17/Hadoop、Spark相关概念/" itemprop="url">Hadoop、Spark相关概念</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-17T10:54:06+08:00">
-                2020-01-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/hadoop/" itemprop="url" rel="index">
-                    <span itemprop="name">hadoop</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="Hadoop-相关概念"><a href="#Hadoop-相关概念" class="headerlink" title="Hadoop 相关概念"></a>Hadoop 相关概念</h5><ul>
-<li><p><strong>Apache Hadoop</strong>是一款支持数据密集型<a href="https://zh.wikipedia.org/w/index.php?title=分佈式&action=edit&redlink=1" target="_blank" rel="noopener">分布式</a>应用程序并以Apache 2.0许可协议发布的<a href="https://zh.wikipedia.org/wiki/开源" target="_blank" rel="noopener">开源</a><a href="https://zh.wikipedia.org/wiki/軟體框架" target="_blank" rel="noopener">软件框架</a>。</p>
-<blockquote>
-<p>它支持在商品硬件构建的大型集群上运行的应用程序。Hadoop是根据<a href="https://zh.wikipedia.org/wiki/谷歌公司" target="_blank" rel="noopener">谷歌公司</a>发表的<a href="https://zh.wikipedia.org/wiki/MapReduce" target="_blank" rel="noopener">MapReduce</a>和<a href="https://zh.wikipedia.org/wiki/Google檔案系統" target="_blank" rel="noopener">Google文件系统</a>的论文自行实现而成。所有的Hadoop模块都有一个基本假设，即硬件故障是常见情况，应该由框架自动处理。</p>
-<p><a href="https://zh.wikipedia.org/wiki/Apache_Hadoop" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/Apache_Hadoop</a></p>
-</blockquote>
-</li>
-<li><p>Apache Hadoop“平台”包括Hadoop内核、MapReduce、Hadoop分布式文件系统（HDFS）以及一些相关项目，有Apache Hive和Apache HBase等等。</p>
-</li>
-<li><p>MapReduce：分布式计算，是Google提出的一个软件架构，用于大规模数据集（大于1<a href="https://zh.wikipedia.org/wiki/Terabyte" target="_blank" rel="noopener">TB</a>）的并行运算。</p>
-</li>
-<li><p>Map (映射): 一个映射函数就是对一些独立元素组成的列表的每一个元素进行指定的操作。</p>
-<blockquote>
-<p>比如，有人发现所有学生的成绩都被高估了一分，他可以定义一个“减一”的映射函数，用来修正这个错误。事实上，每个元素都是被独立操作的，而原始列表没有被更改，因为这里创建了一个新的列表来保存新的答案。这就是说，Map操作是可以高度并行的，这对高性能要求的应用以及<a href="https://zh.wikipedia.org/wiki/并行计算" target="_blank" rel="noopener">并行计算</a>领域的需求非常有用。</p>
-</blockquote>
-</li>
-<li><p>Reduce(归纳): 归纳操作指的是对一个列表的元素进行适当的合并</p>
-<blockquote>
-<p>继续看前面的例子，如果有人想知道班级的平均分该怎么做？他可以定义一个归纳函数，通过让列表中的奇数（odd）或偶数（even）元素跟自己的相邻的元素相加的方式把列表减半，如此递归运算直到列表只剩下一个元素，然后用这个元素除以人数，就得到了平均分。虽然他不如映射函数那么并行，但是因为归纳总是有一个简单的答案，大规模的运算相对独立，所以归纳函数在高度并行环境下也很有用。</p>
-</blockquote>
-</li>
-<li><p>HDFS(Hadoop Distributed File System 分布式文件系统):是指被设计成适合运行在通用硬件(commodity hardware)上的分布式文件系统</p>
-<blockquote>
-<p><a href="https://baike.baidu.com/item/HDFS" target="_blank" rel="noopener">https://baike.baidu.com/item/HDFS</a></p>
-<p>HDFS是一个高度容错性的系统，适合部署在廉价的机器上。HDFS能提供高吞吐量的数据访问，非常适合大规模数据集上的应用。</p>
-</blockquote>
-</li>
-<li><p><strong>YARN:</strong> 分布式资源管理</p>
-<blockquote>
-<p><a href="https://wiki.jikexueyuan.com/project/hadoop/node-manager.html" target="_blank" rel="noopener">https://wiki.jikexueyuan.com/project/hadoop/node-manager.html</a></p>
-</blockquote>
-</li>
-</ul>
-<h5 id="Spark"><a href="#Spark" class="headerlink" title="Spark"></a>Spark</h5><ul>
-<li><h5 id="Hbase-Hadoop-database"><a href="#Hbase-Hadoop-database" class="headerlink" title="Hbase(Hadoop database)"></a>Hbase(Hadoop database)</h5></li>
-<li><p>Hbase是一种在Hadoop之上的NoSQL 的Key/vale数据库</p>
-</li>
-<li><p>Hbase非常适合用来进行大数据的实时查询</p>
-</li>
-</ul>
-<h5 id="Hive"><a href="#Hive" class="headerlink" title="Hive"></a>Hive</h5><ul>
-<li>Hive是Hadoop数据仓库，严格来说，不是数据库，主要是让开发人员能够通过SQL来计算和处理HDFS上的结构化数据。</li>
-<li>通过元数据来描述Hdfs上的结构化文本数据，通俗点来说，就是定义一张表来描述HDFS上的结构化文本，包括各列数据名称，数据类型是什么等，方便我们处理数据，当前很多SQL ON Hadoop的计算引擎均用的是hive的元数据，如Spark SQL、Impala等；</li>
-<li>Hive是一种类SQL的引擎，并且运行MapReduce任务</li>
-<li>Hive适合用来对一段时间内的数据进行分析查询</li>
-</ul>
-<h5 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h5><ul>
-<li><a href="https://juejin.im/post/5cc3db50f265da03a436d7bd" target="_blank" rel="noopener">https://juejin.im/post/5cc3db50f265da03a436d7bd</a> (hive hbase 区别)</li>
-<li><a href="https://www.cnblogs.com/justinzhang/p/4273470.html" target="_blank" rel="noopener">https://www.cnblogs.com/justinzhang/p/4273470.html</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2020/01/16/树莓派4 Spark环境配置/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lpl">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/blog/images/head.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="闲敲棋子落灯花">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2020/01/16/树莓派4 Spark环境配置/" itemprop="url">树莓派4Spark环境配置</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-16T10:11:19+08:00">
-                2020-01-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/Raspberry/" itemprop="url" rel="index">
-                    <span itemprop="name">Raspberry</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="Java-环境配置"><a href="#Java-环境配置" class="headerlink" title="Java 环境配置"></a>Java 环境配置</h5><ul>
-<li><p>安装java</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">pi@raspberrypi:~ $ sudo apt-get purge openjdk-8-jre-headless</span><br><span class="line">pi@raspberrypi:~ $ sudo apt-get install openjdk-8-jre-headless</span><br><span class="line">pi@raspberrypi:~ $ sudo apt-get install openjdk-8-jre</span><br><span class="line">pi@raspberrypi:~ $ java -version </span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 或者试试这个</span><br><span class="line">sudo apt-get install default-jdk</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 或者去官网下载</span><br><span class="line">https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Java环境变量配置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"> </span><br></pre></td></tr></table></figure>
-</li>
-<li><p>或者使用SDKMAN </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 安装sdkman https://sdkman.io/</span><br><span class="line">pi@raspberrypi:~ $ curl -s "https://get.sdkman.io" | bash</span><br><span class="line"><span class="meta">#</span></span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ul>
-<h5 id="Scala-环境配置"><a href="#Scala-环境配置" class="headerlink" title="Scala 环境配置"></a>Scala 环境配置</h5><ul>
-<li><p>Mac 或者 树莓派 上安装Scala</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> Mac</span><br><span class="line">brew install scala</span><br><span class="line"><span class="meta">#</span> Mac 或者其他 平台</span><br><span class="line">sdk install scala</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 官网下载</span><br><span class="line">scala-2.13.1.tgz(可执行文件)； scala-2.13.1.tar.gz(源码)</span><br><span class="line"><span class="meta">#</span> 如果是树莓派</span><br><span class="line">scp scala-2.13.1.tgz pi@192.168.1.1:/home/pi </span><br><span class="line"><span class="meta">#</span> 解压缩</span><br><span class="line">sudo tar -zvxf scala-2.13.1.tgz -C /usr/local/</span><br><span class="line">cd /usr/local</span><br><span class="line">sudo mv scala-2.13.1 scala</span><br><span class="line"><span class="meta">#</span> 配置环境变量</span><br><span class="line">vim .bash_profile</span><br><span class="line"><span class="meta">#</span> for scala</span><br><span class="line">SCALA_HOME=/usr/local/scala</span><br><span class="line">PATH=$PATH:$SCALA_HOME/bin</span><br><span class="line">export SCALA_HOME PATH</span><br><span class="line"><span class="meta">#</span> 验证</span><br><span class="line">scala -version</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ul>
-<h5 id="sbt-安装"><a href="#sbt-安装" class="headerlink" title="sbt 安装"></a>sbt 安装</h5><ul>
-<li><p>安装 sdkman</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pi@raspberrypi:~ $ curl -s "https://get.sdkman.io" | bash</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>通过sdkman 安装 sbt</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sdk install sbt</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>sbt 安装验证</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 创建工作目录</span><br><span class="line">mkdir sbtworkspace</span><br><span class="line">cd sbtworkspace</span><br><span class="line"><span class="meta">#</span> 创建新目录，比较耗时 结束提示输入项目名称，例如hello</span><br><span class="line">sbt new scala/hello-world.g8</span><br><span class="line"><span class="meta">#</span> 进入工程目录 </span><br><span class="line">cd hello</span><br><span class="line"><span class="meta">#</span> 构建项目 (比较耗时)</span><br><span class="line">sbt</span><br><span class="line"><span class="meta">#</span> 运行项目</span><br><span class="line">run</span><br><span class="line"><span class="meta">#</span> 持续运行项目(修改保存之后会自动运行)</span><br><span class="line">~run</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h5 id="下载Apache-Spark"><a href="#下载Apache-Spark" class="headerlink" title="下载Apache Spark"></a>下载Apache Spark</h5><ul>
-<li><p>安装pySpark，如果使用python 可以直接这么安装，否则先下载安装包，手动安装</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pyspark.</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>spark压缩包安装</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo tar -zvxf spark-3.0.0-preview2-bin-hadoop2.7.tgz -C /usr/local/</span><br><span class="line">cd /usr/local</span><br><span class="line">sudo mv spark-3.0.0-preview2-bin-hadoop2.7.tgz spark</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ul>
-<ul>
-<li><p>Spark 环境配置</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> .bashrc 或者 .bash_profile 中添加</span><br><span class="line"><span class="meta">#</span> spark env</span><br><span class="line">SPARK_HOME=/usr/local/spark</span><br><span class="line">export PATH=$PATH:$SPARK_HOME/bin</span><br><span class="line"><span class="meta">#</span> 配置生效</span><br><span class="line">source .bashrc|.bash_profile</span><br><span class="line"><span class="meta">#</span> 验证是否配置成功</span><br><span class="line">spark-shell</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ul>
-<h5 id="scala-安装参考文档"><a href="#scala-安装参考文档" class="headerlink" title="scala 安装参考文档"></a>scala 安装参考文档</h5><ul>
-<li><a href="https://blog.csdn.net/danlei94/article/details/78082131" target="_blank" rel="noopener">https://blog.csdn.net/danlei94/article/details/78082131</a></li>
-<li>scala 官网 <a href="https://www.scala-lang.org/download/" target="_blank" rel="noopener">https://www.scala-lang.org/download/</a></li>
-</ul>
-<h5 id="sbt-文档"><a href="#sbt-文档" class="headerlink" title="sbt 文档"></a>sbt 文档</h5><ul>
-<li>sbt 官方文档 <a href="https://www.scala-sbt.org/1.x/docs/Installing-sbt-on-Linux.html" target="_blank" rel="noopener">https://www.scala-sbt.org/1.x/docs/Installing-sbt-on-Linux.html</a></li>
-<li>sbt 中文文档 <a href="https://wiki.jikexueyuan.com/project/sbt-getting-started/running.html" target="_blank" rel="noopener">https://wiki.jikexueyuan.com/project/sbt-getting-started/running.html</a></li>
-</ul>
-<h5 id="spark文档"><a href="#spark文档" class="headerlink" title="spark文档"></a>spark文档</h5><ul>
-<li>spark 中文文档 <a href="http://doc.codingdict.com/spark/25/" target="_blank" rel="noopener">http://doc.codingdict.com/spark/25/</a></li>
-<li>spark 下载地址 <a href="http://spark.apache.org/downloads.html" target="_blank" rel="noopener">http://spark.apache.org/downloads.html</a>  (可能需要多尝试几次)</li>
-<li></li>
-</ul>
-<h5 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h5><ul>
-<li><a href="https://blog.csdn.net/danlei94/article/details/78082131" target="_blank" rel="noopener">https://blog.csdn.net/danlei94/article/details/78082131</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2020/01/14/树莓派开启自动发邮件/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lpl">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/blog/images/head.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="闲敲棋子落灯花">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2020/01/14/树莓派开启自动发邮件/" itemprop="url">树莓派开机自动发邮件</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-14T16:15:08+08:00">
-                2020-01-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/Raspberry/" itemprop="url" rel="index">
-                    <span itemprop="name">Raspberry</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="安装mutt、msmtp"><a href="#安装mutt、msmtp" class="headerlink" title="安装mutt、msmtp"></a>安装mutt、msmtp</h5><ul>
-<li><p>mutt ：是一个linux下的邮件程序，mutt 类似文件管理器，不过它管理的是邮件</p>
-</li>
-<li><p>msmtp ：是linux 下一个非常简单易用的smtp客户端</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install mutt </span><br><span class="line"><span class="meta">#</span> 如果失败</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install msmtp</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<p>配置mutt、msmtp环境</p>
-<ul>
-<li><p>配置msmtp，在用户跟目录创建.msmtprc文件</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">vim .msmtprc</span><br><span class="line">account default</span><br><span class="line"></span><br><span class="line">host smtp.126.com</span><br><span class="line">from l5@126.com</span><br><span class="line">auth login</span><br><span class="line">tls off</span><br><span class="line">user l5</span><br><span class="line">password L5 (授权码)</span><br><span class="line">logfile ~/.mstmp.log</span><br><span class="line"><span class="meta">#</span> 申请126 邮箱，去设置获取授权码</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<ul>
-<li>host 表示你的游戏的SMTP服务器地址</li>
-<li>from 发件人邮箱地址</li>
-<li>user 发件人邮箱地址</li>
-<li>password 这里是邮箱的明文密码</li>
-<li>logfile 这里是日志文件路径，发送邮件后程序会将日志写入这个文件。</li>
-</ul>
-</blockquote>
-</li>
-<li><p>测试msmtp</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 输入如下命令，测试msmtp</span><br><span class="line">msmtp -d lipeil4195@126.com</span><br><span class="line">Subject:title&lt;Hi jack&gt;</span><br><span class="line">gogogogoogogogo</span><br><span class="line"><span class="meta">#</span> 标题、正文输入完之后，输入下面命令发送邮件</span><br><span class="line">control + d</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ul>
-<ul>
-<li><p>配置mutt</p>
-</li>
-<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vim .muttrc</span><br><span class="line">set sendmail="/usr/bin/msmtp"</span><br><span class="line">set use_from=yes</span><br><span class="line">set realname='l5@126.com'</span><br><span class="line">set from="l5@126.com"</span><br><span class="line">set envelope_from=yes</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>测试mutt 是否安装配置成功</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod 0600 ~/.msmtprc</span><br><span class="line">echo &quot;准备的怎样了&quot; | mutt -s &quot;周末出游&quot; 419548550@qq.com</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>参考文章 <a href="https://www.huaijiujia.com/category/操作系统/centos/centos-特有软件/" target="_blank" rel="noopener">https://www.huaijiujia.com/category/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/centos/centos-%E7%89%B9%E6%9C%89%E8%BD%AF%E4%BB%B6/</a></p>
-<p><a href="https://www.cnblogs.com/hjfeng1988/p/4464116.html" target="_blank" rel="noopener">https://www.cnblogs.com/hjfeng1988/p/4464116.html</a></p>
-<p><a href="https://www.jianshu.com/p/893352c61f93" target="_blank" rel="noopener">https://www.jianshu.com/p/893352c61f93</a></p>
-<p><a href="https://blog.csdn.net/betty13006159467/article/details/71172295" target="_blank" rel="noopener">https://blog.csdn.net/betty13006159467/article/details/71172295</a></p>
-<p><a href="https://www.jianshu.com/p/f7faa156087a" target="_blank" rel="noopener">https://www.jianshu.com/p/f7faa156087a</a></p>
-</blockquote>
-</li>
-<li><p>发送邮件配置</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>!/bin/bash</span><br><span class="line"><span class="meta">#</span> check network availability</span><br><span class="line">while true</span><br><span class="line">do</span><br><span class="line">TIMEOUT=5</span><br><span class="line">SITE_TO_CHECK="www.baidu.com"</span><br><span class="line">RET_CODE=`curl -I -s --connect-timeout $TIMEOUT $SITE_TO_CHECK -w %&#123;http_code&#125; | tail -n1`</span><br><span class="line">if [ "x$RET_CODE" = "x200" ]; then</span><br><span class="line">echo "Network OK, will send mail..."</span><br><span class="line">break</span><br><span class="line">else</span><br><span class="line">echo "Network not ready, wait..."</span><br><span class="line">sleep 1s</span><br><span class="line">fi</span><br><span class="line">done</span><br><span class="line"><span class="meta">#</span> 这里如果是网线用eth0, 如果是wifi 用wlan0。</span><br><span class="line">ETH0_IP_ADDR=`ifconfig wlan0 | sed -n "2,2p" | awk '&#123;print substr($2,1)&#125;'`</span><br><span class="line">echo $ETH0_IP_ADDR</span><br><span class="line"><span class="meta">#</span> send the Email 这里给qq邮箱发提示失败(原因是垃圾邮件)，换成126自己的地址就可以。然后用QQ邮箱代收。</span><br><span class="line">echo "China Current time: `date '+%F %T'`. Good time" | mutt -s "Zubao's IP Address of Raspberry Pi: $ETH0_IP_ADDR" l5@126.com</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>开机配置</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 将.msmtprc .msmtp.log .muttrc 文件copy到 /root 目录下面。需要用su进入root权限，sudo不行</span><br><span class="line"><span class="meta">#</span> 修改 /etc/rc.local 文件，在exit 之前加上</span><br><span class="line">bash /root/send_ip_mail.sh</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2085,7 +2175,7 @@
               
                 <a href="/blog/archives/">
               
-                  <span class="site-state-item-count">81</span>
+                  <span class="site-state-item-count">84</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2107,7 +2197,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/blog/tags/index.html">
-                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

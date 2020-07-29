@@ -293,6 +293,566 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2020/07/24/ASM 代码注入技术/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lpl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/blog/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="闲敲棋子落灯花">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2020/07/24/ASM 代码注入技术/" itemprop="url">ASM 代码注入技术</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-24T16:41:33+08:00">
+                2020-07-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="字节码增强技术"><a href="#字节码增强技术" class="headerlink" title="字节码增强技术"></a>字节码增强技术</h4><h5 id="ASM"><a href="#ASM" class="headerlink" title="ASM"></a>ASM</h5><ul>
+<li><p>字节码层面的字节码增强库，需要手动操作字节码指令。</p>
+<blockquote>
+<p>对于需要手动操纵字节码的需求，可以使用ASM，它可以直接生产 .class字节码文件，也可以在类被加载入JVM之前动态修改类行为。PS：载入之后再通过asm修改类行为会导致报错，但是可以通过JVMTI来重载。</p>
+<p>ASM的应用场景有AOP（Cglib就是基于ASM）、热部署、修改其他jar包中的类等。</p>
+</blockquote>
+</li>
+<li><p>ASM 修改案例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">ClassReader classReader = <span class="keyword">null</span>;</span><br><span class="line">String fileName     = <span class="string">"/xxx/Algr/assets/Base.class"</span>;</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  InputStream is  = <span class="keyword">new</span> FileInputStream(fileName);</span><br><span class="line">  classReader     = <span class="keyword">new</span> ClassReader(is);</span><br><span class="line">&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">  e.printStackTrace();</span><br><span class="line">  <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line">ClassWriter classWriter = <span class="keyword">new</span> ClassWriter(ClassWriter.COMPUTE_MAXS);</span><br><span class="line"><span class="comment">//处理</span></span><br><span class="line">ClassVisitor classVisitor = <span class="keyword">new</span> MyClassVisitor(classWriter);</span><br><span class="line">classReader.accept(classVisitor, ClassReader.SKIP_DEBUG);</span><br><span class="line"><span class="keyword">byte</span>[] data = classWriter.toByteArray();</span><br><span class="line"><span class="comment">//输出</span></span><br><span class="line">File f = <span class="keyword">new</span> File(fileName);</span><br><span class="line">FileOutputStream fout = <span class="keyword">null</span>;</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  fout = <span class="keyword">new</span> FileOutputStream(f);</span><br><span class="line">  fout.write(data);</span><br><span class="line">  fout.close();</span><br><span class="line">&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">  e.printStackTrace();</span><br><span class="line">&#125;</span><br><span class="line">System.out.println(<span class="string">"now generator cc success!!!!!"</span>);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> jdk.internal.org.objectweb.asm.ClassVisitor;</span><br><span class="line"><span class="keyword">import</span> jdk.internal.org.objectweb.asm.MethodVisitor;</span><br><span class="line"><span class="keyword">import</span> jdk.internal.org.objectweb.asm.Opcodes;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyClassVisitor</span> <span class="keyword">extends</span> <span class="title">ClassVisitor</span> <span class="keyword">implements</span> <span class="title">Opcodes</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyClassVisitor</span><span class="params">(ClassVisitor cv)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(ASM5, cv);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">visit</span><span class="params">(<span class="keyword">int</span> version, <span class="keyword">int</span> access, String name, String signature,</span></span></span><br><span class="line"><span class="function"><span class="params">                      String superName, String[] interfaces)</span> </span>&#123;</span><br><span class="line">        cv.visit(version, access, name, signature, superName, interfaces);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> MethodVisitor <span class="title">visitMethod</span><span class="params">(<span class="keyword">int</span> access, String name, String desc, String signature, String[] exceptions)</span> </span>&#123;</span><br><span class="line">        MethodVisitor mv = cv.visitMethod(access, name, desc, signature,</span><br><span class="line">                exceptions);</span><br><span class="line">        <span class="comment">//Base类中有两个方法：无参构造以及process方法，这里不增强构造方法</span></span><br><span class="line">        <span class="keyword">if</span> (!name.equals(<span class="string">"&lt;init&gt;"</span>) &amp;&amp; mv != <span class="keyword">null</span>) &#123;</span><br><span class="line">            mv = <span class="keyword">new</span> MyMethodVisitor(mv);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> mv;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">MyMethodVisitor</span> <span class="keyword">extends</span> <span class="title">MethodVisitor</span> <span class="keyword">implements</span> <span class="title">Opcodes</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">MyMethodVisitor</span><span class="params">(MethodVisitor mv)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">super</span>(Opcodes.ASM5, mv);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">visitCode</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">super</span>.visitCode();</span><br><span class="line">          	<span class="comment">// 这里可以通过在IDEA 上安装ASM ByteCode Viewer 插件，将java语句翻译为ASM语句。然后直接copy过来</span></span><br><span class="line">            mv.visitFieldInsn(GETSTATIC, <span class="string">"java/lang/System"</span>, <span class="string">"out"</span>, <span class="string">"Ljava/io/PrintStream;"</span>);</span><br><span class="line">            mv.visitLdcInsn(<span class="string">"start"</span>);</span><br><span class="line">            mv.visitMethodInsn(INVOKEVIRTUAL, <span class="string">"java/io/PrintStream"</span>, <span class="string">"println"</span>, <span class="string">"(Ljava/lang/String;)V"</span>, <span class="keyword">false</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">visitInsn</span><span class="params">(<span class="keyword">int</span> opcode)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> ((opcode &gt;= Opcodes.IRETURN &amp;&amp; opcode &lt;= Opcodes.RETURN)</span><br><span class="line">                    || opcode == Opcodes.ATHROW) &#123;</span><br><span class="line">                <span class="comment">//方法在返回之前，打印"end"</span></span><br><span class="line">                mv.visitFieldInsn(GETSTATIC, <span class="string">"java/lang/System"</span>, <span class="string">"out"</span>, <span class="string">"Ljava/io/PrintStream;"</span>);</span><br><span class="line">                mv.visitLdcInsn(<span class="string">"end"</span>);</span><br><span class="line">                mv.visitMethodInsn(INVOKEVIRTUAL, <span class="string">"java/io/PrintStream"</span>, <span class="string">"println"</span>, <span class="string">"(Ljava/lang/String;)V"</span>, <span class="keyword">false</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            mv.visitInsn(opcode);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h5 id="Javassist"><a href="#Javassist" class="headerlink" title="Javassist"></a>Javassist</h5><ul>
+<li><p>源码层面操作字节码，相比asm更加简单。</p>
+</li>
+<li><p>首先下载jar包，<a href="http://www.javassist.org/" target="_blank" rel="noopener">http://www.javassist.org/</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> <span class="keyword">throws</span> NotFoundException, CannotCompileException, IOException, IllegalAccessException, InstantiationException </span>&#123;</span><br><span class="line"><span class="comment">//        String fileName     = "/xxx/IdeaProjects/Algr/assets/Base";</span></span><br><span class="line">        String fileName     = <span class="string">"asm.Base"</span>;</span><br><span class="line">        ClassPool cp = ClassPool.getDefault();</span><br><span class="line">        CtClass cc = cp.get(fileName);</span><br><span class="line">        CtMethod m = cc.getDeclaredMethod(<span class="string">"process"</span>);</span><br><span class="line">        m.insertBefore(<span class="string">"&#123;System.out.println(\"start\");&#125;"</span>);</span><br><span class="line">        m.insertAfter(<span class="string">"&#123;System.out.println(\"end\");&#125;"</span>);</span><br><span class="line">        Class c = cc.toClass();</span><br><span class="line">        cc.writeFile(<span class="string">"out/production/Algr"</span>);</span><br><span class="line">        Base h = (Base)c.newInstance();</span><br><span class="line">        h.process();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h5 id="热更新、动态注入技术"><a href="#热更新、动态注入技术" class="headerlink" title="热更新、动态注入技术"></a>热更新、动态注入技术</h5><ul>
+<li><p>运行一个java程序</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// asm/Base.java 文件</span></span><br><span class="line"><span class="keyword">package</span> asm;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Base</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">process</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"process"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Main.java 文件</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String name = ManagementFactory.getRuntimeMXBean().getName();</span><br><span class="line">        String s = name.split(<span class="string">"@"</span>)[<span class="number">0</span>];</span><br><span class="line">        <span class="comment">//打印当前Pid</span></span><br><span class="line">        System.out.println(<span class="string">"pid:"</span>+s);</span><br><span class="line">        Base base   = <span class="keyword">new</span> Base();</span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                Thread.sleep(<span class="number">5000L</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">          	<span class="comment">// 没5s调用一次，当base类被动态注入修改之后，输出内容发生变化</span></span><br><span class="line">            base.process();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建一个Agent的jar包，用于动态修改Base类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Baes.java 类</span></span><br><span class="line"><span class="keyword">package</span> asm;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Base</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">process</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"process"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// TestAgent.java 类</span></span><br><span class="line"><span class="keyword">package</span> asm;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.instrument.Instrumentation;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestAgent</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">agentmain</span><span class="params">(String args, Instrumentation inst)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//指定我们自己定义的Transformer，在其中利用Javassist做字节码替换</span></span><br><span class="line">        inst.addTransformer(<span class="keyword">new</span> TestTransformer(), <span class="keyword">true</span>);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//重定义类并载入新的字节码</span></span><br><span class="line">            inst.retransformClasses(Base.class);</span><br><span class="line">            System.out.println(<span class="string">"Agent Load Done."</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            System.out.println(<span class="string">"agent load failed!"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// TestTransformer.java 类</span></span><br><span class="line"><span class="keyword">package</span> asm;</span><br><span class="line"><span class="keyword">import</span> javassist.ClassPool;</span><br><span class="line"><span class="keyword">import</span> javassist.CtClass;</span><br><span class="line"><span class="keyword">import</span> javassist.CtMethod;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.instrument.ClassFileTransformer;</span><br><span class="line"><span class="keyword">import</span> java.security.ProtectionDomain;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestTransformer</span> <span class="keyword">implements</span> <span class="title">ClassFileTransformer</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">byte</span>[] transform(ClassLoader loader, String className, Class&lt;?&gt; classBeingRedefined, ProtectionDomain protectionDomain, <span class="keyword">byte</span>[] classfileBuffer) &#123;</span><br><span class="line">        System.out.println(<span class="string">"Transforming "</span> + className);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            ClassPool cp = ClassPool.getDefault();</span><br><span class="line">            CtClass cc = cp.get(<span class="string">"asm.Base"</span>);</span><br><span class="line">            CtMethod m = cc.getDeclaredMethod(<span class="string">"process"</span>);</span><br><span class="line">            m.insertBefore(<span class="string">"&#123; System.out.println(\"start\"); &#125;"</span>);</span><br><span class="line">            m.insertAfter(<span class="string">"&#123; System.out.println(\"end\"); &#125;"</span>);</span><br><span class="line">            <span class="keyword">return</span> cc.toBytecode();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>打jar包</p>
+<blockquote>
+<p>这里生成jar包使用IDEA工具，File-&gt;Project settings -&gt; Artifacts -&gt; + -&gt; Jar -&gt; Create JAR from Modules </p>
+<p>-&gt; output Layout -&gt; + -&gt; 添加依赖的第三方jar -&gt; OK</p>
+</blockquote>
+</li>
+<li><p>修改Manifest.MF</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Manifest-Version: 1.0</span><br><span class="line">Agent-Class: asm.TestAgent // 这里不是Main-Class</span><br><span class="line">Created-By: lpl</span><br><span class="line">Can-Redefine-Classes: true</span><br><span class="line">Can-Retransform-Classes: true</span><br><span class="line">Boot-Class-Path: javassist.jar</span><br><span class="line">Permissions: all-permissions</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将Agent 关联到 第一步运行的java进程，通过AgentTest修改内存中的Base类，改变对象base.process()的执行逻辑</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> AttachNotSupportedException, IOException, AgentLoadException, AgentInitializationException </span>&#123;</span><br><span class="line">        <span class="comment">// 传入目标 JVM pid</span></span><br><span class="line">        VirtualMachine vm = VirtualMachine.attach(<span class="string">"92074"</span>);</span><br><span class="line">        vm.loadAgent(<span class="string">"/Users/lipeilong/IdeaProjects/AgentTest/out/artifacts/AgentTest_jar/AgentTest.jar"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h4 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h4><h5 id="JVMTI-JVM-tools-interface"><a href="#JVMTI-JVM-tools-interface" class="headerlink" title="JVMTI(JVM tools interface)"></a>JVMTI(JVM tools interface)</h5><ul>
+<li><a href="https://cloud.tencent.com/developer/article/1478720" target="_blank" rel="noopener">https://cloud.tencent.com/developer/article/1478720</a> </li>
+</ul>
+<h5 id="ASM-注入"><a href="#ASM-注入" class="headerlink" title="ASM 注入"></a>ASM 注入</h5><ul>
+<li><a href="https://www.jianshu.com/p/905be2a9a700" target="_blank" rel="noopener">https://www.jianshu.com/p/905be2a9a700</a></li>
+</ul>
+<h5 id="ASM-官网"><a href="#ASM-官网" class="headerlink" title="ASM 官网"></a>ASM 官网</h5><ul>
+<li><a href="https://asm.ow2.io/developer-guide.html" target="_blank" rel="noopener">https://asm.ow2.io/developer-guide.html</a></li>
+</ul>
+<h5 id="字节码注入到class的运行时动态重载"><a href="#字节码注入到class的运行时动态重载" class="headerlink" title="字节码注入到class的运行时动态重载"></a>字节码注入到class的运行时动态重载</h5><ul>
+<li><a href="https://tech.meituan.com/2019/09/05/java-bytecode-enhancement.html" target="_blank" rel="noopener">https://tech.meituan.com/2019/09/05/java-bytecode-enhancement.html</a></li>
+</ul>
+<h5 id="字节码指令"><a href="#字节码指令" class="headerlink" title="字节码指令"></a>字节码指令</h5><ul>
+<li><a href="http://gityuan.com/2015/10/24/jvm-bytecode-grammar/" target="_blank" rel="noopener">http://gityuan.com/2015/10/24/jvm-bytecode-grammar/</a></li>
+</ul>
+<h5 id="ASM-编写辅助插件"><a href="#ASM-编写辅助插件" class="headerlink" title="ASM 编写辅助插件"></a>ASM 编写辅助插件</h5><ul>
+<li><a href="https://plugins.jetbrains.com/plugin/5918-asm-bytecode-outline/versions" target="_blank" rel="noopener">https://plugins.jetbrains.com/plugin/5918-asm-bytecode-outline/versions</a> </li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2020/07/09/Android 性能监控-启动时长监控/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lpl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/blog/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="闲敲棋子落灯花">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2020/07/09/Android 性能监控-启动时长监控/" itemprop="url">android 性能监控-启动时长</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-09T17:30:30+08:00">
+                2020-07-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>##### </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2020/06/23/Android 性能监控-内存/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lpl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/blog/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="闲敲棋子落灯花">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2020/06/23/Android 性能监控-内存/" itemprop="url">android 性能监控-内存</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-23T16:32:16+08:00">
+                2020-06-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="四种内存指标区别"><a href="#四种内存指标区别" class="headerlink" title="四种内存指标区别"></a>四种内存指标区别</h5><ul>
+<li><p><code>VSS （Virtual Set Size）</code> 虚拟耗用内存（包含共享库占用的内存）</p>
+<blockquote>
+<p>VSS表示一个进程可访问的全部内存地址空间的大小。这个大小包括了进程已经申请但尚未使用的内存空间。在实际中很少用这种方式来表示进程占用内存的情况，用它来表示单个进程的内存使用情况是不准确的。</p>
+</blockquote>
+</li>
+<li><p><code>RSS （Resident Set Size）</code> 实际使用物理内存（包含共享库即so文件占用的内存）</p>
+<blockquote>
+<p>表示一个进程在RAM中实际使用的空间地址大小，包括了全部共享库占用的内存，这种表示进程占用内存的情况也是不准确的。</p>
+</blockquote>
+</li>
+<li><p><code>PSS （Proportional Set Size）</code> 实际使用的物理内存（比例分配共享库占用的内存）</p>
+<blockquote>
+<p>表示一个进程在RAM中实际使用的空间地址大小，它按比例包含了共享库占用的内存。假如有3个进程使用同一个共享库，那么每个进程的PSS就包括了1/3大小的共享库内存。这种方式表示进程的内存使用情况较准确，但当只有一个进程使用共享库时，其情况和RSS一模一样。</p>
+</blockquote>
+</li>
+<li><p><code>USS （Unique Set Size）</code> 进程独自占用的物理内存（不包含共享库占用的内存）</p>
+<blockquote>
+<p>USS：表示一个进程本身占用的内存空间大小，不包含其它任何成分，这是表示进程内存大小的最好方式！<br>可以看到:VSS&gt;=RSS&gt;=PSS&gt;=USS</p>
+</blockquote>
+</li>
+</ul>
+<h5 id="采集PSS方法"><a href="#采集PSS方法" class="headerlink" title="采集PSS方法"></a>采集PSS方法</h5><ul>
+<li><p>使用Debug类采集PSS</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> MemoryInfo <span class="title">getMemoryInfo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="comment">// 注意：这里是耗时和耗CPU的操作，一定要谨慎调用</span></span><br><span class="line">  Debug.MemoryInfo info = <span class="keyword">new</span> Debug.MemoryInfo();</span><br><span class="line">  Debug.getMemoryInfo(info);</span><br><span class="line">  <span class="comment">// 这里采集了总的Pss、dalvik Pss、native Pss、other Pss；</span></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> MemoryInfo(ProcessUtils.getCurrentProcessName(), info.getTotalPss(), info.dalvikPss, info.nativePss, info.otherPss);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<ul>
+<li><p>Android Studio Profiler 工具 Memory 模块直接查看占用内存</p>
+</li>
+<li><p>top命令查看内存信息</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 按照实际使用内存排序，取前20个进程，显示一次; 参数解释见参考文章 内存优化下</span><br><span class="line">adb shell top -m 20 -n 1 -s rss</span><br></pre></td></tr></table></figure>
+
+<p>## </p>
+</li>
+</ul>
+<h5 id="命令行查看内存方法"><a href="#命令行查看内存方法" class="headerlink" title="命令行查看内存方法"></a>命令行查看内存方法</h5><ul>
+<li><p>dumpsys命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>查看内存</span><br><span class="line">adb shell dumpsys meminfo &lt;package_name&gt;</span><br><span class="line"><span class="meta">#</span> 查找进程</span><br><span class="line">adb shell top | grep app_name</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>top命令查看内存信息</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 按照实际使用内存排序，取前20个进程，显示一次; 参数解释见参考文章 内存优化下</span><br><span class="line">adb shell top -m 20 -n 1 -s rss</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Android Studio Profiler 工具 Memory 模块直接查看占用内存</p>
+</li>
+<li><p>LeakInspector，采集dump 内存信息保存hprof文件，上传服务器使用mat工具分析</p>
+</li>
+<li><p>LeakCanary，也是基于hprof文件分析泄漏</p>
+</li>
+<li><p>MAT 用来分析hprof文件的工具</p>
+</li>
+<li><p>JHat 内置JDK中用于分析hprof的工具，可以生成web，适合多人协作。</p>
+</li>
+<li><p>GC日志分析(Dalvik、ART)；PS 内存优化中有详细介绍</p>
+</li>
+<li><p>chrome devtool 可以用来分析h5</p>
+</li>
+<li><p>Android Studio的Debugger 可以查看线程状态。</p>
+</li>
+</ul>
+<h5 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h5><ul>
+<li><a href="https://blog.csdn.net/bigconvience/article/details/35553983" target="_blank" rel="noopener">https://blog.csdn.net/bigconvience/article/details/35553983</a></li>
+<li><a href="https://juejin.im/post/5e72b2d151882549236f9cb8" target="_blank" rel="noopener">https://juejin.im/post/5e72b2d151882549236f9cb8</a> (内存优化上) </li>
+<li><a href="https://juejin.im/post/5e780257f265da575209652c" target="_blank" rel="noopener">https://juejin.im/post/5e780257f265da575209652c</a> (内存优化下)</li>
+<li><a href="https://axiu.me/coding/dump-android-memory-info/" target="_blank" rel="noopener">https://axiu.me/coding/dump-android-memory-info/</a></li>
+<li><a href="https://www.jianshu.com/p/06aa6702093c" target="_blank" rel="noopener">https://www.jianshu.com/p/06aa6702093c</a> (共享库)</li>
+<li><a href="https://blog.csdn.net/MRYZJ/article/details/100890648" target="_blank" rel="noopener">https://blog.csdn.net/MRYZJ/article/details/100890648</a> (meminfo 名词解释)</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2020/06/23/Android 性能监控-网络/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1368,8 +1928,16 @@
         
           
             <ul>
+<li><p>创建指定大小的文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">touch text.txt</span><br><span class="line">mkfile -n 10k text.txt</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<ul>
 <li><p>android jni mmap demo</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;jni.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/mman.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fcntl.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/stat.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;android/log.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TAG <span class="meta-string">"JNITEST"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LOGI(...) __android_log_print(ANDROID_LOG_INFO,TAG,__VA_ARGS__)</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">mmapWrite</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">char</span> * file = <span class="string">"/data/data/com.pa.mmp/text.txt"</span>;</span><br><span class="line">    <span class="comment">//打开文件，fd文件句柄</span></span><br><span class="line">    <span class="keyword">int</span> fd = open(file, O_RDWR );</span><br><span class="line">    <span class="keyword">if</span>(fd &lt; <span class="number">0</span>)&#123;</span><br><span class="line">        LOGI(<span class="string">"Can't open %s\n"</span>,file);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//获取文件信息（此处获取大小信息）</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">stat</span> <span class="title">sb</span>;</span></span><br><span class="line">    <span class="keyword">if</span>((fstat(fd, &amp;sb)) == <span class="number">-1</span>)&#123;</span><br><span class="line">        LOGI(<span class="string">"Can't file status failed\n"</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    LOGI(<span class="string">"SB file size %d\n"</span>, sb.st_size);</span><br><span class="line">    <span class="comment">//使用mmap进行映射,映射整个文件大小sb.st_size</span></span><br><span class="line">    <span class="keyword">void</span>* mapped = mmap(<span class="literal">NULL</span>, sb.st_size , PROT_READ | PROT_WRITE, MAP_SHARED, fd, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">if</span>(mapped== MAP_FAILED)&#123;</span><br><span class="line">        LOGI(<span class="string">"File mmap failed\n"</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    LOGI(<span class="string">"SB file size %d\n"</span>, <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//映射结束，关闭文件</span></span><br><span class="line">    close(fd);</span><br><span class="line">    LOGI(<span class="string">"SB file size %d\n"</span>, <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//对映射内存进行修改,首地址写入Hello World</span></span><br><span class="line">    <span class="built_in">strcpy</span>((<span class="keyword">char</span>*)mapped,<span class="string">"Hello World!"</span>);</span><br><span class="line"></span><br><span class="line">    LOGI(<span class="string">"SB file size %d\n"</span>, <span class="number">3</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//同步内存与文件</span></span><br><span class="line">    <span class="comment">//只要文件映射存在，就可以通过msync将映射空间的内容写入文件，实现空间和文件的同步。</span></span><br><span class="line">    <span class="keyword">if</span>(msync ((<span class="keyword">void</span> *) mapped, sb.st_size, MS_SYNC)== <span class="number">-1</span>)&#123;</span><br><span class="line">        LOGI(<span class="string">"msync failed \n"</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    LOGI(<span class="string">"SB file size %d\n"</span>, <span class="number">4</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//释放映射区，取消映射</span></span><br><span class="line">    <span class="keyword">if</span> ((munmap ((<span class="keyword">void</span> *) mapped, sb.st_size)) == <span class="number">-1</span>) &#123;</span><br><span class="line">        LOGI(<span class="string">"munmap failed \n"</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    LOGI(<span class="string">"mmap success \n"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span> JNIEXPORT jstring JNICALL</span><br><span class="line">Java_com_pa_mmp_MainActivity_stringFromJNI(</span><br><span class="line">        JNIEnv* env,</span><br><span class="line">        jobject <span class="comment">/* this */</span>) &#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">string</span> hello = <span class="string">"Hello from C++"</span>;</span><br><span class="line">    LOGI(<span class="string">"the string is :%s"</span>, <span class="string">"mmap start ...."</span>);</span><br><span class="line">    mmapWrite();</span><br><span class="line">    LOGI(<span class="string">"the string is :%s"</span>, <span class="string">"mmap end ...."</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> env-&gt;NewStringUTF(hello.c_str());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;jni.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/mman.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fcntl.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/stat.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;android/log.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TAG <span class="meta-string">"JNITEST"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LOGI(...) __android_log_print(ANDROID_LOG_INFO,TAG,__VA_ARGS__)</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">mmapWrite</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">char</span> * file = <span class="string">"/data/data/com.pa.mmp/text.txt"</span>;</span><br><span class="line">    <span class="comment">//打开文件，fd文件句柄</span></span><br><span class="line">    <span class="keyword">int</span> fd = open(file, O_RDWR );</span><br><span class="line">    <span class="keyword">if</span>(fd &lt; <span class="number">0</span>)&#123;</span><br><span class="line">        LOGI(<span class="string">"Can't open %s\n"</span>,file);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//获取文件信息（此处获取大小信息）</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">stat</span> <span class="title">sb</span>;</span></span><br><span class="line">    <span class="keyword">if</span>((fstat(fd, &amp;sb)) == <span class="number">-1</span>)&#123;</span><br><span class="line">        LOGI(<span class="string">"Can't file status failed\n"</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    LOGI(<span class="string">"SB file size %d\n"</span>, sb.st_size);</span><br><span class="line">    <span class="comment">//使用mmap进行映射,映射整个文件大小sb.st_size</span></span><br><span class="line">    <span class="keyword">void</span>* mapped = mmap(<span class="literal">NULL</span>, sb.st_size , PROT_READ | PROT_WRITE, MAP_SHARED, fd, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">if</span>(mapped== MAP_FAILED)&#123;</span><br><span class="line">        LOGI(<span class="string">"File mmap failed\n"</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    LOGI(<span class="string">"SB file size %d\n"</span>, <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//映射结束，关闭文件</span></span><br><span class="line">    close(fd);</span><br><span class="line">    LOGI(<span class="string">"SB file size %d\n"</span>, <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//对映射内存进行修改,首地址写入Hello World</span></span><br><span class="line">    <span class="built_in">strcpy</span>((<span class="keyword">char</span>*)mapped,<span class="string">"Hello World!"</span>);</span><br><span class="line"></span><br><span class="line">    LOGI(<span class="string">"SB file size %d\n"</span>, <span class="number">3</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//同步内存与文件</span></span><br><span class="line">    <span class="comment">//只要文件映射存在，就可以通过msync将映射空间的内容写入文件，实现空间和文件的同步。</span></span><br><span class="line">    <span class="keyword">if</span>(msync ((<span class="keyword">void</span> *) mapped, sb.st_size, MS_SYNC)== <span class="number">-1</span>)&#123;</span><br><span class="line">        LOGI(<span class="string">"msync failed \n"</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    LOGI(<span class="string">"SB file size %d\n"</span>, <span class="number">4</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//释放映射区，取消映射</span></span><br><span class="line">    <span class="keyword">if</span> ((munmap ((<span class="keyword">void</span> *) mapped, sb.st_size)) == <span class="number">-1</span>) &#123;</span><br><span class="line">        LOGI(<span class="string">"munmap failed \n"</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    LOGI(<span class="string">"mmap success \n"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 读取字符串</span></span><br><span class="line"><span class="function"><span class="keyword">char</span>* <span class="title">mmapRead</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">char</span> * file = <span class="string">"/data/data/com.pa.mmp/text.txt"</span>;</span><br><span class="line">    <span class="comment">//打开文件，fd文件句柄</span></span><br><span class="line">    <span class="keyword">int</span> fd = open(file, O_RDWR );</span><br><span class="line">    <span class="keyword">if</span>(fd &lt; <span class="number">0</span>)&#123;</span><br><span class="line">        LOGI(<span class="string">"Can't open %s\n"</span>,file);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">void</span> *start;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">stat</span> <span class="title">sb</span>;</span></span><br><span class="line">    fstat(fd, &amp;sb); <span class="comment">/* 取得文件大小 */</span></span><br><span class="line">    LOGI(<span class="string">"Can't open %d\n"</span>,sb.st_size);</span><br><span class="line">    start = mmap(<span class="literal">NULL</span>, sb.st_size, PROT_READ, MAP_PRIVATE, fd, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">if</span>(start == MAP_FAILED) <span class="comment">/* 判断是否映射成功 */</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">char</span> *res = (<span class="keyword">char</span>*)<span class="built_in">malloc</span>(<span class="number">1024</span>*<span class="keyword">sizeof</span>(<span class="keyword">char</span>));</span><br><span class="line"></span><br><span class="line">    <span class="built_in">strcpy</span>(res, (<span class="keyword">char</span>*)start);</span><br><span class="line"></span><br><span class="line">    LOGI(<span class="string">"String : %s\n"</span>, res);</span><br><span class="line">    munmap(start, sb.st_size); <span class="comment">/* 解除映射 */</span></span><br><span class="line">    close(fd);</span><br><span class="line"></span><br><span class="line">    LOGI(<span class="string">"mmap success \n"</span>);</span><br><span class="line">    <span class="keyword">return</span> (<span class="keyword">char</span>*)res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 写入字符串</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">mmapWrite</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* ch)</span></span>&#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">char</span> * file = <span class="string">"/data/data/com.pa.mmp/text.txt"</span>;</span><br><span class="line">    <span class="comment">//打开文件，fd文件句柄</span></span><br><span class="line">    <span class="keyword">int</span> fd = open(file, O_RDWR );</span><br><span class="line">    <span class="keyword">if</span>(fd &lt; <span class="number">0</span>)&#123;</span><br><span class="line">        LOGI(<span class="string">"Can't open %s\n"</span>,file);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//获取文件信息（此处获取大小信息）</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">stat</span> <span class="title">sb</span>;</span></span><br><span class="line">    <span class="keyword">if</span>((fstat(fd, &amp;sb)) == <span class="number">-1</span>)&#123;</span><br><span class="line">        LOGI(<span class="string">"Can't file status failed\n"</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    LOGI(<span class="string">"SB file size %d\n"</span>, sb.st_size);</span><br><span class="line">    <span class="comment">//使用mmap进行映射,映射整个文件大小sb.st_size</span></span><br><span class="line">    <span class="keyword">void</span>* mapped = mmap(<span class="literal">NULL</span>, sb.st_size , PROT_READ | PROT_WRITE, MAP_SHARED, fd, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">if</span>(mapped== MAP_FAILED)&#123;</span><br><span class="line">        LOGI(<span class="string">"File mmap failed\n"</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    LOGI(<span class="string">"SB file size %d\n"</span>, <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//映射结束，关闭文件</span></span><br><span class="line">    close(fd);</span><br><span class="line">    LOGI(<span class="string">"SB file size %d\n"</span>, <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//对映射内存进行修改,首地址写入Hello World</span></span><br><span class="line">    <span class="built_in">strcpy</span>((<span class="keyword">char</span>*)mapped,ch);</span><br><span class="line"></span><br><span class="line">    LOGI(<span class="string">"SB file size %d\n"</span>, <span class="number">3</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//同步内存与文件</span></span><br><span class="line">    <span class="comment">//只要文件映射存在，就可以通过msync将映射空间的内容写入文件，实现空间和文件的同步。</span></span><br><span class="line">    <span class="keyword">if</span>(msync ((<span class="keyword">void</span> *) mapped, sb.st_size, MS_SYNC)== <span class="number">-1</span>)&#123;</span><br><span class="line">        LOGI(<span class="string">"msync failed \n"</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    LOGI(<span class="string">"SB file size %d\n"</span>, <span class="number">4</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//释放映射区，取消映射</span></span><br><span class="line">    <span class="keyword">if</span> ((munmap ((<span class="keyword">void</span> *) mapped, sb.st_size)) == <span class="number">-1</span>) &#123;</span><br><span class="line">        LOGI(<span class="string">"munmap failed \n"</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    LOGI(<span class="string">"mmap success \n"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span> JNIEXPORT jstring JNICALL</span><br><span class="line">Java_com_pa_mmp_MainActivity_stringFromJNI(</span><br><span class="line">        JNIEnv* env,</span><br><span class="line">        jobject <span class="comment">/* this */</span>) &#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">string</span> hello = <span class="string">"Hello from C++"</span>;</span><br><span class="line">    LOGI(<span class="string">"the string is :%s"</span>, <span class="string">"stringFromJNI start ...."</span>);</span><br><span class="line">    mmapWrite();</span><br><span class="line">    LOGI(<span class="string">"the string is :%s"</span>, <span class="string">"stringFromJNI end ...."</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> env-&gt;NewStringUTF(hello.c_str());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span> JNIEXPORT jstring JNICALL</span><br><span class="line">Java_com_pa_mmp_MainActivity_readTime(</span><br><span class="line">        JNIEnv* env,</span><br><span class="line">        jobject <span class="comment">/* this */</span>) &#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">string</span> hello = <span class="string">"Hello from C++"</span>;</span><br><span class="line">    LOGI(<span class="string">"the string is :%s"</span>, <span class="string">"readTime start ...."</span>);</span><br><span class="line">    <span class="keyword">char</span>* msg   = mmapRead();</span><br><span class="line">    LOGI(<span class="string">"the string is :%s"</span>, <span class="string">"readTime end ...."</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> env-&gt;NewStringUTF(msg);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span> JNIEXPORT jint JNICALL</span><br><span class="line">Java_com_pa_mmp_MainActivity_writeTime(</span><br><span class="line">        JNIEnv* env,</span><br><span class="line">        jobject <span class="comment">/* this */</span>, jstring time) &#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">string</span> hello = <span class="string">"Hello from C++"</span>;</span><br><span class="line">    LOGI(<span class="string">"the string is :%s"</span>, <span class="string">"writeTime start ...."</span>);</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">char</span> *dname=<span class="literal">NULL</span>;</span><br><span class="line">    dname = env-&gt;GetStringUTFChars(time, <span class="number">0</span>);</span><br><span class="line">    mmapWrite(dname);</span><br><span class="line">    LOGI(<span class="string">"the string is :%s"</span>, <span class="string">"writeTime end ...."</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
@@ -1379,509 +1947,6 @@
 <li><a href="https://blog.n0texpecterr0r.cn/2019/01/14/[i-o]内存映射-mmap-函数的使用/" target="_blank" rel="noopener">https://blog.n0texpecterr0r.cn/2019/01/14/%E3%80%90i-o%E3%80%91%E5%86%85%E5%AD%98%E6%98%A0%E5%B0%84-mmap-%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/</a></li>
 <li><a href="https://blog.csdn.net/u012702547/article/details/48222859" target="_blank" rel="noopener">https://blog.csdn.net/u012702547/article/details/48222859</a></li>
 <li><a href="https://blog.csdn.net/mcryeasy/article/details/86741781" target="_blank" rel="noopener">https://blog.csdn.net/mcryeasy/article/details/86741781</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2020/06/15/Android 性能监控/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lpl">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/blog/images/head.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="闲敲棋子落灯花">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2020/06/15/Android 性能监控/" itemprop="url">android 性能监控</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-15T17:53:43+08:00">
-                2020-06-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li><p>rabbit </p>
-<blockquote>
-<p><a href="https://juejin.im/post/5e189537f265da3e413f4da2" target="_blank" rel="noopener">https://juejin.im/post/5e189537f265da3e413f4da2</a></p>
-<p>源码：</p>
-<p><a href="https://github.com/zubao/rabbit-client" target="_blank" rel="noopener">https://github.com/zubao/rabbit-client</a></p>
-</blockquote>
-</li>
-<li><p>Firebase Performance Monitoring SDK 谷歌</p>
-<blockquote>
-<p><a href="https://firebase.google.com/docs/perf-mon/get-started-android?hl=zh-cn" target="_blank" rel="noopener">https://firebase.google.com/docs/perf-mon/get-started-android?hl=zh-cn</a></p>
-</blockquote>
-</li>
-<li><p>matrix  腾讯-微信</p>
-<blockquote>
-<p><a href="https://github.com/zubao/matrix" target="_blank" rel="noopener">https://github.com/zubao/matrix</a></p>
-<p><a href="https://dahei.me/2018/12/27/腾讯性能监控框架Matrix源码分析之第一篇/" target="_blank" rel="noopener">https://dahei.me/2018/12/27/%E8%85%BE%E8%AE%AF%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E6%A1%86%E6%9E%B6Matrix%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E4%B9%8B%E7%AC%AC%E4%B8%80%E7%AF%87/</a></p>
-</blockquote>
-</li>
-<li><p>ArgusAPM  360</p>
-<blockquote>
-<p><a href="https://github.com/Qihoo360/ArgusAPM" target="_blank" rel="noopener">https://github.com/Qihoo360/ArgusAPM</a></p>
-</blockquote>
-</li>
-<li><p>Emmagee 网易</p>
-<blockquote>
-<p><a href="https://github.com/Qihoo360/ArgusAPM" target="_blank" rel="noopener">https://github.com/Qihoo360/ArgusAPM</a></p>
-</blockquote>
-</li>
-<li><p>fpsviewer </p>
-<blockquote>
-<p><a href="https://github.com/SilenceDut/fpsviewer" target="_blank" rel="noopener">https://github.com/SilenceDut/fpsviewer</a></p>
-</blockquote>
-</li>
-<li><p>Android Performance Monitor</p>
-<blockquote>
-<p><a href="https://github.com/markzhai/AndroidPerformanceMonitor" target="_blank" rel="noopener">https://github.com/markzhai/AndroidPerformanceMonitor</a> </p>
-</blockquote>
-</li>
-</ul>
-<p>参考文章：</p>
-<p><a href="https://github.com/D-clock/Doc/blob/master/Android/辅助工具/Android性能分析工具整理汇总.md" target="_blank" rel="noopener">https://github.com/D-clock/Doc/blob/master/Android/%E8%BE%85%E5%8A%A9%E5%B7%A5%E5%85%B7/Android%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7%E6%95%B4%E7%90%86%E6%B1%87%E6%80%BB.md</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2020/06/09/Java 虚拟机 JVMTI/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lpl">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/blog/images/head.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="闲敲棋子落灯花">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2020/06/09/Java 虚拟机 JVMTI/" itemprop="url">Java 虚拟机 JVMTI</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-09T14:50:51+08:00">
-                2020-06-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/java/" itemprop="url" rel="index">
-                    <span itemprop="name">java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="JVMTI-JVM-tools-interface"><a href="#JVMTI-JVM-tools-interface" class="headerlink" title="JVMTI(JVM tools interface)"></a>JVMTI(JVM tools interface)</h5><ul>
-<li><a href="https://cloud.tencent.com/developer/article/1478720" target="_blank" rel="noopener">https://cloud.tencent.com/developer/article/1478720</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2020/06/08/Mac GDB调试/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lpl">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/blog/images/head.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="闲敲棋子落灯花">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2020/06/08/Mac GDB调试/" itemprop="url">Mac gdb调试</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-08T15:54:23+08:00">
-                2020-06-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/mac/" itemprop="url" rel="index">
-                    <span itemprop="name">mac</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="安装gdb"><a href="#安装gdb" class="headerlink" title="安装gdb"></a>安装gdb</h5><ul>
-<li><p>命令行安装</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install gdb</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>编译安装</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"> #</span> 下载源码</span><br><span class="line"> http://ftp.gnu.org/gnu/gdb/gdb-8.0.tar.gz </span><br><span class="line"><span class="meta"> #</span> 编译安装</span><br><span class="line"> ./configure</span><br><span class="line">make j4</span><br><span class="line">make install</span><br><span class="line">gdb -v</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h5 id="创建证书"><a href="#创建证书" class="headerlink" title="创建证书"></a>创建证书</h5><ul>
-<li>使用钥匙串创建证书</li>
-<li>打开 应用程序&gt;实用工具&gt;钥匙串</li>
-<li>左上角菜单&gt;钥匙串访问-&gt;证书助理-&gt;创建证书</li>
-<li>名称 gdb_codesign；身份类型：自签名根证书；证书类型：代码签名；勾选：让我覆盖这些默认设置</li>
-<li>一直next，直到出现“指定证书位置”，选择登录，然后完成。</li>
-<li>将创建的证书拖到桌面；</li>
-<li>打开钥匙串，两指单击系统&gt;解锁钥匙串系统&gt;添加证书&gt;将上步拖到桌面的证书添加到系统。</li>
-<li>删除登录中的gdb_codesign证书</li>
-<li>点击系统-gdb_codesign，展开信任，选择始终信任；</li>
-</ul>
-<h5 id="签名gdb"><a href="#签名gdb" class="headerlink" title="签名gdb"></a>签名gdb</h5><ul>
-<li><p>sudo codesign -s gdb_codesign /usr/local/bin/gdb</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">10.14及以后</span><br><span class="line">先创建一个文件 gdb-entitlement.xml，内容为:</span><br><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">plist</span> <span class="attr">version</span>=<span class="string">"1.0"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dict</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>com.apple.security.cs.debugger<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">true</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dict</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plist</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">pre</span>&gt;</span></span><br><span class="line"></span><br><span class="line">codesign --entitlements gdb-entitlement.xml -fs gdb-cert $(which gdb)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>echo “set startup-with-shell off” &gt;&gt; ~/.gdbinit</p>
-</li>
-</ul>
-<h5 id="gdb-调试"><a href="#gdb-调试" class="headerlink" title="gdb 调试"></a>gdb 调试</h5><ul>
-<li><a href="https://blog.csdn.net/feixiaoxing/article/details/7199643" target="_blank" rel="noopener">https://blog.csdn.net/feixiaoxing/article/details/7199643</a></li>
-</ul>
-<h5 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h5><ul>
-<li><a href="https://blog.csdn.net/wj1066/article/details/83653153" target="_blank" rel="noopener">https://blog.csdn.net/wj1066/article/details/83653153</a></li>
-<li><a href="https://segmentfault.com/q/1010000004136334" target="_blank" rel="noopener">https://segmentfault.com/q/1010000004136334</a></li>
-<li><a href="https://sourceware.org/gdb/wiki/PermissionsDarwin" target="_blank" rel="noopener">https://sourceware.org/gdb/wiki/PermissionsDarwin</a></li>
 </ul>
 
           
@@ -1970,7 +2035,7 @@
               
                 <a href="/blog/archives/">
               
-                  <span class="site-state-item-count">81</span>
+                  <span class="site-state-item-count">84</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1992,7 +2057,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/blog/tags/index.html">
-                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

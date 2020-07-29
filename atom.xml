@@ -6,7 +6,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://zubao.github.io/blog/"/>
-  <updated>2020-06-23T08:10:58.783Z</updated>
+  <updated>2020-07-28T02:40:11.342Z</updated>
   <id>https://zubao.github.io/blog/</id>
   
   <author>
@@ -15,6 +15,89 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ASM 代码注入技术</title>
+    <link href="https://zubao.github.io/blog/2020/07/24/ASM%20%E4%BB%A3%E7%A0%81%E6%B3%A8%E5%85%A5%E6%8A%80%E6%9C%AF/"/>
+    <id>https://zubao.github.io/blog/2020/07/24/ASM 代码注入技术/</id>
+    <published>2020-07-24T08:41:33.990Z</published>
+    <updated>2020-07-28T02:40:11.342Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;字节码增强技术&quot;&gt;&lt;a href=&quot;#字节码增强技术&quot; class=&quot;headerlink&quot; title=&quot;字节码增强技术&quot;&gt;&lt;/a&gt;字节码增强技术&lt;/h4&gt;&lt;h5 id=&quot;ASM&quot;&gt;&lt;a href=&quot;#ASM&quot; class=&quot;headerlink&quot; title=
+      
+    
+    </summary>
+    
+      <category term="java" scheme="https://zubao.github.io/blog/categories/java/"/>
+    
+    
+      <category term="asm" scheme="https://zubao.github.io/blog/tags/asm/"/>
+    
+      <category term="java" scheme="https://zubao.github.io/blog/tags/java/"/>
+    
+      <category term="jvmti" scheme="https://zubao.github.io/blog/tags/jvmti/"/>
+    
+      <category term="javassit" scheme="https://zubao.github.io/blog/tags/javassit/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>android 性能监控-启动时长</title>
+    <link href="https://zubao.github.io/blog/2020/07/09/Android%20%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7-%E5%90%AF%E5%8A%A8%E6%97%B6%E9%95%BF%E7%9B%91%E6%8E%A7/"/>
+    <id>https://zubao.github.io/blog/2020/07/09/Android 性能监控-启动时长监控/</id>
+    <published>2020-07-09T09:30:30.743Z</published>
+    <updated>2020-07-09T09:32:39.929Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;##### &lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="android" scheme="https://zubao.github.io/blog/categories/android/"/>
+    
+    
+      <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
+    
+      <category term="apm" scheme="https://zubao.github.io/blog/tags/apm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>android 性能监控-内存</title>
+    <link href="https://zubao.github.io/blog/2020/06/23/Android%20%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7-%E5%86%85%E5%AD%98/"/>
+    <id>https://zubao.github.io/blog/2020/06/23/Android 性能监控-内存/</id>
+    <published>2020-06-23T08:32:16.175Z</published>
+    <updated>2020-07-09T09:29:22.632Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h5 id=&quot;四种内存指标区别&quot;&gt;&lt;a href=&quot;#四种内存指标区别&quot; class=&quot;headerlink&quot; title=&quot;四种内存指标区别&quot;&gt;&lt;/a&gt;四种内存指标区别&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;VSS （Virtual Set Size）&lt;/code&gt; 虚
+      
+    
+    </summary>
+    
+      <category term="android" scheme="https://zubao.github.io/blog/categories/android/"/>
+    
+    
+      <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
+    
+      <category term="memory" scheme="https://zubao.github.io/blog/tags/memory/"/>
+    
+      <category term="apm" scheme="https://zubao.github.io/blog/tags/apm/"/>
+    
+  </entry>
   
   <entry>
     <title>android 性能监控-网络</title>
@@ -185,15 +268,15 @@
     <link href="https://zubao.github.io/blog/2020/06/17/Android%20mmap%20demo/"/>
     <id>https://zubao.github.io/blog/2020/06/17/Android mmap demo/</id>
     <published>2020-06-17T08:33:11.913Z</published>
-    <updated>2020-06-17T08:47:11.245Z</updated>
+    <updated>2020-07-09T07:33:45.765Z</updated>
     
     <summary type="html">
     
       
       
         &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;android jni mmap demo&lt;/p&gt;
-&lt;figure class=&quot;highlight c++&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span 
+&lt;li&gt;&lt;p&gt;创建指定大小的文件&lt;/p&gt;
+&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;lin
       
     
     </summary>
@@ -240,7 +323,7 @@
     <link href="https://zubao.github.io/blog/2020/06/09/Java%20%E8%99%9A%E6%8B%9F%E6%9C%BA%20JVMTI/"/>
     <id>https://zubao.github.io/blog/2020/06/09/Java 虚拟机 JVMTI/</id>
     <published>2020-06-09T06:50:51.939Z</published>
-    <updated>2020-06-09T06:52:35.990Z</updated>
+    <updated>2020-07-24T10:14:23.859Z</updated>
     
     <summary type="html">
     
@@ -256,9 +339,9 @@
     
       <category term="java" scheme="https://zubao.github.io/blog/tags/java/"/>
     
-      <category term="jvm" scheme="https://zubao.github.io/blog/tags/jvm/"/>
-    
       <category term="jvmti" scheme="https://zubao.github.io/blog/tags/jvmti/"/>
+    
+      <category term="jvm" scheme="https://zubao.github.io/blog/tags/jvm/"/>
     
   </entry>
   
@@ -472,84 +555,6 @@
       <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
     
       <category term="dex" scheme="https://zubao.github.io/blog/tags/dex/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android dex、odex等文件格式</title>
-    <link href="https://zubao.github.io/blog/2020/05/29/Android%20dex%E7%AD%89%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F/"/>
-    <id>https://zubao.github.io/blog/2020/05/29/Android dex等文件格式/</id>
-    <published>2020-05-29T02:32:06.071Z</published>
-    <updated>2020-05-29T07:54:01.787Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h5 id=&quot;文件格式含义&quot;&gt;&lt;a href=&quot;#文件格式含义&quot; class=&quot;headerlink&quot; title=&quot;文件格式含义&quot;&gt;&lt;/a&gt;文件格式含义&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Dalvik&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Dalvik是Google公司自己设
-      
-    
-    </summary>
-    
-      <category term="android" scheme="https://zubao.github.io/blog/categories/android/"/>
-    
-    
-      <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>关于wait、notify</title>
-    <link href="https://zubao.github.io/blog/2020/05/27/%E5%85%B3%E4%BA%8Ewait%E3%80%81notify/"/>
-    <id>https://zubao.github.io/blog/2020/05/27/关于wait、notify/</id>
-    <published>2020-05-27T13:56:44.698Z</published>
-    <updated>2020-05-27T14:43:44.797Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h5 id=&quot;wait、notify、notifyAll-为什么必须与synchronized-配合使用。&quot;&gt;&lt;a href=&quot;#wait、notify、notifyAll-为什么必须与synchronized-配合使用。&quot; class=&quot;headerlink&quot; title=&quot;
-      
-    
-    </summary>
-    
-      <category term="Java" scheme="https://zubao.github.io/blog/categories/Java/"/>
-    
-    
-      <category term="多线程" scheme="https://zubao.github.io/blog/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>I/O的五中模式</title>
-    <link href="https://zubao.github.io/blog/2020/05/27/I:O%E7%9A%845%E4%B8%AD%E6%A8%A1%E5%BC%8F/"/>
-    <id>https://zubao.github.io/blog/2020/05/27/I:O的5中模式/</id>
-    <published>2020-05-27T08:37:16.836Z</published>
-    <updated>2020-05-27T09:53:55.096Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h5 id=&quot;五种I-O模式&quot;&gt;&lt;a href=&quot;#五种I-O模式&quot; class=&quot;headerlink&quot; title=&quot;五种I/O模式&quot;&gt;&lt;/a&gt;五种I/O模式&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;blocking IO - 阻塞IO &lt;/li&gt;
-&lt;li&gt;nonblocking IO 
-      
-    
-    </summary>
-    
-      <category term="Android" scheme="https://zubao.github.io/blog/categories/Android/"/>
-    
-    
-      <category term="android" scheme="https://zubao.github.io/blog/tags/android/"/>
-    
-      <category term="I/O" scheme="https://zubao.github.io/blog/tags/I-O/"/>
-    
-      <category term="Handle" scheme="https://zubao.github.io/blog/tags/Handle/"/>
     
   </entry>
   

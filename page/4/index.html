@@ -293,6 +293,606 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2020/01/17/Hadoop、Spark相关概念/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lpl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/blog/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="闲敲棋子落灯花">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2020/01/17/Hadoop、Spark相关概念/" itemprop="url">Hadoop、Spark相关概念</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-17T10:54:06+08:00">
+                2020-01-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/hadoop/" itemprop="url" rel="index">
+                    <span itemprop="name">hadoop</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="Hadoop-相关概念"><a href="#Hadoop-相关概念" class="headerlink" title="Hadoop 相关概念"></a>Hadoop 相关概念</h5><ul>
+<li><p><strong>Apache Hadoop</strong>是一款支持数据密集型<a href="https://zh.wikipedia.org/w/index.php?title=分佈式&action=edit&redlink=1" target="_blank" rel="noopener">分布式</a>应用程序并以Apache 2.0许可协议发布的<a href="https://zh.wikipedia.org/wiki/开源" target="_blank" rel="noopener">开源</a><a href="https://zh.wikipedia.org/wiki/軟體框架" target="_blank" rel="noopener">软件框架</a>。</p>
+<blockquote>
+<p>它支持在商品硬件构建的大型集群上运行的应用程序。Hadoop是根据<a href="https://zh.wikipedia.org/wiki/谷歌公司" target="_blank" rel="noopener">谷歌公司</a>发表的<a href="https://zh.wikipedia.org/wiki/MapReduce" target="_blank" rel="noopener">MapReduce</a>和<a href="https://zh.wikipedia.org/wiki/Google檔案系統" target="_blank" rel="noopener">Google文件系统</a>的论文自行实现而成。所有的Hadoop模块都有一个基本假设，即硬件故障是常见情况，应该由框架自动处理。</p>
+<p><a href="https://zh.wikipedia.org/wiki/Apache_Hadoop" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/Apache_Hadoop</a></p>
+</blockquote>
+</li>
+<li><p>Apache Hadoop“平台”包括Hadoop内核、MapReduce、Hadoop分布式文件系统（HDFS）以及一些相关项目，有Apache Hive和Apache HBase等等。</p>
+</li>
+<li><p>MapReduce：分布式计算，是Google提出的一个软件架构，用于大规模数据集（大于1<a href="https://zh.wikipedia.org/wiki/Terabyte" target="_blank" rel="noopener">TB</a>）的并行运算。</p>
+</li>
+<li><p>Map (映射): 一个映射函数就是对一些独立元素组成的列表的每一个元素进行指定的操作。</p>
+<blockquote>
+<p>比如，有人发现所有学生的成绩都被高估了一分，他可以定义一个“减一”的映射函数，用来修正这个错误。事实上，每个元素都是被独立操作的，而原始列表没有被更改，因为这里创建了一个新的列表来保存新的答案。这就是说，Map操作是可以高度并行的，这对高性能要求的应用以及<a href="https://zh.wikipedia.org/wiki/并行计算" target="_blank" rel="noopener">并行计算</a>领域的需求非常有用。</p>
+</blockquote>
+</li>
+<li><p>Reduce(归纳): 归纳操作指的是对一个列表的元素进行适当的合并</p>
+<blockquote>
+<p>继续看前面的例子，如果有人想知道班级的平均分该怎么做？他可以定义一个归纳函数，通过让列表中的奇数（odd）或偶数（even）元素跟自己的相邻的元素相加的方式把列表减半，如此递归运算直到列表只剩下一个元素，然后用这个元素除以人数，就得到了平均分。虽然他不如映射函数那么并行，但是因为归纳总是有一个简单的答案，大规模的运算相对独立，所以归纳函数在高度并行环境下也很有用。</p>
+</blockquote>
+</li>
+<li><p>HDFS(Hadoop Distributed File System 分布式文件系统):是指被设计成适合运行在通用硬件(commodity hardware)上的分布式文件系统</p>
+<blockquote>
+<p><a href="https://baike.baidu.com/item/HDFS" target="_blank" rel="noopener">https://baike.baidu.com/item/HDFS</a></p>
+<p>HDFS是一个高度容错性的系统，适合部署在廉价的机器上。HDFS能提供高吞吐量的数据访问，非常适合大规模数据集上的应用。</p>
+</blockquote>
+</li>
+<li><p><strong>YARN:</strong> 分布式资源管理</p>
+<blockquote>
+<p><a href="https://wiki.jikexueyuan.com/project/hadoop/node-manager.html" target="_blank" rel="noopener">https://wiki.jikexueyuan.com/project/hadoop/node-manager.html</a></p>
+</blockquote>
+</li>
+</ul>
+<h5 id="Spark"><a href="#Spark" class="headerlink" title="Spark"></a>Spark</h5><ul>
+<li><h5 id="Hbase-Hadoop-database"><a href="#Hbase-Hadoop-database" class="headerlink" title="Hbase(Hadoop database)"></a>Hbase(Hadoop database)</h5></li>
+<li><p>Hbase是一种在Hadoop之上的NoSQL 的Key/vale数据库</p>
+</li>
+<li><p>Hbase非常适合用来进行大数据的实时查询</p>
+</li>
+</ul>
+<h5 id="Hive"><a href="#Hive" class="headerlink" title="Hive"></a>Hive</h5><ul>
+<li>Hive是Hadoop数据仓库，严格来说，不是数据库，主要是让开发人员能够通过SQL来计算和处理HDFS上的结构化数据。</li>
+<li>通过元数据来描述Hdfs上的结构化文本数据，通俗点来说，就是定义一张表来描述HDFS上的结构化文本，包括各列数据名称，数据类型是什么等，方便我们处理数据，当前很多SQL ON Hadoop的计算引擎均用的是hive的元数据，如Spark SQL、Impala等；</li>
+<li>Hive是一种类SQL的引擎，并且运行MapReduce任务</li>
+<li>Hive适合用来对一段时间内的数据进行分析查询</li>
+</ul>
+<h5 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h5><ul>
+<li><a href="https://juejin.im/post/5cc3db50f265da03a436d7bd" target="_blank" rel="noopener">https://juejin.im/post/5cc3db50f265da03a436d7bd</a> (hive hbase 区别)</li>
+<li><a href="https://www.cnblogs.com/justinzhang/p/4273470.html" target="_blank" rel="noopener">https://www.cnblogs.com/justinzhang/p/4273470.html</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2020/01/16/树莓派4 Spark环境配置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lpl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/blog/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="闲敲棋子落灯花">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2020/01/16/树莓派4 Spark环境配置/" itemprop="url">树莓派4Spark环境配置</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-16T10:11:19+08:00">
+                2020-01-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/Raspberry/" itemprop="url" rel="index">
+                    <span itemprop="name">Raspberry</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="Java-环境配置"><a href="#Java-环境配置" class="headerlink" title="Java 环境配置"></a>Java 环境配置</h5><ul>
+<li><p>安装java</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">pi@raspberrypi:~ $ sudo apt-get purge openjdk-8-jre-headless</span><br><span class="line">pi@raspberrypi:~ $ sudo apt-get install openjdk-8-jre-headless</span><br><span class="line">pi@raspberrypi:~ $ sudo apt-get install openjdk-8-jre</span><br><span class="line">pi@raspberrypi:~ $ java -version </span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 或者试试这个</span><br><span class="line">sudo apt-get install default-jdk</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 或者去官网下载</span><br><span class="line">https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Java环境变量配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"> </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>或者使用SDKMAN </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 安装sdkman https://sdkman.io/</span><br><span class="line">pi@raspberrypi:~ $ curl -s "https://get.sdkman.io" | bash</span><br><span class="line"><span class="meta">#</span></span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h5 id="Scala-环境配置"><a href="#Scala-环境配置" class="headerlink" title="Scala 环境配置"></a>Scala 环境配置</h5><ul>
+<li><p>Mac 或者 树莓派 上安装Scala</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> Mac</span><br><span class="line">brew install scala</span><br><span class="line"><span class="meta">#</span> Mac 或者其他 平台</span><br><span class="line">sdk install scala</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 官网下载</span><br><span class="line">scala-2.13.1.tgz(可执行文件)； scala-2.13.1.tar.gz(源码)</span><br><span class="line"><span class="meta">#</span> 如果是树莓派</span><br><span class="line">scp scala-2.13.1.tgz pi@192.168.1.1:/home/pi </span><br><span class="line"><span class="meta">#</span> 解压缩</span><br><span class="line">sudo tar -zvxf scala-2.13.1.tgz -C /usr/local/</span><br><span class="line">cd /usr/local</span><br><span class="line">sudo mv scala-2.13.1 scala</span><br><span class="line"><span class="meta">#</span> 配置环境变量</span><br><span class="line">vim .bash_profile</span><br><span class="line"><span class="meta">#</span> for scala</span><br><span class="line">SCALA_HOME=/usr/local/scala</span><br><span class="line">PATH=$PATH:$SCALA_HOME/bin</span><br><span class="line">export SCALA_HOME PATH</span><br><span class="line"><span class="meta">#</span> 验证</span><br><span class="line">scala -version</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h5 id="sbt-安装"><a href="#sbt-安装" class="headerlink" title="sbt 安装"></a>sbt 安装</h5><ul>
+<li><p>安装 sdkman</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pi@raspberrypi:~ $ curl -s "https://get.sdkman.io" | bash</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过sdkman 安装 sbt</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sdk install sbt</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>sbt 安装验证</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 创建工作目录</span><br><span class="line">mkdir sbtworkspace</span><br><span class="line">cd sbtworkspace</span><br><span class="line"><span class="meta">#</span> 创建新目录，比较耗时 结束提示输入项目名称，例如hello</span><br><span class="line">sbt new scala/hello-world.g8</span><br><span class="line"><span class="meta">#</span> 进入工程目录 </span><br><span class="line">cd hello</span><br><span class="line"><span class="meta">#</span> 构建项目 (比较耗时)</span><br><span class="line">sbt</span><br><span class="line"><span class="meta">#</span> 运行项目</span><br><span class="line">run</span><br><span class="line"><span class="meta">#</span> 持续运行项目(修改保存之后会自动运行)</span><br><span class="line">~run</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h5 id="下载Apache-Spark"><a href="#下载Apache-Spark" class="headerlink" title="下载Apache Spark"></a>下载Apache Spark</h5><ul>
+<li><p>安装pySpark，如果使用python 可以直接这么安装，否则先下载安装包，手动安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pyspark.</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>spark压缩包安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo tar -zvxf spark-3.0.0-preview2-bin-hadoop2.7.tgz -C /usr/local/</span><br><span class="line">cd /usr/local</span><br><span class="line">sudo mv spark-3.0.0-preview2-bin-hadoop2.7.tgz spark</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<ul>
+<li><p>Spark 环境配置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> .bashrc 或者 .bash_profile 中添加</span><br><span class="line"><span class="meta">#</span> spark env</span><br><span class="line">SPARK_HOME=/usr/local/spark</span><br><span class="line">export PATH=$PATH:$SPARK_HOME/bin</span><br><span class="line"><span class="meta">#</span> 配置生效</span><br><span class="line">source .bashrc|.bash_profile</span><br><span class="line"><span class="meta">#</span> 验证是否配置成功</span><br><span class="line">spark-shell</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h5 id="scala-安装参考文档"><a href="#scala-安装参考文档" class="headerlink" title="scala 安装参考文档"></a>scala 安装参考文档</h5><ul>
+<li><a href="https://blog.csdn.net/danlei94/article/details/78082131" target="_blank" rel="noopener">https://blog.csdn.net/danlei94/article/details/78082131</a></li>
+<li>scala 官网 <a href="https://www.scala-lang.org/download/" target="_blank" rel="noopener">https://www.scala-lang.org/download/</a></li>
+</ul>
+<h5 id="sbt-文档"><a href="#sbt-文档" class="headerlink" title="sbt 文档"></a>sbt 文档</h5><ul>
+<li>sbt 官方文档 <a href="https://www.scala-sbt.org/1.x/docs/Installing-sbt-on-Linux.html" target="_blank" rel="noopener">https://www.scala-sbt.org/1.x/docs/Installing-sbt-on-Linux.html</a></li>
+<li>sbt 中文文档 <a href="https://wiki.jikexueyuan.com/project/sbt-getting-started/running.html" target="_blank" rel="noopener">https://wiki.jikexueyuan.com/project/sbt-getting-started/running.html</a></li>
+</ul>
+<h5 id="spark文档"><a href="#spark文档" class="headerlink" title="spark文档"></a>spark文档</h5><ul>
+<li>spark 中文文档 <a href="http://doc.codingdict.com/spark/25/" target="_blank" rel="noopener">http://doc.codingdict.com/spark/25/</a></li>
+<li>spark 下载地址 <a href="http://spark.apache.org/downloads.html" target="_blank" rel="noopener">http://spark.apache.org/downloads.html</a>  (可能需要多尝试几次)</li>
+<li></li>
+</ul>
+<h5 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h5><ul>
+<li><a href="https://blog.csdn.net/danlei94/article/details/78082131" target="_blank" rel="noopener">https://blog.csdn.net/danlei94/article/details/78082131</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2020/01/14/树莓派开启自动发邮件/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lpl">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/blog/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="闲敲棋子落灯花">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/2020/01/14/树莓派开启自动发邮件/" itemprop="url">树莓派开机自动发邮件</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-14T16:15:08+08:00">
+                2020-01-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/Raspberry/" itemprop="url" rel="index">
+                    <span itemprop="name">Raspberry</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="安装mutt、msmtp"><a href="#安装mutt、msmtp" class="headerlink" title="安装mutt、msmtp"></a>安装mutt、msmtp</h5><ul>
+<li><p>mutt ：是一个linux下的邮件程序，mutt 类似文件管理器，不过它管理的是邮件</p>
+</li>
+<li><p>msmtp ：是linux 下一个非常简单易用的smtp客户端</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install mutt </span><br><span class="line"><span class="meta">#</span> 如果失败</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install msmtp</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>配置mutt、msmtp环境</p>
+<ul>
+<li><p>配置msmtp，在用户跟目录创建.msmtprc文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">vim .msmtprc</span><br><span class="line">account default</span><br><span class="line"></span><br><span class="line">host smtp.126.com</span><br><span class="line">from l5@126.com</span><br><span class="line">auth login</span><br><span class="line">tls off</span><br><span class="line">user l5</span><br><span class="line">password L5 (授权码)</span><br><span class="line">logfile ~/.mstmp.log</span><br><span class="line"><span class="meta">#</span> 申请126 邮箱，去设置获取授权码</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li>host 表示你的游戏的SMTP服务器地址</li>
+<li>from 发件人邮箱地址</li>
+<li>user 发件人邮箱地址</li>
+<li>password 这里是邮箱的明文密码</li>
+<li>logfile 这里是日志文件路径，发送邮件后程序会将日志写入这个文件。</li>
+</ul>
+</blockquote>
+</li>
+<li><p>测试msmtp</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 输入如下命令，测试msmtp</span><br><span class="line">msmtp -d lipeil4195@126.com</span><br><span class="line">Subject:title&lt;Hi jack&gt;</span><br><span class="line">gogogogoogogogo</span><br><span class="line"><span class="meta">#</span> 标题、正文输入完之后，输入下面命令发送邮件</span><br><span class="line">control + d</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<ul>
+<li><p>配置mutt</p>
+</li>
+<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vim .muttrc</span><br><span class="line">set sendmail="/usr/bin/msmtp"</span><br><span class="line">set use_from=yes</span><br><span class="line">set realname='l5@126.com'</span><br><span class="line">set from="l5@126.com"</span><br><span class="line">set envelope_from=yes</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>测试mutt 是否安装配置成功</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod 0600 ~/.msmtprc</span><br><span class="line">echo &quot;准备的怎样了&quot; | mutt -s &quot;周末出游&quot; 419548550@qq.com</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>参考文章 <a href="https://www.huaijiujia.com/category/操作系统/centos/centos-特有软件/" target="_blank" rel="noopener">https://www.huaijiujia.com/category/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/centos/centos-%E7%89%B9%E6%9C%89%E8%BD%AF%E4%BB%B6/</a></p>
+<p><a href="https://www.cnblogs.com/hjfeng1988/p/4464116.html" target="_blank" rel="noopener">https://www.cnblogs.com/hjfeng1988/p/4464116.html</a></p>
+<p><a href="https://www.jianshu.com/p/893352c61f93" target="_blank" rel="noopener">https://www.jianshu.com/p/893352c61f93</a></p>
+<p><a href="https://blog.csdn.net/betty13006159467/article/details/71172295" target="_blank" rel="noopener">https://blog.csdn.net/betty13006159467/article/details/71172295</a></p>
+<p><a href="https://www.jianshu.com/p/f7faa156087a" target="_blank" rel="noopener">https://www.jianshu.com/p/f7faa156087a</a></p>
+</blockquote>
+</li>
+<li><p>发送邮件配置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>!/bin/bash</span><br><span class="line"><span class="meta">#</span> check network availability</span><br><span class="line">while true</span><br><span class="line">do</span><br><span class="line">TIMEOUT=5</span><br><span class="line">SITE_TO_CHECK="www.baidu.com"</span><br><span class="line">RET_CODE=`curl -I -s --connect-timeout $TIMEOUT $SITE_TO_CHECK -w %&#123;http_code&#125; | tail -n1`</span><br><span class="line">if [ "x$RET_CODE" = "x200" ]; then</span><br><span class="line">echo "Network OK, will send mail..."</span><br><span class="line">break</span><br><span class="line">else</span><br><span class="line">echo "Network not ready, wait..."</span><br><span class="line">sleep 1s</span><br><span class="line">fi</span><br><span class="line">done</span><br><span class="line"><span class="meta">#</span> 这里如果是网线用eth0, 如果是wifi 用wlan0。</span><br><span class="line">ETH0_IP_ADDR=`ifconfig wlan0 | sed -n "2,2p" | awk '&#123;print substr($2,1)&#125;'`</span><br><span class="line">echo $ETH0_IP_ADDR</span><br><span class="line"><span class="meta">#</span> send the Email 这里给qq邮箱发提示失败(原因是垃圾邮件)，换成126自己的地址就可以。然后用QQ邮箱代收。</span><br><span class="line">echo "China Current time: `date '+%F %T'`. Good time" | mutt -s "Zubao's IP Address of Raspberry Pi: $ETH0_IP_ADDR" l5@126.com</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>开机配置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 将.msmtprc .msmtp.log .muttrc 文件copy到 /root 目录下面。需要用su进入root权限，sudo不行</span><br><span class="line"><span class="meta">#</span> 修改 /etc/rc.local 文件，在exit 之前加上</span><br><span class="line">bash /root/send_ip_mail.sh</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2020/01/13/Android Q Pixel 2 XL Root/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1600,518 +2200,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/11/21/代码检测/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lpl">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/blog/images/head.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="闲敲棋子落灯花">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2019/11/21/代码检测/" itemprop="url">代码检测</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-21T16:09:48+08:00">
-                2019-11-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/code/" itemprop="url" rel="index">
-                    <span itemprop="name">code</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="美团-https-tech-meituan-com-2019-11-07-android-static-code-canning-html"><a href="#美团-https-tech-meituan-com-2019-11-07-android-static-code-canning-html" class="headerlink" title="- 美团 https://tech.meituan.com/2019/11/07/android-static-code-canning.html"></a>- 美团 <a href="https://tech.meituan.com/2019/11/07/android-static-code-canning.html" target="_blank" rel="noopener">https://tech.meituan.com/2019/11/07/android-static-code-canning.html</a></h5><ul>
-<li>android IDE 代码检测工具介绍</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/11/19/GC日志分析/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lpl">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/blog/images/head.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="闲敲棋子落灯花">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2019/11/19/GC日志分析/" itemprop="url">GC日志分析</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-19T09:41:22+08:00">
-                2019-11-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/gc/" itemprop="url" rel="index">
-                    <span itemprop="name">gc</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="一、Dalvik"><a href="#一、Dalvik" class="headerlink" title="一、Dalvik"></a>一、Dalvik</h2><h3 id="1-1-GC含义"><a href="#1-1-GC含义" class="headerlink" title="1.1 GC含义"></a>1.1 GC含义</h3><p>Dalvik虚拟机，每一次GC打印内容格式：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">D/dalvikvm: &lt;GC_Reason&gt; &lt;Amount_freed&gt;,</span><br><span class="line"> &lt;Heap_stats&gt;, &lt;External_memory_stats&gt;, &lt;Pause_time&gt;</span><br></pre></td></tr></table></figure>
-
-<p>对应项：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">D/dalvikvm: &lt;GC触发原因&gt; &lt;GC释放内存大小&gt;, </span><br><span class="line">&lt;堆统计信息&gt;, &lt;外部内存统计&gt;, &lt;暂停时间&gt;</span><br></pre></td></tr></table></figure>
-
-<p><strong>含义解析</strong></p>
-<ul>
-<li>GC Reason(GC触发原因)<ul>
-<li>GC_CONCURRENT：当已分配内存达到某一值时，触发并发GC；</li>
-<li>GC_FOR_MALLOC：当尝试在堆上分配内存不足时触发的GC；系统必须停止应用程序并回收内存；</li>
-<li>GC_HPROF_DUMP_HEAP： 当需要创建HPROF文件来分析堆内存时触发的GC；</li>
-<li>GC_EXPLICIT：当明确的调用GC时，例如调用System.gc()等；</li>
-<li>GC_EXTERNAL_ALLOC： 仅在API级别为10或者更低时（新版本分配内存都在Dalvik堆上）</li>
-</ul>
-</li>
-<li>Amount freed GC回收的内存大小</li>
-<li>Heap stats 堆上的空闲内存百分比 （已用内存）/（堆上总内存）</li>
-<li>External memory stats API级别为10或者更低：（已分配的内存量）/ （即将发生垃圾的极限）</li>
-<li>Pause time（暂停时间） 较大的堆将有较大的暂停时间。并发暂停时间显示有两个停顿：一个是垃圾回收的开头和另一接近垃圾回收的结尾。</li>
-</ul>
-<h3 id="1-2-实例"><a href="#1-2-实例" class="headerlink" title="1.2 实例"></a>1.2 实例</h3><p><strong>实例：</strong> D/dalvikvm: <code>GC_CONCURRENT</code> freed <code>2049K</code>, <code>65% free 3571K/9991K</code>, external <code>4703K/5261K</code>, paused <code>2ms+2ms</code></p>
-<p><strong>含义：</strong></p>
-<ul>
-<li>GC触发原因：GC_CONCURRENT;</li>
-<li>GC释放内存大小：2049K;</li>
-<li>堆统计信息：堆空闲内存为65%，已用内存:3571K， 堆上总内存：9991K;</li>
-<li>暂停时间：总共暂时4ms。</li>
-</ul>
-<h3 id="1-3-小结"><a href="#1-3-小结" class="headerlink" title="1.3 小结"></a>1.3 小结</h3><p>根据不断增加的日志信息，观察增加的堆统计信息（在上例中的3571K/9991K值），若该值持续增加，可能有内存泄漏。</p>
-<h2 id="二、ART"><a href="#二、ART" class="headerlink" title="二、ART"></a>二、ART</h2><p>ART的log不同于Dalvik的log机制，正常情况不会打印非明确调用的GCs的log信息。GCs打印出来的log信息都是被认为是执行比较缓慢的信息，更准确地说，就是<strong>GC暂停的时间超过5ms或者GC执行的总时间超过100ms</strong>。 如果app不处于暂停的感知状态，那么没有GC会被认为是缓慢的。但是明确地调用GCs会记录log信息。</p>
-<h3 id="2-1-GC含义"><a href="#2-1-GC含义" class="headerlink" title="2.1 GC含义"></a>2.1 GC含义</h3><p>ART虚拟机，每一次GC打印内容格式：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">I/art: &lt;GC_Reason&gt; &lt;GC_Name&gt; &lt;Objects_freed&gt;(&lt;Size_freed&gt;) AllocSpace Objects,</span><br><span class="line">&lt;Large_objects_freed&gt;(&lt;Large_object_size_freed&gt;) &lt;Heap_stats&gt; LOS objects, &lt;Pause_time(s)&gt;</span><br></pre></td></tr></table></figure>
-
-<p>对应项：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">I/art: &lt;GC触发原因&gt; &lt;GC名称&gt;   &lt;释放对象个数&gt;(&lt;释放字节数&gt;)    AllocSpace Objects, </span><br><span class="line">&lt;释放大对象个数&gt;(&lt;释放大对象字节数&gt;)  &lt;堆统计&gt; LOS objects, &lt;暂停时间&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-2-GC解析"><a href="#2-2-GC解析" class="headerlink" title="2.2 GC解析"></a>2.2 GC解析</h3><h4 id="2-2-1-GC-Reason"><a href="#2-2-1-GC-Reason" class="headerlink" title="2.2.1 GC Reason"></a>2.2.1 GC Reason</h4><ol>
-<li><code>Concurrent</code>： 并发GC，不会使app线程挂起，该GC是在后台线程运行的，也不会阻止内存分配。</li>
-<li><code>Alloc</code>:当<strong>堆内存已满</strong>时，app尝试申请内存，会触发该GC。在这种情况下，垃圾回收发生在正在分配内存的线程。</li>
-<li><code>Explicit</code>: 明确的调用垃圾回收，比如gc().与dalvik一样，应尽可能避免明确调用gc。<strong>不建议使用</strong>，由于程序的GC会阻塞分配线程和不必要的CPU周期，如果其他线程获取抢占资源也可能导致jank。</li>
-<li><code>NativeAlloc</code>: 垃圾回收是由于<strong>native内存过重</strong>而触发的，例如Bitmaps或者RenderScript分配的对象。</li>
-<li><code>CollectorTransition</code>: 由于堆过渡触发的。收集器转换包括拷贝所有的对象从一个自由列表支持空间到指针空间，也包括反过来拷贝。目前垃圾回收器传输仅发生在<strong>低内存设备的app进程状态转移</strong>，包含从一个可感知的暂停状态转换到非暂停可感知状态，或者非暂停态到暂停态。</li>
-<li><code>HomogeneousSpaceCompact</code>:齐性空间压缩是指空闲列表到压缩的空闲列表空间，通常发生在当app已经移动到暂停可感知的进程状态。这样做的主要原因是减少了内存使用情况和<strong>堆碎片整理</strong>。</li>
-<li><code>DisableMovingGc</code>:这并非真实的GC触发原因，只是标记垃圾回收被阻塞，由于并非堆压缩正在发生时使用了GetPrimitiveArrayCritical。由于其对移动收集器的限制，使用GetPrimitiveArrayCritical是<strong>强烈不建议</strong>。</li>
-<li><code>HeapTrim</code>: 这并非GC触发原因，只是标记垃圾回收被阻塞直到堆整理完成。</li>
-</ol>
-<h4 id="2-2-2-GC-Name"><a href="#2-2-2-GC-Name" class="headerlink" title="2.2.2 GC Name"></a>2.2.2 GC Name</h4><ol>
-<li><code>Concurrent mark sweep (CMS)</code>: 完整的堆垃圾回收器，能释放<strong>除去图片空间之外</strong>的所有的垃圾。</li>
-<li><code>Concurrent partial mark sweep</code>: 绝大多数的堆垃圾回收器，能释放<strong>除去图片和zygote空间之外</strong>的所有的垃圾。</li>
-<li><code>Concurrent sticky mark sweep</code>: 一般性的垃圾回收器，只能释放上一次GC所关联的对象。该垃圾回收器运行得<strong>更常用，有更低的暂停时间</strong>。</li>
-<li><code>Marksweep + semispace</code>: 非并发gc,复制GC用于堆过渡以及齐性空间压缩（堆碎片整理）。</li>
-</ol>
-<h4 id="2-2-3-GC其他参数"><a href="#2-2-3-GC其他参数" class="headerlink" title="2.2.3 GC其他参数"></a>2.2.3 GC其他参数</h4><ul>
-<li>Objects_freed： 从非大对象空间回收到的对象数；</li>
-<li>Size_freed：从非大对象空间回收到的字节数；</li>
-<li>Large_objects_freed：从大对象空间回收到的对象数；</li>
-<li>Large_object_size_freed：从大对象空间回收到的字节数；</li>
-<li>Heap_stats： 堆上的空闲内存百分比 （已用内存）/（堆上总内存）；</li>
-<li>Pause_time：暂停时间跟GC正在运行时引用对象被改变的对象数成正比。目前，ART的CMD GC仅有一次停顿，出现在GC的结尾附近。移动GC有一个长的暂停时间持续在GC的大多数期间。</li>
-</ul>
-<h3 id="2-3-实例"><a href="#2-3-实例" class="headerlink" title="2.3 实例"></a>2.3 实例</h3><p>I/art : <code>Explicit</code> <code>concurrent mark sweep GC</code> freed <code>104710</code>(<code>7MB</code>) AllocSpace objects, <code>21</code>(<code>416KB</code>) LOS objects, <code>33% free, 25MB/38MB</code>, paused <code>1.230ms</code> total <code>67.216ms</code></p>
-<p><strong>含义：</strong></p>
-<ul>
-<li>GC触发原因：Explicit</li>
-<li>GC名称：concurrent mark sweep GC</li>
-<li>释放对象个数：104710</li>
-<li>释放字节数：7MB</li>
-<li>释放大对象个数：21</li>
-<li>释放大对象字节数：416KB</li>
-<li>堆统计：堆空闲内存为33%，已用内存:25MB， 总内存总：38MB</li>
-<li>暂停时间：GC暂停时长：1.230ms，GC总时长：67.216ms</li>
-</ul>
-<h3 id="2-4-小结"><a href="#2-4-小结" class="headerlink" title="2.4 小结"></a>2.4 小结</h3><ul>
-<li>当看到大量的GC log信息在logcat，可查看堆统计(如样例中 5MB/38MB)。如果这个值持续增长，并且一直不见它变小，那可能发生了内存泄露。</li>
-<li>如果看到GC触发条件是<code>Alloc</code>，那当前环境已经接近堆内存的上限了，在不久后很快会出现OOM。</li>
-</ul>
-<h5 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h5><ul>
-<li><p><a href="http://developer.android.com/tools/debugging/debugging-memory.html" target="_blank" rel="noopener">http://developer.android.com/tools/debugging/debugging-memory.html</a></p>
-</li>
-<li><p><a href="http://gityuan.com/2015/10/03/Android-GC/" target="_blank" rel="noopener">http://gityuan.com/2015/10/03/Android-GC/</a></p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zubao.github.io/blog/blog/2019/11/18/训练网站/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lpl">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/blog/images/head.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="闲敲棋子落灯花">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2019/11/18/训练网站/" itemprop="url">训练网站</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-18T08:57:13+08:00">
-                2019-11-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/IT/" itemprop="url" rel="index">
-                    <span itemprop="name">IT</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="在线刷题"><a href="#在线刷题" class="headerlink" title="在线刷题"></a>在线刷题</h5><ul>
-<li><a href="https://leetcode-cn.com/" target="_blank" rel="noopener">https://leetcode-cn.com/</a> 可以在线刷题，算法、数据库</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2164,7 +2252,7 @@
               
                 <a href="/blog/archives/">
               
-                  <span class="site-state-item-count">81</span>
+                  <span class="site-state-item-count">84</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2186,7 +2274,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/blog/tags/index.html">
-                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
